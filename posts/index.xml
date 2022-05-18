@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on hpc小站</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on hpc小站</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 May 2022 11:15:21 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spack简明使用手册</title>
+      <link>/posts/spack%E7%AE%80%E6%98%8E%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Wed, 18 May 2022 11:15:21 +0800</pubDate>
+      
+      <guid>/posts/spack%E7%AE%80%E6%98%8E%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>spack简明使用手册 一、部署spack 下载 1. release（推荐） github下载最新的release：https://github.com/spack/spack/releases
+2. git git clone https://github.com/spack/spack.git ~/spack cd ~/spack git checkout releases/v0.17  ✨tips: github 国内下载慢，百度 github镜像加速站 或 油猴脚本 - github 高速下载
+ 2.激活  对于超算/lab/hpc等多用户场景,建议将spack本地放在全局/共享目录下
+单个普通用户建议放在 ~/.spack/ 或 /opt下
+ 解压下载好的压缩包, 加载环境变量（根据具体情况变更路径)：
+source spack/share/spack/setup-env.sh 可以将此命令写在~/.bashrc 或 /etc/profile 中 ， 打开终端自动生效
+3.配置 spack 的用户配置文件均在 ~/.spack 下，首次使用 spack 可能没有此目录，使用 3.2 会自动创建
+3.1 基本配置 $ spack config get config &amp;gt; ~/.spack/config.yaml $ spack config get config config: install_tree: root: $spack/opt/spack projections: all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH} template_dirs: - $spack/share/spack/templates build_stage: - $tempdir/$user/spack-stage - $user_cache_path/stage test_stage: $user_cache_path/test source_cache: $spack/var/spack/cache misc_cache: $user_cache_path/cache connect_timeout: 10 verify_ssl: true suppress_gpg_warnings: false install_missing_compilers: false checksum: true deprecated: false dirty: false build_language: C locks: true url_fetch_method: urllib ccache: false concretizer: clingo db_lock_timeout: 3 package_lock_timeout: null shared_linking: rpath allow_sgid: true terminal_title: false debug: false build_jobs: 16 解析：</description>
+    </item>
+    
+    <item>
+      <title>Flask学习笔记</title>
+      <link>/posts/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 19 Apr 2022 10:00:44 +0800</pubDate>
+      
+      <guid>/posts/flask%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql服务器搭建</title>
+      <link>/posts/mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 09 Apr 2022 12:23:48 +0800</pubDate>
+      
+      <guid>/posts/mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pxe服务器搭建</title>
+      <link>/posts/pxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 31 Mar 2022 15:22:49 +0800</pubDate>
+      
+      <guid>/posts/pxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description>安装软件 yum -y install syslinux tftp-server xinetd dhcp nfs-utils 配置dhcp  编辑/etc/dhcp/dhcpd.conf  ddns-update-style none; ignore client-updates; allow booting; allow bootp; subnet 10.249.2.0 netmask 255.255.255.0 { range 10.249.2.120 10.249.2.150; option subnet-mask 255.255.255.0; option domain-name &amp;#34;yeesuan.com&amp;#34;; option domain-name-servers 10.249.2.254; option routers 10.249.2.254; default-lease-time 14400; max-lease-time 43200; next-server 10.249.2.20; filename &amp;#34;pxelinux.0&amp;#34;; } 配置tftp  编辑/etc/xinetd.d/tftp  service tftp { socket_type = dgram protocol = udp wait = no user = root server = /usr/sbin/in.</description>
+    </item>
+    
+    <item>
+      <title>Git技巧</title>
+      <link>/posts/git%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 22 Mar 2022 15:16:41 +0800</pubDate>
+      
+      <guid>/posts/git%E6%8A%80%E5%B7%A7/</guid>
+      <description>git push免输入用户名密码 以http/https push的时候无法使用ssh-key密钥的方式，只能输入用户名和密码
+方法一 netrc 在家目录下新建~/.netrc，内容：
+machine xx.xxx.xxx.xxlogin bitpassword xxxxxx方法二 git凭证 输入：
+git config --global credential.helper store 然后在自己的项目下模拟下push，正常输入用户名和密码，它将会在家目录生成一份凭证~/.git-credentials
+同时，~/.gitconfig会多出一个字段
+[credential] helper = store不建议直接写这两文件，因为密码网址之类的要转义，还是输入命令模拟一次提交
+git push 指定密钥 通常我们会使用ssh-keyg 生成一份ssh密钥对,将私钥保存在~/.ssh下，名字默认为id_rsa,公钥默认名id_rsa.pub放在服务器上
+但有时候我们会使用多份密钥对去push不同的项目到不同的远程仓库中
+例如，我们有份密钥对的私钥名为myrsa，它保存在~/.ssh下，远程仓库地址bit.github.com,我们在这里新建config文件：
+Host bit.github.com HostName bit.github.com PreferredAuthentications publickey IdentityFile ~/.ssh/myrsa这样我们在去push 项目到git@bit.github.com:xxxx/xxx.git时将会使用~/.ssh/myrsa这份私钥
+git 同时 push 到多个远程仓库 添加第二仓库：
+git remote set-url --add origin git@github.com:morethink/programming.git 查看远程分支：
+git remote -v 这样执行git push origin master将会同时push到多个分支</description>
+    </item>
+    
+    <item>
+      <title>HTML</title>
+      <link>/posts/html/</link>
+      <pubDate>Sat, 19 Mar 2022 20:46:58 +0800</pubDate>
+      
+      <guid>/posts/html/</guid>
+      <description>HTML标签 a标签：负责超链接 &amp;lt;a href=&amp;#34;跳转的地址&amp;#34;&amp;gt;&amp;lt;/a&amp;gt; img标签：负责图片 &amp;lt;img src=&amp;#34;图片地址&amp;#34;/&amp;gt; 标题标签： 到  &amp;lt;h1&amp;gt; 你好 &amp;lt;/h1&amp;gt; p标签：段落标签 &amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;  每个p标签独占一行 不带首行缩进  br换行标签 &amp;lt;br&amp;gt; 特殊符号：&amp;amp;nbsp; &amp;amp;nbsp  一个&amp;amp;nbsp表示一个空格  HTML表格 基础标签  &amp;lt;table&amp;gt;&amp;lt;/table&amp;gt;：一个表格  border：边框属性，默认为0，以数字为单位 width: 宽度，以数字为单位 heigth: 高度，以数字为单位 align: 设置对齐方式：lefit,right、center   &amp;lt;tr&amp;gt;&amp;lt;/tr&amp;gt;：一行 &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;：一列 &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;：一个标题行单元格  </description>
+    </item>
+    
+    <item>
+      <title>Linux统计</title>
+      <link>/posts/linux%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Fri, 18 Mar 2022 15:56:49 +0800</pubDate>
+      
+      <guid>/posts/linux%E7%BB%9F%E8%AE%A1/</guid>
+      <description>统计某个单词个数 grep -c &amp;#34;pattern&amp;#34; my_text_file.txt 查找所有目录（包括子目录），并排除某个目录，搜索层级限制在第二层 find . -mindepth 2 -maxdepth 2 -type d -not -path ./._source-cache/* 并删除它们
+find . -mindepth 2 -maxdepth 2 -type d -exec rm -rf {} + 统计文件的个数（包括子目录里的） ls -lR| grep &amp;#34;^-&amp;#34; | wc -l 将所有文件包含软连接输出到 XML文件中，层级为2 tree -L 2 -X &amp;gt; ~/a.xml </description>
+    </item>
+    
+    <item>
+      <title>计算机视觉应该怎样入门</title>
+      <link>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Fri, 18 Mar 2022 15:56:49 +0800</pubDate>
+      
+      <guid>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/</guid>
+      <description>任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。
+肯定有人骂我：“看一篇paper就能入门计算机视觉？” 我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。
+都能参加面试了，难道还不算入门？ 当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。
+ 当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：看资料、看网课、做项目、最重要的是，潜下心去学！
+所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：
+入门：基础学科知识、编程基础、工具。 主要要有一定的高等数学知识，包括概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论等。
+这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：
+概率论与数理统计：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。
+线性代数与矩阵论：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。
+信息论基础：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。
+编程基础主要包含Python和matlab。 《算法基础班Python》：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。
+《MATLAB》：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。
+工具上，现在一般是用框架，其他常用的框架tensorflow、pytorch、mxnet。
+初级：课程巩固，串联知识框架，学会应用 基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。
+入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。
+推荐一些口碑和质量都不错的视频教学资源。
+《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来免费体验一下本课。
+CS231n：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。
+深度学习：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。
+进阶：跟着做项目，调参 可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。
+这时候就要祭出GitHub这个宝库了：
+中文车牌识别系统：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。
+物体检测：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。
+真实场景中的镜子和玻璃检测：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子/玻璃墙的存在以及无人机可能碰撞成高楼。
+高级：自我驱动，“被动”学习 到这个阶段，我相信再怎么诸神内卷，你也找到工作了。
+这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。
+有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。计算机再卷，今年互联网大厂都缩招了？考公/考研再难，每年的考公/研人数下滑了？
+别危言耸听了，做好自己。
+既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。
+我命由我不由天（突然燃了起来）</description>
+    </item>
+    
+    <item>
+      <title>Python日志记录</title>
+      <link>/posts/python%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 17 Mar 2022 11:25:05 +0800</pubDate>
+      
+      <guid>/posts/python%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95/</guid>
+      <description>日志级别（以严重性递增）
+   级别 含义     DEBUG 调试信息，诊断问题时用   INFO 确认程序预期运行   WARNING 警告，如磁盘空间不足，程序仍进行   ERROR 错误，程序某些功能已不能正常进行   CRITICAL 严重错误，程序已不能继续进行    什么时候使用日志
+   任务 工具     结果显示在控制台的程序 print()   发生普通操作时提交事件报告(如：状态监控和错误调查) logging.info()，需要详细输出时用 logging.debug()   特殊运行时警告 warnings.warn() 或 logging.warning()   特殊运行时报告错误 引发异常   报告错误而不引发异常(如长时间运行的服务端进程) logging.error(), logging.exception() 或 logging.critical() 分别适用于特定的错误及应用领域    </description>
+    </item>
+    
+    <item>
+      <title>Vscode小技巧</title>
+      <link>/posts/vscode%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Wed, 16 Mar 2022 15:35:19 +0800</pubDate>
+      
+      <guid>/posts/vscode%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description>1. 用户代码片段 利用快捷键快速添加一段代码片段
+vscode左下角-用户代码片段-选择python，打开一个json文件，替换成如下：
+{ &amp;#34;HEADER&amp;#34;: { &amp;#34;prefix&amp;#34;: &amp;#34;header&amp;#34;, &amp;#34;body&amp;#34;: [ &amp;#34;#!/opt/yeepack/venv/bin/python3&amp;#34;, &amp;#34;# -*- encoding: utf-8 -*-&amp;#34;, &amp;#34;&amp;#39;&amp;#39;&amp;#39;&amp;#34;, &amp;#34;@文件 :$TM_FILENAME&amp;#34;, &amp;#34;@说明 :&amp;#34;, &amp;#34;@时间 :$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND&amp;#34;, &amp;#34;@作者 :fanyq&amp;#34;, &amp;#34;@版本 :1.0&amp;#34;, &amp;#34;&amp;#39;&amp;#39;&amp;#39;&amp;#34;, &amp;#34;import pretty_errors&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;$0&amp;#34; ], } } 在新的文件中键入“HEADER“或者”header ”，使用tabline自动联想或者tab联想，图标为方形的既是我们要的代码片段
+2. python虚拟环境 shift+ctrl+p 输入workspack,选择打开工作区设置，键入以下json信息：
+{ &amp;#34;code-runner.fileDirectoryAsCwd&amp;#34;: true, &amp;#34;python.defaultInterpreterPath&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3&amp;#34;, } 3. Coder Runner 修改默认python解释器 扩展-Coder Runner -扩展设置，点击任一在settings.json编辑，修改如下参数：
+&amp;#34;code-runner.executorMap&amp;#34;: { &amp;#34;python&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3 -u&amp;#34; }, &amp;#34;python.envFile&amp;#34;: &amp;#34;/opt/yeepack/backend/yeepackEnv&amp;#34;, &amp;#34;code-runner.defaultLanguage&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3&amp;#34; 以当前的文件所在目录执行 4. SSH远程配置 Host spack HostName x.</description>
+    </item>
+    
+    <item>
+      <title>卡夫卡</title>
+      <link>/posts/%E5%8D%A1%E5%A4%AB%E5%8D%A1/</link>
+      <pubDate>Wed, 09 Mar 2022 14:42:41 +0800</pubDate>
+      
+      <guid>/posts/%E5%8D%A1%E5%A4%AB%E5%8D%A1/</guid>
+      <description>1.努力想得到什么东西，其实只要沉着镇静、实事求是，就可以轻易地、神不知鬼不觉地达到目的。而如果过于使劲，闹得太凶，太幼稚，太没有经验，就哭啊，抓啊，拉啊，像一个小孩扯桌布，结果却是一无所获，只不过把桌上的好东西都扯到地上，永远也得不到了。 –卡夫卡《城堡》
+2.什么是爱？这其实很简单。凡是提高、充实、丰富我们生活的东西就是爱。通向一切高度和深度的东西就是爱。 –卡夫卡
+3.要冷静耐心，你尽量让坏事发生好了，你不要躲避。相反，你要认真观看。你要主动的理解代替被动的接受刺激。这样你就会应付这些事情。人只有经历自己的渺小，才能到达高尚。 –卡夫卡
+4.目的虽有，去无路可循；我们称之为路的，无非是踌躇。 –卡夫卡《误入世界》
+5.人只因承担责任才是自由的，这是生活的真谛。 –卡夫卡
+6.光勤劳是不够的，蚂蚁也非常勤劳。你在勤劳些什么呢？有两种过错是基本的，其他一切过错都由此而生：急躁和懒惰。 –卡夫卡
+7.人要生活，就一定要有信仰。信仰什么？相信一切事和一切时刻的合理的内在联系，相信生活作为整体将永远继续下去，相信最近的东西和最远的东西。 –卡夫卡
+8.心脏是一座有两间卧室的房子，一间住着痛苦，另一间住着欢乐，人不能笑得太响。否则笑声会吵醒隔壁房间的痛苦。 –卡夫卡《箴言录》
+9.每个人都生活在自己背负的铁栅栏后面。 –卡夫卡
+10.沉默包含了多少力量。咄咄逼人的进攻只是一种假象，一种诡计，人们常常用它在自己和世界面前遮掩弱点。真正持久的力量存在于忍受中，只有软骨头才会急躁粗鲁，他通常因此而丧失了人的尊严。 –卡夫卡
+11.书必须是用来凿破人们心中冰封海洋的一把斧子。 –卡夫卡
+12.真正的道路在一根绳索上。它不是绷紧在高处，而是贴近地面的。它与其说是供人行走的，毋宁说是用来绊人的。 –卡夫卡
+13.你看得越久，就越看不清楚，在暮色苍茫中一切也就隐藏得越深。 –卡夫卡《城堡》
+14.当一个人处在一种触及到最隐秘的生命之根的痛苦中时，他总是孤独的，别人帮不了忙。他们说的话全都是隔靴搔痒。 –卡夫卡
+15.一个人的眼睛被蒙住了，不管你怎样鼓励他透过蒙着眼睛的布极力向外看，他也是永远不会看见什么东西的；只有把布解掉，他才能看见。 –卡夫卡《城堡》
+16.我最擅长的事，就是一蹶不振。 –卡夫卡
+17.生活的乐趣不是生活本身的，而是我们对升入一种更高生活的恐惧；生活的折磨也不是生活本身的，而是我们因那种恐惧而进行的自我折磨。 –卡夫卡
+18.痛苦和欢乐、罪恶和无辜，就像两只难分难解互相交叠的手，人们要割断他们，就必须要穿过皮肉、血液和骨头。 –卡夫卡《卡夫卡日记》
+19.你活着的时候应付不了生活，就应该用一只手挡开点笼罩你的命运的绝望，同时，用另一只手记下你在废墟中看到的一切。 –卡夫卡
+20.不要绝望，甚至不要因为“你并不绝望”这个事实而绝望。当一切似乎山穷水尽、天欲绝人之时，一股新的力量又从你的内心油然涌现，帮助你。而那便是意味着你仍然是活着的。 –卡夫卡《卡夫卡日记》
+21.障碍是有的，而且永远是有的， 但是生命正是由同这些障碍打交道组成的。 –卡夫卡
+22.尽管人群拥挤，每个人都是沉默的，孤独的。 –卡夫卡
+23.你的意志是自由的，这就是说: 当它想要穿越沙漠时，它是自由的， 因为它可以选择穿越的道路，所以它是自由的，由于它可以选择走路的方式，所以它是自由的，可是它也是不自由的，因为你必须穿越这片沙漠，不自由，因为无论你走哪条路，由于其迷宫般的特点， 必然令你触及这片沙漠的每一寸土地。 –卡夫卡
+24.精神只有不再作为支撑物的时候，它才会自由。 –卡夫卡
+25.生活将以铁一般的逻辑粉碎任何发自内心的疏离和背叛倾向。 –卡夫卡
+26.如果我被判决，那么，我不仅被判结束，而且到被判结束的时候，我也要抵抗。 –卡夫卡《卡夫卡日记》
+27.我永远得不到足够的热量， 所以我燃烧，因为冷而烧成灰烬。 –卡夫卡</description>
+    </item>
+    
+    <item>
+      <title>求和好的文案</title>
+      <link>/posts/%E6%B1%82%E5%92%8C%E5%A5%BD%E7%9A%84%E6%96%87%E6%A1%88/</link>
+      <pubDate>Wed, 09 Mar 2022 14:42:41 +0800</pubDate>
+      
+      <guid>/posts/%E6%B1%82%E5%92%8C%E5%A5%BD%E7%9A%84%E6%96%87%E6%A1%88/</guid>
+      <description>1、有一只小鸭子在排队 它想和前面的鸭鸭对齐 可是怎么都对不齐 然后它小声嘀咕说对不齐鸭 对不齐鸭 你听到了吗 对不起.
+2、好吧 坏吧 随便吧 是三个好朋友 有一天随便吧打电话给坏吧 问他要不要一起出去玩 坏吧问:“都有谁啊”随便吧说:“我们和好吧”
+3、有一天晚上我正在看月亮 发现这个月亮不圆又不亮 然后我就小声说:“不圆亮啊 不圆亮啊”你听到了吗 不原谅
+4、有一天芋泥和啵啵吵架了 芋泥气的离家出走了 奶茶觉得啵啵很过分 就和芋泥私奔了 最后只剩下一个啵啵 所以这个啵啵你要还是不要
+5、m和n打架了 m最后认错了 因为m sorry
+6、想不到什么道歉方式 随你处置吧
+7、我在委婉的跟你说 我知道错了 原谅我吧
+8、我现在有点生气 等我缓缓 再来哄你
+9、最近的风没有替我对你说句对不起 如果没有那我就说了
+10、 “首项加末项的顶数求和除以2”
+“干嘛”
+“求和”
+11、有一天，一棵芦荟看到泥地里有一颗莴笋，芦荟就想为什么莴笋不能养在花盆里，然后芦荟恍然大悟，因为莴苣爱泥呀莴爱泥呀。。。
+12、在很久以前，有一位王子中了魔咒，睡了很久很久，后来，一位路过的公主吻醒了她。这个故事告诉我们一个什么道理呢？告诉我们生气的王子会长眠的哦～～那么，我的王子，mua～公主来救你喽～不要生气啦，快快醒来不然不帅了～～
+13、别生气了，我给你猜个谜语好不好？你欠我五块钱，却还给了我十块钱，（打一礼貌用语），猜不出来了吧？谜底就是。。。我倒欠（道歉）！
+14、我知道，你一定是生气了，因为我看到你的头发炸起来了。
+15、锅巴 面吧 泥巴 是好朋友，有一天，泥巴问锅巴我们干嘛去呀？锅巴说 我们见面吧
+16、蔬菜们在举行比瘦大赛，茄子看到了黄瓜，发现黄瓜的腰很细，于是茄子一直在嘀嘀咕咕：没瓜细呀没瓜细呀 没关系呀～～
+17、有一次我在看月亮，这个月亮又圆又亮，又圆又亮，圆亮啊，圆亮，你听到了吗？原谅。
+18、一只小鸭子要去找朋友玩，它路过一条河，河上的桥塌了，它只能游过去。可是水里有好多小石头硌它的脚，水也特别急，于是小鸭子就嘀嘀咕咕，好难过鸭 好难过鸭。
+19、我欠你五块，你还我十块，我倒欠。
+20、西瓜甜瓜哈密瓜，我错了我的小傻瓜。
+21、从前有一只小鸭，和两只鸭鸭打斗地主，但是它运气有点儿背，总摸到2356凑不到顺子，它就一边打一边嘴里嘟囔着，没四鸭 没四鸭。
+22、从前有只小鸭子，到牧场果园玩儿，走着走着就口渴了，抬头看到头上的梨树，奈何够不着，就一直念叨，想梨鸭，想梨鸭，想梨鸭。
+23、从前有一头小熊上厕所，但是它总是拉不出来，他就说，没 啊，没屎啊，没事啊
+24、从前有一只小鸭子，它一直想去应聘一个职业，可他不管怎么努力都不能被应聘，而那些才能比他弱，还不努力的都被应聘了。它就一个人站在墙边嘴里嘀咕“有关系啊 有关系啊 有关系啊”
+25、哎嘿 气球太饱会爆的 虽然呢你的皮比较厚 但是也不能撑太久吖～放点气吧～哪怕是从下面放也可以呀</description>
+    </item>
+    
+    <item>
+      <title>治愈的句子	</title>
+      <link>/posts/%E6%B2%BB%E6%84%88%E7%9A%84%E5%8F%A5%E5%AD%90/</link>
+      <pubDate>Wed, 09 Mar 2022 14:42:41 +0800</pubDate>
+      
+      <guid>/posts/%E6%B2%BB%E6%84%88%E7%9A%84%E5%8F%A5%E5%AD%90/</guid>
+      <description>1、
+我知道你最近很累，是那种看不见的，身体上和精神上的疲惫感，但是请你一定要坚持下去。
+就算无人问津也好，技不如人也罢，千万别让烦恼和焦虑毁了你本就不多的热情和定力。
+别贪心，我们不可能什么都有，别担心，我们也不可能什么都没有。
+2、
+我渐渐把**“这种事为什么要发生在我身上”的想法替换成了“这种事想教会我什么”，**然后发现身边的一切都改变了！
+3、
+我慢慢明白了我为什么不快乐，因为我总是期待一个结果。
+看一本书期待它让我变深刻，
+吃饭游泳期待它让我一斤斤瘦下来，
+发一条短信期待它被回复，
+对人好期待它回应也好，
+写一个故事说一个心情期待它被关注被安慰，
+参加一个活动期待换来充实丰富的经历。
+这些预设的期待如果实现了，长舒一口气。
+如果没实现呢？
+自怨自艾。
+可是小时候也是同一个我，
+用一个下午的时间看蚂蚁搬家，等石头开花，
+小时候不期待结果，小时候哭笑都不打折。
+一一一马德《允许自己虚度时光》
+4、
+你太急切的想要一个答案了。想要风光的学位，瞬间的博学，想要意气风发，想闪着金光走向喜欢的人。
+但现实告诉我，操之过急便会败北
+他要我等，要我耐得住不断延长的时间线
+要我交付出足够的努力堆砌在沉闷、晦涩的时光里
+才肯将一切“我想要”一点一点递送至我手里。
+5、
+“我们坠落，破碎，掉入深渊，但我们终会被托起，被治愈，我们无所畏惧。”
+6、
+你呀 总是看到自己身上的小小瑕疵 然后失落 然后自卑 可你别忘了 你也闪闪发光 也温柔 也可爱 也在努力并一定会成为更好的人 所以请放宽心 你一定会一步步靠近更喜欢的自己
+7、
+“我眼见的雪月，耳听的风雷，食得的酸甜，触到的温凉，连同轻轻的落笔声儿一起藏进信封里，在月亮很美的夜里，悄悄递给你。”
+8、
+“生命周而复始又乏味之至，而只有当你觉得它可爱时，它才会变得可爱如斯。”
+9、
+凡是自然的东西都是缓慢的。
+太阳一点点升起，一点点落下。
+花一朵朵开，一瓣瓣地落下。
+稻谷成熟，都慢得很。
+那些急骤发生的自然变化，多是灾难。如火山喷发、飓风和暴雨。
+一个孩子要长大 ，
+是很慢的 。
+—— 毕淑敏 《星光下的灵魂》
+10、
+“不要为了想谈恋爱而去谈恋爱，要因为喜欢，就是那种恰巧的温柔，和眼里的星光。”
+11、
+“我们与那些遥远星系息息相关，
+无论它们是如何与我们天各一方，
+那些经过数十亿年旅行到达地球的光线，
+终究会把我们联系在一起。”
+想到这里，好像孤独也没有那么可怕了，
+反而还有点浪漫，真好。
+12、
+听说我给点赞的朋友，最近要行大运，好运加倍哦
+13、</description>
+    </item>
+    
+    <item>
+      <title>高性能计算学习路线</title>
+      <link>/posts/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
+      <pubDate>Wed, 09 Mar 2022 14:42:41 +0800</pubDate>
+      
+      <guid>/posts/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
+      <description>高性能计算 = 高性能的算法 + 高性能的软件系统 + 高性能的硬件。
+HPC是一个比较综合的方向，涉及算法、体系结构、编程语言、操作系统、计算机网络等，还涉及专业的学科知识譬如生物等，这也正是它的趣味性所在。HPC的目标一言以蔽之就是——用最高效的方法对一个给定问题进行求解。而要以最高效的方式来对一个给定问题求解，我们必然需要有高效的算法设计（上层）、高效的编程模型和代码生成（中层）、以及高效的计算机体系结构来执行机器码（下层）。要实现极致的效率，三者缺一不可。
+高性能计算的研究者既有CS背景的，也有从其他应用学科的角度来做高性能计算的，譬如生物计算、工程计算等。计算机学院的人做HPC大概可以分为面向超算的高性能计算，和广义的高性能计算（主要是并行计算）。需要特定学科知识建模仿真的那种这里不讨论。
+但是可以做的方向很多，但是不管做HPC的哪个方面，以下都是需要熟练掌握的基础内容，这里我大概分为
+ （并行）计算机体系结构 （并行）编程 （并行）算法 数值线性代数  这几个方面来谈。了解了这下基础以后大家可以选择一个自己的侧重点，譬如笔者本人侧重点在编译上。
+并行计算机体系结构 既然我们的目标是对于给定问题进行最高效的求解，那自然需要非常熟悉计算机的运作原理。这其实也是为什么HPC是一个同时包括了理论和实践的方向。对于做算法（理论）的研究者，他们一般只需要关系asymptotic复杂度，大O里面的常数一般是可以忽略的，譬如研究矩阵乘法的复杂度最低可以降到多少（目前是 ![[公式]](/img/equationtex=O(n%5E%7B2.svg+xml) 左右）。但是众所周知这里的复杂度前面其实有一个很大的常数被大O忽略了，而n上面的指数越小前面的系数越大，于是只有在n非常大（譬如至少百万级）的时候才能体现出优势。而在现实中我们很多时候需要普通规模的矩阵乘法计算，譬如10000x10000的矩阵。而作为搞HPC的研究者，我们需要在意一个end-to-end的性能，也就是说对于普通规模的矩阵我们也能发挥机器性能的极致，这里我们优化的主要是大O里面的那个常数。而要发挥出机器性能的极致则需要十分熟悉计算机的基本原理。
+以下是一个入门的问题清单：
+ CPU里包括了一些什么东西？是怎么运作的？ 什么是摩尔定律（这是一个经典问题，事实是绝大部分都知道摩尔定律，但是都知道的不够准确）？ 摩尔定律是否已经终结？如果是，为什么会终结？碰到了什么问题？ CPU的频率、寄存器、缓存、内存的读写时延大概是一个什么比例？ 缓存的结构是什么？缓存里面有哪些设计指标？如何影响缓存的效果？ 多核的CPU并行执行，缓存是如何保持一致的？ CPU的流水线是什么？是怎么流水线起来的？ ILP是怎么做到的？ CPU是向量指令集（SIMD）是干嘛的？如何写程序用上SIMD？ GPU和CPU的设计区别在哪？GPU适用于什么场合？ GPU的编程范式是啥？GPU程序怎么写？ GPU的摩尔定律终结没有？ 如何回答“GPU是不是比CPU快？为什么不让CPU也像GPU那么多核？”这类的问题？ 英特尔、AMD、英伟达等的历史分别是什么？（不要小看历史和商业在计算机学习中的重要性） 超算是怎实现的？  推荐阅读
+ Hennessy &amp;amp; Patterson《Computer Architecture: A Quantitative Approach》  推荐课程：
+  Onur Mutlu的computer architecture lecture（Onur是计算机系统架构领域最顶尖的学者之一，他的课讲的也很好，而且网上免费放送给大家）：https://www.youtube.com/watch?v=wHVyshkyZ4w&amp;amp;list=PL5Q2soXY2Zi9OhoVQBXYFIZywZXCPl4M_&amp;amp;ab_channel=OnurMutluLectureswww.youtube.com/watch?v=wHVyshkyZ4w&amp;amp;list=PL5Q2soXY2Zi9OhoVQBXYFIZywZXCPl4M_
+  伯克利并行计算巨佬James Demmel和Kathy Yelick这学期的并行计算机课网上放视频啦
+https://sites.google.com/lbl.gov/cs267-spr2021
+  作者：陈清扬 链接：https://www.zhihu.com/question/33576416/answer/1243835966 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+并行编程 一些基础问题：</description>
+    </item>
+    
+    <item>
+      <title>Centos系统初始化配置</title>
+      <link>/posts/centos%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sat, 26 Feb 2022 23:42:33 +0800</pubDate>
+      
+      <guid>/posts/centos%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid>
+      <description>ssh密钥登录 在用户加目录下新建.ssh文件夹：
+mkdir ~/.ssh cat id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys 并修改权限：
+chmod 600 ~/.ssh/authorized_keys chmod 700 ~/.ssh 修改ssh服务器配置文件sudo vim /etc/ssh/sshd_config：
+将
+PasswordAuthentication Yes改为
+PasswordAuthentication no重启ssh服务器:
+systemctl restart sshd 更改默认ssh端口 firewall防火墙添加自定义端口：
+firewall-cmd --permanent --add-port=722/tcp firewall-cmd --reload selinux添加自定义端口：
+semanage port -a -t ssh_port_t -p tcp 722 查看selinux下ssh端口:
+semanage port -l | grep ssh 添加ssh服务器配置文件sudo vim /etc/ssh/sshd_config：
+Port 722并重启ssh服务器:
+systemctl restart sshd 使用自定义端口ssh连接服务器：
+查看firewall中存在的服务：
+firewall-cmd --list-service 发现有：
+dhcpv6-client ssh 移除默认的ssh服务:
+firewall-cmd --remove-service=ssh --permanent firewall-cmd --reload 删除默认虚拟网卡 ifconfig virbr0 down brctl delbr virbr0 systemctl disable libvirtd.</description>
+    </item>
+    
+    <item>
+      <title>Ldap客户端配置</title>
+      <link>/posts/ldap%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 22 Feb 2022 15:45:48 +0800</pubDate>
+      
+      <guid>/posts/ldap%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</guid>
+      <description>这里我们在所有的机器上提前使用nfs挂载了共享目录/es01,所有的用户的家目录都在/es01/home/&amp;lt;用户组&amp;gt;/&amp;lt;用户&amp;gt;下
+1.安装相关包
+yum install -y openldap openldap-clients nss_ldap nss-pam-ldapd openssh-ldap oddjob oddjob-mkhomedir openldap-clients 2.配置
+开启自动创建家目录
+echo &amp;#34;session optional pam_oddjob_mkhomedir.so skel=/etc/skel/ umask=0022&amp;#34; &amp;gt;&amp;gt; /etc/pam.d/system-auth 写入配置（也可以使用图形化的authconfig-tui，这里更推荐直接用命令的形式）:
+authconfig --disablesssd --enableldap --enableldapauth --ldapserver=10.249.4.165 --ldapbasedn=dc=&amp;#34;jnist,dc=com&amp;#34; --enableshadow --enablemkhomedir --updateall 重启LDAP客户端服务
+systemctl restart nslcdsystemctl restart sshd 3.服务端配置
+在ou=Group里创建用户组 在ou=People里创建用户 注意勾选Shadow Account 在Membership里选择刚才创建的用户组 选中刚才创建的用户，右键单击选择设置密码 加密方式任意,因为是根据服务端的nss认证的，不是linux系统本身的认证方式 4.测试
+ssh jnist02@10.249.2.10 ssh登陆上去自动创建用户家目录 查看下权限 权限对应关系正确</description>
+    </item>
+    
+    <item>
+      <title>Ldap服务端搭建</title>
+      <link>/posts/ldap%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Tue, 22 Feb 2022 15:40:16 +0800</pubDate>
+      
+      <guid>/posts/ldap%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA/</guid>
+      <description>ldap基础知识：
+ o：organization（组织-公司） ou：organization unit（组织单元-部门） c：countryName（国家） dc：domainComponent（域名） sn：suer name（真实名称） cn：common name（常用名称）  1.安装openldap相关包 yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel 启动，设置开机自启
+systemctl start slapdsystemctl enable slapd 检查端口
+netstat -antup | grep -i 389 2.创建管理员根密码密码 使用slappasswd 命令提示生成密码，(也可以使用 slappasswd -s 直接生成) 保存下生成的SSHA加密后的字符串
+3.配置LDAP服务 查看默认配置文件
+cd /etc/openldap/slapd.d/cn=config &amp;amp;&amp;amp; ls  olcSuffix – 用于保存域信息，需要更新为自己的域 olcRootDN – 根的DN（唯一识别名），根的区别名，它用于根管理员在此节点下做所有的管理 olcRootPW – LDAP 管理员的根密码，用刚刚第三步创建出来的密码设置到这里
+ 3.1新建 db.ldif: dn: olcDatabase={2}hdb,cn=configchangetype: modifyreplace: olcSuffixolcSuffix: dc=jnist,dc=comdn: olcDatabase={2}hdb,cn=configchangetype: modifyreplace: olcRootDNolcRootDN: cn=ldapadm,dc=jnist,dc=comdn: olcDatabase={2}hdb,cn=configchangetype: modifyadd: olcRootPWolcRootPW: {SSHA}MG7K8xp6QNZs11FZ+KAfFxS1twhBIPu6替换olcSuffix,olcRootDN,olcRootPW三个字段</description>
+    </item>
+    
+    <item>
+      <title>Centos搭建SMB服务</title>
+      <link>/posts/centos%E6%90%AD%E5%BB%BAsmb%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 22 Feb 2022 15:32:05 +0800</pubDate>
+      
+      <guid>/posts/centos%E6%90%AD%E5%BB%BAsmb%E6%9C%8D%E5%8A%A1/</guid>
+      <description>1.安装smb
+yum install samba samba-client samba-common -y 2.关闭selinux
+sed -i &amp;#39;s/SELINUX=enforcing/SELINUX=disabled/g&amp;#39; /etc/selinux/config 重启生效
+3.添加用户
+（1）添加系统用户：
+useradd fanyq passwd fanyq （2）设置smb用户的密码：
+smbpasswd –a fanyq 4.创建smb目录
+mkdir -p /samba/fanyq cd /samba/ chmod -R 0755 fanyq chown -R fanyq:fanyq fanyq 5.备份smb配置文件
+cp -a /etc/samba/smb.conf /etc/samba/smb.conf.bak 6.编辑smb配置文件/etc/samba/smb.conf，添加：
+[fanyq-smb] path = /samba/fanyq browseable = yes writable = yes valid users = fanyq注意这里[fanyq-smb]是后面windows可看到的文件夹的名字，而不是“samba/fanyq”
+7.开启smb的防火墙
+firewall-cmd --add-service=samba --permanent firewall-cmd --reload 8.windows
+添加这个网络文件夹作为驱动器</description>
+    </item>
+    
+    <item>
+      <title>安装TVM库</title>
+      <link>/posts/%E5%AE%89%E8%A3%85tvm%E5%BA%93/</link>
+      <pubDate>Tue, 22 Feb 2022 15:29:08 +0800</pubDate>
+      
+      <guid>/posts/%E5%AE%89%E8%A3%85tvm%E5%BA%93/</guid>
+      <description>下载源码包 wget https://dist.apache.org/repos/dist/release/tvm/tvm-v0.7.0/apache-tvm-src-v0.7.0-incubating.tar.gz 解压 tar xzvf apache-tvm-src-v0.7.0-incubating.tar.gz 重命名 mv apache-tvm-src-v0.7.0.rc0-incubating tvm 进入文件夹 cd tvm 建立临时编译文件夹 make build 编译前请确保: g++-5以上版本、cmake3.5以上版本、如果使用cuda,cuda8以上版本
+对于ubuntu,安装以下依赖： sudo apt update -y sudo apt install -y python3 python3-dev python3-setuptools gcc libtinfo-dev zlib1g-dev build-essential cmake libedit-dev libxml2-dev git 复制cmake编译脚本 cp cmake/config.cmake build 修改其中USE_LLVM 为USE_LLVM llvm-config-10
+生成Makefile cd build cmake .. 编译 make -j8 安装语言包 TVM export TVM_HOME=&amp;lt;tvm_prefix&amp;gt; export PYTHONPATH=$TVM_HOME/python:${PYTHONPATH} 测试 git clone https://hub.fastgit.org/google/googletest.git cd googletest mkdir build cd build cmake .</description>
+    </item>
+    
+    <item>
+      <title>搭建nextcloud</title>
+      <link>/posts/%E6%90%AD%E5%BB%BAnextcloud/</link>
+      <pubDate>Tue, 22 Feb 2022 15:27:05 +0800</pubDate>
+      
+      <guid>/posts/%E6%90%AD%E5%BB%BAnextcloud/</guid>
+      <description>docker run -d \ -v /es01/nextcloud/html:/var/www/html \ -v /es01/nextcloud/apps:/var/www/html/custom_apps \ -v /es01/nextcloud/config:/var/www/html/config \ -v /es01/nextcloud/data:/var/www/html/data \ -v /es01/nextcloud/themes:/var/www/html/themes \ -p 80:80 --name es01 --restart=&amp;#34;always&amp;#34; nextcloud 扫描文件
+su www-data -s /bin/bash -c &amp;#34;php /var/www/html/occ files:scan --all&amp;#34; </description>
+    </item>
+    
+    <item>
+      <title>nfs&#43;rsync同步</title>
+      <link>/posts/nfs&#43;rsync%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Tue, 22 Feb 2022 15:16:13 +0800</pubDate>
+      
+      <guid>/posts/nfs&#43;rsync%E5%90%8C%E6%AD%A5/</guid>
+      <description>nfs 服务端 安装nfs工具：
+yum install nfs-utils -y 配置/etc/exports：
+&amp;lt;prefix&amp;gt; 192.168.2.1/24(rw,sync,no_root_squash) 赋予该目录755权限：
+chmod 755 &amp;lt;prefix&amp;gt; -R  755: 拥有者用户读写执行、同组的可读可执行、其他用户可读可执行权限
+-R ：递归所有文件、目录
+ 启动nfs服务:
+systemctl restart rpcbind systemctl restart nfs-server 加入开机启动：
+systemctl enable rpcbind systemctl restart nfs-server 打开对应的防火墙:
+firewall-cmd --permanent --zone=public --add-service=nfs firewall-cmd --permanent --zone=public --add-service=mountd firewall-cmd --permanent --zone=public --add-service=rpc-bind firewall-cmd --reload nfs客户端： 安装nfs工具：
+yum install nfs-utils -y 创建挂载目录：
+mkdir /nfs 挂载：
+mount &amp;lt;remote_ip&amp;gt;:&amp;lt;remote_prefix&amp;gt; /nfs 检查：
+df -h 使用rsync同步 yum install rsync 同步：</description>
+    </item>
+    
+    <item>
+      <title>docker&#43;mysql主从</title>
+      <link>/posts/docker&#43;mysql%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Tue, 22 Feb 2022 15:06:34 +0800</pubDate>
+      
+      <guid>/posts/docker&#43;mysql%E4%B8%BB%E4%BB%8E/</guid>
+      <description>docker mysql8 主从 创建持久化存储 创建/mysql 并将nfs存储挂载到该目录
+# 创建主库数据存放目录 mkdir -p /mysql/master/data # 创建主库配置存放目录 mkdir -p /mysql/master/conf # 创建从库1数据存放目录 mkdir -p /mysql/slave1/data # 创建从库1配置存放目录 mkdir -p /mysql/slave1/conf 配置 主：
+[mysqld] pid-file = /var/run/mysqld/mysqld.pid socket = /var/run/mysqld/mysqld.sock datadir = /var/lib/mysql secure-file-priv= NULL # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 # 服务器唯一ID，默认是1 server-id=10 # 启用二进制日志 log-bin=mysql-bin # 最大连接数 max_connections=10000 # 设置默认时区 default-time_zone=&amp;#39;+8:00&amp;#39; # 0:区分大小写 # 1:不区分大小写 lower_case_table_names=1 !includedir /etc/mysql/conf.d/ 从：</description>
+    </item>
+    
+    <item>
+      <title>hugo与typora图片路径统一问题</title>
+      <link>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 22 Feb 2022 14:59:30 +0800</pubDate>
+      
+      <guid>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</guid>
+      <description>问题 对于hugo:  content目录下 例如图片content/a.png，在文章content/post/a.md中引用就需要是![](/../a.png) static目录下 例如图片static/images/a.png，在文章content/post/a.md中引用就需要是![](/images/a.png)  对于typora： 引用图片是绝对路径
+这就导致了typeroa正常显示的内容到了hugo显示不了，我们可以自定义typora的图片“根目录”
+解决方案 1.打开typora的偏好设置，选中图像，更改其设置
+我们默认将图片放到content下的img文件夹里，把这个路径复制到如图所示位置
+2.在新的文章前加入typora-root-url: ../,例如：
+title: &amp;#34;搭建Nexus仓库&amp;#34; typora-root-url: ../ date: 2022-02-22T14:18:26+08:00 draft: true categories: [&amp;#34;linux&amp;#34;] 为了节约每次新的文章前加入这段话的时间，在模板 archetypes/default.md 添加好，new 新的文章将会自动生成
+效果展示 </description>
+    </item>
+    
+    <item>
+      <title>搭建Nexus仓库</title>
+      <link>/posts/%E6%90%AD%E5%BB%BAnexus%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Tue, 22 Feb 2022 14:18:26 +0800</pubDate>
+      
+      <guid>/posts/%E6%90%AD%E5%BB%BAnexus%E4%BB%93%E5%BA%93/</guid>
+      <description>Nexus是一个强大的Maven仓库管理器，现在也集成了很多包管理器的仓库模板，比如Docker、pypi，我们可以使用它很方便搭建私有源
+创建持久化的存储目录：
+mkdir /repo/maven/nexus-data 新建脚本start.sh:
+docker run -d -p 8081:8081 \ -p 5000:5000 \ --name nexus \ -v /repo/nexus:/nexus-data \ --restart=always \ sonatype/nexus3 查看密码：
+docker exec -it nexus cat /opt/sonatype/sonatype-work/nexus3/admin.password 浏览器访问：http://:8081
+国内源 npm：
+https://registry.npm.taobao.org pypi:
+https://pypi.tuna.tsinghua.edu.cn/ go:
+https://goproxy.io/ docker:
+https://31szf3ia.mirror.aliyuncs.com maven（central仓和jcenter仓的聚合仓）：
+https://maven.aliyun.com/repository/public 配置存储空间 登陆后先去blob stores为每个服务建立独立的存储空间
+Type选File,Name自定义，其他默认，点击蓝色框钮创建
+创建仓库（Proxy） 点击Create repositrory,会出现很多模板，这些大同小异：
+这里我们选择pypi(proxy)
+Remote stronge填远程的源地址，这里我们用了清华的pypi源，
+Blob store 则使用上面我们创建的存储
+其他默认，创建完成后，我们可以copy私有源的地址
+然后直接使用
+创建仓库（Group） 可以将几个仓库合并到一个组里</description>
+    </item>
+    
+    <item>
+      <title>Windows多网卡静态路由</title>
+      <link>/posts/windows%E5%A4%9A%E7%BD%91%E5%8D%A1%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Tue, 22 Feb 2022 14:14:57 +0800</pubDate>
+      
+      <guid>/posts/windows%E5%A4%9A%E7%BD%91%E5%8D%A1%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1/</guid>
+      <description>内网：
+   ipv4地址 10.249.4.169     掩码 255.225.255.0   网关 10.249.4.254    外网：
+   ipv4地址 10.249.7.169     掩码 255.225.255.0   网关 10.249.7.254    管理员打开cmd：
+查看路由器表
+route print 删除默认路由
+route delete 0.0.0.0 添加静态路由
+route add 10.0.0.0 mask 255.0.0.0 10.249.4.254 -p route add 0.0.0.0 mask 0.0.0.0 10.249.7.254 -p </description>
+    </item>
+    
+  </channel>
+</rss>

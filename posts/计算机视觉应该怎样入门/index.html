@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="bitllion" />
+  <meta property="og:url" content="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/" />
+  <link rel="canonical" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
+
+  <script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": ""
+      },
+      "articleSection" : "posts",
+      "name" : "计算机视觉应该怎样入门",
+      "headline" : "计算机视觉应该怎样入门",
+      "description" : "任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。\n肯定有人骂我：“看一篇paper就能入门计算机视觉？” 我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。\n都能参加面试了，难道还不算入门？ 当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。\n 当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：看资料、看网课、做项目、最重要的是，潜下心去学！\n所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：\n入门：基础学科知识、编程基础、工具。 主要要有一定的高等数学知识，包括概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论等。\n这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：\n概率论与数理统计：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。\n线性代数与矩阵论：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。\n信息论基础：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。\n编程基础主要包含Python和matlab。 《算法基础班Python》：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。\n《MATLAB》：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。\n工具上，现在一般是用框架，其他常用的框架tensorflow、pytorch、mxnet。\n初级：课程巩固，串联知识框架，学会应用 基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频\/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。\n入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。\n推荐一些口碑和质量都不错的视频教学资源。\n《AI 入门项目课：3节课玩转KNN \u0026amp; CNN》：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来免费体验一下本课。\nCS231n：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。\n深度学习：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。\n进阶：跟着做项目，调参 可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**《AI 入门项目课：3节课玩转KNN \u0026amp; CNN》**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。\n这时候就要祭出GitHub这个宝库了：\n中文车牌识别系统：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。\n物体检测：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。\n真实场景中的镜子和玻璃检测：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子\/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子\/玻璃墙的存在以及无人机可能碰撞成高楼。\n高级：自我驱动，“被动”学习 到这个阶段，我相信再怎么诸神内卷，你也找到工作了。\n这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。\n有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。计算机再卷，今年互联网大厂都缩招了？考公\/考研再难，每年的考公\/研人数下滑了？\n别危言耸听了，做好自己。\n既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。\n我命由我不由天（突然燃了起来）",
+      "inLanguage" : "en-US",
+      "author" : "bitllion",
+      "creator" : "bitllion",
+      "publisher": "bitllion",
+      "accountablePerson" : "bitllion",
+      "copyrightHolder" : "bitllion",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-03-18 15:56:49 \u002b0800 CST",
+      "dateModified" : "2022-03-18 15:56:49 \u002b0800 CST",
+      "url" : "\/posts\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8\/",
+      "keywords" : [  ]
+  }
+</script>
+<title>计算机视觉应该怎样入门</title>
+  <meta property="og:title" content="计算机视觉应该怎样入门" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。
+肯定有人骂我：“看一篇paper就能入门计算机视觉？” 我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。
+都能参加面试了，难道还不算入门？ 当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。
+ 当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：看资料、看网课、做项目、最重要的是，潜下心去学！
+所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：
+入门：基础学科知识、编程基础、工具。 主要要有一定的高等数学知识，包括概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论等。
+这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：
+概率论与数理统计：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。
+线性代数与矩阵论：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。
+信息论基础：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。
+编程基础主要包含Python和matlab。 《算法基础班Python》：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。
+《MATLAB》：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。
+工具上，现在一般是用框架，其他常用的框架tensorflow、pytorch、mxnet。
+初级：课程巩固，串联知识框架，学会应用 基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。
+入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。
+推荐一些口碑和质量都不错的视频教学资源。
+《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来免费体验一下本课。
+CS231n：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。
+深度学习：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。
+进阶：跟着做项目，调参 可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。
+这时候就要祭出GitHub这个宝库了：
+中文车牌识别系统：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。
+物体检测：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。
+真实场景中的镜子和玻璃检测：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子/玻璃墙的存在以及无人机可能碰撞成高楼。
+高级：自我驱动，“被动”学习 到这个阶段，我相信再怎么诸神内卷，你也找到工作了。
+这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。
+有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。计算机再卷，今年互联网大厂都缩招了？考公/考研再难，每年的考公/研人数下滑了？
+别危言耸听了，做好自己。
+既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。
+我命由我不由天（突然燃了起来）" />
+  <meta name="description" content="任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。
+肯定有人骂我：“看一篇paper就能入门计算机视觉？” 我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。
+都能参加面试了，难道还不算入门？ 当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。
+ 当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：看资料、看网课、做项目、最重要的是，潜下心去学！
+所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：
+入门：基础学科知识、编程基础、工具。 主要要有一定的高等数学知识，包括概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论等。
+这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：
+概率论与数理统计：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。
+线性代数与矩阵论：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。
+信息论基础：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。
+编程基础主要包含Python和matlab。 《算法基础班Python》：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。
+《MATLAB》：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。
+工具上，现在一般是用框架，其他常用的框架tensorflow、pytorch、mxnet。
+初级：课程巩固，串联知识框架，学会应用 基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。
+入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。
+推荐一些口碑和质量都不错的视频教学资源。
+《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来免费体验一下本课。
+CS231n：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。
+深度学习：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。
+进阶：跟着做项目，调参 可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。
+这时候就要祭出GitHub这个宝库了：
+中文车牌识别系统：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。
+物体检测：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。
+真实场景中的镜子和玻璃检测：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子/玻璃墙的存在以及无人机可能碰撞成高楼。
+高级：自我驱动，“被动”学习 到这个阶段，我相信再怎么诸神内卷，你也找到工作了。
+这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。
+有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。计算机再卷，今年互联网大厂都缩招了？考公/考研再难，每年的考公/研人数下滑了？
+别危言耸听了，做好自己。
+既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。
+我命由我不由天（突然燃了起来）" />
+  <meta property="og:locale" content="zh-CN" />
+
+  
+    <style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:800px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:100%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;border:#000 2px solid;border-radius:5px}.site-footer{margin-top:50px}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:50px;margin-top:100px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style>
+  
+  
+    <style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style>
+  
+
+  
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml"
+    title="hpc小站">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel="stylesheet">
+  
+  
+
+  
+  
+</head>
+
+
+<body>
+  <article class="post " id="article">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="site-header">
+          
+<header>
+  <div class="header-title">
+    <a href="/"
+      >bitllion</a
+    >
+  </div>
+  <div class="header-subtitle"></div>
+</header>
+<div class="row end-md center-xs header-items">
+  
+  <div class="header-item">
+    <a href="/" target="_blank">About Me</a>
+  </div>
+  
+  <div class="header-item">
+    <a href="https://github.com/bitllion" target="_blank">Github</a>
+  </div>
+  
+</div>
+<div class="row end-xs">
+   
+</div>
+<div class="header-line"></div>
+
+        </div>
+        <header class="post-header">
+          <h1 class="post-title">计算机视觉应该怎样入门</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-03-18 15:56:49 CST">
+                18 Mar 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="/">@bitllion</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。</p>
+<h2 id="肯定有人骂我看一篇paper就能入门计算机视觉"><strong>肯定有人骂我：“看一篇paper就能入门计算机视觉？”</strong></h2>
+<p>我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。</p>
+<h2 id="都能参加面试了难道还不算入门"><strong>都能参加面试了，难道还不算入门？</strong></h2>
+<p>当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。</p>
+<hr>
+<p>当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：<strong>看资料、看网课、做项目、最重要的是，潜下心去学！</strong></p>
+<p>所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：</p>
+<h2 id="入门基础学科知识编程基础工具">入门：基础学科知识、编程基础、工具。</h2>
+<p>主要要有一定的高等数学知识，包括<strong>概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论</strong>等。</p>
+<p>这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：</p>
+<p><strong><a href="https://book.douban.com/subject/2201479/">概率论与数理统计</a></strong>：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。</p>
+<p><strong><a href="https://book.douban.com/subject/3160836/">线性代数与矩阵论</a></strong>：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。</p>
+<p><strong><a href="https://book.douban.com/subject/2305237/">信息论基础</a></strong>：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。</p>
+<h3 id="编程基础主要包含python和matlab"><strong>编程基础主要包含Python和matlab。</strong></h3>
+<p><strong><a href="https://www.jiuzhang.com/course/84/?utm_source=sc-zhihu-sy0302-1">《算法基础班Python》</a></strong>：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。</p>
+<p><strong><a href="https://book.douban.com/subject/4203065/">《MATLAB》</a></strong>：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。</p>
+<p>工具上，现在一般是用框架，其他常用的框架<strong>tensorflow、pytorch、mxnet</strong>。</p>
+<h2 id="初级课程巩固串联知识框架学会应用">初级：课程巩固，串联知识框架，学会应用</h2>
+<p>基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。</p>
+<p>入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。</p>
+<p>推荐一些口碑和质量都不错的视频教学资源。</p>
+<p><strong><a href="https://www.jiuzhang.com/course/87/?utm_source=sc-zhihu-sy0302">《AI 入门项目课：3节课玩转KNN &amp; CNN》</a></strong>：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来<a href="https://www.jiuzhang.com/course/87/?utm_source=sc-zhihu-sy0302">免费体验</a>一下本课。</p>
+<p><strong><a href="http://cs231n.stanford.edu/">CS231n</a></strong>：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。</p>
+<p><strong><a href="https://atcold.github.io/pytorch-Deep-Learning/">深度学习</a></strong>：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。</p>
+<h2 id="进阶跟着做项目调参">进阶：跟着做项目，调参</h2>
+<p>可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**<a href="https://www.jiuzhang.com/course/87/?utm_source=sc-zhihu-sy0302">《AI 入门项目课：3节课玩转KNN &amp; CNN》</a>**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。</p>
+<p>这时候就要祭出GitHub这个宝库了：</p>
+<p><strong><a href="https://gitee.com/easypr/EasyPR">中文车牌识别系统</a></strong>：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。</p>
+<p><strong><a href="https://github.com/HRNet/HRNet-Object-Detection">物体检测</a></strong>：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。</p>
+<p><strong><a href="https://github.com/Charmve/Mirror-Glass-Detection">真实场景中的镜子和玻璃检测</a></strong>：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子/玻璃墙的存在以及无人机可能碰撞成高楼。</p>
+<h2 id="高级自我驱动被动学习">高级：自我驱动，“被动”学习</h2>
+<p>到这个阶段，我相信再怎么诸神内卷，你也找到工作了。</p>
+<p>这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。</p>
+<p>有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。<strong>计算机再卷，今年互联网大厂都缩招了？考公/考研再难，每年的考公/研人数下滑了？</strong></p>
+<p>别危言耸听了，做好自己。</p>
+<p>既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。</p>
+<p>我命由我不由天（突然燃了起来）</p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
+
+        <div class="site-footer">
+  
+  
+</div>
+
+      </div>
+    </div>
+  </article>
+
+  
+
+<script>
+  
+  
+    
+    
+  
+</script>
+
+  
+
+</body>
+
+</html>

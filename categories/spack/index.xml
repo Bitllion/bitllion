@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spack on hpc小站</title>
+    <link>/categories/spack/</link>
+    <description>Recent content in spack on hpc小站</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 18 May 2022 11:15:21 +0800</lastBuildDate><atom:link href="/categories/spack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spack简明使用手册</title>
+      <link>/posts/spack%E7%AE%80%E6%98%8E%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Wed, 18 May 2022 11:15:21 +0800</pubDate>
+      
+      <guid>/posts/spack%E7%AE%80%E6%98%8E%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>spack简明使用手册 一、部署spack 下载 1. release（推荐） github下载最新的release：https://github.com/spack/spack/releases
+2. git git clone https://github.com/spack/spack.git ~/spack cd ~/spack git checkout releases/v0.17  ✨tips: github 国内下载慢，百度 github镜像加速站 或 油猴脚本 - github 高速下载
+ 2.激活  对于超算/lab/hpc等多用户场景,建议将spack本地放在全局/共享目录下
+单个普通用户建议放在 ~/.spack/ 或 /opt下
+ 解压下载好的压缩包, 加载环境变量（根据具体情况变更路径)：
+source spack/share/spack/setup-env.sh 可以将此命令写在~/.bashrc 或 /etc/profile 中 ， 打开终端自动生效
+3.配置 spack 的用户配置文件均在 ~/.spack 下，首次使用 spack 可能没有此目录，使用 3.2 会自动创建
+3.1 基本配置 $ spack config get config &amp;gt; ~/.spack/config.yaml $ spack config get config config: install_tree: root: $spack/opt/spack projections: all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH} template_dirs: - $spack/share/spack/templates build_stage: - $tempdir/$user/spack-stage - $user_cache_path/stage test_stage: $user_cache_path/test source_cache: $spack/var/spack/cache misc_cache: $user_cache_path/cache connect_timeout: 10 verify_ssl: true suppress_gpg_warnings: false install_missing_compilers: false checksum: true deprecated: false dirty: false build_language: C locks: true url_fetch_method: urllib ccache: false concretizer: clingo db_lock_timeout: 3 package_lock_timeout: null shared_linking: rpath allow_sgid: true terminal_title: false debug: false build_jobs: 16 解析：</description>
+    </item>
+    
+  </channel>
+</rss>

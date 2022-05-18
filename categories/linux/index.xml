@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on hpc小站</title>
+    <link>/categories/linux/</link>
+    <description>Recent content in linux on hpc小站</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 09 Apr 2022 12:23:48 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql服务器搭建</title>
+      <link>/posts/mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sat, 09 Apr 2022 12:23:48 +0800</pubDate>
+      
+      <guid>/posts/mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pxe服务器搭建</title>
+      <link>/posts/pxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Thu, 31 Mar 2022 15:22:49 +0800</pubDate>
+      
+      <guid>/posts/pxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</guid>
+      <description>安装软件 yum -y install syslinux tftp-server xinetd dhcp nfs-utils 配置dhcp  编辑/etc/dhcp/dhcpd.conf  ddns-update-style none; ignore client-updates; allow booting; allow bootp; subnet 10.249.2.0 netmask 255.255.255.0 { range 10.249.2.120 10.249.2.150; option subnet-mask 255.255.255.0; option domain-name &amp;#34;yeesuan.com&amp;#34;; option domain-name-servers 10.249.2.254; option routers 10.249.2.254; default-lease-time 14400; max-lease-time 43200; next-server 10.249.2.20; filename &amp;#34;pxelinux.0&amp;#34;; } 配置tftp  编辑/etc/xinetd.d/tftp  service tftp { socket_type = dgram protocol = udp wait = no user = root server = /usr/sbin/in.</description>
+    </item>
+    
+    <item>
+      <title>Git技巧</title>
+      <link>/posts/git%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 22 Mar 2022 15:16:41 +0800</pubDate>
+      
+      <guid>/posts/git%E6%8A%80%E5%B7%A7/</guid>
+      <description>git push免输入用户名密码 以http/https push的时候无法使用ssh-key密钥的方式，只能输入用户名和密码
+方法一 netrc 在家目录下新建~/.netrc，内容：
+machine xx.xxx.xxx.xxlogin bitpassword xxxxxx方法二 git凭证 输入：
+git config --global credential.helper store 然后在自己的项目下模拟下push，正常输入用户名和密码，它将会在家目录生成一份凭证~/.git-credentials
+同时，~/.gitconfig会多出一个字段
+[credential] helper = store不建议直接写这两文件，因为密码网址之类的要转义，还是输入命令模拟一次提交
+git push 指定密钥 通常我们会使用ssh-keyg 生成一份ssh密钥对,将私钥保存在~/.ssh下，名字默认为id_rsa,公钥默认名id_rsa.pub放在服务器上
+但有时候我们会使用多份密钥对去push不同的项目到不同的远程仓库中
+例如，我们有份密钥对的私钥名为myrsa，它保存在~/.ssh下，远程仓库地址bit.github.com,我们在这里新建config文件：
+Host bit.github.com HostName bit.github.com PreferredAuthentications publickey IdentityFile ~/.ssh/myrsa这样我们在去push 项目到git@bit.github.com:xxxx/xxx.git时将会使用~/.ssh/myrsa这份私钥
+git 同时 push 到多个远程仓库 添加第二仓库：
+git remote set-url --add origin git@github.com:morethink/programming.git 查看远程分支：
+git remote -v 这样执行git push origin master将会同时push到多个分支</description>
+    </item>
+    
+    <item>
+      <title>HTML</title>
+      <link>/posts/html/</link>
+      <pubDate>Sat, 19 Mar 2022 20:46:58 +0800</pubDate>
+      
+      <guid>/posts/html/</guid>
+      <description>HTML标签 a标签：负责超链接 &amp;lt;a href=&amp;#34;跳转的地址&amp;#34;&amp;gt;&amp;lt;/a&amp;gt; img标签：负责图片 &amp;lt;img src=&amp;#34;图片地址&amp;#34;/&amp;gt; 标题标签： 到  &amp;lt;h1&amp;gt; 你好 &amp;lt;/h1&amp;gt; p标签：段落标签 &amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;  每个p标签独占一行 不带首行缩进  br换行标签 &amp;lt;br&amp;gt; 特殊符号：&amp;amp;nbsp; &amp;amp;nbsp  一个&amp;amp;nbsp表示一个空格  HTML表格 基础标签  &amp;lt;table&amp;gt;&amp;lt;/table&amp;gt;：一个表格  border：边框属性，默认为0，以数字为单位 width: 宽度，以数字为单位 heigth: 高度，以数字为单位 align: 设置对齐方式：lefit,right、center   &amp;lt;tr&amp;gt;&amp;lt;/tr&amp;gt;：一行 &amp;lt;td&amp;gt;&amp;lt;/td&amp;gt;：一列 &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;：一个标题行单元格  </description>
+    </item>
+    
+    <item>
+      <title>Linux统计</title>
+      <link>/posts/linux%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Fri, 18 Mar 2022 15:56:49 +0800</pubDate>
+      
+      <guid>/posts/linux%E7%BB%9F%E8%AE%A1/</guid>
+      <description>统计某个单词个数 grep -c &amp;#34;pattern&amp;#34; my_text_file.txt 查找所有目录（包括子目录），并排除某个目录，搜索层级限制在第二层 find . -mindepth 2 -maxdepth 2 -type d -not -path ./._source-cache/* 并删除它们
+find . -mindepth 2 -maxdepth 2 -type d -exec rm -rf {} + 统计文件的个数（包括子目录里的） ls -lR| grep &amp;#34;^-&amp;#34; | wc -l 将所有文件包含软连接输出到 XML文件中，层级为2 tree -L 2 -X &amp;gt; ~/a.xml </description>
+    </item>
+    
+    <item>
+      <title>计算机视觉应该怎样入门</title>
+      <link>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Fri, 18 Mar 2022 15:56:49 +0800</pubDate>
+      
+      <guid>/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E5%85%A5%E9%97%A8/</guid>
+      <description>任何一个会用Python的人，入门CV只需要一周：三天看一篇CV今年的paper，两天搞定Github上的源码，两天自己调参，加起来一共七天。
+肯定有人骂我：“看一篇paper就能入门计算机视觉？” 我觉得还真的算入门，因为我在面试中遇到过太多这样的人了。看了几篇paper，发几篇水会，就自信满满的来面试了。最可怕的是，HR还真的把简历初筛给他过了，是不是非常amazing。
+都能参加面试了，难道还不算入门？ 当然，如果你连Python基础都没有，可能你还需要再上几节网上铺天盖地的Python小课。
+ 当然，我还是得给各位泼个冷水：看得懂论文、发得了paper当然算得上入门，但这类人在面试中只能成为炮灰。计算机视觉入门容易，但精进困难，想要拿到好的offer，还是要老老实实学CV：看资料、看网课、做项目、最重要的是，潜下心去学！
+所以，我整理了CV从入门到精（放）通（弃）的全部资料，覆盖视频、书籍、网课、练手项目、常见面试题，有需要的朋友尽管自取：
+入门：基础学科知识、编程基础、工具。 主要要有一定的高等数学知识，包括概率论、数理统计、矩阵论、多变量微积分、线性代数、信息论等。
+这种偏理论的东西，视频也不用看太多了，大学基础知识应该就学得差不多了。如果你的基础确实很差，这里推几本工具书，不必熟读，需要的时候看一看即可：
+概率论与数理统计：包括初等概率计算、随机变量及其分布、数字特征、多维随机向量、极限定理、统计学基本概念、点估计与区间估计、假设检验、回归相关分析、方差分析等。书中精选了百余道习题，并在书末附有提示与解答。书讲的非常细，循循善诱这个词用在这里再恰当不过。
+线性代数与矩阵论：这本书里面的知识点很全面，基本涵盖了北大第三版的《高等代数》和蒋尔雄的《线性代数》等书的内容，是国内难得的一本讲矩阵讲的很翔实的书，但作为从空间角度的描述还是不够，配合张贤科的高等代数会很好的了解矩阵于变换。
+信息论基础：主要内容包括：熵、信源、信道容量、率失真、数据压缩与编码理论和复杂度理论等方面的介绍。把信息论的主要思想，以及这些思想在包括博弈、金融、数学、物理、算法复杂性等理论的应用都讲出来了，而且能够把信息论之中蕴含的深刻科学思想讲出来。
+编程基础主要包含Python和matlab。 《算法基础班Python》：这是市面上比较全面且内容详实的Python入门课。从基础的算法与数据结构讲起，还覆盖了大量的老师手把手教coding环节。不但能让你学会编程，还让你从中掌握算法和数据结构的知识框架，构建完善的知识体系。
+《MATLAB》：主要是介绍matlab的一些基本语法和数据结构，这方面讲得还可以，能解决你很多问题。
+工具上，现在一般是用框架，其他常用的框架tensorflow、pytorch、mxnet。
+初级：课程巩固，串联知识框架，学会应用 基础知识入门后，想把这些零散的知识点应用起来还需要具体的实战。这时候我推荐去看一些相关的视频/网课。我个人是不排斥上课的，只要不是那种纯属捞钱的课，有个行业资深的老师帮你领进门再好不过。
+入了门之后，无论是自学还是在工作中学习都会轻松许多，而不是一味拆东墙补西墙。
+推荐一些口碑和质量都不错的视频教学资源。
+《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》：基于keras，TensorFlow框架的AI入门项目课，零基础也通用。通过2个AI基础项目了解KNN和CNN，快速入门人工智能。主讲老师讲得真的很不错，生动易懂，如果对于入门有点难度，可以来免费体验一下本课。
+CS231n：斯坦福社区的课程，介绍了计算机视觉的所有必须掌握的基础知识。在 Youtube 上有课程视频，课后练习也非常实用，能带你快速入门CV。
+深度学习：GitHub大佬的深度学习课程，涉及深度学习和表示学习的最新技术，重点是有监督和无监督的深度学习，嵌入方法，度量学习，卷积和递归网络，并应用于计算机视觉，自然语言理解和语音识别。
+进阶：跟着做项目，调参 可以说在CV方向的学习和求职中，项目是不可缺少的一环。除了在**《AI 入门项目课：3节课玩转KNN &amp;amp; CNN》**的两个项目，还可以去挑战一些更深度的项目，一来是面试官再怎么问也不虚，就着项目延伸知识点，二来可以极大增加简历通过率。
+这时候就要祭出GitHub这个宝库了：
+中文车牌识别系统：EasyPR是一个开源的中文车牌识别系统，其目标是成为一个简单、高效、准确的非限制场景(unconstrained situation)下的车牌识别库。
+物体检测：这是用于对象检测的高分辨率表示形式的官方代码。从高分辨率构建多级表示，并将其应用于Faster R-CNN，Mask R-CNN和Cascade R-CNN框架。
+真实场景中的镜子和玻璃检测：一个很有意思的项目，简单来说就是检测出场景中的镜子。由于镜子和玻璃没有自己的外观，因此开发自动算法进行检测和分段并不是一件容易的事。但是，如果我们无法可靠地检测到它们，则可能会出现问题。例如，基于视觉的深度传感器可能会错误地估计一块镜子/玻璃的深度，因为它内部的物体的深度，机器人可能没有意识到镜子/玻璃墙的存在以及无人机可能碰撞成高楼。
+高级：自我驱动，“被动”学习 到这个阶段，我相信再怎么诸神内卷，你也找到工作了。
+这时候我也没有太多的资料可以推荐给你，每个人都在自己的知识领域往深处挖，这时候的学习更多的依托在工作中的不断升级和被迫接受行业前沿知识。
+有人说CV已经没有前途了，实际上，但凡是有脑子的人都知道：每个行业一定一直会有“闷声发大财”的人。计算机再卷，今年互联网大厂都缩招了？考公/考研再难，每年的考公/研人数下滑了？
+别危言耸听了，做好自己。
+既然选择了远方，便只能风雨兼程。不想被时代“卷”走，就努力做不可被替代的那个。
+我命由我不由天（突然燃了起来）</description>
+    </item>
+    
+    <item>
+      <title>Vscode小技巧</title>
+      <link>/posts/vscode%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Wed, 16 Mar 2022 15:35:19 +0800</pubDate>
+      
+      <guid>/posts/vscode%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description>1. 用户代码片段 利用快捷键快速添加一段代码片段
+vscode左下角-用户代码片段-选择python，打开一个json文件，替换成如下：
+{ &amp;#34;HEADER&amp;#34;: { &amp;#34;prefix&amp;#34;: &amp;#34;header&amp;#34;, &amp;#34;body&amp;#34;: [ &amp;#34;#!/opt/yeepack/venv/bin/python3&amp;#34;, &amp;#34;# -*- encoding: utf-8 -*-&amp;#34;, &amp;#34;&amp;#39;&amp;#39;&amp;#39;&amp;#34;, &amp;#34;@文件 :$TM_FILENAME&amp;#34;, &amp;#34;@说明 :&amp;#34;, &amp;#34;@时间 :$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND&amp;#34;, &amp;#34;@作者 :fanyq&amp;#34;, &amp;#34;@版本 :1.0&amp;#34;, &amp;#34;&amp;#39;&amp;#39;&amp;#39;&amp;#34;, &amp;#34;import pretty_errors&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;$0&amp;#34; ], } } 在新的文件中键入“HEADER“或者”header ”，使用tabline自动联想或者tab联想，图标为方形的既是我们要的代码片段
+2. python虚拟环境 shift+ctrl+p 输入workspack,选择打开工作区设置，键入以下json信息：
+{ &amp;#34;code-runner.fileDirectoryAsCwd&amp;#34;: true, &amp;#34;python.defaultInterpreterPath&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3&amp;#34;, } 3. Coder Runner 修改默认python解释器 扩展-Coder Runner -扩展设置，点击任一在settings.json编辑，修改如下参数：
+&amp;#34;code-runner.executorMap&amp;#34;: { &amp;#34;python&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3 -u&amp;#34; }, &amp;#34;python.envFile&amp;#34;: &amp;#34;/opt/yeepack/backend/yeepackEnv&amp;#34;, &amp;#34;code-runner.defaultLanguage&amp;#34;: &amp;#34;/opt/yeepack/venv/bin/python3&amp;#34; 以当前的文件所在目录执行 4. SSH远程配置 Host spack HostName x.</description>
+    </item>
+    
+    <item>
+      <title>Centos系统初始化配置</title>
+      <link>/posts/centos%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sat, 26 Feb 2022 23:42:33 +0800</pubDate>
+      
+      <guid>/posts/centos%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE/</guid>
+      <description>ssh密钥登录 在用户加目录下新建.ssh文件夹：
+mkdir ~/.ssh cat id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys 并修改权限：
+chmod 600 ~/.ssh/authorized_keys chmod 700 ~/.ssh 修改ssh服务器配置文件sudo vim /etc/ssh/sshd_config：
+将
+PasswordAuthentication Yes改为
+PasswordAuthentication no重启ssh服务器:
+systemctl restart sshd 更改默认ssh端口 firewall防火墙添加自定义端口：
+firewall-cmd --permanent --add-port=722/tcp firewall-cmd --reload selinux添加自定义端口：
+semanage port -a -t ssh_port_t -p tcp 722 查看selinux下ssh端口:
+semanage port -l | grep ssh 添加ssh服务器配置文件sudo vim /etc/ssh/sshd_config：
+Port 722并重启ssh服务器:
+systemctl restart sshd 使用自定义端口ssh连接服务器：
+查看firewall中存在的服务：
+firewall-cmd --list-service 发现有：
+dhcpv6-client ssh 移除默认的ssh服务:
+firewall-cmd --remove-service=ssh --permanent firewall-cmd --reload 删除默认虚拟网卡 ifconfig virbr0 down brctl delbr virbr0 systemctl disable libvirtd.</description>
+    </item>
+    
+    <item>
+      <title>Ldap客户端配置</title>
+      <link>/posts/ldap%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 22 Feb 2022 15:45:48 +0800</pubDate>
+      
+      <guid>/posts/ldap%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE/</guid>
+      <description>这里我们在所有的机器上提前使用nfs挂载了共享目录/es01,所有的用户的家目录都在/es01/home/&amp;lt;用户组&amp;gt;/&amp;lt;用户&amp;gt;下
+1.安装相关包
+yum install -y openldap openldap-clients nss_ldap nss-pam-ldapd openssh-ldap oddjob oddjob-mkhomedir openldap-clients 2.配置
+开启自动创建家目录
+echo &amp;#34;session optional pam_oddjob_mkhomedir.so skel=/etc/skel/ umask=0022&amp;#34; &amp;gt;&amp;gt; /etc/pam.d/system-auth 写入配置（也可以使用图形化的authconfig-tui，这里更推荐直接用命令的形式）:
+authconfig --disablesssd --enableldap --enableldapauth --ldapserver=10.249.4.165 --ldapbasedn=dc=&amp;#34;jnist,dc=com&amp;#34; --enableshadow --enablemkhomedir --updateall 重启LDAP客户端服务
+systemctl restart nslcdsystemctl restart sshd 3.服务端配置
+在ou=Group里创建用户组 在ou=People里创建用户 注意勾选Shadow Account 在Membership里选择刚才创建的用户组 选中刚才创建的用户，右键单击选择设置密码 加密方式任意,因为是根据服务端的nss认证的，不是linux系统本身的认证方式 4.测试
+ssh jnist02@10.249.2.10 ssh登陆上去自动创建用户家目录 查看下权限 权限对应关系正确</description>
+    </item>
+    
+    <item>
+      <title>Ldap服务端搭建</title>
+      <link>/posts/ldap%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Tue, 22 Feb 2022 15:40:16 +0800</pubDate>
+      
+      <guid>/posts/ldap%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA/</guid>
+      <description>ldap基础知识：
+ o：organization（组织-公司） ou：organization unit（组织单元-部门） c：countryName（国家） dc：domainComponent（域名） sn：suer name（真实名称） cn：common name（常用名称）  1.安装openldap相关包 yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel 启动，设置开机自启
+systemctl start slapdsystemctl enable slapd 检查端口
+netstat -antup | grep -i 389 2.创建管理员根密码密码 使用slappasswd 命令提示生成密码，(也可以使用 slappasswd -s 直接生成) 保存下生成的SSHA加密后的字符串
+3.配置LDAP服务 查看默认配置文件
+cd /etc/openldap/slapd.d/cn=config &amp;amp;&amp;amp; ls  olcSuffix – 用于保存域信息，需要更新为自己的域 olcRootDN – 根的DN（唯一识别名），根的区别名，它用于根管理员在此节点下做所有的管理 olcRootPW – LDAP 管理员的根密码，用刚刚第三步创建出来的密码设置到这里
+ 3.1新建 db.ldif: dn: olcDatabase={2}hdb,cn=configchangetype: modifyreplace: olcSuffixolcSuffix: dc=jnist,dc=comdn: olcDatabase={2}hdb,cn=configchangetype: modifyreplace: olcRootDNolcRootDN: cn=ldapadm,dc=jnist,dc=comdn: olcDatabase={2}hdb,cn=configchangetype: modifyadd: olcRootPWolcRootPW: {SSHA}MG7K8xp6QNZs11FZ+KAfFxS1twhBIPu6替换olcSuffix,olcRootDN,olcRootPW三个字段</description>
+    </item>
+    
+    <item>
+      <title>Centos搭建SMB服务</title>
+      <link>/posts/centos%E6%90%AD%E5%BB%BAsmb%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 22 Feb 2022 15:32:05 +0800</pubDate>
+      
+      <guid>/posts/centos%E6%90%AD%E5%BB%BAsmb%E6%9C%8D%E5%8A%A1/</guid>
+      <description>1.安装smb
+yum install samba samba-client samba-common -y 2.关闭selinux
+sed -i &amp;#39;s/SELINUX=enforcing/SELINUX=disabled/g&amp;#39; /etc/selinux/config 重启生效
+3.添加用户
+（1）添加系统用户：
+useradd fanyq passwd fanyq （2）设置smb用户的密码：
+smbpasswd –a fanyq 4.创建smb目录
+mkdir -p /samba/fanyq cd /samba/ chmod -R 0755 fanyq chown -R fanyq:fanyq fanyq 5.备份smb配置文件
+cp -a /etc/samba/smb.conf /etc/samba/smb.conf.bak 6.编辑smb配置文件/etc/samba/smb.conf，添加：
+[fanyq-smb] path = /samba/fanyq browseable = yes writable = yes valid users = fanyq注意这里[fanyq-smb]是后面windows可看到的文件夹的名字，而不是“samba/fanyq”
+7.开启smb的防火墙
+firewall-cmd --add-service=samba --permanent firewall-cmd --reload 8.windows
+添加这个网络文件夹作为驱动器</description>
+    </item>
+    
+    <item>
+      <title>搭建nextcloud</title>
+      <link>/posts/%E6%90%AD%E5%BB%BAnextcloud/</link>
+      <pubDate>Tue, 22 Feb 2022 15:27:05 +0800</pubDate>
+      
+      <guid>/posts/%E6%90%AD%E5%BB%BAnextcloud/</guid>
+      <description>docker run -d \ -v /es01/nextcloud/html:/var/www/html \ -v /es01/nextcloud/apps:/var/www/html/custom_apps \ -v /es01/nextcloud/config:/var/www/html/config \ -v /es01/nextcloud/data:/var/www/html/data \ -v /es01/nextcloud/themes:/var/www/html/themes \ -p 80:80 --name es01 --restart=&amp;#34;always&amp;#34; nextcloud 扫描文件
+su www-data -s /bin/bash -c &amp;#34;php /var/www/html/occ files:scan --all&amp;#34; </description>
+    </item>
+    
+    <item>
+      <title>nfs&#43;rsync同步</title>
+      <link>/posts/nfs&#43;rsync%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Tue, 22 Feb 2022 15:16:13 +0800</pubDate>
+      
+      <guid>/posts/nfs&#43;rsync%E5%90%8C%E6%AD%A5/</guid>
+      <description>nfs 服务端 安装nfs工具：
+yum install nfs-utils -y 配置/etc/exports：
+&amp;lt;prefix&amp;gt; 192.168.2.1/24(rw,sync,no_root_squash) 赋予该目录755权限：
+chmod 755 &amp;lt;prefix&amp;gt; -R  755: 拥有者用户读写执行、同组的可读可执行、其他用户可读可执行权限
+-R ：递归所有文件、目录
+ 启动nfs服务:
+systemctl restart rpcbind systemctl restart nfs-server 加入开机启动：
+systemctl enable rpcbind systemctl restart nfs-server 打开对应的防火墙:
+firewall-cmd --permanent --zone=public --add-service=nfs firewall-cmd --permanent --zone=public --add-service=mountd firewall-cmd --permanent --zone=public --add-service=rpc-bind firewall-cmd --reload nfs客户端： 安装nfs工具：
+yum install nfs-utils -y 创建挂载目录：
+mkdir /nfs 挂载：
+mount &amp;lt;remote_ip&amp;gt;:&amp;lt;remote_prefix&amp;gt; /nfs 检查：
+df -h 使用rsync同步 yum install rsync 同步：</description>
+    </item>
+    
+    <item>
+      <title>docker&#43;mysql主从</title>
+      <link>/posts/docker&#43;mysql%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Tue, 22 Feb 2022 15:06:34 +0800</pubDate>
+      
+      <guid>/posts/docker&#43;mysql%E4%B8%BB%E4%BB%8E/</guid>
+      <description>docker mysql8 主从 创建持久化存储 创建/mysql 并将nfs存储挂载到该目录
+# 创建主库数据存放目录 mkdir -p /mysql/master/data # 创建主库配置存放目录 mkdir -p /mysql/master/conf # 创建从库1数据存放目录 mkdir -p /mysql/slave1/data # 创建从库1配置存放目录 mkdir -p /mysql/slave1/conf 配置 主：
+[mysqld] pid-file = /var/run/mysqld/mysqld.pid socket = /var/run/mysqld/mysqld.sock datadir = /var/lib/mysql secure-file-priv= NULL # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 # 服务器唯一ID，默认是1 server-id=10 # 启用二进制日志 log-bin=mysql-bin # 最大连接数 max_connections=10000 # 设置默认时区 default-time_zone=&amp;#39;+8:00&amp;#39; # 0:区分大小写 # 1:不区分大小写 lower_case_table_names=1 !includedir /etc/mysql/conf.d/ 从：</description>
+    </item>
+    
+    <item>
+      <title>hugo与typora图片路径统一问题</title>
+      <link>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 22 Feb 2022 14:59:30 +0800</pubDate>
+      
+      <guid>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</guid>
+      <description>问题 对于hugo:  content目录下 例如图片content/a.png，在文章content/post/a.md中引用就需要是![](/../a.png) static目录下 例如图片static/images/a.png，在文章content/post/a.md中引用就需要是![](/images/a.png)  对于typora： 引用图片是绝对路径
+这就导致了typeroa正常显示的内容到了hugo显示不了，我们可以自定义typora的图片“根目录”
+解决方案 1.打开typora的偏好设置，选中图像，更改其设置
+我们默认将图片放到content下的img文件夹里，把这个路径复制到如图所示位置
+2.在新的文章前加入typora-root-url: ../,例如：
+title: &amp;#34;搭建Nexus仓库&amp;#34; typora-root-url: ../ date: 2022-02-22T14:18:26+08:00 draft: true categories: [&amp;#34;linux&amp;#34;] 为了节约每次新的文章前加入这段话的时间，在模板 archetypes/default.md 添加好，new 新的文章将会自动生成
+效果展示 </description>
+    </item>
+    
+    <item>
+      <title>搭建Nexus仓库</title>
+      <link>/posts/%E6%90%AD%E5%BB%BAnexus%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Tue, 22 Feb 2022 14:18:26 +0800</pubDate>
+      
+      <guid>/posts/%E6%90%AD%E5%BB%BAnexus%E4%BB%93%E5%BA%93/</guid>
+      <description>Nexus是一个强大的Maven仓库管理器，现在也集成了很多包管理器的仓库模板，比如Docker、pypi，我们可以使用它很方便搭建私有源
+创建持久化的存储目录：
+mkdir /repo/maven/nexus-data 新建脚本start.sh:
+docker run -d -p 8081:8081 \ -p 5000:5000 \ --name nexus \ -v /repo/nexus:/nexus-data \ --restart=always \ sonatype/nexus3 查看密码：
+docker exec -it nexus cat /opt/sonatype/sonatype-work/nexus3/admin.password 浏览器访问：http://:8081
+国内源 npm：
+https://registry.npm.taobao.org pypi:
+https://pypi.tuna.tsinghua.edu.cn/ go:
+https://goproxy.io/ docker:
+https://31szf3ia.mirror.aliyuncs.com maven（central仓和jcenter仓的聚合仓）：
+https://maven.aliyun.com/repository/public 配置存储空间 登陆后先去blob stores为每个服务建立独立的存储空间
+Type选File,Name自定义，其他默认，点击蓝色框钮创建
+创建仓库（Proxy） 点击Create repositrory,会出现很多模板，这些大同小异：
+这里我们选择pypi(proxy)
+Remote stronge填远程的源地址，这里我们用了清华的pypi源，
+Blob store 则使用上面我们创建的存储
+其他默认，创建完成后，我们可以copy私有源的地址
+然后直接使用
+创建仓库（Group） 可以将几个仓库合并到一个组里</description>
+    </item>
+    
+  </channel>
+</rss>

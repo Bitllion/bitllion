@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hpc on hpc小站</title>
+    <link>/categories/hpc/</link>
+    <description>Recent content in hpc on hpc小站</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 09 Mar 2022 14:42:41 +0800</lastBuildDate><atom:link href="/categories/hpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>高性能计算学习路线</title>
+      <link>/posts/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</link>
+      <pubDate>Wed, 09 Mar 2022 14:42:41 +0800</pubDate>
+      
+      <guid>/posts/%E9%AB%98%E6%80%A7%E8%83%BD%E8%AE%A1%E7%AE%97%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</guid>
+      <description>高性能计算 = 高性能的算法 + 高性能的软件系统 + 高性能的硬件。
+HPC是一个比较综合的方向，涉及算法、体系结构、编程语言、操作系统、计算机网络等，还涉及专业的学科知识譬如生物等，这也正是它的趣味性所在。HPC的目标一言以蔽之就是——用最高效的方法对一个给定问题进行求解。而要以最高效的方式来对一个给定问题求解，我们必然需要有高效的算法设计（上层）、高效的编程模型和代码生成（中层）、以及高效的计算机体系结构来执行机器码（下层）。要实现极致的效率，三者缺一不可。
+高性能计算的研究者既有CS背景的，也有从其他应用学科的角度来做高性能计算的，譬如生物计算、工程计算等。计算机学院的人做HPC大概可以分为面向超算的高性能计算，和广义的高性能计算（主要是并行计算）。需要特定学科知识建模仿真的那种这里不讨论。
+但是可以做的方向很多，但是不管做HPC的哪个方面，以下都是需要熟练掌握的基础内容，这里我大概分为
+ （并行）计算机体系结构 （并行）编程 （并行）算法 数值线性代数  这几个方面来谈。了解了这下基础以后大家可以选择一个自己的侧重点，譬如笔者本人侧重点在编译上。
+并行计算机体系结构 既然我们的目标是对于给定问题进行最高效的求解，那自然需要非常熟悉计算机的运作原理。这其实也是为什么HPC是一个同时包括了理论和实践的方向。对于做算法（理论）的研究者，他们一般只需要关系asymptotic复杂度，大O里面的常数一般是可以忽略的，譬如研究矩阵乘法的复杂度最低可以降到多少（目前是 ![[公式]](/img/equationtex=O(n%5E%7B2.svg+xml) 左右）。但是众所周知这里的复杂度前面其实有一个很大的常数被大O忽略了，而n上面的指数越小前面的系数越大，于是只有在n非常大（譬如至少百万级）的时候才能体现出优势。而在现实中我们很多时候需要普通规模的矩阵乘法计算，譬如10000x10000的矩阵。而作为搞HPC的研究者，我们需要在意一个end-to-end的性能，也就是说对于普通规模的矩阵我们也能发挥机器性能的极致，这里我们优化的主要是大O里面的那个常数。而要发挥出机器性能的极致则需要十分熟悉计算机的基本原理。
+以下是一个入门的问题清单：
+ CPU里包括了一些什么东西？是怎么运作的？ 什么是摩尔定律（这是一个经典问题，事实是绝大部分都知道摩尔定律，但是都知道的不够准确）？ 摩尔定律是否已经终结？如果是，为什么会终结？碰到了什么问题？ CPU的频率、寄存器、缓存、内存的读写时延大概是一个什么比例？ 缓存的结构是什么？缓存里面有哪些设计指标？如何影响缓存的效果？ 多核的CPU并行执行，缓存是如何保持一致的？ CPU的流水线是什么？是怎么流水线起来的？ ILP是怎么做到的？ CPU是向量指令集（SIMD）是干嘛的？如何写程序用上SIMD？ GPU和CPU的设计区别在哪？GPU适用于什么场合？ GPU的编程范式是啥？GPU程序怎么写？ GPU的摩尔定律终结没有？ 如何回答“GPU是不是比CPU快？为什么不让CPU也像GPU那么多核？”这类的问题？ 英特尔、AMD、英伟达等的历史分别是什么？（不要小看历史和商业在计算机学习中的重要性） 超算是怎实现的？  推荐阅读
+ Hennessy &amp;amp; Patterson《Computer Architecture: A Quantitative Approach》  推荐课程：
+  Onur Mutlu的computer architecture lecture（Onur是计算机系统架构领域最顶尖的学者之一，他的课讲的也很好，而且网上免费放送给大家）：https://www.youtube.com/watch?v=wHVyshkyZ4w&amp;amp;list=PL5Q2soXY2Zi9OhoVQBXYFIZywZXCPl4M_&amp;amp;ab_channel=OnurMutluLectureswww.youtube.com/watch?v=wHVyshkyZ4w&amp;amp;list=PL5Q2soXY2Zi9OhoVQBXYFIZywZXCPl4M_
+  伯克利并行计算巨佬James Demmel和Kathy Yelick这学期的并行计算机课网上放视频啦
+https://sites.google.com/lbl.gov/cs267-spr2021
+  作者：陈清扬 链接：https://www.zhihu.com/question/33576416/answer/1243835966 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+并行编程 一些基础问题：</description>
+    </item>
+    
+  </channel>
+</rss>
