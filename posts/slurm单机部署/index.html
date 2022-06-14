@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bitllion" />
-  <meta property="og:url" content="/categories/" />
-  <link rel="canonical" href="/categories/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
+  <meta property="og:url" content="/posts/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2/" />
+  <link rel="canonical" href="/posts/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": ""
       },
-      "articleSection" : "categories",
-      "name" : "Categories",
-      "headline" : "Categories",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Slurm单机部署",
+      "headline" : "Slurm单机部署",
+      "description" : "这里推荐源码编译安装\n1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：\nyum -y install munge munge-libs munge-devel -y 配置：\n\/usr\/sbin\/create-munge-key 启动：\nsystemctl enable munge --now 2.安装pmix mpi通信的服务器\n先安装两个依赖库\nyum install -y hwloc-devel libevent-devel https:\/\/github.com\/openpmix\/openpmix\/releases 下载最新包\n解压后进入内部编译和安装：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 3.编译slurm 下载最新源码包\nhttps:\/\/github.com\/SchedMD\/slurm\/releases\/tag\n解压进入内部：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc\/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息\n ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux",
       "inLanguage" : "en-US",
       "author" : "bitllion",
       "creator" : "bitllion",
@@ -31,15 +31,39 @@
       "copyrightYear" : "2022",
       "datePublished": "2022-06-14 20:50:04 \u002b0800 CST",
       "dateModified" : "2022-06-14 20:50:04 \u002b0800 CST",
-      "url" : "\/categories\/",
+      "url" : "\/posts\/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2\/",
       "keywords" : [  ]
   }
 </script>
-<title>Categories</title>
-  <meta property="og:title" content="Categories" />
+<title>Slurm单机部署</title>
+  <meta property="og:title" content="Slurm单机部署" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="这里推荐源码编译安装
+1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
+yum -y install munge munge-libs munge-devel -y 配置：
+/usr/sbin/create-munge-key 启动：
+systemctl enable munge --now 2.安装pmix mpi通信的服务器
+先安装两个依赖库
+yum install -y hwloc-devel libevent-devel https://github.com/openpmix/openpmix/releases 下载最新包
+解压后进入内部编译和安装：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 3.编译slurm 下载最新源码包
+https://github.com/SchedMD/slurm/releases/tag
+解压进入内部：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息
+ ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
+  <meta name="description" content="这里推荐源码编译安装
+1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
+yum -y install munge munge-libs munge-devel -y 配置：
+/usr/sbin/create-munge-key 启动：
+systemctl enable munge --now 2.安装pmix mpi通信的服务器
+先安装两个依赖库
+yum install -y hwloc-devel libevent-devel https://github.com/openpmix/openpmix/releases 下载最新包
+解压后进入内部编译和安装：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 3.编译slurm 下载最新源码包
+https://github.com/SchedMD/slurm/releases/tag
+解压进入内部：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息
+ ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
   <meta property="og:locale" content="zh-CN" />
 
   
@@ -65,10 +89,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -93,11 +118,99 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term"></h1>
-        <div id="posts-list">
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Slurm单机部署</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-06-14 20:50:04 CST">
+                14 Jun 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="/">@bitllion</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>这里推荐源码编译安装</p>
+<h2 id="1安装munge">1.安装munge</h2>
+<p>slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum -y install munge munge-libs munge-devel -y
+</code></pre></div><p>配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/sbin/create-munge-key
+</code></pre></div><p>启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl enable munge --now
+</code></pre></div><h2 id="2安装pmix">2.安装pmix</h2>
+<p>mpi通信的服务器</p>
+<p>先安装两个依赖库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install -y hwloc-devel libevent-devel 
+</code></pre></div><p><a href="https://github.com/openpmix/openpmix/releases">https://github.com/openpmix/openpmix/releases</a> 下载最新包</p>
+<p>解压后进入内部编译和安装：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./configure <span style="color:#f92672">&amp;&amp;</span> make install -j <span style="color:#66d9ef">$(</span>nproc<span style="color:#66d9ef">)</span>
+</code></pre></div><h2 id="3编译slurm">3.编译slurm</h2>
+<p>下载最新源码包</p>
+<p><a href="https://github.com/SchedMD/slurm/releases/tag">https://github.com/SchedMD/slurm/releases/tag</a></p>
+<p>解压进入内部：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./configure <span style="color:#f92672">&amp;&amp;</span> make install -j <span style="color:#66d9ef">$(</span>nproc<span style="color:#66d9ef">)</span>
+</code></pre></div><h2 id="4配置slurm">4.配置slurm</h2>
+<p>在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息</p>
+<blockquote>
+<p>ClusterName、SlurmctldHost、NodeName 都填hostname的值
+CPUs、Sockets、CoresPerSocket 根据lscpu 填
+RealMemory 根据free -m 填
+SlurmUser 方便起见用root,生成环境建议用权限小的用户
+Default MPI Type 可不选，这里选PMIX
+Process Tracking 这里选LinuxProc
+Resource Selection 选Cons_res
+SelectTypeParameters 选CR_Memory
+Job Accounting Gather 选Linux</p>
+</blockquote>
+<p>然后点击sumbit 得到一份配置文件，</p>
+<p>写入到<code>/usr/local/etc/slurm.conf</code></p>
+<p>在 etc/ 下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">chmod <span style="color:#ae81ff">755</span> *.service <span style="color:#f92672">&amp;&amp;</span> cp *.service /etc/systemd/system
+</code></pre></div><p>启动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemclt enable slurmcltd --now
+systemclt enable slurmd --now
+</code></pre></div><p>查看队列：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sinfo
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+test*        up   infinite      <span style="color:#ae81ff">1</span>   idle spack
+</code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -117,6 +230,8 @@
     
   
 </script>
+
+  
 
 </body>
 

@@ -6,7 +6,28 @@
     <description>Recent content in linux on hpc小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 09 Apr 2022 12:23:48 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Jun 2022 20:50:04 +0800</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slurm单机部署</title>
+      <link>/posts/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 14 Jun 2022 20:50:04 +0800</pubDate>
+      
+      <guid>/posts/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2/</guid>
+      <description>这里推荐源码编译安装
+1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
+yum -y install munge munge-libs munge-devel -y 配置：
+/usr/sbin/create-munge-key 启动：
+systemctl enable munge --now 2.安装pmix mpi通信的服务器
+先安装两个依赖库
+yum install -y hwloc-devel libevent-devel https://github.com/openpmix/openpmix/releases 下载最新包
+解压后进入内部编译和安装：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 3.编译slurm 下载最新源码包
+https://github.com/SchedMD/slurm/releases/tag
+解压进入内部：
+./configure &amp;amp;&amp;amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息
+ ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux</description>
+    </item>
+    
     <item>
       <title>Mysql服务器搭建</title>
       <link>/posts/mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA/</link>
