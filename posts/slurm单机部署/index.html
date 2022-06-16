@@ -21,7 +21,7 @@
       "articleSection" : "posts",
       "name" : "Slurm单机部署",
       "headline" : "Slurm单机部署",
-      "description" : "这里推荐源码编译安装\n1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：\nyum -y install munge munge-libs munge-devel -y 配置：\n\/usr\/sbin\/create-munge-key 启动：\nsystemctl enable munge --now 2.安装pmix mpi通信的服务器\n先安装两个依赖库\nyum install -y hwloc-devel libevent-devel https:\/\/github.com\/openpmix\/openpmix\/releases 下载最新包\n解压后进入内部编译和安装：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 3.编译slurm 下载最新源码包\nhttps:\/\/github.com\/SchedMD\/slurm\/releases\/tag\n解压进入内部：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc\/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息\n ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux",
+      "description" : "1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：\nyum -y install munge munge-libs munge-devel -y 配置：\n\/usr\/sbin\/create-munge-key 启动：\nsystemctl enable munge --now 2.安装pmix mpi通信的服务器\n先安装两个依赖库\nyum install -y hwloc-devel libevent-devel https:\/\/github.com\/openpmix\/openpmix\/releases 下载最新包\n解压后进入内部编译和安装：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 3.编译slurm 下载最新源码包\nhttps:\/\/github.com\/SchedMD\/slurm\/releases\/tag\n解压进入内部：\n.\/configure \u0026amp;\u0026amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc\/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息\n ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生产环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux",
       "inLanguage" : "en-US",
       "author" : "bitllion",
       "creator" : "bitllion",
@@ -38,8 +38,7 @@
 <title>Slurm单机部署</title>
   <meta property="og:title" content="Slurm单机部署" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="这里推荐源码编译安装
-1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
+  <meta property="og:description" content="1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
 yum -y install munge munge-libs munge-devel -y 配置：
 /usr/sbin/create-munge-key 启动：
 systemctl enable munge --now 2.安装pmix mpi通信的服务器
@@ -50,9 +49,8 @@ yum install -y hwloc-devel libevent-devel https://github.com/openpmix/openpmix/r
 https://github.com/SchedMD/slurm/releases/tag
 解压进入内部：
 ./configure &amp;amp;&amp;amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息
- ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
-  <meta name="description" content="这里推荐源码编译安装
-1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
+ ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生产环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
+  <meta name="description" content="1.安装munge slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：
 yum -y install munge munge-libs munge-devel -y 配置：
 /usr/sbin/create-munge-key 启动：
 systemctl enable munge --now 2.安装pmix mpi通信的服务器
@@ -63,7 +61,7 @@ yum install -y hwloc-devel libevent-devel https://github.com/openpmix/openpmix/r
 https://github.com/SchedMD/slurm/releases/tag
 解压进入内部：
 ./configure &amp;amp;&amp;amp; make install -j $(nproc) 4.配置slurm 在刚才的目录下 doc/html 有自动生成的网页，拷贝一份到本地，用浏览器打开，填写相应信息
- ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生成环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
+ ClusterName、SlurmctldHost、NodeName 都填hostname的值 CPUs、Sockets、CoresPerSocket 根据lscpu 填 RealMemory 根据free -m 填 SlurmUser 方便起见用root,生产环境建议用权限小的用户 Default MPI Type 可不选，这里选PMIX Process Tracking 这里选LinuxProc Resource Selection 选Cons_res SelectTypeParameters 选CR_Memory Job Accounting Gather 选Linux" />
   <meta property="og:locale" content="zh-CN" />
 
   
@@ -143,8 +141,7 @@ https://github.com/SchedMD/slurm/releases/tag
 
         <div class="post-content markdown-body">
           
-          <p>这里推荐源码编译安装</p>
-<h2 id="1安装munge">1.安装munge</h2>
+          <h2 id="1安装munge">1.安装munge</h2>
 <p>slurm 内部的认证程序munge，编译这个依赖前需要安装两个依赖：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum -y install munge munge-libs munge-devel -y
 </code></pre></div><p>配置：</p>
@@ -169,7 +166,7 @@ https://github.com/SchedMD/slurm/releases/tag
 <p>ClusterName、SlurmctldHost、NodeName 都填hostname的值
 CPUs、Sockets、CoresPerSocket 根据lscpu 填
 RealMemory 根据free -m 填
-SlurmUser 方便起见用root,生成环境建议用权限小的用户
+SlurmUser 方便起见用root,生产环境建议用权限小的用户
 Default MPI Type 可不选，这里选PMIX
 Process Tracking 这里选LinuxProc
 Resource Selection 选Cons_res
@@ -187,6 +184,31 @@ systemclt enable slurmd --now
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sinfo
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
 test*        up   infinite      <span style="color:#ae81ff">1</span>   idle spack
+</code></pre></div><p>验证：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat&gt;hello.cpp<span style="color:#e6db74">&lt;&lt;EOF
+</span><span style="color:#e6db74">#include &#34;mpi.h&#34;
+</span><span style="color:#e6db74">#include &lt;iostream&gt;
+</span><span style="color:#e6db74">int main(int argc,  char* argv[])
+</span><span style="color:#e6db74">{
+</span><span style="color:#e6db74">        int rank;
+</span><span style="color:#e6db74">        int size;
+</span><span style="color:#e6db74">        MPI_Init(0,0);
+</span><span style="color:#e6db74">        MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+</span><span style="color:#e6db74">        MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        std::cout&lt;&lt;&#34;Hello world from process &#34;&lt;&lt;rank&lt;&lt;&#34; of &#34;&lt;&lt;size&lt;&lt;std::endl;
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        MPI_Finalize();
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">        return 0;
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOF</span>
+$ mpicxx hello.cpp -o hello
+$ srun -p test --mpi<span style="color:#f92672">=</span>pmi2 -n <span style="color:#ae81ff">4</span> ./hello
+Hello world from process <span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">4</span>
+Hello world from process <span style="color:#ae81ff">2</span> of <span style="color:#ae81ff">4</span>
+Hello world from process <span style="color:#ae81ff">0</span> of <span style="color:#ae81ff">4</span>
+Hello world from process <span style="color:#ae81ff">3</span> of <span style="color:#ae81ff">4</span>
 </code></pre></div>
         </div>
 
