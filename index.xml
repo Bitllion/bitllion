@@ -6,7 +6,20 @@
     <description>Recent content on hpc小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 Jun 2022 10:33:34 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 21:24:15 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phonopy内网部署天河二号</title>
+      <link>/posts/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</link>
+      <pubDate>Thu, 23 Jun 2022 21:24:15 +0800</pubDate>
+      
+      <guid>/posts/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</guid>
+      <description>Phonopy 内网部署 天河二号 1.加载环境变量 module load Python/3.8.10-anaconda 2.安装依赖 2.1 下载依赖 在外网一台linux机器上,创建相同python版本的虚拟环境，激活环境变量
+conda create -n phonopy python=3.8.10 conda activate phonopy 创建一个下载目录
+mkdir pypi_packages cd pypi_packages 2.1.1下载依赖 matplotlib的依赖 pip download -d . matplotlib wget https://files.pythonhosted.org/packages/43/6e/59853546226ee6200f9ba6e574d11604b60ad0754d2cbd1c8f3246b70418/Pillow-9.1.1.tar.gz 其中Pillow的二进制经测试不能直接安装，需要手动安装，所以还要下载它的源码包
+2.2.2 下载其他依赖 pip download -d . phonopy wget https://files.pythonhosted.org/packages/08/12/db0d8c4d64240996a61671dbe9ff30fdafb887a6ccf101c11728f5f6c5af/spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl 3.安装 3.1安装依赖 将外网下载好的二进制和源码波传到天河二号上
+pip install spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install h5py-3.7.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install kiwisolver-1.4.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl pip install pyparsing-3.0.9-py3-none-any.whl pip install cycler-0.11.0-py3-none-any.whl pip install packaging-21.3-py3-none-any.whl pip install fonttools-4.33.3-py3-none-any.whl pip install six-1.16.0-py2.py3-none-any.whl pip install python_dateutil-2.</description>
+    </item>
+    
     <item>
       <title>Sci Hub教程</title>
       <link>/posts/sci-hub%E6%95%99%E7%A8%8B/</link>

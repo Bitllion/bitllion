@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bitllion" />
-  <meta property="og:url" content="/categories/" />
-  <link rel="canonical" href="/categories/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
+  <meta property="og:url" content="/posts/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/" />
+  <link rel="canonical" href="/posts/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": ""
       },
-      "articleSection" : "categories",
-      "name" : "Categories",
-      "headline" : "Categories",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Phonopy内网部署天河二号",
+      "headline" : "Phonopy内网部署天河二号",
+      "description" : "Phonopy 内网部署 天河二号 1.加载环境变量 module load Python\/3.8.10-anaconda 2.安装依赖 2.1 下载依赖 在外网一台linux机器上,创建相同python版本的虚拟环境，激活环境变量\nconda create -n phonopy python=3.8.10 conda activate phonopy 创建一个下载目录\nmkdir pypi_packages cd pypi_packages 2.1.1下载依赖 matplotlib的依赖 pip download -d . matplotlib wget https:\/\/files.pythonhosted.org\/packages\/43\/6e\/59853546226ee6200f9ba6e574d11604b60ad0754d2cbd1c8f3246b70418\/Pillow-9.1.1.tar.gz 其中Pillow的二进制经测试不能直接安装，需要手动安装，所以还要下载它的源码包\n2.2.2 下载其他依赖 pip download -d . phonopy wget https:\/\/files.pythonhosted.org\/packages\/08\/12\/db0d8c4d64240996a61671dbe9ff30fdafb887a6ccf101c11728f5f6c5af\/spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl 3.安装 3.1安装依赖 将外网下载好的二进制和源码波传到天河二号上\npip install spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install h5py-3.7.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install kiwisolver-1.4.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl pip install pyparsing-3.0.9-py3-none-any.whl pip install cycler-0.11.0-py3-none-any.whl pip install packaging-21.3-py3-none-any.whl pip install fonttools-4.33.3-py3-none-any.whl pip install six-1.16.0-py2.py3-none-any.whl pip install python_dateutil-2.",
       "inLanguage" : "en-US",
       "author" : "bitllion",
       "creator" : "bitllion",
@@ -31,15 +31,23 @@
       "copyrightYear" : "2022",
       "datePublished": "2022-06-23 21:24:15 \u002b0800 CST",
       "dateModified" : "2022-06-23 21:24:15 \u002b0800 CST",
-      "url" : "\/categories\/",
+      "url" : "\/posts\/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7\/",
       "keywords" : [  ]
   }
 </script>
-<title>Categories</title>
-  <meta property="og:title" content="Categories" />
+<title>Phonopy内网部署天河二号</title>
+  <meta property="og:title" content="Phonopy内网部署天河二号" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="Phonopy 内网部署 天河二号 1.加载环境变量 module load Python/3.8.10-anaconda 2.安装依赖 2.1 下载依赖 在外网一台linux机器上,创建相同python版本的虚拟环境，激活环境变量
+conda create -n phonopy python=3.8.10 conda activate phonopy 创建一个下载目录
+mkdir pypi_packages cd pypi_packages 2.1.1下载依赖 matplotlib的依赖 pip download -d . matplotlib wget https://files.pythonhosted.org/packages/43/6e/59853546226ee6200f9ba6e574d11604b60ad0754d2cbd1c8f3246b70418/Pillow-9.1.1.tar.gz 其中Pillow的二进制经测试不能直接安装，需要手动安装，所以还要下载它的源码包
+2.2.2 下载其他依赖 pip download -d . phonopy wget https://files.pythonhosted.org/packages/08/12/db0d8c4d64240996a61671dbe9ff30fdafb887a6ccf101c11728f5f6c5af/spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl 3.安装 3.1安装依赖 将外网下载好的二进制和源码波传到天河二号上
+pip install spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install h5py-3.7.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install kiwisolver-1.4.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl pip install pyparsing-3.0.9-py3-none-any.whl pip install cycler-0.11.0-py3-none-any.whl pip install packaging-21.3-py3-none-any.whl pip install fonttools-4.33.3-py3-none-any.whl pip install six-1.16.0-py2.py3-none-any.whl pip install python_dateutil-2." />
+  <meta name="description" content="Phonopy 内网部署 天河二号 1.加载环境变量 module load Python/3.8.10-anaconda 2.安装依赖 2.1 下载依赖 在外网一台linux机器上,创建相同python版本的虚拟环境，激活环境变量
+conda create -n phonopy python=3.8.10 conda activate phonopy 创建一个下载目录
+mkdir pypi_packages cd pypi_packages 2.1.1下载依赖 matplotlib的依赖 pip download -d . matplotlib wget https://files.pythonhosted.org/packages/43/6e/59853546226ee6200f9ba6e574d11604b60ad0754d2cbd1c8f3246b70418/Pillow-9.1.1.tar.gz 其中Pillow的二进制经测试不能直接安装，需要手动安装，所以还要下载它的源码包
+2.2.2 下载其他依赖 pip download -d . phonopy wget https://files.pythonhosted.org/packages/08/12/db0d8c4d64240996a61671dbe9ff30fdafb887a6ccf101c11728f5f6c5af/spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl 3.安装 3.1安装依赖 将外网下载好的二进制和源码波传到天河二号上
+pip install spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install h5py-3.7.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl pip install kiwisolver-1.4.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl pip install pyparsing-3.0.9-py3-none-any.whl pip install cycler-0.11.0-py3-none-any.whl pip install packaging-21.3-py3-none-any.whl pip install fonttools-4.33.3-py3-none-any.whl pip install six-1.16.0-py2.py3-none-any.whl pip install python_dateutil-2." />
   <meta property="og:locale" content="zh-CN" />
 
   
@@ -65,10 +73,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -93,11 +102,103 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term"></h1>
-        <div id="posts-list">
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Phonopy内网部署天河二号</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-06-23 21:24:15 CST">
+                23 Jun 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="/">@bitllion</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <h1 id="phonopy-内网部署-天河二号">Phonopy 内网部署 天河二号</h1>
+<h2 id="1加载环境变量">1.加载环境变量</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">module load Python/3.8.10-anaconda 
+</code></pre></div><h2 id="2安装依赖">2.安装依赖</h2>
+<h3 id="21-下载依赖">2.1 下载依赖</h3>
+<p>在外网一台linux机器上,创建相同python版本的虚拟环境，激活环境变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">conda create -n phonopy python<span style="color:#f92672">=</span>3.8.10
+conda activate phonopy
+</code></pre></div><p>创建一个下载目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir pypi_packages
+cd pypi_packages
+</code></pre></div><h4 id="211下载依赖-matplotlib的依赖">2.1.1下载依赖 matplotlib的依赖</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip download -d . matplotlib
+wget https://files.pythonhosted.org/packages/43/6e/59853546226ee6200f9ba6e574d11604b60ad0754d2cbd1c8f3246b70418/Pillow-9.1.1.tar.gz
+</code></pre></div><p>其中Pillow的二进制经测试不能直接安装，需要手动安装，所以还要下载它的源码包</p>
+<h4 id="222-下载其他依赖">2.2.2 下载其他依赖</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip download -d . phonopy
+wget https://files.pythonhosted.org/packages/08/12/db0d8c4d64240996a61671dbe9ff30fdafb887a6ccf101c11728f5f6c5af/spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+</code></pre></div><h2 id="3安装">3.安装</h2>
+<h2 id="31安装依赖">3.1安装依赖</h2>
+<p>将外网下载好的二进制和源码波传到天河二号上</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install spglib-1.16.5-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+pip install h5py-3.7.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+
+pip install kiwisolver-1.4.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl
+pip install pyparsing-3.0.9-py3-none-any.whl
+pip install cycler-0.11.0-py3-none-any.whl
+pip install packaging-21.3-py3-none-any.whl
+pip install fonttools-4.33.3-py3-none-any.whl
+pip install six-1.16.0-py2.py3-none-any.whl
+pip install python_dateutil-2.8.2-py2.py3-none-any.whl
+//Pillow没有打包好的二进制，需要编译安装
+tar xzf Pillow-9.1.1.tar.gz
+cd Pillow-9.1.1/ 
+pip install .
+
+//回到刚才的目录继续安装剩下的依赖
+cd ..
+pip install matplotlib-3.5.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl
+pip install PyYAML-6.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+</code></pre></div><p>其中不用安装numpy，因为使用module load Python/3.8.10-anaconda 后系统的</p>
+<h3 id="32-编译phonopy">3.2 编译Phonopy</h3>
+<p>解压下载好的<code>Phonopy</code>源码包,指定路径编译安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tar xzf phonopy-2.15.1.tar.gz
+python setup.py install --prefix<span style="color:#f92672">=</span>/WORK/XXXX/software/phonopy
+</code></pre></div><p>声明环境变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export PATH<span style="color:#f92672">=</span>/WORK/XXXX/software/phonopy/bin:$PATH
+</code></pre></div><p>可加入<code>/.bashrc</code></p>
+
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -117,6 +218,8 @@
     
   
 </script>
+
+  
 
 </body>
 
