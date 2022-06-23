@@ -6,7 +6,30 @@
     <description>Recent content on hpc小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 Jun 2022 21:24:15 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 21:35:18 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vasp5.4.4安装天河二号</title>
+      <link>/posts/vasp5.4.4%E5%AE%89%E8%A3%85%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</link>
+      <pubDate>Thu, 23 Jun 2022 21:35:18 +0800</pubDate>
+      
+      <guid>/posts/vasp5.4.4%E5%AE%89%E8%A3%85%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</guid>
+      <description>1.加载环境变量 module load intel-compilers@2018 2.修改MKLROOT 先使用echo 获取MKLROOT
+echo $MKLROOT 得到
+/WORK/app/intel/parallel_studio_xe_2018/compilers_and_libraries_2018.0.128/linux/mkl:/opt/intel/composer_xe_2013_sp1.2.144/mkl/WORK/app/intel/parallel_studio_xe_2018/compilers_and_libraries_2018.0.128/linux/mkl:/opt/intel/composer_xe_2013_sp1.2.144/mkl 其中
+/WORK/app/intel/parallel_studio_xe_2018/compilers_and_libraries_2018.0.128/linux/mkl 为全局文件系统下的MKL，只有在全局文件系统下的文件才能被在计算节点使用
+所以删除MKLROOT变量
+unset MKLROOT 新建MKLROOT
+export MKLROOT=/WORK/app/intel/parallel_studio_xe_2018/compilers_and_libraries_2018.0.128/linux/mkl 3.编译vasp 解压vasp.5.4.4.tgz
+tar xzf vasp.5.4.4.tgz cd vasp.5.4.4 复制配置文件
+cp arch/makefile.include.linux_intel makefile.include 编译
+make std gam ncl 编译好后会生成一个bin目录
+$ls bin/ $vasp_std vasp_gam vasp_ncl 可以将这个目录移动到其他地方，比如$HOME/software/vasp 下
+cp bin $HOME/software/vasp -r 给这个目录添加PATH环境变量
+export PATH=$HOME/software/vasp/bin:$PATH 可以将上面的命令添加到~/.bashrc中，打开终端即可生效
+4.测试 进入算例目录
+srun -p work -n 4 vasp_std 测试work队列下，使用4核心并行跑std</description>
+    </item>
+    
     <item>
       <title>Phonopy内网部署天河二号</title>
       <link>/posts/phonopy%E5%86%85%E7%BD%91%E9%83%A8%E7%BD%B2%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</link>
