@@ -6,7 +6,46 @@
     <description>Recent content on hpc小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 14 Jun 2022 20:50:04 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Jun 2022 10:33:34 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sci Hub教程</title>
+      <link>/posts/sci-hub%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Thu, 23 Jun 2022 10:33:34 +0800</pubDate>
+      
+      <guid>/posts/sci-hub%E6%95%99%E7%A8%8B/</guid>
+      <description>一、Mirageswar： https://mirageswar.com/mirageswar.com/
+由于是毛站，页面语言为俄语：
+chrome浏览器用户，请点击地址栏右上角的翻译图标，选择将俄语翻译为英语。
+翻译之后的网页：
+如下图所示，网站首页右下方为搜索栏：
+以 Panzerwreck 为关键词搜索为例，网站会自动联想相关资源：
+单击搜索栏右侧 图标，进入搜索结果页面。需要注意，搜索页面存在搜索数量限制，即100个，部分超出数量的搜索结果不会显示，只能使用精确搜索才能查询到：
+以《Panzerwrecks 3: German Armor 1944-45》为例，单击进入资源页面：
+一般会有2个下载源：
+（1）turbobit： 单击蓝色的下载链接，进入跳转页面，点击蓝色的GO：
+等待读条：
+读条完成后在右侧会出现跳转按钮Skip Ad：
+正式进入资源连接：
+这里有2个可选项目：
+①Regular Download，适用于非会员用户和未登录用户，点击以后进入如下页面： 需要注意的是，该页面可能需要进行谷歌验证，且带一些无关链接跳转，部分链接需要连续点几次。
+其次，Regular Download会锁定IP，首次下载要等待1分钟读条，第二次为10分钟，第三次为50分钟。
+等读条结束以后，单击红色倒计时框，就能跳转到下载链接。
+②High Speed Download模式，适用于已注册并购买会员的用户。 Registration为注册，在此不赘述注册流程。
+拥有账号后，点击Log in登录：
+这是我的个人账户，已经开了Turbo access：
+每个月可使用600G的下载流量，Turbo access开通页面如下（已打码）：
+当然也可以使用激活码激活，将激活码填在中间的Please, enter a code here框：
+激活Turbo access后，可进入如下资源页面，单击Download file即可直接下载资源：
+（2）katfile 一般来说，这个源的文件不是很稳定，上传时间太久的文件可能会被删除掉。
+以另一个资源Warships International Fleet Review 2022-06为例，进入katfile链接后，如下图所示：
+该网站与turbobit类似，slow speed模式锁IP2小时，且带一些无关链接跳转，部分链接需要连续点几次。
+high speed模式类似于Turbo access，在此不再赘述。
+（3）预备镜像站： 一些网站的资源目录与Mirageswar一致，但页面可能比较杂乱，如：
+http://farposst.ru/index.phpfarposst.ru/index.php
+Armour Book - Библиотека брониwww.armourbook.com/
+二、Downmagaz： Download PDF magazines - Magazines Commumity!</description>
+    </item>
+    
     <item>
       <title>Slurm单机部署</title>
       <link>/posts/slurm%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2/</link>
