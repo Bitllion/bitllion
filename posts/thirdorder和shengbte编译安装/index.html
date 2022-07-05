@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="bitllion" />
-  <meta property="og:url" content="/categories/" />
-  <link rel="canonical" href="/categories/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
+  <meta property="og:url" content="/posts/thirdorder%E5%92%8Cshengbte%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" />
+  <link rel="canonical" href="/posts/thirdorder%E5%92%8Cshengbte%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" /><link rel="alternate" type="application/atom+xml" href="index.xml" title="hpc小站">
 
   <script type="application/ld+json">
   {
@@ -18,10 +18,10 @@
            "@type": "WebPage",
            "@id": ""
       },
-      "articleSection" : "categories",
-      "name" : "Categories",
-      "headline" : "Categories",
-      "description" : "",
+      "articleSection" : "posts",
+      "name" : "Thirdorder和shengbte编译安装",
+      "headline" : "Thirdorder和shengbte编译安装",
+      "description" : "源码包下载网址: https:\/\/www.shengbte.org\/downloads\/\nthirdorder 1.安装依赖 1.1编译spglib 参见官方手册 https:\/\/spglib.github.io\/spglib\/install.html\n不要使用pypi上的！！！\n下载 https:\/\/github.com\/spglib\/spglib\/archive\/master.zip\nunzip master.zip \u0026amp;\u0026amp; cd spglib-master \u0026amp;\u0026amp; mkdir build \u0026amp;\u0026amp; cd build cmake -DCMAKE_INSTALL_PREFIX=\/root\/spglib .. make -j $nproc make install  cmake 需要版本大于3，天河二号可使用 module load cmake\/3.8.1 加载cmake3的环境变量\n 声明环境变量：\nexport LD_LIBRARY_PATH=\/root\/spglib\/lib64:$LD_LIBRARY_PATH 1.2编译scipy 下载 https:\/\/files.pythonhosted.org\/packages\/26\/b5\/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d\/scipy-1.8.1.tar.gz\n安装scipy的依赖 pip install pythran-0.11.0-py3-none-any.whl pip install ply-3.11-py2.py3-none-any.whl pip install gast-0.5.3-py3-none-any.whl pip install beniget-0.4.1-py3-none-any.whl pip install pythran-0.11.0-py3-none-any.whl  whl 可在pypi官网搜到，或者创建一个相同python版本的虚拟环境（推荐conda），试用pip download  \u0026lt;package_name\u0026gt; 下载\n 编译scipy\npython setup.py install --user 2.",
       "inLanguage" : "en-US",
       "author" : "bitllion",
       "creator" : "bitllion",
@@ -31,15 +31,33 @@
       "copyrightYear" : "2022",
       "datePublished": "2022-07-05 15:39:11 \u002b0800 CST",
       "dateModified" : "2022-07-05 15:39:11 \u002b0800 CST",
-      "url" : "\/categories\/",
+      "url" : "\/posts\/thirdorder%E5%92%8Cshengbte%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85\/",
       "keywords" : [  ]
   }
 </script>
-<title>Categories</title>
-  <meta property="og:title" content="Categories" />
+<title>Thirdorder和shengbte编译安装</title>
+  <meta property="og:title" content="Thirdorder和shengbte编译安装" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="" />
-  <meta name="description" content="" />
+  <meta property="og:description" content="源码包下载网址: https://www.shengbte.org/downloads/
+thirdorder 1.安装依赖 1.1编译spglib 参见官方手册 https://spglib.github.io/spglib/install.html
+不要使用pypi上的！！！
+下载 https://github.com/spglib/spglib/archive/master.zip
+unzip master.zip &amp;amp;&amp;amp; cd spglib-master &amp;amp;&amp;amp; mkdir build &amp;amp;&amp;amp; cd build cmake -DCMAKE_INSTALL_PREFIX=/root/spglib .. make -j $nproc make install  cmake 需要版本大于3，天河二号可使用 module load cmake/3.8.1 加载cmake3的环境变量
+ 声明环境变量：
+export LD_LIBRARY_PATH=/root/spglib/lib64:$LD_LIBRARY_PATH 1.2编译scipy 下载 https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz
+安装scipy的依赖 pip install pythran-0.11.0-py3-none-any.whl pip install ply-3.11-py2.py3-none-any.whl pip install gast-0.5.3-py3-none-any.whl pip install beniget-0.4.1-py3-none-any.whl pip install pythran-0.11.0-py3-none-any.whl  whl 可在pypi官网搜到，或者创建一个相同python版本的虚拟环境（推荐conda），试用pip download  &amp;lt;package_name&amp;gt; 下载
+ 编译scipy
+python setup.py install --user 2." />
+  <meta name="description" content="源码包下载网址: https://www.shengbte.org/downloads/
+thirdorder 1.安装依赖 1.1编译spglib 参见官方手册 https://spglib.github.io/spglib/install.html
+不要使用pypi上的！！！
+下载 https://github.com/spglib/spglib/archive/master.zip
+unzip master.zip &amp;amp;&amp;amp; cd spglib-master &amp;amp;&amp;amp; mkdir build &amp;amp;&amp;amp; cd build cmake -DCMAKE_INSTALL_PREFIX=/root/spglib .. make -j $nproc make install  cmake 需要版本大于3，天河二号可使用 module load cmake/3.8.1 加载cmake3的环境变量
+ 声明环境变量：
+export LD_LIBRARY_PATH=/root/spglib/lib64:$LD_LIBRARY_PATH 1.2编译scipy 下载 https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz
+安装scipy的依赖 pip install pythran-0.11.0-py3-none-any.whl pip install ply-3.11-py2.py3-none-any.whl pip install gast-0.5.3-py3-none-any.whl pip install beniget-0.4.1-py3-none-any.whl pip install pythran-0.11.0-py3-none-any.whl  whl 可在pypi官网搜到，或者创建一个相同python版本的虚拟环境（推荐conda），试用pip download  &amp;lt;package_name&amp;gt; 下载
+ 编译scipy
+python setup.py install --user 2." />
   <meta property="og:locale" content="zh-CN" />
 
   
@@ -65,10 +83,11 @@
 
 
 <body>
-  <article class="posts">
+  <article class="post " id="article">
     <div class="row">
       <div class="col-xs-12">
-        
+        <div class="site-header">
+          
 <header>
   <div class="header-title">
     <a href="/"
@@ -93,11 +112,153 @@
 </div>
 <div class="header-line"></div>
 
-
-        <h1 class="taxonomy-term"></h1>
-        <div id="posts-list">
-          
         </div>
+        <header class="post-header">
+          <h1 class="post-title">Thirdorder和shengbte编译安装</h1>
+          
+          <div class="row post-desc">
+            <div class="col-xs-6">
+              
+              <time class="post-date" datetime="2022-07-05 15:39:11 CST">
+                05 Jul 2022
+              </time>
+              
+            </div>
+            <div class="col-xs-6">
+              
+              <div class="post-author">
+                <a target="_blank" href="/">@bitllion</a>
+              </div>
+              
+            </div>
+          </div>
+          
+        </header>
+
+        <div class="post-content markdown-body">
+          
+          <p>源码包下载网址: <a href="https://www.shengbte.org/downloads/">https://www.shengbte.org/downloads/</a></p>
+<h2 id="thirdorder">thirdorder</h2>
+<h3 id="1安装依赖">1.安装依赖</h3>
+<h4 id="11编译spglib">1.1编译spglib</h4>
+<p>参见官方手册 <a href="https://spglib.github.io/spglib/install.html">https://spglib.github.io/spglib/install.html</a></p>
+<p>不要使用pypi上的！！！</p>
+<p>下载 <a href="https://github.com/spglib/spglib/archive/master.zip">https://github.com/spglib/spglib/archive/master.zip</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">unzip master.zip <span style="color:#f92672">&amp;&amp;</span> cd spglib-master <span style="color:#f92672">&amp;&amp;</span> mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+cmake -DCMAKE_INSTALL_PREFIX<span style="color:#f92672">=</span>/root/spglib ..
+make -j $nproc
+make install
+</code></pre></div><blockquote>
+<p>cmake 需要版本大于3，天河二号可使用  <code>module load cmake/3.8.1</code>   加载cmake3的环境变量</p>
+</blockquote>
+<p>声明环境变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export LD_LIBRARY_PATH<span style="color:#f92672">=</span>/root/spglib/lib64:$LD_LIBRARY_PATH
+</code></pre></div><h4 id="12编译scipy">1.2编译scipy</h4>
+<p>下载 <a href="https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz">https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz</a></p>
+<h5 id="安装scipy的依赖">安装scipy的依赖</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install pythran-0.11.0-py3-none-any.whl 
+pip install ply-3.11-py2.py3-none-any.whl 
+pip install gast-0.5.3-py3-none-any.whl 
+pip install beniget-0.4.1-py3-none-any.whl 
+pip install pythran-0.11.0-py3-none-any.whl 
+</code></pre></div><blockquote>
+<p>whl 可在pypi官网搜到，或者创建一个相同python版本的虚拟环境（推荐conda），试用pip download <dir>  &lt;package_name&gt; 下载</p>
+</blockquote>
+<p>编译scipy</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python setup.py install --user
+</code></pre></div><h3 id="2修改配置">2.修改配置</h3>
+<p>vim 打开thirdorder解压下的文件<code>setup.py</code></p>
+<p>将10、13行 改成如下所示，其中spglib的lib库实际为lib64</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">INCLUDE_DIRS <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/WORK/jnu_youdikuang_1/software/spglib/include&#34;</span><span style="color:#f92672">]</span>
+LIBRARY_DIRS <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/WORK/jnu_youdikuang_1/software/spglib/lib64&#34;</span><span style="color:#f92672">]</span>
+</code></pre></div><p>还需要修改<code>thirdorder_core.c</code> 第559行（后续版本变动建议用vim搜索spglib.h）</p>
+<p>将</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spglib/spglib.h&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>修改为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;spglib.h&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>编译安装到用户空间</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python setup.py install --user
+</code></pre></div><p>查看当前用户python包目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># python -m site</span>
+sys.path <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>
+    <span style="color:#e6db74">&#39;/root/thirdorder&#39;</span>,
+    <span style="color:#e6db74">&#39;/opt/miniconda3/envs/test/lib/python38.zip&#39;</span>,
+    <span style="color:#e6db74">&#39;/opt/miniconda3/envs/test/lib/python3.8&#39;</span>,
+    <span style="color:#e6db74">&#39;/opt/miniconda3/envs/test/lib/python3.8/lib-dynload&#39;</span>,
+    <span style="color:#e6db74">&#39;/root/.local/lib/python3.8/site-packages&#39;</span>,
+    <span style="color:#e6db74">&#39;/root/.local/lib/python3.8/site-packages/thirdorder-0.0.0-py3.8-linux-x86_64.egg&#39;</span>,
+    <span style="color:#e6db74">&#39;/opt/miniconda3/envs/test/lib/python3.8/site-packages&#39;</span>,
+<span style="color:#f92672">]</span>
+USER_BASE: <span style="color:#e6db74">&#39;/root/.local&#39;</span> <span style="color:#f92672">(</span>exists<span style="color:#f92672">)</span>
+USER_SITE: <span style="color:#e6db74">&#39;/root/.local/lib/python3.8/site-packages&#39;</span> <span style="color:#f92672">(</span>exists<span style="color:#f92672">)</span>
+ENABLE_USER_SITE: True
+</code></pre></div><p>其中<code>USER_SITE</code>为当前环境下用户的python包目录</p>
+<p>设置环境变量</p>
+<p>新建一个目录存放测试脚本</p>
+<pre tabindex="0"><code>mkdir ~/software/thirdorder
+mv *.py  ~/software/thirdorder
+export PATH=~/software/thirdorder:$PATH
+</code></pre><h3 id="3测试">3.测试</h3>
+<p>在vasp算例目录下执行：</p>
+<pre tabindex="0"><code>thirdorder_vasp.py sow 2 2 2 -3 
+</code></pre><h2 id="shengbte">shengbte</h2>
+<h3 id="1编译">1.编译</h3>
+<p>解压ShengBte</p>
+<p>复制<code>arch.makefile.example</code>到Src里</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd Src <span style="color:#f92672">&amp;&amp;</span> cp ../arch.example  arch.make
+</code></pre></div><p>加载环境变量，需要重新设置下MKLROOT</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">module load intel-compilers@2018
+unset MKLROOT
+export MKLROOT<span style="color:#f92672">=</span>/WORK/app/intel/parallel_studio_xe_2018/compilers_and_libraries_2018.0.128/linux/mkl
+</code></pre></div><p>编辑arch.make,如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export FFLAGS<span style="color:#f92672">=</span> -debug -O2 -masm<span style="color:#f92672">=</span>intel
+export LDFLAGS<span style="color:#f92672">=</span>-L/WORK/jnu_youdikuang_1/software/spglib/lib64 -lsymspg
+export MPIFC<span style="color:#f92672">=</span>mpif90
+MKL<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>MKLROOT<span style="color:#66d9ef">)</span>/lib/intel64_lin/libmkl_lapack95_lp64.a -Wl,--start-group	<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#66d9ef">$(</span>MKLROOT<span style="color:#66d9ef">)</span>/lib/intel64_lin/libmkl_intel_lp64.a				<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#66d9ef">$(</span>MKLROOT<span style="color:#66d9ef">)</span>/lib/intel64_lin/libmkl_sequential.a				<span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span><span style="color:#66d9ef">$(</span>MKLROOT<span style="color:#66d9ef">)</span>/lib/intel64_lin/libmkl_core.a -Wl,--end-group -lpthread -lm
+export LAPACK<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>MKL<span style="color:#66d9ef">)</span>
+export LIBS<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>LAPACK<span style="color:#66d9ef">)</span>
+</code></pre></div><p>编译报错，就更改下arch.make，比如原本的FFLAGS是<code>FFLAGS=-traceback -debug -O2 -static_intel</code>但2018不支持这种编译选项，按照编译器的提示更改为上面的</p>
+<p>模板里的寻找的库文件 lib/em64t/ 实际lib/intel64_lin，按照具体环境修改</p>
+<p>编译<code>make</code></p>
+<p>编译完后会在上级目录生成二进制ShengBTE</p>
+<h3 id="2环境配置和测试">2.环境配置和测试</h3>
+<p>新建一个目录存放二进制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/software/ShengBTE
+mv ShengBTE ~/software/ShengBTE
+</code></pre></div><p>声明环境变量</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export PATH<span style="color:#f92672">=</span>~/software/ShengBTE:$PATH
+</code></pre></div><p>进入<code>Test-VASP</code></p>
+<p>本地测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ShengBTE
+</code></pre></div><p>提交到计算节点测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">srun -p work -n <span style="color:#ae81ff">4</span> ShengBTE
+</code></pre></div>
+        </div>
+
+        <div class="row middle-xs">
+          <div class="col-xs-12">
+            
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-xs-12">
+              
+            </div>
+          </div>
+
+          
+
+
+
+          
+          
+          <div style="height: 50px;"></div>
+          
+        
 
         <div class="site-footer">
   
@@ -117,6 +278,8 @@
     
   
 </script>
+
+  
 
 </body>
 

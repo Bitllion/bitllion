@@ -6,7 +6,25 @@
     <description>Recent content in Posts on hpc小站</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 Jun 2022 21:35:18 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jul 2022 15:39:11 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thirdorder和shengbte编译安装</title>
+      <link>/posts/thirdorder%E5%92%8Cshengbte%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 05 Jul 2022 15:39:11 +0800</pubDate>
+      
+      <guid>/posts/thirdorder%E5%92%8Cshengbte%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <description>源码包下载网址: https://www.shengbte.org/downloads/
+thirdorder 1.安装依赖 1.1编译spglib 参见官方手册 https://spglib.github.io/spglib/install.html
+不要使用pypi上的！！！
+下载 https://github.com/spglib/spglib/archive/master.zip
+unzip master.zip &amp;amp;&amp;amp; cd spglib-master &amp;amp;&amp;amp; mkdir build &amp;amp;&amp;amp; cd build cmake -DCMAKE_INSTALL_PREFIX=/root/spglib .. make -j $nproc make install  cmake 需要版本大于3，天河二号可使用 module load cmake/3.8.1 加载cmake3的环境变量
+ 声明环境变量：
+export LD_LIBRARY_PATH=/root/spglib/lib64:$LD_LIBRARY_PATH 1.2编译scipy 下载 https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz
+安装scipy的依赖 pip install pythran-0.11.0-py3-none-any.whl pip install ply-3.11-py2.py3-none-any.whl pip install gast-0.5.3-py3-none-any.whl pip install beniget-0.4.1-py3-none-any.whl pip install pythran-0.11.0-py3-none-any.whl  whl 可在pypi官网搜到，或者创建一个相同python版本的虚拟环境（推荐conda），试用pip download  &amp;lt;package_name&amp;gt; 下载
+ 编译scipy
+python setup.py install --user 2.</description>
+    </item>
+    
     <item>
       <title>Vasp5.4.4安装天河二号</title>
       <link>/posts/vasp5.4.4%E5%AE%89%E8%A3%85%E5%A4%A9%E6%B2%B3%E4%BA%8C%E5%8F%B7/</link>
