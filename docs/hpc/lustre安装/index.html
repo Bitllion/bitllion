@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="1. 添加lustre官方源 编辑 /etc/yum.repos.d/lustre.repo
-[lustre-server]name=lustre-serverbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/server/gpgcheck=0[lustre-client]name=lustre-clientbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/client/gpgcheck=0[e2fsprogs-wc]name=e2fsprogs-wcbaseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el8/gpgcheck=02. 安装依赖 yum --nogpgcheck --enablerepo=* install -y audit-libs-devel binutils-devel elfutils-devel kabi-dw ncurses-devel newt-devel numactl-devel openssl-devel pciutils-devel perl perl-devel python2 python3-docutils xmlto xz-devel elfutils-libelf-devel libcap-devel libcap-ng-devel llvm-toolset libyaml libyaml-devel kernel-rpm-macros kernel-abi-whitelists uuid libuuid-devel libblkid libblkid-devel libtirpc-devel libtirpc libaio-devel libattr-devel libffi-devel libudev-devel ncompress python3-cffi python3-devel python3-packaging libmount libmount-devel make cmake automake gdb gccyum --nogpgcheck --enablerepo=powertools install libyaml-develyum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs e2fsprogs-devel e2fsprogs-libs libcom_err libcom_err-devel libss libss-devel yum install --disablerepo=* --enablerepo=lustre-server kernel-debuginfo-common-x86_64.">
+  content="1. 添加lustre官方源 编辑 /etc/yum.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -118,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "1. 添加lustre官方源 编辑 \/etc\/yum.repos.d\/lustre.repo\n[lustre-server]\rname=lustre-server\rbaseurl=https:\/\/downloads.whamcloud.com\/public\/lustre\/lustre-2.15.2\/el8.7\/server\/\rgpgcheck=0\r[lustre-client]\rname=lustre-client\rbaseurl=https:\/\/downloads.whamcloud.com\/public\/lustre\/lustre-2.15.2\/el8.7\/client\/\rgpgcheck=0\r[e2fsprogs-wc]\rname=e2fsprogs-wc\rbaseurl=https:\/\/downloads.whamcloud.com\/public\/e2fsprogs\/latest\/el8\/\rgpgcheck=0\r2. 安装依赖 yum --nogpgcheck --enablerepo=* install -y audit-libs-devel binutils-devel elfutils-devel kabi-dw ncurses-devel newt-devel numactl-devel openssl-devel pciutils-devel perl perl-devel python2 python3-docutils xmlto xz-devel elfutils-libelf-devel libcap-devel libcap-ng-devel llvm-toolset libyaml libyaml-devel kernel-rpm-macros kernel-abi-whitelists uuid libuuid-devel libblkid libblkid-devel libtirpc-devel libtirpc libaio-devel libattr-devel libffi-devel libudev-devel ncompress python3-cffi python3-devel python3-packaging libmount libmount-devel make cmake automake gdb gcc\ryum --nogpgcheck --enablerepo=powertools install libyaml-devel\ryum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs e2fsprogs-devel e2fsprogs-libs libcom_err libcom_err-devel libss libss-devel yum install --disablerepo=* --enablerepo=lustre-server kernel-debuginfo-common-x86_64."
+    "description": "1. 添加lustre官方源 编辑 \/etc\/yum."
 }
 </script><meta property="og:title" content="Lustre安装 | Hpc | Bitllion" />
 <meta property="og:type" content="article" />
@@ -132,8 +131,7 @@
 
 
 
-<meta property="og:description" content="1. 添加lustre官方源 编辑 /etc/yum.repos.d/lustre.repo
-[lustre-server]name=lustre-serverbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/server/gpgcheck=0[lustre-client]name=lustre-clientbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/client/gpgcheck=0[e2fsprogs-wc]name=e2fsprogs-wcbaseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el8/gpgcheck=02. 安装依赖 yum --nogpgcheck --enablerepo=* install -y audit-libs-devel binutils-devel elfutils-devel kabi-dw ncurses-devel newt-devel numactl-devel openssl-devel pciutils-devel perl perl-devel python2 python3-docutils xmlto xz-devel elfutils-libelf-devel libcap-devel libcap-ng-devel llvm-toolset libyaml libyaml-devel kernel-rpm-macros kernel-abi-whitelists uuid libuuid-devel libblkid libblkid-devel libtirpc-devel libtirpc libaio-devel libattr-devel libffi-devel libudev-devel ncompress python3-cffi python3-devel python3-packaging libmount libmount-devel make cmake automake gdb gccyum --nogpgcheck --enablerepo=powertools install libyaml-develyum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs e2fsprogs-devel e2fsprogs-libs libcom_err libcom_err-devel libss libss-devel yum install --disablerepo=* --enablerepo=lustre-server kernel-debuginfo-common-x86_64." />
+<meta property="og:description" content="1. 添加lustre官方源 编辑 /etc/yum." />
 
 
 
@@ -427,12 +425,12 @@ lnetctl net show
 lnetctl export &gt; /etc/sysconfig/lnet.conf
 systemctl enable lnet
 </code></pre>
-<p><img src="../../images/image-20230526091618685.png" alt="image-20230526091618685"></p>
+<p><img src="/img/image-20230526094852529.png" alt="image-20230526094852529"></p>
 <h3 id="6服务端创建mgs-mdt">6.服务端创建MGS MDT</h3>
 <p>查看未使用的硬盘</p>
 <pre><code>lsblk
 </code></pre>
-<p><img src="C:%5CUsers%5Cbitllion%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230425212322361.png" alt="image-20230425212322361"></p>
+<img src="/img/image-20230526095408420.png" alt="image-20230526095408420" style="zoom:67%;" />
 <p>服务端创建MGS MDT,index编号为0</p>
 <pre><code>mkfs.lustre --fsname=lustre --mdt --mgs --index=0 --reformat /dev/nvme0n1
 </code></pre>
@@ -440,7 +438,7 @@ systemctl enable lnet
 <pre><code>mkdir -p /mnt/mg
 mount.lustre  /dev/nvme0n1 /mnt/mg
 </code></pre>
-<p><img src="C:%5CUsers%5Cbitllion%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230425204016343.png" alt="image-20230425204016343"></p>
+<p><img src="/img/image-20230526095322665.png" alt="image-20230526095322665"></p>
 <h3 id="7服务端创建ost">7.服务端创建OST</h3>
 <p>（可与上面MGS MDT在同一台服务器）</p>
 <pre><code>mkfs.lustre --fsname=lustre --reformat --ost --mgsnode=192.168.6.100@o2ib --index=11 /dev/nvme1n1
@@ -455,14 +453,14 @@ mount -t lustre  /dev/nvme1n1 /mnt/ost1
 mount -t lustre  /dev/nvme2n1 /mnt/ost2
 mount -t lustre  /dev/nvme3n1 /mnt/ost3
 </code></pre>
-<p><img src="C:%5CUsers%5Cbitllion%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230425214950273.png" alt="image-20230425214950273"></p>
+<p><img src="/img/image-20230526095514109.png" alt="image-20230526095514109"></p>
 <h3 id="8客户端挂载">8.客户端挂载</h3>
 <p>创建全局共享目录/z3 并将lustre挂载到上面</p>
 <pre><code>mkdir /z3
 mount.lustre 192.168.6.100@o2ib:/lustre /z3
 mkdir -p /z3/home  /z3/public
 </code></pre>
-<p><img src="C:%5CUsers%5Cbitllion%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230425215105940.png" alt="image-20230425215105940"></p>
+<p><img src="/img/image-20230526100605288.png" alt="image-20230526100605288"></p>
 <blockquote>
 <p>本项目三台节点都有4块7TNVME，我们每一台服务器都有一块硬盘做MGS/MDT,部署详细如下（注意index编号不要重复了）</p>
 <p>所有节点：</p>
@@ -508,7 +506,7 @@ mkdir -p /z3/home  /z3/public
 <p>所有节点 client&gt;</p>
 <p>mount.lustre 192.168.6.100@o2ib:192.168.6.101@o2ib:192.168.6.102@o2ib:/lustre /z3</p>
 <p>最后效果如下</p>
-<p><img src="C:%5CUsers%5Cbitllion%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230426015750891.png" alt="image-20230426015750891"></p>
+<p><img src="/img/image-20230526095557437.png" alt="image-20230526095557437"></p>
 </blockquote>
 <blockquote>
 <p>重启服务器后，挂载会失效，请手动复现上述挂载的命令，不用重新格式化</p>

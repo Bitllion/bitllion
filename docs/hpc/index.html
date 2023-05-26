@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="s">
+  content="前期准备 统一安装almalinux 8.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +102,7 @@
         "@type": "WebPage",
         "@id": "/docs/hpc/"
     },
-    "headline": "Hpc | Bitllion","wordCount":  1 ,
+    "headline": "Hpc | Bitllion","wordCount":  72 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -111,7 +111,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "s"
+    "description": "前期准备 统一安装almalinux 8."
 }
 </script><meta property="og:title" content="Hpc | Bitllion" />
 <meta property="og:type" content="website" />
@@ -316,7 +316,47 @@
   
   
 
-  <p>s</p>
+  <h1 id="前期准备">前期准备</h1>
+<p>统一安装<a href="http://mirrors.neusoft.edu.cn/almalinux/8.7/isos/x86_64/">almalinux 8.7</a></p>
+<p>主机名分别为 master 、node0、node1、node2</p>
+<h2 id="规划网络">规划网络</h2>
+<p>编辑 /etc/hosts</p>
+<pre><code class="language-shell">192.168.5.99 master
+192.168.5.100 node0
+192.168.5.101 node1
+192.168.5.102 node2
+
+192.168.6.99 ibmaster
+192.168.6.100 ibnode0
+192.168.6.101 ibnode1
+192.168.6.102 ibnode2
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+</code></pre>
+<h2 id="ssh免密">ssh免密</h2>
+<p>master节点生成ssh密钥对</p>
+<pre><code class="language-shell">ssh-keygen
+</code></pre>
+<p>复制到其他节点</p>
+<pre><code class="language-shell">ssh-copy-id node0
+ssh-copy-id node1
+ssh-copy-id node2
+</code></pre>
+<h2 id="更新系统和软件">更新系统和软件</h2>
+<pre><code class="language-shell">yum install wget vim tree git patch epel-release -y
+yum update -y
+</code></pre>
+<h2 id="禁用防火墙">禁用防火墙</h2>
+<pre><code class="language-shell">systemctl stop firewalld
+systemctl disable firewalld
+</code></pre>
+<h2 id="禁用selinux">禁用selinux</h2>
+<pre><code class="language-shell">sed -i 's/^SELINUX=enforcing$/SELINUS=disabled/' /etc/selinux/config
+</code></pre>
+<p>重启电脑生效</p>
+<pre><code class="language-shell">reboot
+</code></pre>
 
 </article>
 
@@ -334,6 +374,39 @@
 
 
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#规划网络">规划网络</a></li>
+    <li><a href="#ssh免密">ssh免密</a></li>
+    <li><a href="#更新系统和软件">更新系统和软件</a></li>
+    <li><a href="#禁用防火墙">禁用防火墙</a></li>
+    <li><a href="#禁用selinux">禁用selinux</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>
