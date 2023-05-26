@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 一言</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 26 May 2023 14:53:02 +0800</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo与typora图片路径统一问题</title>
+      <link>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 26 May 2023 14:53:02 +0800</pubDate>
+      
+      <guid>/posts/hugo%E4%B8%8Etypora%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E7%BB%9F%E4%B8%80%E9%97%AE%E9%A2%98/</guid>
+      <description>问题 对于hugo: content目录下 例如图片content/a.</description>
+    </item>
+    
+  </channel>
+</rss>
