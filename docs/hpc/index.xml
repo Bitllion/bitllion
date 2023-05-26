@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hpc on Bitllion</title>
+    <title>HPC集群搭建 on Bitllion</title>
     <link>/docs/hpc/</link>
-    <description>Recent content in Hpc on Bitllion</description>
+    <description>Recent content in HPC集群搭建 on Bitllion</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ib网络配置</title>
+      <title>IB网络配置</title>
       <link>/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 26 May 2023 10:51:07 +0800</pubDate>
       

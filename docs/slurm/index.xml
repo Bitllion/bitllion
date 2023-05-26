@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slurm on Bitllion</title>
+    <link>/docs/slurm/</link>
+    <description>Recent content in Slurm on Bitllion</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 26 May 2023 13:17:40 +0800</lastBuildDate><atom:link href="/docs/slurm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Slurm使用手册</title>
+      <link>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Fri, 26 May 2023 13:39:12 +0800</pubDate>
+      
+      <guid>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
