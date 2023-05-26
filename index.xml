@@ -6,7 +6,34 @@
     <description>Recent content on Bitllion</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 25 May 2023 16:31:33 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 May 2023 11:05:30 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ldap用户统一认证服务安装</title>
+      <link>/docs/hpc/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 26 May 2023 11:05:30 +0800</pubDate>
+      
+      <guid>/docs/hpc/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nvidia显卡驱动安装</title>
+      <link>/docs/hpc/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 26 May 2023 10:55:58 +0800</pubDate>
+      
+      <guid>/docs/hpc/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</guid>
+      <description>进入nvidia驱动下载页面，下载合适的驱动 https://www.nvidia.cn/Download/index.aspx?lang=cn</description>
+    </item>
+    
+    <item>
+      <title>Ib网络配置</title>
+      <link>/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 26 May 2023 10:51:07 +0800</pubDate>
+      
+      <guid>/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</guid>
+      <description>1. 安装依赖 先更新系统,安装依赖,重启切换到新的内核</description>
+    </item>
+    
     <item>
       <title>Lustre安装</title>
       <link>/docs/hpc/lustre%E5%AE%89%E8%A3%85/</link>
