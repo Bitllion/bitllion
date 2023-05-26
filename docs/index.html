@@ -232,7 +232,8 @@
           <h4>Lustre安装</h4>
         </a>
         
-          test
+          1. 添加lustre官方源 编辑 /etc/yum.repos.d/lustre.repo
+[lustre-server]name=lustre-serverbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/server/gpgcheck=0[lustre-client]name=lustre-clientbaseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/client/gpgcheck=0[e2fsprogs-wc]name=e2fsprogs-wcbaseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el8/gpgcheck=02. 安装依赖 yum --nogpgcheck --enablerepo=* install -y audit-libs-devel binutils-devel elfutils-devel kabi-dw ncurses-devel newt-devel numactl-devel openssl-devel pciutils-devel perl perl-devel python2 python3-docutils xmlto xz-devel elfutils-libelf-devel libcap-devel libcap-ng-devel llvm-toolset libyaml libyaml-devel kernel-rpm-macros kernel-abi-whitelists uuid libuuid-devel libblkid libblkid-devel libtirpc-devel libtirpc libaio-devel libattr-devel libffi-devel libudev-devel ncompress python3-cffi python3-devel python3-packaging libmount libmount-devel make cmake automake gdb gccyum --nogpgcheck --enablerepo=powertools install libyaml-develyum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc install e2fsprogs e2fsprogs-devel e2fsprogs-libs libcom_err libcom_err-devel libss libss-devel yum install --disablerepo=* --enablerepo=lustre-server kernel-debuginfo-common-x86_64.
         
       
         
