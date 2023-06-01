@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LunaixOS on 一言</title>
+    <link>/docs/linux/lunaixos/</link>
+    <description>Recent content in LunaixOS on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 31 May 2023 16:20:31 +0800</lastBuildDate><atom:link href="/docs/linux/lunaixos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>环境搭建</title>
+      <link>/docs/linux/lunaixos/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Wed, 31 May 2023 16:20:38 +0800</pubDate>
+      
+      <guid>/docs/linux/lunaixos/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description>1.安装交叉编译器 目标平台为i686</description>
+    </item>
+    
+  </channel>
+</rss>
