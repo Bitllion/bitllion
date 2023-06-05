@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="Centos7 下slurm集群部署 安装munge服务 yum install -y munge munge-devel munge-libs管理节点创建密钥">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +102,8 @@
         "@type": "WebPage",
         "@id": "/docs/slurm/"
     },
-    "headline": "Slurm | 一言","publisher": {
+    "headline": "Slurm | 一言","wordCount":  126 ,
+    "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
         "logo": {
@@ -110,7 +111,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "Centos7 下slurm集群部署 安装munge服务 yum install -y munge munge-devel munge-libs\r管理节点创建密钥"
 }
 </script><meta property="og:title" content="Slurm | 一言" />
 <meta property="og:type" content="website" />
@@ -293,7 +294,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -305,7 +306,56 @@
   
   
 
-  
+  <h1 id="centos7-下slurm集群部署">Centos7 下slurm集群部署</h1>
+<h2 id="安装munge服务">安装munge服务</h2>
+<pre><code class="language-shell">yum install -y munge munge-devel munge-libs
+</code></pre>
+<p>管理节点创建密钥</p>
+<pre><code class="language-shell">/usr/sbin/create-munge-key
+</code></pre>
+<p>开机自启服务</p>
+<pre><code class="language-shell">systemctl enable munge --now
+</code></pre>
+<h2 id="编译安装pmi">编译安装pmi</h2>
+<p>openpmix项目主页 <a href="https://github.com/openpmix/openpmix/releases">Releases · openpmix/openpmix (github.com)</a></p>
+<p>下载bz2结尾的（一般bz2结尾的压缩包包含rpmbuild所需的信息）</p>
+<pre><code class="language-shell">wget https://download.njuu.cf/openpmix/openpmix/releases/download/v5.0.0rc1/pmix-5.0.0rc1.tar.bz2
+</code></pre>
+<p>如果没有rpmbuild命令先安装下</p>
+<pre><code class="language-shell">yum install -y rpm-build 
+</code></pre>
+<p>构建时提示错误</p>
+<pre><code>error: Failed build dependencies:
+	gcc is needed by pmix-5.0.0rc1-1.el7.x86_64
+	libevent-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
+	hwloc-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
+	python3-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
+</code></pre>
+<p>先安装它的依赖</p>
+<pre><code class="language-shell">yum install -y gcc gcc-c++ libevent-devel hwloc-devel python3-devel
+</code></pre>
+<p>然后构建</p>
+<pre><code class="language-shell">rpmbuild -ta pmix-5.0.0rc1.tar.bz2
+</code></pre>
+<p>等待构建完成，安装构建好的rpm,默认目录在**~/rpmbuild/RPMS/x86_64/**</p>
+<pre><code class="language-shell">yum localinstall -y ~/rpmbuild/RPMS/x86_64/pmix-5.0.0rc1-1.el7.x86_64.rpm
+</code></pre>
+<h2 id="编译安装slurm">编译安装slurm</h2>
+<p>本次我们目标构建要有slurmdbd slurmrestd</p>
+<p>前往slurm官网 <a href="https://www.schedmd.com/downloads.php">https://www.schedmd.com/downloads.php</a></p>
+<p>选择较为稳定的版本下载 <a href="https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2">https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2</a></p>
+<pre><code class="language-shell">wget https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2
+</code></pre>
+<p>安装依赖</p>
+<pre><code class="language-shell">yum install -y openssl openssl-devel pam-devel numactl numactl-devel hwloc hwloc-devel lua lua-devel readline-devel rrdtool-devel ncurses-devel man2html libibmad libibumad  rng-tools mysql-devel http-parser-devel json-c-devel libjwt-devel libjwt cpanm* perl-Switch s-nail -y
+</code></pre>
+<p>构建</p>
+<pre><code class="language-shell">rpmbuild -ta --with mysql --with slurmrestd --with jwt slurm-22.05.8.tar.bz2
+</code></pre>
+<p>安装</p>
+<pre><code class="language-shell">yum localinstall -y  ~/rpmbuild/RPMS/x86_64/slurm*
+</code></pre>
+
 </article>
 
                     
@@ -337,6 +387,37 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装munge服务">安装munge服务</a></li>
+    <li><a href="#编译安装pmi">编译安装pmi</a></li>
+    <li><a href="#编译安装slurm">编译安装slurm</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>
