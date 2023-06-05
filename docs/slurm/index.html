@@ -75,7 +75,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Centos7 下slurm集群 编译部署 安装munge服务 yum install -y munge munge-devel munge-libs管理节点创建密钥">
+  content="Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。
+它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +103,7 @@
         "@type": "WebPage",
         "@id": "/docs/slurm/"
     },
-    "headline": "Slurm | 一言","wordCount":  321 ,
+    "headline": "Slurm | 一言","wordCount":  3 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -111,7 +112,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Centos7 下slurm集群 编译部署 安装munge服务 yum install -y munge munge-devel munge-libs\r管理节点创建密钥"
+    "description": "Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。\n它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。"
 }
 </script><meta property="og:title" content="Slurm | 一言" />
 <meta property="og:type" content="website" />
@@ -262,6 +263,17 @@
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
+                href="/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/">Centos7下部署slurm集群</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
                 href="/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">Slurm使用手册</a>
         </div>
         
@@ -294,7 +306,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -306,183 +318,10 @@
   
   
 
-  <h1 id="centos7-下slurm集群-编译部署">Centos7 下slurm集群 编译部署</h1>
-<h2 id="安装munge服务">安装munge服务</h2>
-<pre><code class="language-shell">yum install -y munge munge-devel munge-libs
-</code></pre>
-<p>管理节点创建密钥</p>
-<pre><code class="language-shell">/usr/sbin/create-munge-key
-</code></pre>
-<p>开机自启服务</p>
-<pre><code class="language-shell">systemctl enable munge --now
-</code></pre>
-<h2 id="编译安装pmi">编译安装pmi</h2>
-<p>openpmix项目主页 <a href="https://github.com/openpmix/openpmix/releases">Releases · openpmix/openpmix (github.com)</a></p>
-<p>下载bz2结尾的（一般bz2结尾的压缩包包含rpmbuild所需的信息）</p>
-<pre><code class="language-shell">wget https://download.njuu.cf/openpmix/openpmix/releases/download/v5.0.0rc1/pmix-5.0.0rc1.tar.bz2
-</code></pre>
-<p>如果没有rpmbuild命令先安装下</p>
-<pre><code class="language-shell">yum install -y rpm-build 
-</code></pre>
-<p>构建时提示错误</p>
-<pre><code>error: Failed build dependencies:
-	gcc is needed by pmix-5.0.0rc1-1.el7.x86_64
-	libevent-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
-	hwloc-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
-	python3-devel is needed by pmix-5.0.0rc1-1.el7.x86_64
-</code></pre>
-<p>先安装它的依赖</p>
-<pre><code class="language-shell">yum install -y gcc gcc-c++ libevent-devel hwloc-devel python3-devel
-</code></pre>
-<p>然后构建</p>
-<pre><code class="language-shell">rpmbuild -ta pmix-5.0.0rc1.tar.bz2
-</code></pre>
-<p>等待构建完成，安装构建好的rpm,默认目录在**~/rpmbuild/RPMS/x86_64/**</p>
-<pre><code class="language-shell">yum localinstall -y ~/rpmbuild/RPMS/x86_64/pmix-5.0.0rc1-1.el7.x86_64.rpm
-</code></pre>
-<h2 id="编译安装slurm">编译安装slurm</h2>
-<p>本次我们目标构建要有slurmdbd slurmrestd</p>
-<p>前往slurm官网 <a href="https://www.schedmd.com/downloads.php">https://www.schedmd.com/downloads.php</a></p>
-<p>选择较为稳定的版本下载 <a href="https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2">https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2</a></p>
-<pre><code class="language-shell">wget https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2
-</code></pre>
-<p>安装依赖</p>
-<pre><code class="language-shell">yum install -y openssl openssl-devel pam-devel numactl numactl-devel hwloc hwloc-devel lua lua-devel readline-devel rrdtool-devel ncurses-devel man2html libibmad libibumad  rng-tools mysql-devel http-parser-devel json-c-devel libjwt-devel libjwt cpanm* perl-Switch s-nail -y
-</code></pre>
-<p>构建</p>
-<pre><code class="language-shell">rpmbuild -ta --with mysql --with slurmrestd --with jwt slurm-22.05.8.tar.bz2
-</code></pre>
-<p>安装</p>
-<pre><code class="language-shell">yum localinstall -y  ~/rpmbuild/RPMS/x86_64/slurm*
-</code></pre>
-<h2 id="配置数据库">配置数据库</h2>
-<p>安装数据库</p>
-<pre><code class="language-shell">yum install mysql-server
-</code></pre>
-<p>启动数据库服务,添加到开机自动启动项目</p>
-<pre><code class="language-shell">systemctl start mariadb &amp;&amp; systemctl enable mariadb
-</code></pre>
-<p>初始化数据库</p>
-<pre><code class="language-shell">mysql_secure_installation
-</code></pre>
-<p>进入数据库</p>
-<pre><code class="language-shell">mysql -uroot -p
-</code></pre>
-<p>创建slurm用户，允许远程登录，密码为 ize2^&amp;*FzU6</p>
-<pre><code class="language-shell">CREATE USER 'slurm'@'%' IDENTIFIED BY 'ize2^&amp;*FzU6';
-FLUSH privileges;
-</code></pre>
-<p>建两张表，存放slurm信息，授予slurm用户对这两种表的所有权限</p>
-<blockquote>
-<pre><code class="language-shell">作业信息数据库slurm_jobcomp_db
-账户数据库slurm_acct_db
-</code></pre>
-</blockquote>
-<pre><code class="language-shell">CREATE DATABASE IF NOT EXISTS slurm_acct_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE IF NOT EXISTS slurm_jobcomp_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES on slurm_acct_db.* to 'slurm'@'%';
-GRANT ALL PRIVILEGES on slurm_jobcomp_db.* to 'slurm'@'%';
-FLUSH privileges;
-quit
-</code></pre>
-<h2 id="配置slurm">配置slurm</h2>
-<h3 id="slurmdbd">slurmdbd</h3>
-<p><strong>/etc/slurm/slurmdbd.conf</strong>   :</p>
-<pre><code>AuthType=auth/munge
-AuthInfo=/var/run/munge/munge.socket.2
-#AuthAltTypes=auth/jwt
-#AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
-DbdHost=localhost
-DbdAddr=127.0.0.1
-SlurmUser=root
-MessageTimeout=60 
-DebugLevel=debug5 
-DefaultQOS=normal 
-LogFile=/var/log/slurm/slurmdbd.log 
-PidFile=/var/run/slurmdbd.pid 
-StorageType=accounting_storage/mysql 
-StorageHost=localhost
-StorageLoc=slurm_acct_db 
-StoragePort=3306
-StorageUser=slurm
-StoragePass=ize2^&amp;*FzU6
-</code></pre>
-<p>编辑完后赋予600权限</p>
-<h3 id="slurmctld--slurmd">slurmctld &amp; slurmd</h3>
-<p><strong>/etc/slurm/cgroup.conf</strong>   :</p>
-<pre><code>CgroupAutomount=yes 
-CgroupMountpoint=/sys/fs/cgroup 
-ConstrainCores=yes
-ConstrainDevices=yes
-ConstrainRAMSpace=yes
-</code></pre>
-<p><strong>/etc/slurm/slurm.conf</strong>   :</p>
-<pre><code>ClusterName=cool
-SlurmctldHost=master
-SlurmctldParameters=enable_configless #无配置模式
-SlurmUser=root
-SlurmctldPort=6817 
-SlurmdPort=6818   
-
-StateSaveLocation=/var/spool/slurmctld 
-SlurmdSpoolDir=/var/spool/slurmd 
-
-ReturnToService=1 
-MPIDefault=pmi2
-
-ProctrackType=proctrack/cgroup
-SchedulerType=sched/backfill
-SelectType=select/cons_tres
-SelectTypeParameters=CR_Core_Memory
-TaskPlugin=task/cgroup,task/affinity
-SlurmctldDebug=info 
-SlurmctldLogFile=/var/log/slurm/slurmctld.log
-SlurmdDebug=info
-SlurmdLogFile=/var/log/slurm/slurmd.log
-
-JobCompType=jobcomp/mysql
-JobCompHost=localhost
-JobCompUser=slurm
-JobCompPass=ize2^&amp;*FzU6
-
-JobAcctGatherType=jobacct_gather/linux
-JobAcctGatherFrequency=30 
-AccountingStorageType=accounting_storage/slurmdbd 
-AccountingStorageHost=localhost
-SlurmctldPidFile=/var/run/slurmctld.pid 
-SlurmdPidFile=/var/run/slurmd.pid
-
-SlurmctldTimeout=120
-SlurmdTimeout=300
-InactiveLimit=0
-MinJobAge=300
-KillWait=30 
-WaitTime=0 
-
-NodeName=master CPUs=2 RealMemory=1837 Sockets=1 CoresPerSocket=2 ThreadsPerCore=1 State=UNKNOWN
-NodeName=node01 CPUs=2 RealMemory=1837 Sockets=1 CoresPerSocket=2 ThreadsPerCore=1 State=UNKNOWN
-
-PartitionName=master Nodes=master Default=YES MaxTime=INFINITE State=UP
-PartitionName=node01 Nodes=master Default=NO MaxTime=INFINITE State=UP
-</code></pre>
-<h2 id="启动服务">启动服务</h2>
-<p>管理节点</p>
-<pre><code class="language-shell">systemctl start slurmdbd
-systemctl start slurmctld
-systemctl start slurmd 
-</code></pre>
-<p>计算节点 (提前配置好dns解析，这里master对应的是管理节点的ip)</p>
-<p>将上述munge服务安装并启动好，并拷贝/etc/munge/munge.key 到计算节点目录，还有其他mpi等依赖安装好后，启动slurmd服务（计算节点无配置模式）</p>
-<pre><code class="language-shell">slurmd --conf-server master:6817
-</code></pre>
-<p>测试</p>
-<p><img src="/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
-<h2 id="总结">总结</h2>
-<p>slurm无配置模式并不是一个配置文件也不写，而是指计算节点无需配置文件，若计算节点的机器规格不统一，则不建议使用此模式，这种模式适合计算节点机器规格统一的时候，无需systemd服务，所以也适合跑在容器里</p>
-<h2 id="slurmrestd">slurmrestd</h2>
-<p>非root启动 slurm api服务，建议绑定jwt避免所有人都能拿到集群信息</p>
-<pre><code class="language-shell">slurmrestd -vvv localhost:88
-</code></pre>
+  <p>Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。</p>
+<p>它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。</p>
+<h2 id="slurm架构图">slurm架构图</h2>
+<p><img src="/img/9e22f5b21e58160e651f314a4cb92a9.png" alt="9e22f5b21e58160e651f314a4cb92a9"></p>
 
 </article>
 
@@ -533,19 +372,7 @@ systemctl start slurmd
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#安装munge服务">安装munge服务</a></li>
-    <li><a href="#编译安装pmi">编译安装pmi</a></li>
-    <li><a href="#编译安装slurm">编译安装slurm</a></li>
-    <li><a href="#配置数据库">配置数据库</a></li>
-    <li><a href="#配置slurm">配置slurm</a>
-      <ul>
-        <li><a href="#slurmdbd">slurmdbd</a></li>
-        <li><a href="#slurmctld--slurmd">slurmctld &amp; slurmd</a></li>
-      </ul>
-    </li>
-    <li><a href="#启动服务">启动服务</a></li>
-    <li><a href="#总结">总结</a></li>
-    <li><a href="#slurmrestd">slurmrestd</a></li>
+    <li><a href="#slurm架构图">slurm架构图</a></li>
   </ul>
 </nav>
 </div>
