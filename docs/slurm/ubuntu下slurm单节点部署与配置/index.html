@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Slurm | 一言</title>
+<title>Ubuntu下slurm单节点部署与配置 | Slurm | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。
-它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。">
+  content="Eureka is a elegant and powerful theme for Hugo.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +88,11 @@
       "@type": "ListItem",
       "position": 2 ,
       "name":"Slurm",
-      "item":"/docs/slurm/"}]
+      "item":"/docs/slurm/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Ubuntu下slurm单节点部署与配置",
+      "item":"/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/"}]
 }
 </script>
 
@@ -101,9 +104,10 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/slurm/"
+        "@id": "/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/"
     },
-    "headline": "Slurm | 一言","wordCount":  3 ,
+    "headline": "Ubuntu下slurm单节点部署与配置 | Slurm | 一言","datePublished": "2023-06-06T08:16:50+08:00",
+    "dateModified": "2023-06-06T08:16:50+08:00",
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -112,23 +116,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。\n它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。"
+    "description": "Eureka is a elegant and powerful theme for Hugo."
 }
-</script><meta property="og:title" content="Slurm | 一言" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="Ubuntu下slurm单节点部署与配置 | Slurm | 一言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/slurm/" />
+<meta property="og:url" content="/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/" />
 
 
 
 
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
+<meta property="og:description" content="" />
 
 
 
@@ -145,14 +147,17 @@
 
 
 
-<meta property="og:updated_time" content="2023-05-26T13:17:40&#43;08:00" />
+<meta property="article:published_time" content="2023-06-06T08:16:50&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-06-06T08:16:50&#43;08:00" />
 
 
 
 <meta property="article:section" content="docs" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/docs/slurm/index.xml" title="一言" />
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -239,6 +244,11 @@
 
 
 
+
+
+
+
+
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -247,7 +257,7 @@
 <div id="sidebar-toc"
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
-        <a class="text-eureka hover:text-eureka"
+        <a class=" hover:text-eureka"
             href="/docs/slurm/">Slurm</a>
         
         
@@ -295,7 +305,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/">Ubuntu下slurm单节点部署与配置</a>
         </div>
         
@@ -319,6 +329,8 @@
 
 
 
+
+
             </div>
 
         </div>
@@ -326,7 +338,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">Slurm</h1>
+  <h1 class="mb-4">Ubuntu下slurm单节点部署与配置</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -334,12 +346,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-05-26</span
+      >2023-06-06</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
+    <span>0分钟阅读时长</span>
   </div>
 
   
@@ -351,11 +363,7 @@
   
   
 
-  <p>Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。</p>
-<p>它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。</p>
-<h2 id="slurm架构图">slurm架构图</h2>
-<p><img src="/img/9e22f5b21e58160e651f314a4cb92a9.png" alt="9e22f5b21e58160e651f314a4cb92a9"></p>
-
+  
 </article>
 
                     
@@ -367,6 +375,25 @@
 
 
                     
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/slurm/slurmrestd%E9%85%8D%E7%BD%AE%E5%92%8Capi%E4%BD%BF%E7%94%A8/" class="block">Slurmrestd配置和api使用</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/" class="block">Centos7下部署slurm集群</a>
+      
+    </div>
+  </div>
+
 
                     
 
@@ -387,35 +414,6 @@
     }
 </script>
 
-                </div>
-                
-                <div class="hidden lg:block lg:w-1/4">
-                    
-                    <div
-  class="
-    bg-secondary-bg
-   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
->
-  <h3>本页内容</h3>
-</div>
-<div
-  class="sticky-toc 
-    border-s
-   hidden px-6 pb-6 lg:block"
->
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#slurm架构图">slurm架构图</a></li>
-  </ul>
-</nav>
-</div>
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    enableStickyToc();
-  });
-</script>
-
-                    
                 </div>
                 
             </div>

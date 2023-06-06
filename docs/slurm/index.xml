@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Slurm使用手册</title>
+      <link>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Tue, 06 Jun 2023 13:39:12 +0800</pubDate>
+      
+      <guid>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>test t</description>
+    </item>
+    
+    <item>
       <title>Slurmrestd配置和api使用</title>
       <link>/docs/slurm/slurmrestd%E9%85%8D%E7%BD%AE%E5%92%8Capi%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Tue, 06 Jun 2023 13:39:03 +0800</pubDate>
@@ -26,18 +35,18 @@
     </item>
     
     <item>
-      <title>Slurm使用手册</title>
-      <link>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
-      <pubDate>Fri, 26 May 2023 13:39:12 +0800</pubDate>
+      <title>Ubuntu下slurm单节点部署与配置</title>
+      <link>/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 06 Jun 2023 08:16:50 +0800</pubDate>
       
-      <guid>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <guid>/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Centos7下部署slurm集群</title>
       <link>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Mon, 05 Jun 2023 23:12:35 +0800</pubDate>
+      <pubDate>Tue, 06 Jun 2023 07:12:35 +0800</pubDate>
       
       <guid>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</guid>
       <description>关闭selinux
