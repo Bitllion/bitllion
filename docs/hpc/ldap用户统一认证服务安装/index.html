@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="Centos7 下部署操作">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,6 +108,7 @@
     },
     "headline": "Ldap用户统一认证服务安装 | HPC集群搭建 | 一言","datePublished": "2023-05-22T11:05:30+08:00",
     "dateModified": "2023-05-22T11:05:30+08:00",
+    "wordCount":  252 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -116,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "Centos7 下部署操作"
 }
 </script><meta property="og:title" content="Ldap用户统一认证服务安装 | HPC集群搭建 | 一言" />
 <meta property="og:type" content="article" />
@@ -130,7 +131,7 @@
 
 
 
-<meta property="og:description" content="" />
+<meta property="og:description" content="Centos7 下部署操作" />
 
 
 
@@ -351,7 +352,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>2分钟阅读时长</span>
   </div>
 
   
@@ -363,7 +364,143 @@
   
   
 
-  
+  <p>Centos7 下部署操作</p>
+<h2 id="1安装openldap相关包">1.安装openldap相关包</h2>
+<pre><code class="language-shell">yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel
+</code></pre>
+<p>启动，设置开机自启</p>
+<pre><code class="language-shell">systemctl start slapd
+systemctl enable slapd
+</code></pre>
+<p>检查端口</p>
+<pre><code class="language-shell">netstat -antup | grep -i 389
+</code></pre>
+<p>如果没有netstat命令</p>
+<pre><code class="language-shell">yum -y install net-tools
+</code></pre>
+<h2 id="2创建管理员根密码密码">2.创建管理员根密码密码</h2>
+<p>使用slappasswd 命令提示生成密码，(也可以使用 slappasswd -s 直接生成) 保存下生成的SSHA加密后的字符串</p>
+<h2 id="3配置ldap服务">3.配置LDAP服务</h2>
+<p>查看默认配置文件</p>
+<pre><code class="language-shell">cd /etc/openldap/slapd.d/cn=config &amp;&amp; ls
+</code></pre>
+<blockquote>
+<p><strong>olcSuffix</strong> – 用于保存域信息，需要更新为自己的域
+<strong>olcRootDN</strong> – 根的DN（唯一识别名），根的区别名，它用于根管理员在此节点下做所有的管理
+<strong>olcRootPW</strong> – LDAP 管理员的根密码，用刚刚第三步创建出来的密码设置到这里</p>
+</blockquote>
+<h3 id="31新建dbldif">3.1新建db.ldif:</h3>
+<pre><code class="language-vim">dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc=jnist,dc=com
+
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=ldapadm,dc=jnist,dc=com
+
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+add: olcRootPW
+olcRootPW: {SSHA}UEPZxWajgGbAOknww//OCbhEe2DjoqWB
+</code></pre>
+<p>替换olcSuffix,olcRootDN,olcRootPW三个字段</p>
+<blockquote>
+<p>注意：<code>olcDatabase={2}hdb.ldif</code> 如果没有olcRootPW字段，使用<code>add</code>,有想替换使用<code>replace</code></p>
+</blockquote>
+<p>加载新的配置：</p>
+<pre><code class="language-shell">ldapmodify -Y EXTERNAL -H ldapi:/// -f db.ldif
+</code></pre>
+<h3 id="32新建monitor文件">3.2新建monitor文件</h3>
+<pre><code class="language-vim">dn: olcDatabase={1}monitor,cn=config
+changetype: modify
+replace: olcAccess
+olcAccess: {0}to * by dn.base=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth&quot; read by dn.base=&quot;cn=ldapadm,dc=jnsit,dc=com&quot; read by * none
+</code></pre>
+<p>加载新的配置:</p>
+<pre><code class="language-shell">ldapmodify -Y EXTERNAL -H ldapi:/// -f monitor.ldif
+</code></pre>
+<h3 id="33保存基础配置">3.3保存基础配置</h3>
+<pre><code class="language-shell">cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIGchown ldap:ldap /var/lib/ldap/*
+</code></pre>
+<h3 id="34导入基础模板">3.4导入基础模板</h3>
+<pre><code class="language-shell">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+</code></pre>
+<h3 id="35创建域和组织baseldif">3.5创建域和组织base.ldif</h3>
+<pre><code class="language-vim">dn: dc=jnist,dc=com
+dc: jnist
+objectClass: top
+objectClass: domain
+
+dn: cn=ldapadm,dc=jnist,dc=com
+objectClass: organizationalRole
+cn: Manager
+description: LDAP Manager
+
+dn: ou=People,dc=jnist,dc=com
+objectClass: organizationalUnit
+ou: People
+dn: ou=Group,dc=jnist,dc=com
+
+objectClass: organizationalUnit
+ou: Group
+</code></pre>
+<p>加载配置：</p>
+<pre><code class="language-shell">ldapadd -x -W -D &quot;cn=ldapadm,dc=jnist,dc=com&quot; -f base.ldif
+</code></pre>
+<p>成功返回如下</p>
+<p><img src="/img/image-20230606153422148.png" alt="image-20230606153422148"></p>
+<h2 id="4图形化管理">4.图形化管理</h2>
+<h3 id="41防火墙配置">4.1防火墙配置</h3>
+<p>使用前，防火墙放行ldap服务端口：</p>
+<pre><code class="language-shell">firewall-cmd --permanent --add-service=ldapfirewall-cmd --reload 
+</code></pre>
+<h3 id="42-ldap-admin">4.2 LDAP Admin</h3>
+<p><a href="http://www.ldapadmin.org/download/ldapadmin.html">LADP Admin下载地址</a>：</p>
+<p>下载运行该软件（单文件）</p>
+<img src="/img/image-20230606152021945.png" alt="image-20230606152021945" style="zoom:33%;" />
+<p>按上图依次操作，输入相应信息建立连接</p>
+<img src="/img/image-20230606152059209.png" alt="image-20230606152059209" style="zoom:50%;" />
+<h2 id="5客户端配置">5.客户端配置</h2>
+<h3 id="1安装相关包">1.安装相关包</h3>
+<pre><code class="language-shell">yum install -y openldap openldap-clients nss_ldap nss-pam-ldapd  openssh-ldap oddjob oddjob-mkhomedir openldap-clients
+</code></pre>
+<h3 id="2配置">2.配置</h3>
+<p>开启自动创建家目录</p>
+<pre><code class="language-shell">echo &quot;session optional pam_oddjob_mkhomedir.so skel=/etc/skel/ umask=0022&quot; &gt;&gt; /etc/pam.d/system-auth
+</code></pre>
+<p>写入配置（也可以使用图形化的<code>authconfig-tui</code>，这里更推荐直接用命令的形式）:</p>
+<pre><code class="language-shell">authconfig --disablesssd --enableldap --enableldapauth --ldapserver=10.249.4.165 --ldapbasedn=dc=&quot;jnist,dc=com&quot; --enableshadow --enablemkhomedir --updateall
+</code></pre>
+<p>重启LDAP客户端服务</p>
+<pre><code class="language-shell">systemctl restart nslcd
+systemctl restart sshd
+</code></pre>
+<h3 id="3服务端配置">3.服务端配置</h3>
+<p>在<code>ou=Group</code>里创建用户组
+<img src="/img/image-20230606154004191.png" alt="image-20230606154004191" style="zoom:33%;" />
+在<code>ou=People</code>里创建用户
+<img src="/img/image-20230606160802441.png" alt="image-20230606160802441">
+注意勾选<code>Shadow Account</code>
+<img src="/img/image-20230606154059325.png" alt="image-20230606154059325" style="zoom:33%;" /></p>
+<p>在<code>Membership</code>里选择刚才创建的用户组
+<img src="/img/image-20230606160049900.png" alt="image-20230606160049900" style="zoom:33%;" />
+选中刚才创建的用户，右键单击选择设置密码
+<img src="/img/image-20230606160105647.png" alt="image-20230606160105647" style="zoom:33%;" />
+加密方式任意,因为是根据服务端的<code>nss</code>认证的，不是linux系统本身的认证方式
+<img src="/img/image-20230606160136036.png" alt="image-20230606160136036" style="zoom:33%;" /></p>
+<h3 id="4测试">4.测试</h3>
+<pre><code class="language-shell">ssh jnist02@10.249.2.10
+</code></pre>
+<img src="/img/image-20230606160204469.png" alt="image-20230606160204469" style="zoom:33%;" />
+ssh登陆上去自动创建用户家目录
+查看下权限
+<img src="/img/image-20230606160217629.png" alt="image-20230606160217629" style="zoom:33%;" />
+<p>权限对应关系正确</p>
+
 </article>
 
                     
@@ -411,6 +548,59 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1安装openldap相关包">1.安装openldap相关包</a></li>
+    <li><a href="#2创建管理员根密码密码">2.创建管理员根密码密码</a></li>
+    <li><a href="#3配置ldap服务">3.配置LDAP服务</a>
+      <ul>
+        <li><a href="#31新建dbldif">3.1新建db.ldif:</a></li>
+        <li><a href="#32新建monitor文件">3.2新建monitor文件</a></li>
+        <li><a href="#33保存基础配置">3.3保存基础配置</a></li>
+        <li><a href="#34导入基础模板">3.4导入基础模板</a></li>
+        <li><a href="#35创建域和组织baseldif">3.5创建域和组织base.ldif</a></li>
+      </ul>
+    </li>
+    <li><a href="#4图形化管理">4.图形化管理</a>
+      <ul>
+        <li><a href="#41防火墙配置">4.1防火墙配置</a></li>
+        <li><a href="#42-ldap-admin">4.2 LDAP Admin</a></li>
+      </ul>
+    </li>
+    <li><a href="#5客户端配置">5.客户端配置</a>
+      <ul>
+        <li><a href="#1安装相关包">1.安装相关包</a></li>
+        <li><a href="#2配置">2.配置</a></li>
+        <li><a href="#3服务端配置">3.服务端配置</a></li>
+        <li><a href="#4测试">4.测试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>

@@ -8,12 +8,21 @@
     <language>zh</language>
     <lastBuildDate>Fri, 26 May 2023 13:17:40 +0800</lastBuildDate><atom:link href="/docs/slurm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Centos7下部署slurm集群</title>
-      <link>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Mon, 05 Jun 2023 23:12:35 +0800</pubDate>
+      <title>Slurm禁止普通用户SSH计算节点</title>
+      <link>/docs/slurm/slurm%E7%A6%81%E6%AD%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7ssh%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Tue, 06 Jun 2023 13:46:15 +0800</pubDate>
       
-      <guid>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</guid>
-      <description>安装munge服务 yum install -y munge munge-devel munge-libs管理节点创建密钥</description>
+      <guid>/docs/slurm/slurm%E7%A6%81%E6%AD%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7ssh%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slurmrestd配置和api使用</title>
+      <link>/docs/slurm/slurmrestd%E9%85%8D%E7%BD%AE%E5%92%8Capi%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 06 Jun 2023 13:39:03 +0800</pubDate>
+      
+      <guid>/docs/slurm/slurmrestd%E9%85%8D%E7%BD%AE%E5%92%8Capi%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -23,6 +32,16 @@
       
       <guid>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Centos7下部署slurm集群</title>
+      <link>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Mon, 05 Jun 2023 23:12:35 +0800</pubDate>
+      
+      <guid>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</guid>
+      <description>关闭selinux
+sed -i &#39;s/SELINUX=.</description>
     </item>
     
   </channel>
