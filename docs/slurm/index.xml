@@ -40,7 +40,7 @@
       <pubDate>Tue, 06 Jun 2023 08:16:50 +0800</pubDate>
       
       <guid>/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
-      <description></description>
+      <description>安装slurm 先自行切到root用户方便配置</description>
     </item>
     
     <item>

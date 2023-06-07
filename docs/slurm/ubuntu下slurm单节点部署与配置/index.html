@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="安装slurm 先自行切到root用户方便配置">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,6 +108,7 @@
     },
     "headline": "Ubuntu下slurm单节点部署与配置 | Slurm | 一言","datePublished": "2023-06-06T08:16:50+08:00",
     "dateModified": "2023-06-06T08:16:50+08:00",
+    "wordCount":  69 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -116,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "安装slurm 先自行切到root用户方便配置"
 }
 </script><meta property="og:title" content="Ubuntu下slurm单节点部署与配置 | Slurm | 一言" />
 <meta property="og:type" content="article" />
@@ -130,7 +131,7 @@
 
 
 
-<meta property="og:description" content="" />
+<meta property="og:description" content="安装slurm 先自行切到root用户方便配置" />
 
 
 
@@ -351,7 +352,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -363,7 +364,55 @@
   
   
 
-  
+  <h2 id="安装slurm">安装slurm</h2>
+<p>先自行切到root用户方便配置</p>
+<pre><code class="language-shell">apt install slurm slurm-wlm -y
+</code></pre>
+<h2 id="配置slurm">配置slurm</h2>
+<p>进入/etc/slurm</p>
+<p>创建<strong>slurm.conf</strong>文件</p>
+<pre><code>ClusterName=cool
+ControlMachine=orange
+SlurmUser=root
+SlurmctldPort=6817
+SlurmdPort=6818
+AuthType=auth/munge
+StateSaveLocation=/var/spool/slurmctld
+SlurmdSpoolDir=/var/spool/slurmd
+SwitchType=switch/none
+MpiDefault=none
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmdPidFile=/var/run/slurmd.pid
+ProctrackType=proctrack/pgid
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+ReturnToService=0
+SlurmctldTimeout=300
+SlurmdTimeout=300
+InactiveLimit=0
+MinJobAge=300
+KillWait=30
+Waittime=0
+SlurmctldDebug=info
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdDebug=info
+SlurmdLogFile=/var/log/slurm/slurmd.log
+JobCompType=jobcomp/none
+
+PartitionName=orange Nodes=orange Default=YES MaxTime=INFINITE State=UP
+NodeName=orange RealMemory=1837 Sockets=2 CoresPerSocket=4  ThreadsPerCore=1 State=UNKNOWN
+</code></pre>
+<h2 id="启动服务">启动服务</h2>
+<pre><code>systemctl start slurmctld
+systemctl start slurmd
+</code></pre>
+<p>开机自启</p>
+<pre><code class="language-shell">systemctl enable slurmctld slurmd
+</code></pre>
+<p>一键部署脚本</p>
+<pre><code class="language-shell">wget https://raw.iqiq.io/Bitllion/scripts/main/slurm/ubuntu/ubunut-single-genconf.sh &amp;&amp; chmod +x ubunut-single-genconf.sh &amp;&amp; ./ubunut-single-genconf.sh
+</code></pre>
+
 </article>
 
                     
@@ -414,6 +463,37 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装slurm">安装slurm</a></li>
+    <li><a href="#配置slurm">配置slurm</a></li>
+    <li><a href="#启动服务">启动服务</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>
