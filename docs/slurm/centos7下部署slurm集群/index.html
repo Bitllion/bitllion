@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  335 ,
+    "wordCount":  328 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -549,10 +549,6 @@ systemctl start slurmd
 <p><img src="/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
 <h2 id="总结">总结</h2>
 <p>slurm无配置模式并不是一个配置文件也不写，而是指计算节点无需配置文件，若计算节点的机器规格不统一，则不建议使用此模式，这种模式适合计算节点机器规格统一的时候，无需systemd服务，所以也适合跑在容器里</p>
-<h2 id="slurmrestd">slurmrestd</h2>
-<p>非root启动 slurm api服务，建议绑定jwt避免所有人都能拿到集群信息</p>
-<pre><code class="language-shell">slurmrestd -vvv localhost:88
-</code></pre>
 
 </article>
 
@@ -631,7 +627,6 @@ systemctl start slurmd
     </li>
     <li><a href="#启动服务">启动服务</a></li>
     <li><a href="#总结">总结</a></li>
-    <li><a href="#slurmrestd">slurmrestd</a></li>
   </ul>
 </nav>
 </div>

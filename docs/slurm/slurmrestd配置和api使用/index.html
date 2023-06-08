@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="编译 编译时加上 &ndash;with slurmrestd 选项">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,6 +108,7 @@
     },
     "headline": "Slurmrestd配置和api使用 | Slurm | 一言","datePublished": "2023-06-06T13:39:03+08:00",
     "dateModified": "2023-06-06T13:39:03+08:00",
+    "wordCount":  17 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -116,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "编译 编译时加上 \u0026ndash;with slurmrestd 选项"
 }
 </script><meta property="og:title" content="Slurmrestd配置和api使用 | Slurm | 一言" />
 <meta property="og:type" content="article" />
@@ -130,7 +131,7 @@
 
 
 
-<meta property="og:description" content="" />
+<meta property="og:description" content="编译 编译时加上 &ndash;with slurmrestd 选项" />
 
 
 
@@ -351,7 +352,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -363,7 +364,19 @@
   
   
 
-  
+  <h2 id="编译">编译</h2>
+<p>编译时加上 &ndash;with slurmrestd 选项</p>
+<h2 id="配置">配置</h2>
+<pre><code>AuthAltTypes=auth/jwt
+AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
+</code></pre>
+<p>slurm.conf  slurmdbd.conf 添加上面两行</p>
+<p>重启服务</p>
+<h2 id="启动">启动</h2>
+<p>普通用户</p>
+<pre><code>slurmrestd -vvv 10.249.2.110:6000
+</code></pre>
+
 </article>
 
                     
@@ -414,6 +427,37 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编译">编译</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#启动">启动</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>

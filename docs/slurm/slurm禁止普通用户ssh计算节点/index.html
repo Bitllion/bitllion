@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,6 +108,7 @@
     },
     "headline": "Slurm禁止普通用户SSH计算节点 | Slurm | 一言","datePublished": "2023-06-06T13:46:15+08:00",
     "dateModified": "2023-06-06T13:46:15+08:00",
+    "wordCount":  19 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -116,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上\u0026ndash;enable-pam这个参数"
 }
 </script><meta property="og:title" content="Slurm禁止普通用户SSH计算节点 | Slurm | 一言" />
 <meta property="og:type" content="article" />
@@ -130,7 +131,7 @@
 
 
 
-<meta property="og:description" content="" />
+<meta property="og:description" content="确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数" />
 
 
 
@@ -351,7 +352,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -363,7 +364,17 @@
   
   
 
-  
+  <p>确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数</p>
+<p>编辑SSHD的PAM配置文件/etc/pam.d/sshd，添加</p>
+<pre><code>account sufficient pam_listfile.so item=user sense=allow file=/etc/ssh/allowed_users onerr=fail
+account required pam_slurm_adopt.so
+</code></pre>
+<p>确保/etc/ssh/sshd_config中UsePAM yes</p>
+<p>重启计算节点sshd服务，即生效</p>
+<p>测试：</p>
+<p><img src="/img/image-20230607133405030.png" alt="image-20230607133405030"></p>
+<p>直接ssh计算节点失败</p>
+
 </article>
 
                     
