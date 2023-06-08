@@ -108,7 +108,7 @@
     },
     "headline": "Ldap用户统一认证服务安装 | HPC集群搭建 | 一言","datePublished": "2023-05-22T11:05:30+08:00",
     "dateModified": "2023-05-22T11:05:30+08:00",
-    "wordCount":  252 ,
+    "wordCount":  253 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -422,7 +422,8 @@ olcAccess: {0}to * by dn.base=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=exter
 <pre><code class="language-shell">ldapmodify -Y EXTERNAL -H ldapi:/// -f monitor.ldif
 </code></pre>
 <h3 id="33保存基础配置">3.3保存基础配置</h3>
-<pre><code class="language-shell">cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIGchown ldap:ldap /var/lib/ldap/*
+<pre><code class="language-shell">cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+chown ldap:ldap /var/lib/ldap/*
 </code></pre>
 <h3 id="34导入基础模板">3.4导入基础模板</h3>
 <pre><code class="language-shell">ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif

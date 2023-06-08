@@ -108,7 +108,7 @@
     },
     "headline": "Slurmrestd配置和api使用 | Slurm | 一言","datePublished": "2023-06-06T13:39:03+08:00",
     "dateModified": "2023-06-06T13:39:03+08:00",
-    "wordCount":  17 ,
+    "wordCount":  25 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -371,10 +371,16 @@
 AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
 </code></pre>
 <p>slurm.conf  slurmdbd.conf 添加上面两行</p>
-<p>重启服务</p>
-<h2 id="启动">启动</h2>
+<p>禁止普通用生成令牌在slurm中添加</p>
+<pre><code>AuthAltParameters=disable_token_creation
+</code></pre>
+<h2 id="启动slurmrestd">启动slurmrestd</h2>
 <p>普通用户</p>
 <pre><code>slurmrestd -vvv 10.249.2.110:6000
+</code></pre>
+<p>获取token</p>
+<pre><code>[jnist01@master ~]$ scontrol token username=jnist01
+SLURM_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYxMjc5MzAsImlhdCI6MTY4NjEyNjEzMCwic3VuIjoiam5pc3QwMSJ9.ZvDbMDUNBv1RMGRwH7dGfHHelQzEXI5-oypyaa_8TLs
 </code></pre>
 
 </article>
@@ -447,7 +453,7 @@ AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
   <ul>
     <li><a href="#编译">编译</a></li>
     <li><a href="#配置">配置</a></li>
-    <li><a href="#启动">启动</a></li>
+    <li><a href="#启动slurmrestd">启动slurmrestd</a></li>
   </ul>
 </nav>
 </div>

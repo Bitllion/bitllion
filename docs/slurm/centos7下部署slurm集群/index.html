@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  328 ,
+    "wordCount":  353 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -424,10 +424,18 @@ reboot
 </code></pre>
 <h2 id="配置数据库">配置数据库</h2>
 <p>安装数据库</p>
-<pre><code class="language-shell">yum install mysql
+<pre><code class="language-shell">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+rpm -ivh mysql80-community-release-el7-3.noarch.rpm
+yum install mysql-server
+</code></pre>
+<p>报错缺少key请执行</p>
+<pre><code>wget -q -O https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | apt-key add -
 </code></pre>
 <p>启动数据库服务,添加到开机自动启动项目</p>
-<pre><code class="language-shell">systemctl start mariadb &amp;&amp; systemctl enable mariadb
+<pre><code class="language-shell">systemctl start mysqld &amp;&amp; systemctl enable mysql
+</code></pre>
+<p>获取临时密码</p>
+<pre><code>grep 'temporary password' /var/log/mysqld.log
 </code></pre>
 <p>初始化数据库</p>
 <pre><code class="language-shell">mysql_secure_installation
@@ -436,7 +444,7 @@ reboot
 <pre><code class="language-shell">mysql -uroot -p
 </code></pre>
 <p>创建slurm用户，允许远程登录，密码为 ize2^&amp;*FzU6</p>
-<pre><code class="language-shell">CREATE USER 'slurm'@'%' IDENTIFIED BY 'ize2^&amp;*FzU6';
+<pre><code class="language-shell">CREATE USER 'slurm'@'%' IDENTIFIED WITH mysql_native_password BY 'ize2^&amp;*FzU6';
 FLUSH privileges;
 </code></pre>
 <p>建两张表，存放slurm信息，授予slurm用户对这两种表的所有权限</p>
@@ -545,6 +553,7 @@ systemctl start slurmd
 <p>将上述munge服务安装并启动好，并拷贝/etc/munge/munge.key 到计算节点目录，还有其他mpi等依赖安装好后，启动slurmd服务（计算节点无配置模式）</p>
 <pre><code class="language-shell">slurmd --conf-server master:6817
 </code></pre>
+<p>通过上面启动slurmd方式 连接上控制节点后，计算节点会在/var/spool/slurmd/conf-cache 下生成slurm.conf cgroup.conf等配置文件</p>
 <p>测试</p>
 <p><img src="/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
 <h2 id="总结">总结</h2>
