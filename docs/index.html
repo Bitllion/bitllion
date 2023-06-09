@@ -154,7 +154,7 @@
 
 
 
-<meta property="og:updated_time" content="2023-06-06T13:46:15&#43;08:00" />
+<meta property="og:updated_time" content="2023-06-06T13:39:12&#43;08:00" />
 
 
 
@@ -334,15 +334,6 @@
   
     <div class="mx-6">
       
-        <a href="/docs/slurm/slurm%E7%A6%81%E6%AD%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7ssh%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9/" class="no-underline">
-          <h4>Slurm禁止普通用户SSH计算节点</h4>
-        </a>
-        
-          确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上–enable-pam这个参数
-        
-      
-        
-          <div class="-mx-4 my-4 border-t"></div>
         <a href="/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" class="no-underline">
           <h4>Slurm使用手册</h4>
         </a>
@@ -352,11 +343,21 @@
       
         
           <div class="-mx-4 my-4 border-t"></div>
-        <a href="/docs/slurm/slurmrestd%E9%85%8D%E7%BD%AE%E5%92%8Capi%E4%BD%BF%E7%94%A8/" class="no-underline">
-          <h4>Slurmrestd配置和api使用</h4>
+        <a href="/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="no-underline">
+          <h4>Ubuntu下slurm单节点部署与配置</h4>
         </a>
         
-          编译 编译时加上 –with slurmrestd 选项
+          安装slurm 先自行切到root用户方便配置
+        
+      
+        
+          <div class="-mx-4 my-4 border-t"></div>
+        <a href="/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/" class="no-underline">
+          <h4>Centos7下部署slurm集群</h4>
+        </a>
+        
+          关闭selinux
+sed -i &#39;s/SELINUX=.
         
       
       <a href="/docs/slurm/" class="no-underline">
