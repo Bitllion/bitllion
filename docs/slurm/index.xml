@@ -8,6 +8,15 @@
     <language>zh</language>
     <lastBuildDate>Fri, 26 May 2023 13:17:40 +0800</lastBuildDate><atom:link href="/docs/slurm/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Slurmweb设计</title>
+      <link>/docs/slurm/slurmweb%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 12 Jun 2023 16:26:15 +0800</pubDate>
+      
+      <guid>/docs/slurm/slurmweb%E8%AE%BE%E8%AE%A1/</guid>
+      <description>作业账单查询 内容有： 账单id 用户名 用户组 作业id 作业名 作业开始时间 作业结束时间 队列名 队列单价 账单金额</description>
+    </item>
+    
+    <item>
       <title>Slurm使用手册</title>
       <link>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
       <pubDate>Tue, 06 Jun 2023 13:39:12 +0800</pubDate>

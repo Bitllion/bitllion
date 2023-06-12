@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  402 ,
+    "wordCount":  412 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -270,6 +270,17 @@ sed -i &#39;s/SELINUX=." />
     </div>
     
 <ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/slurm/slurmweb%E8%AE%BE%E8%AE%A1/">Slurmweb设计</a>
+        </div>
+        
+    </li>
+    
     
     
     
@@ -539,11 +550,22 @@ systemctl start slurmd
 <p><img src="/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
 <h2 id="slurm禁止普通用户ssh计算节点">Slurm禁止普通用户SSH计算节点</h2>
 <p>确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数</p>
-<p>编辑SSHD的PAM配置文件/etc/pam.d/sshd，添加</p>
+<p>编辑SSHD的PAM配置文件**/etc/pam.d/sshd**，添加</p>
 <pre><code class="language-shell">account sufficient pam_listfile.so item=user sense=allow file=/etc/ssh/allowed_users onerr=fail
 account required pam_slurm_adopt.so
 </code></pre>
-<p>确保/etc/ssh/sshd_config中UsePAM yes</p>
+<p><strong>/etc/pam.d/system-auth</strong>和**/etc/pam.d/password-auth**中取消pam_localuser.so和pam_systemd.so所在上的注释</p>
+<p>确保**/etc/ssh/sshd_config**中UsePAM yes</p>
+<p><strong>/etc/ssh/allowed_users</strong> 里配置白名单用户</p>
+<p>slurm.conf配置文件中有这三个参数</p>
+<pre><code class="language-plaintext">PrologFlags=CONTAIN
+TaskPlugin=task/cgroup
+ProctrackType=proctrack/cgroup
+</code></pre>
+<p>cgruop.conf有这两个参数</p>
+<pre><code>CgroupAutomount=yes
+ConstrainCores=yes
+</code></pre>
 <p>重启计算节点sshd服务，即生效</p>
 <p>测试：</p>
 <p><img src="/img/image-20230607133405030.png" alt="image-20230607133405030"></p>
