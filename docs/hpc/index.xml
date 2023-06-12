@@ -8,6 +8,15 @@
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Diskless 无盘linux集群搭建</title>
+      <link>/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 12 Jun 2023 13:09:00 +0800</pubDate>
+      
+      <guid>/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid>
+      <description>搭建无盘 linux 系统需要3种服务(器)，</description>
+    </item>
+    
+    <item>
       <title>IB网络配置</title>
       <link>/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 26 May 2023 10:51:07 +0800</pubDate>
