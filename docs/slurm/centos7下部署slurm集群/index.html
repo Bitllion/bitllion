@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  513 ,
+    "wordCount":  516 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -590,6 +590,9 @@ account required pam_slurm_adopt.so
 TaskPlugin=task/cgroup
 ProctrackType=proctrack/cgroup
 </code></pre>
+<blockquote>
+<p>注意：如果没有PrologFlags=CONTAIN 这项参数 则salloc后无法ssh计算节点</p>
+</blockquote>
 <p>cgruop.conf有这两个参数</p>
 <pre><code>CgroupAutomount=yes
 ConstrainCores=yes
