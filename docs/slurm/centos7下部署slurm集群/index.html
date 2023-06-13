@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  412 ,
+    "wordCount":  479 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -343,7 +343,7 @@ sed -i &#39;s/SELINUX=." />
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>2分钟阅读时长</span>
+    <span>3分钟阅读时长</span>
   </div>
 
   
@@ -550,13 +550,14 @@ systemctl start slurmd
 <p><img src="/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
 <h2 id="slurm禁止普通用户ssh计算节点">Slurm禁止普通用户SSH计算节点</h2>
 <p>确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数</p>
-<p>编辑SSHD的PAM配置文件**/etc/pam.d/sshd**，添加</p>
+<p>编辑SSHD的PAM配置文件/etc/pam.d/sshd，添加</p>
 <pre><code class="language-shell">account sufficient pam_listfile.so item=user sense=allow file=/etc/ssh/allowed_users onerr=fail
 account required pam_slurm_adopt.so
 </code></pre>
-<p><strong>/etc/pam.d/system-auth</strong>和**/etc/pam.d/password-auth**中取消pam_localuser.so和pam_systemd.so所在上的注释</p>
-<p>确保**/etc/ssh/sshd_config**中UsePAM yes</p>
+<p>/etc/pam.d/system-auth和/etc/pam.d/password-auth中取消pam_localuser.so和pam_systemd.so所在行的注释</p>
+<p>确保/etc/ssh/sshd_config中UsePAM yes</p>
 <p><strong>/etc/ssh/allowed_users</strong> 里配置白名单用户</p>
+<p><img src="/img/image-20230613153748654.png" alt="image-20230613153748654"></p>
 <p>slurm.conf配置文件中有这三个参数</p>
 <pre><code class="language-plaintext">PrologFlags=CONTAIN
 TaskPlugin=task/cgroup
@@ -582,13 +583,57 @@ AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
 <pre><code class="language-shell">AuthAltParameters=disable_token_creation
 </code></pre>
 <h3 id="启动slurmrestd">启动slurmrestd</h3>
-<p>普通用户</p>
-<pre><code class="language-shell">slurmrestd -vvv 10.249.2.110:6000
+<p>先随便声明一个SLURM_JWT变量</p>
+<pre><code>export SLURM_JWT=daemon
 </code></pre>
-<p>获取token</p>
-<pre><code class="language-shell">[jnist01@master ~]$ scontrol token username=jnist01
+<p>命令方式启动</p>
+<p>使用jnist01<strong>普通用户</strong>启动</p>
+<p>认证方式为<strong>rest_auth/jwt</strong></p>
+<p><strong>配置文件</strong>使用/etc/slurm/slurm.conf</p>
+<p><strong>路由地址</strong>0.0.0.0:8080</p>
+<pre><code class="language-shell">slurmrestd -vvv -u jnist01 -a rest_auth/jwt -f /etc/slurm/slurm.conf 0.0.0.0:8080
+</code></pre>
+<p><strong>scontrol</strong>命令获取token</p>
+<pre><code class="language-shell">[jnist01@master ~]$ scontrol token username=jnist01 lifespan=3600
 SLURM_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYxMjc5MzAsImlhdCI6MTY4NjEyNjEzMCwic3VuIjoiam5pc3QwMSJ9.ZvDbMDUNBv1RMGRwH7dGfHHelQzEXI5-oypyaa_8TLs
 </code></pre>
+<h3 id="测试">测试</h3>
+<p><img src="/img/image-20230613150616079.png" alt="image-20230613150616079"></p>
+<p>headers里加上下面这两个参数 分别为刚才用scontrol命令生成的token和用户名</p>
+<p>X-SLURM-USER-TOKEN</p>
+<p>X-SLURM-USER-NAME</p>
+<h3 id="进阶systemd服务">进阶systemd服务</h3>
+<p>配置 <strong>/usr/lib/systemd/system/slurmrestd.service</strong>：</p>
+<pre><code class="language-shell">[Unit]
+Description=Slurm REST daemon
+After=network-online.target slurmctld.service
+Wants=network-online.target
+ConditionPathExists=/etc/slurm/slurm.conf
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/slurmrestd
+User=bit
+Group=bit
+ExecStart=/usr/sbin/slurmrestd $SLURMRESTD_OPTIONS 0.0.0.0:8080
+Environment=&quot;SLURM_JWT=$SLURM_JWT&quot;
+Environment=&quot;SLURM_CONF=$SLURM_CONF&quot;
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>这里用user group用普通用户bit</p>
+<p>配置 <strong>/etc/sysconfig/slurmrestd</strong>：</p>
+<pre><code class="language-shell">SLURMRESTD_DEBUG=4
+SLURM_CONF=/etc/slurm/slurm.conf
+SLURM_JWT=daemon
+SLURMRESTD_OPTIONS=-u bit -a rest_auth/jwt
+</code></pre>
+<p>启动</p>
+<pre><code>systemctl daemon-reload &amp;&amp; systemctl restart slurmrestd &amp;&amp; systemctl status slurmrestd
+</code></pre>
+<p><img src="/img/image-20230613153116591.png" alt="image-20230613153116591"></p>
 <h2 id="总结">总结</h2>
 <p>slurm无配置模式并不是一个配置文件也不写，而是指计算节点无需配置文件，若计算节点的机器规格不统一，则不建议使用此模式，这种模式适合计算节点机器规格统一的时候，无需systemd服务，所以也适合跑在容器里</p>
 
@@ -674,6 +719,8 @@ SLURM_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYxMjc5MzAsImlhdCI6M
         <li><a href="#编译">编译</a></li>
         <li><a href="#配置">配置</a></li>
         <li><a href="#启动slurmrestd">启动slurmrestd</a></li>
+        <li><a href="#测试">测试</a></li>
+        <li><a href="#进阶systemd服务">进阶systemd服务</a></li>
       </ul>
     </li>
     <li><a href="#总结">总结</a></li>
