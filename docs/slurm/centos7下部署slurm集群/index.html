@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  516 ,
+    "wordCount":  517 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -601,6 +601,8 @@ ConstrainCores=yes
 <p>测试：</p>
 <p><img src="/img/image-20230607133405030.png" alt="image-20230607133405030"></p>
 <p>直接ssh计算节点失败</p>
+<p>先salloc申请节点，再ssh成功</p>
+<p><img src="/img/image-20230613160718199.png" alt="image-20230613160718199"></p>
 <h2 id="九slurm-api-安装和配置">九、Slurm API 安装和配置</h2>
 <h3 id="编译">编译</h3>
 <p>编译时加上 &ndash;with slurmrestd 选项</p>
