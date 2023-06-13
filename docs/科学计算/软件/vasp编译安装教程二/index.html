@@ -112,7 +112,7 @@
     },
     "headline": "Vasp编译安装教程二-插件篇 | 科学计算 | 一言","datePublished": "2023-05-26T13:31:32+08:00",
     "dateModified": "2023-05-26T13:31:32+08:00",
-    "wordCount":  822 ,
+    "wordCount":  842 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -428,7 +428,7 @@ pyamff_fortran/*.o ml_pyamff.o \
 opt.o \
 </code></pre>
 <p><img src="/img/image-20230601094037628.png" alt="image-20230601094037628"></p>
-<p>对于vasp6.3还需要修改一处，src/makefile最后一行再添加两行内容</p>
+<p>对于vasp6.3还需要修改一处，makefile.include 最后一行再添加两行内容</p>
 <pre><code>LIB= lib parser pyamff_fortran
 dependencies: sources libs
 </code></pre>
@@ -699,6 +699,15 @@ counter (file index): 1
   \___|_| |_|\__,_|
 
 </code></pre>
+<h2 id="ase">ase</h2>
+<p>ASE是用<a href="https://www.python.org/">Python</a>编程语言编写的原子模拟环境，旨在设置，引导和 分析原子模拟</p>
+<p>安装，同样使用刚才创建的conda虚拟环境</p>
+<p>然后安装依赖</p>
+<pre><code>pip install numpy scipy matplotlib flask pytest pytest-mock pytest-xdist spglib
+</code></pre>
+<p>安装ase</p>
+<pre><code>pip install ase
+</code></pre>
 
 </article>
 
@@ -813,6 +822,7 @@ counter (file index): 1
         <li><a href="#验证">验证</a></li>
       </ul>
     </li>
+    <li><a href="#ase">ase</a></li>
   </ul>
 </nav>
 </div>
