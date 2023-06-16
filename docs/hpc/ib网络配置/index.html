@@ -108,7 +108,7 @@
     },
     "headline": "IB网络配置 | HPC集群搭建 | 一言","datePublished": "2023-05-26T10:51:07+08:00",
     "dateModified": "2023-05-26T10:51:07+08:00",
-    "wordCount":  89 ,
+    "wordCount":  95 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -389,19 +389,22 @@ reboot
 <pre><code class="language-shell">tar xzf MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64.tgz
 cd MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64
 </code></pre>
-<p>大多数情况没有适配自己的内核无法直接安装，所以要先构建兼容自己当前内核的IB驱动，命令如下</p>
+<p>安装驱动,一般内核不匹配所以强制安装符合当前内核版本的，如果有nfs使用rdma协议需求可以佳nfsrdma选项</p>
+<pre><code class="language-shell">./mlnxofedinstall --all --force --add-kernel-support  --with-nfsrdma
+</code></pre>
+<p><del>大多数情况没有适配自己的内核无法直接安装，所以要先构建兼容自己当前内核的IB驱动，命令如下</del></p>
 <pre><code class="language-shell">./mlnx_add_kernel_support.sh -m /opt/source/MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64 --make-tgz
 </code></pre>
-<p>过程中提示输入y 回车继续</p>
-<p>生成新的IB驱动默认放在/tmp下，进入/tmp我们解压它，并进入解压后的目录</p>
+<p><del>过程中提示输入y 回车继续</del></p>
+<p><del>生成新的IB驱动默认放在/tmp下，进入/tmp我们解压它，并进入解压后的目录</del></p>
 <pre><code class="language-shell">cd /tmp
 tar xzf MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64-ext.tgz 
 cd MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64-ext
 </code></pre>
-<p>安装驱动：</p>
+<p><del>安装驱动：</del></p>
 <pre><code class="language-shell">./mlnxofedinstall
 </code></pre>
-<p>过程中提示输入y 回车继续</p>
+<p><del>过程中提示输入y 回车继续</del></p>
 <h3 id="3-启动ib设备配置网络">3. 启动IB设备，配置网络</h3>
 <pre><code class="language-shell">/etc/init.d/openibd restart
 mst start
