@@ -112,7 +112,7 @@
     },
     "headline": "Vasp编译安装教程二-插件篇 | 科学计算 | 一言","datePublished": "2023-05-26T13:31:32+08:00",
     "dateModified": "2023-05-26T13:31:32+08:00",
-    "wordCount":  842 ,
+    "wordCount":  846 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -428,7 +428,7 @@ pyamff_fortran/*.o ml_pyamff.o \
 opt.o \
 </code></pre>
 <p><img src="/img/image-20230601094037628.png" alt="image-20230601094037628"></p>
-<p>对于vasp6.3还需要修改一处，makefile.include 最后一行再添加两行内容</p>
+<p>对于vasp6.3还需要修改一处，src/makefile 文件中找到LIB 和 dependencies 对应的行 分别改成如下</p>
 <pre><code>LIB= lib parser pyamff_fortran
 dependencies: sources libs
 </code></pre>
