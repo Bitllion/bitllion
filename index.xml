@@ -6,7 +6,7 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 12 Jun 2023 16:26:15 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Jul 2023 15:51:41 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Slurmweb设计</title>
       <link>/docs/slurm/slurmweb%E8%AE%BE%E8%AE%A1/</link>
@@ -122,6 +122,15 @@
       
       <guid>/docs/hpc/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</guid>
       <description>Centos7 下部署操作</description>
+    </item>
+    
+    <item>
+      <title>Linux双网卡静态路由配置</title>
+      <link>/posts/linux%E5%8F%8C%E7%BD%91%E5%8D%A1%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 07 Jul 2023 15:51:41 +0800</pubDate>
+      
+      <guid>/posts/linux%E5%8F%8C%E7%BD%91%E5%8D%A1%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE/</guid>
+      <description>ubuntu netplan 配置</description>
     </item>
     
     <item>
