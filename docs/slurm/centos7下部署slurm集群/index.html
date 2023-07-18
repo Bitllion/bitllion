@@ -522,7 +522,7 @@ ReturnToService=1
 MPIDefault=pmi2
 
 AuthAltTypes=auth/jwt
-AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
+AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
 
 ProctrackType=proctrack/cgroup
 SchedulerType=sched/backfill
@@ -608,7 +608,7 @@ ConstrainCores=yes
 <p>编译时加上 &ndash;with slurmrestd 选项</p>
 <h3 id="配置">配置</h3>
 <pre><code class="language-shell">AuthAltTypes=auth/jwt
-AuthAltParameters=jwt_key=/var/spool/slurm/statesave/jwt_hs256.key
+AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
 </code></pre>
 <p>slurm.conf  slurmdbd.conf 添加上面两行</p>
 <p>禁止普通用生成令牌在slurm中添加</p>
