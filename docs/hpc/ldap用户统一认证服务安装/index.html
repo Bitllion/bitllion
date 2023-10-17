@@ -108,7 +108,7 @@
     },
     "headline": "Ldap用户统一认证服务安装 | HPC集群搭建 | 一言","datePublished": "2023-05-22T11:05:30+08:00",
     "dateModified": "2023-05-22T11:05:30+08:00",
-    "wordCount":  253 ,
+    "wordCount":  254 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -468,7 +468,8 @@ ou: Group
 <h2 id="4图形化管理">4.图形化管理</h2>
 <h3 id="41防火墙配置">4.1防火墙配置</h3>
 <p>使用前，防火墙放行ldap服务端口：</p>
-<pre><code class="language-shell">firewall-cmd --permanent --add-service=ldapfirewall-cmd --reload 
+<pre><code class="language-shell">firewall-cmd --permanent --add-service=ldap
+firewall-cmd --reload 
 </code></pre>
 <h3 id="42-ldap-admin">4.2 LDAP Admin</h3>
 <p><a href="http://www.ldapadmin.org/download/ldapadmin.html">LADP Admin下载地址</a>：</p>

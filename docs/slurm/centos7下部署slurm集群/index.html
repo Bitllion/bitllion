@@ -109,7 +109,7 @@ sed -i &#39;s/SELINUX=.">
     },
     "headline": "Centos7下部署slurm集群 | Slurm | 一言","datePublished": "2023-06-06T07:12:35+08:00",
     "dateModified": "2023-06-06T07:12:35+08:00",
-    "wordCount":  517 ,
+    "wordCount":  561 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -276,7 +276,7 @@ sed -i &#39;s/SELINUX=." />
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/slurm/slurmweb%E8%AE%BE%E8%AE%A1/">Slurmweb设计</a>
+                href="/docs/slurm/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">Ubuntu下slurm GPU集群编译安装</a>
         </div>
         
     </li>
@@ -363,19 +363,34 @@ reboot
 <pre><code>systemctl disable firewalld --now
 </code></pre>
 <h2 id="一安装munge服务">一、安装munge服务</h2>
+<p>创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</p>
+<pre><code>export MUNGEUSER=991
+groupadd -g $MUNGEUSER munge
+useradd  -m -c &quot;MUNGE Uid 'N' Gid Emporium&quot; -d /var/lib/munge -u $MUNGEUSER -g munge  -s /sbin/nologin munge
+</code></pre>
+<p>安装munge包</p>
 <pre><code class="language-shell">yum install -y munge munge-devel munge-libs
 </code></pre>
-<p>如果上面安装时找不到包，先安装epel-release 这个仓库</p>
+<p>如果上面安装时找不到包，先安装 <code>epel-release</code> 这个仓库</p>
 <p>管理节点创建密钥</p>
 <pre><code class="language-shell">/usr/sbin/create-munge-key
 </code></pre>
+<p>将密钥拷贝到计算节点</p>
+<pre><code>scp /etc/munge/munge.key node:/etc/munge/
+</code></pre>
+<blockquote>
+<p>注意： 有的系统 拷贝munge.key到计算节点后需要重新设置下计算节点的munge.key的权限 （ubuntu的 scp继承，centos不继承）</p>
+<pre><code>chown -R munge: /etc/munge/ /var/log/munge/ 
+chmod 0700 /etc/munge/ /var/log/munge/
+</code></pre>
+</blockquote>
 <p>开机自启服务</p>
 <pre><code class="language-shell">systemctl enable munge --now
 </code></pre>
 <h2 id="二编译安装pmi">二、编译安装pmi</h2>
 <p>openpmix项目主页 <a href="https://github.com/openpmix/openpmix/releases">Releases · openpmix/openpmix (github.com)</a></p>
 <p>下载bz2结尾的（一般bz2结尾的压缩包包含rpmbuild所需的信息）</p>
-<pre><code class="language-shell">wget https://download.njuu.cf/openpmix/openpmix/releases/download/v5.0.0rc1/pmix-5.0.0rc1.tar.bz2
+<pre><code class="language-shell">wget https://gh.ddlc.top/https://github.com/openpmix/openpmix/releases/download/v5.0.1/pmix-5.0.1.tar.bz2
 </code></pre>
 <p>如果没有rpmbuild命令先安装下</p>
 <pre><code class="language-shell">yum install -y rpm-build 
@@ -442,10 +457,10 @@ reboot
 <p>安装数据库</p>
 <pre><code class="language-shell">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
 rpm -ivh mysql80-community-release-el7-3.noarch.rpm
-yum install mysql-server
+yum install -y mysql-server
 </code></pre>
 <p>报错缺少key请执行</p>
-<pre><code>wget -q -O https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 | apt-key add -
+<pre><code>rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 </code></pre>
 <p>启动数据库服务,添加到开机自动启动项目</p>
 <pre><code class="language-shell">systemctl start mysqld &amp;&amp; systemctl enable mysql
