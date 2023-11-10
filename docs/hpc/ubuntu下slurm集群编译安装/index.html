@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="配置时间同步 ntpdata ntp.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"HPC集群搭建",
+      "item":"/docs/hpc/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Ubuntu下slurm GPU集群编译安装",
+      "item":"/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"
+    },
+    "headline": "Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言","datePublished": "2023-10-17T10:23:41+08:00",
+    "dateModified": "2023-10-17T10:23:41+08:00",
+    "wordCount":  321 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "配置时间同步 ntpdata ntp."
+}
+</script><meta property="og:title" content="Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" />
+
+
+
+
+<meta property="og:description" content="配置时间同步 ntpdata ntp." />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-10-17T10:23:41&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-10-17T10:23:41&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="http://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/hpc/">HPC集群搭建</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">Ubuntu下slurm GPU集群编译安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">Diskless 无盘linux集群搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">Slurm使用手册</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/">Ubuntu下slurm单节点部署与配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Nvidia显卡驱动安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/lustre%E5%AE%89%E8%A3%85/">Lustre安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/">slurm集群部署Centos7版</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/hpc/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Ldap用户统一认证服务安装</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Ubuntu下slurm GPU集群编译安装</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-10-17</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>2分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="配置时间同步">配置时间同步</h2>
+<pre><code>ntpdata ntp.aliyun.com
+</code></pre>
+<h2 id="配置免密和hosts">配置免密和hosts</h2>
+<pre><code>#ib
+10.2.5.10 imaster
+10.2.5.11 inode01
+10.2.5.12 inode02
+10.2.5.13 inode03
+</code></pre>
+<h2 id="配置全局用户">配置全局用户</h2>
+<p>所有节点创建同样的munge用户</p>
+<pre><code>export MUNGEUSER=991
+groupadd -g $MUNGEUSER munge
+useradd  -m -c &quot;MUNGE Uid 'N' Gid Emporium&quot; -d /var/lib/munge -u $MUNGEUSER -g munge  -s /sbin/nologin munge
+</code></pre>
+<h2 id="安装依赖">安装依赖</h2>
+<p>所有节点安装</p>
+<pre><code>apt install gcc man2html libnuma-dev libpam0g-dev libjwt-dev libjson-c-dev libhttp-parser-dev libyaml-dev libhdf5-dev liblz4-dev libhwloc-dev libfreeipmi-dev libipmimonitoring-dev libfreeipmi-dev librrd-dev rrdtool libgtk2.0-dev liblua5.2-dev libcurl-ocaml-dev libmysqlclient-dev munge libmunge-dev build-essential libdbus-glib-1-dev libgirepository1.0-dev -y
+</code></pre>
+<h2 id="配置munge">配置munge</h2>
+<p>管理节点生成munge.key 并设置权限</p>
+<pre><code>dd if=/dev/urandom bs=1 count=1024 &gt; /etc/munge/munge.key
+chown munge: /etc/munge/munge.key 
+chmod 400 /etc/munge/munge.key
+</code></pre>
+<p>将生成的密钥分发到计算节点</p>
+<pre><code>scp /etc/munge/munge.key XXX
+</code></pre>
+<p>所有节点设置munge权限</p>
+<pre><code>chown -R munge: /etc/munge/ /var/log/munge/ 
+chmod 0700 /etc/munge/ /var/log/munge/
+</code></pre>
+<p>所有节点开启munge服务器</p>
+<pre><code>systemctl restart munge
+systemctl status munge
+</code></pre>
+<p>可以在管理节点 验证munge服务和各计算节点的联通性</p>
+<pre><code>munge -n 
+munge -n | unmunge 
+munge -n | ssh NODE1 unmunge
+</code></pre>
+<h2 id="编译安装slurm">编译安装slurm</h2>
+<p>前往slurm官网 <a href="https://www.schedmd.com/downloads.php">https://www.schedmd.com/downloads.php</a></p>
+<p>选择较为稳定的版本下载 <a href="https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2">https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2</a></p>
+<pre><code class="language-shell">wget https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2
+</code></pre>
+<p>解压</p>
+<pre><code class="language-shell">tar xjf slurm-22.05.8.tar.bz2
+</code></pre>
+<p>进入解压好的目录，构建并安装</p>
+<pre><code class="language-shell">./configure --prefix=/usr/local/slurm
+make -j
+make install
+</code></pre>
+<p>安装的目录指定到了/usr/local/slurm</p>
+<p>配置slurm systemd 服务</p>
+<pre><code class="language-shell">cd etc/
+chmod 755 *.service
+cp *.service /lib/systemd/system/
+</code></pre>
+<h2 id="slurm配置">slurm配置</h2>
+<p>/usr/local/slurm/etc/ 下</p>
+<p>gres.conf</p>
+<pre><code>Name=gpu Type=A800 File=/dev/nvidia0
+Name=gpu Type=A800 File=/dev/nvidia1
+Name=gpu Type=A800 File=/dev/nvidia2
+Name=gpu Type=A800 File=/dev/nvidia3
+Name=gpu Type=A800 File=/dev/nvidia4
+Name=gpu Type=A800 File=/dev/nvidia5
+Name=gpu Type=A800 File=/dev/nvidia6
+Name=gpu Type=A800 File=/dev/nvidia7
+</code></pre>
+<p>cgroup.conf</p>
+<pre><code>CgroupAutomount=yes
+ConstrainDevices=yes
+ConstrainCores=yes
+ConstrainRAMSpace=yes
+</code></pre>
+<p>slurmdbd.conf</p>
+<pre><code>DbdHost=imaster
+DbdAddr=127.0.0.1
+SlurmUser=root
+MessageTimeout=60
+DebugLevel=debug5
+DefaultQOS=normal
+LogFile=/var/log/slurm/slurmdbd.log
+PidFile=/var/run/slurmdbd.pid
+StorageType=accounting_storage/mysql
+StorageHost=imaster
+StorageLoc=slurm_acct_db
+StoragePort=3306
+StorageUser=slurm
+StoragePass=ize2^&amp;*FzU6
+</code></pre>
+<p>slurm.conf</p>
+<pre><code>ClusterName=cool
+SlurmctldHost=imaster
+SlurmUser=root
+
+
+SlurmctldPort=6817
+SlurmdPort=6818
+
+
+StateSaveLocation=/var/spool/slurm
+SlurmdSpoolDir=/var/spool/slurm
+MailProg=/usr/bin/s-nail
+ReturnToService=2
+
+MPIDefault=pmi2
+
+PrologFlags=CONTAIN
+ProctrackType=proctrack/cgroup
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+
+TaskPlugin=task/cgroup
+
+
+SlurmctldDebug=info
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdDebug=error
+SlurmdLogFile=/var/log/slurm/slurmd.log
+
+JobCompType=jobcomp/mysql
+JobCompHost=imaster
+JobCompUser=slurm
+JobCompPass=ize2^&amp;*FzU6
+
+
+JobAcctGatherType=jobacct_gather/linux
+JobAcctGatherFrequency=30
+
+
+AccountingStorageType=accounting_storage/slurmdbd
+AccountingStorageHost=imaster
+#AccountingStorageTRES=gres/gpu,cpu,mem,energy,node,billing,fs/disk,vmem,pages
+AccountingStorageTRES=gres/gpu
+GresTypes=gpu
+
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmdPidFile=/var/run/slurmd.pid
+
+SlurmctldTimeout=60
+SlurmdTimeout=120
+InactiveLimit=0
+MinJobAge=600
+KillWait=10
+WaitTime=10
+
+# 节点配置
+include /usr/local/slurm/etc/nodes.conf
+</code></pre>
+<p>nodes.conf</p>
+<pre><code>################################node  计算节点物理属性配置 #############################
+##gpu node 物理属性
+NodeName=imaster  NodeAddr=10.2.5.10 RealMemory=1031690 Sockets=2 CoresPerSocket=32 ThreadsPerCore=2 CPUs=128 Gres=gpu:8 State=UNKNOWN
+NodeName=inode01  NodeAddr=10.2.5.11 RealMemory=1031690 Sockets=2 CoresPerSocket=32 ThreadsPerCore=2 CPUs=128 Gres=gpu:8 State=UNKNOWN
+NodeName=inode02  NodeAddr=10.2.5.12 RealMemory=1031690 Sockets=2 CoresPerSocket=32 ThreadsPerCore=2 CPUs=128 Gres=gpu:8 State=UNKNOWN
+NodeName=inode03  NodeAddr=10.2.5.13 RealMemory=1031690 Sockets=2 CoresPerSocket=32 ThreadsPerCore=2 CPUs=128 Gres=gpu:8 State=UNKNOWN
+
+################################分区设置#############################################
+##GPU part
+PartitionName=imaster Nodes=imaster Default=NO MaxTime=INFINITE State=UP
+PartitionName=inode01 Nodes=inode01 Default=NO MaxTime=INFINITE State=UP
+PartitionName=inode02 Nodes=inode02 Default=NO MaxTime=INFINITE State=UP
+PartitionName=inode03 Nodes=inode03 Default=NO MaxTime=INFINITE State=UP
+PartitionName=work Nodes=inode[01-03] Default=NO MaxTime=INFINITE State=UP
+PartitionName=all Nodes=imaster,inode[01-03] Default=NO MaxTime=INFINITE State=UP
+</code></pre>
+<p>管理节点启动slurmctld slurmdbd slurmd （如果管理节点也做计算）服务</p>
+<p>计算节点启动slurmd服务</p>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/" class="block">Ipmitool 教程</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" class="block">Diskless 无盘linux集群搭建</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置时间同步">配置时间同步</a></li>
+    <li><a href="#配置免密和hosts">配置免密和hosts</a></li>
+    <li><a href="#配置全局用户">配置全局用户</a></li>
+    <li><a href="#安装依赖">安装依赖</a></li>
+    <li><a href="#配置munge">配置munge</a></li>
+    <li><a href="#编译安装slurm">编译安装slurm</a></li>
+    <li><a href="#slurm配置">slurm配置</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -6,13 +6,41 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 17 Oct 2023 10:23:41 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Nov 2023 16:40:43 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lvm实战</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Fri, 10 Nov 2023 16:40:43 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/</guid>
+      <description>案例 将lvm home分区 空间分给lvm 根分区 1.</description>
+    </item>
+    
+    <item>
+      <title>各厂商服务器IPMI默认密码</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Tue, 07 Nov 2023 10:56:26 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/</guid>
+      <description>Dell服务器R620的ipmi默认密码
+ipmi用户名：登录iDRAC的用户名，默认为 root</description>
+    </item>
+    
+    <item>
+      <title>Ipmitool 教程</title>
+      <link>/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 07 Nov 2023 10:38:22 +0800</pubDate>
+      
+      <guid>/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/</guid>
+      <description>用户配置 查看用户列表 ipmitool user list 1可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2 ，所以需要根据上面的命令实际查看</description>
+    </item>
+    
     <item>
       <title>Ubuntu下slurm GPU集群编译安装</title>
-      <link>/docs/slurm/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 17 Oct 2023 10:23:41 +0800</pubDate>
       
-      <guid>/docs/slurm/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>配置时间同步 ntpdata ntp.</description>
     </item>
     
@@ -27,19 +55,19 @@
     
     <item>
       <title>Slurm使用手册</title>
-      <link>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <link>/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
       <pubDate>Tue, 06 Jun 2023 13:39:12 +0800</pubDate>
       
-      <guid>/docs/slurm/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <guid>/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
       <description>test </description>
     </item>
     
     <item>
       <title>Ubuntu下slurm单节点部署与配置</title>
-      <link>/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 06 Jun 2023 08:16:50 +0800</pubDate>
       
-      <guid>/docs/slurm/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
       <description>安装slurm 先自行切到root用户方便配置</description>
     </item>
     
@@ -107,12 +135,12 @@
     </item>
     
     <item>
-      <title>Slurm安装</title>
-      <link>/docs/hpc/slurm%E5%AE%89%E8%A3%85/</link>
+      <title>slurm集群部署Centos7版</title>
+      <link>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</link>
       <pubDate>Tue, 23 May 2023 16:31:25 +0800</pubDate>
       
-      <guid>/docs/hpc/slurm%E5%AE%89%E8%A3%85/</guid>
-      <description>1.安装munge slurm通过munge进行认证</description>
+      <guid>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</guid>
+      <description>1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</description>
     </item>
     
     <item>
@@ -140,16 +168,6 @@
       
       <guid>/posts/%E6%B5%8E%E5%8D%97-%E9%BB%84%E5%B1%B1%E4%BA%8C%E6%97%A5%E6%B8%B8%E6%94%BB%E7%95%A5/</guid>
       <description>旅游路线：</description>
-    </item>
-    
-    <item>
-      <title>Centos7下部署slurm集群</title>
-      <link>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Tue, 06 Jun 2023 07:12:35 +0800</pubDate>
-      
-      <guid>/docs/slurm/centos7%E4%B8%8B%E9%83%A8%E7%BD%B2slurm%E9%9B%86%E7%BE%A4/</guid>
-      <description>关闭selinux
-sed -i &#39;s/SELINUX=.</description>
     </item>
     
     <item>

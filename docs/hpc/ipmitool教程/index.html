@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>HPC集群搭建 | 一言</title>
+<title>Ipmitool 教程 | HPC集群搭建 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。
-它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。">
+  content="用户配置 查看用户列表 ipmitool user list 1可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2 ，所以需要根据上面的命令实际查看">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +88,11 @@
       "@type": "ListItem",
       "position": 2 ,
       "name":"HPC集群搭建",
-      "item":"/docs/hpc/"}]
+      "item":"/docs/hpc/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Ipmitool 教程",
+      "item":"/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/"}]
 }
 </script>
 
@@ -101,9 +104,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/hpc/"
+        "@id": "/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/"
     },
-    "headline": "HPC集群搭建 | 一言","wordCount":  75 ,
+    "headline": "Ipmitool 教程 | HPC集群搭建 | 一言","datePublished": "2023-11-07T10:38:22+08:00",
+    "dateModified": "2023-11-07T10:38:22+08:00",
+    "wordCount":  137 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -112,23 +117,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。\n它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。"
+    "description": "用户配置 查看用户列表 ipmitool user list 1\r可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2 ，所以需要根据上面的命令实际查看"
 }
-</script><meta property="og:title" content="HPC集群搭建 | 一言" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="Ipmitool 教程 | HPC集群搭建 | 一言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/hpc/" />
+<meta property="og:url" content="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/" />
 
 
 
 
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
+<meta property="og:description" content="用户配置 查看用户列表 ipmitool user list 1可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2 ，所以需要根据上面的命令实际查看" />
 
 
 
@@ -145,14 +148,17 @@
 
 
 
-<meta property="og:updated_time" content="2023-05-25T16:31:22&#43;08:00" />
+<meta property="article:published_time" content="2023-11-07T10:38:22&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-11-07T10:38:22&#43;08:00" />
 
 
 
 <meta property="article:section" content="docs" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/docs/hpc/index.xml" title="一言" />
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -239,6 +245,11 @@
 
 
 
+
+
+
+
+
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -247,7 +258,7 @@
 <div id="sidebar-toc"
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
-        <a class="text-eureka hover:text-eureka"
+        <a class=" hover:text-eureka"
             href="/docs/hpc/">HPC集群搭建</a>
         
         
@@ -262,7 +273,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
         </div>
         
@@ -374,6 +385,8 @@
 
 
 
+
+
             </div>
 
         </div>
@@ -381,7 +394,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">HPC集群搭建</h1>
+  <h1 class="mb-4">Ipmitool 教程</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -389,7 +402,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-05-25</span
+      >2023-11-07</span
     >
   </div>
   <div class="me-6 my-2">
@@ -406,50 +419,73 @@
   
   
 
-  <p>Slurm是一个开源的作业调度系统，用于管理大型计算集群中的作业。</p>
-<p>它支持各种作业类型，包括批处理作业、交互式作业和并行作业。Slurm提供了一组命令行工具和API，用于提交、管理和监视作业。它还提供了丰富的资源管理功能，包括节点管理、任务分配和资源分配。Slurm已经被广泛应用于各种高性能计算领域，如科学计算、工程分析、数据分析等。</p>
-<h2 id="slurm架构图">slurm架构图</h2>
-<p><img src="/img/9e22f5b21e58160e651f314a4cb92a9.png" alt="9e22f5b21e58160e651f314a4cb92a9"></p>
-<h1 id="前期准备">前期准备</h1>
-<p>统一安装<a href="http://mirrors.neusoft.edu.cn/almalinux/8.7/isos/x86_64/">almalinux 8.7</a></p>
-<p>主机名分别为 master 、node0、node1、node2</p>
-<h2 id="规划网络">规划网络</h2>
-<p>编辑 /etc/hosts</p>
-<pre><code class="language-shell">192.168.5.99 master
-192.168.5.100 node0
-192.168.5.101 node1
-192.168.5.102 node2
-
-192.168.6.99 ibmaster
-192.168.6.100 ibnode0
-192.168.6.101 ibnode1
-192.168.6.102 ibnode2
-
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+  <h2 id="用户配置">用户配置</h2>
+<h3 id="查看用户列表">查看用户列表</h3>
+<pre><code class="language-shell">ipmitool user list 1
 </code></pre>
-<h2 id="ssh免密">ssh免密</h2>
-<p>master节点生成ssh密钥对</p>
-<pre><code class="language-shell">ssh-keygen
+<p><img src="/img/image-20231107110546572.png" alt="image-20231107110546572"></p>
+<p>可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2  ，所以需要根据上面的命令实际查看</p>
+<h3 id="创建用户">创建用户</h3>
+<pre><code class="language-shell">格式： ipmitool user set name 用户ID  用户名
 </code></pre>
-<p>复制到其他节点</p>
-<pre><code class="language-shell">ssh-copy-id node0
-ssh-copy-id node1
-ssh-copy-id node2
+<p><img src="/img/image-20231107111311235.png" alt="image-20231107111311235"></p>
+<h3 id="设置密码">设置密码</h3>
+<pre><code class="language-shell">格式： ipmitool user set password  用户ID号  密码
 </code></pre>
-<h2 id="更新系统和软件">更新系统和软件</h2>
-<pre><code class="language-shell">yum install wget vim tree git patch epel-release -y
-yum update -y
+<p><img src="/img/image-20231107112016924.png" alt="image-20231107112016924"></p>
+<h3 id="给用户权限">给用户权限</h3>
+<pre><code class="language-shell">格式：ipmitool channel setaccess 1 用户ID callin=on ipmi=on link=on privilege=值
+privilege的值：
+1 callback 
+2 user 
+3 operator 
+4 administrator 
+5 OEM
 </code></pre>
-<h2 id="禁用防火墙">禁用防火墙</h2>
-<pre><code class="language-shell">systemctl stop firewalld
-systemctl disable firewalld
+<p><img src="/img/image-20231107111840743.png" alt="image-20231107111840743"></p>
+<h3 id="启用禁用用户">启用/禁用用户</h3>
+<pre><code>格式： ipmitool user enable/disable 用户ID
 </code></pre>
-<h2 id="禁用selinux">禁用selinux</h2>
-<pre><code class="language-shell">sed -i 's/^SELINUX=enforcing$/SELINUS=disabled/' /etc/selinux/config
+<h3 id="查看授权">查看授权</h3>
+<pre><code class="language-shell">格式：ipmitool channel getaccess 1 用户ID
 </code></pre>
-<p>重启电脑生效</p>
-<pre><code class="language-shell">reboot
+<h3 id="远程访问">远程访问</h3>
+<pre><code class="language-shell">格式：ipmitool -I lanplus -H ip地址 -U 用户名 -P 用户密码 命令
+</code></pre>
+<p><img src="/img/image-20231110145933264.png" alt="image-20231110145933264"></p>
+<h2 id="系统信息">系统信息</h2>
+<h3 id="查看功耗信息">查看功耗信息</h3>
+<pre><code class="language-shell">ipmitool dcmi power reading
+</code></pre>
+<p><img src="/img/image-20231107143634544.png" alt="image-20231107143634544"></p>
+<h3 id="查看电源状态">查看电源状态</h3>
+<pre><code>ipmitool chassis power status
+</code></pre>
+<h4 id="开机">开机</h4>
+<pre><code>ipmitool chassis power on
+</code></pre>
+<h4 id="关机">关机</h4>
+<pre><code>ipmitool chassis power off
+</code></pre>
+<h4 id="重启">重启</h4>
+<pre><code>ipmitool chassis power reset
+</code></pre>
+<h3 id="查看sdr信息">查看SDR信息</h3>
+<pre><code>ipmitool sdr
+</code></pre>
+<h3 id="查看传感器信息">查看传感器信息</h3>
+<pre><code>ipmitool sensor list 
+</code></pre>
+<h2 id="网络">网络</h2>
+<h3 id="查看网络">查看网络</h3>
+<pre><code>ipmitool lan print 1
+</code></pre>
+<p><img src="/img/image-20231110150402073.png" alt="image-20231110150402073"></p>
+<h3 id="修改网络">修改网络</h3>
+<p>设置BMC IPV4地址为 10.1.10.201  掩码255.255.255.0  网关10.1.10.1</p>
+<pre><code>ipmitool lan set 1 ipaddr 10.1.10.201  
+ipmitool lan set 1 netmask 255.255.255.0 
+ipmitool lan set 1 defgw ipaddr 10.1.10.1
 </code></pre>
 
 </article>
@@ -463,6 +499,20 @@ systemctl disable firewalld
 
 
                     
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="block">Ubuntu下slurm GPU集群编译安装</a>
+      
+    </div>
+  </div>
+
 
                     
 
@@ -501,15 +551,37 @@ systemctl disable firewalld
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#slurm架构图">slurm架构图</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#规划网络">规划网络</a></li>
-    <li><a href="#ssh免密">ssh免密</a></li>
-    <li><a href="#更新系统和软件">更新系统和软件</a></li>
-    <li><a href="#禁用防火墙">禁用防火墙</a></li>
-    <li><a href="#禁用selinux">禁用selinux</a></li>
+    <li><a href="#用户配置">用户配置</a>
+      <ul>
+        <li><a href="#查看用户列表">查看用户列表</a></li>
+        <li><a href="#创建用户">创建用户</a></li>
+        <li><a href="#设置密码">设置密码</a></li>
+        <li><a href="#给用户权限">给用户权限</a></li>
+        <li><a href="#启用禁用用户">启用/禁用用户</a></li>
+        <li><a href="#查看授权">查看授权</a></li>
+        <li><a href="#远程访问">远程访问</a></li>
+      </ul>
+    </li>
+    <li><a href="#系统信息">系统信息</a>
+      <ul>
+        <li><a href="#查看功耗信息">查看功耗信息</a></li>
+        <li><a href="#查看电源状态">查看电源状态</a>
+          <ul>
+            <li><a href="#开机">开机</a></li>
+            <li><a href="#关机">关机</a></li>
+            <li><a href="#重启">重启</a></li>
+          </ul>
+        </li>
+        <li><a href="#查看sdr信息">查看SDR信息</a></li>
+        <li><a href="#查看传感器信息">查看传感器信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络">网络</a>
+      <ul>
+        <li><a href="#查看网络">查看网络</a></li>
+        <li><a href="#修改网络">修改网络</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>

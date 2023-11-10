@@ -8,12 +8,48 @@
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Ipmitool 教程</title>
+      <link>/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 07 Nov 2023 10:38:22 +0800</pubDate>
+      
+      <guid>/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/</guid>
+      <description>用户配置 查看用户列表 ipmitool user list 1可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2 ，所以需要根据上面的命令实际查看</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下slurm GPU集群编译安装</title>
+      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 17 Oct 2023 10:23:41 +0800</pubDate>
+      
+      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <description>配置时间同步 ntpdata ntp.</description>
+    </item>
+    
+    <item>
       <title>Diskless 无盘linux集群搭建</title>
       <link>/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Mon, 12 Jun 2023 13:09:00 +0800</pubDate>
       
       <guid>/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid>
       <description>搭建无盘 linux 系统需要3种服务(器)，</description>
+    </item>
+    
+    <item>
+      <title>Slurm使用手册</title>
+      <link>/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Tue, 06 Jun 2023 13:39:12 +0800</pubDate>
+      
+      <guid>/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>test </description>
+    </item>
+    
+    <item>
+      <title>Ubuntu下slurm单节点部署与配置</title>
+      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 06 Jun 2023 08:16:50 +0800</pubDate>
+      
+      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+      <description>安装slurm 先自行切到root用户方便配置</description>
     </item>
     
     <item>
@@ -44,12 +80,12 @@
     </item>
     
     <item>
-      <title>Slurm安装</title>
-      <link>/docs/hpc/slurm%E5%AE%89%E8%A3%85/</link>
+      <title>slurm集群部署Centos7版</title>
+      <link>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</link>
       <pubDate>Tue, 23 May 2023 16:31:25 +0800</pubDate>
       
-      <guid>/docs/hpc/slurm%E5%AE%89%E8%A3%85/</guid>
-      <description>1.安装munge slurm通过munge进行认证</description>
+      <guid>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</guid>
+      <description>1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</description>
     </item>
     
     <item>
