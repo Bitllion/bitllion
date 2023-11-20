@@ -8,6 +8,15 @@
     <language>zh</language>
     <lastBuildDate>Mon, 05 Jun 2023 23:21:34 +0800</lastBuildDate><atom:link href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Centos8部署openvswitch</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/</link>
+      <pubDate>Mon, 20 Nov 2023 13:28:08 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/</guid>
+      <description>安装依赖 yum groupinstall -y &amp;quot;Development Tools&amp;quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager构建rpm包 mkdir -p ~/rpmbuild/SOURCEScd /root/rpmbuild/SOURCES/wget https://www.</description>
+    </item>
+    
+    <item>
       <title>Lvm实战</title>
       <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/</link>
       <pubDate>Fri, 10 Nov 2023 16:40:43 +0800</pubDate>

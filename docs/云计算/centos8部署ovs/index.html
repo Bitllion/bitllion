@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>云计算 | 一言</title>
+<title>Centos8部署openvswitch | 云计算 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="安装依赖 yum groupinstall -y &quot;Development Tools&quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager构建rpm包 mkdir -p ~/rpmbuild/SOURCEScd /root/rpmbuild/SOURCES/wget https://www.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,7 +88,11 @@
       "@type": "ListItem",
       "position": 2 ,
       "name":"云计算",
-      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"}]
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Centos8部署openvswitch",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/"}]
 }
 </script>
 
@@ -100,9 +104,12 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"
+        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/"
     },
-    "headline": "云计算 | 一言","publisher": {
+    "headline": "Centos8部署openvswitch | 云计算 | 一言","datePublished": "2023-11-20T13:28:08+08:00",
+    "dateModified": "2023-11-20T13:28:08+08:00",
+    "wordCount":  160 ,
+    "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
         "logo": {
@@ -110,23 +117,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "安装依赖 yum groupinstall -y \u0026quot;Development Tools\u0026quot;\ryum install -y dnf-plugins-core epel-release\ryum config-manager --set-enabled powertools\ryum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager\r构建rpm包 mkdir -p ~\/rpmbuild\/SOURCES\rcd \/root\/rpmbuild\/SOURCES\/\rwget https:\/\/www."
 }
-</script><meta property="og:title" content="云计算 | 一言" />
-<meta property="og:type" content="website" />
+</script><meta property="og:title" content="Centos8部署openvswitch | 云计算 | 一言" />
+<meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/" />
+<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/" />
 
 
 
 
-
-<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
-
+<meta property="og:description" content="安装依赖 yum groupinstall -y &quot;Development Tools&quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager构建rpm包 mkdir -p ~/rpmbuild/SOURCEScd /root/rpmbuild/SOURCES/wget https://www." />
 
 
 
@@ -143,14 +148,17 @@
 
 
 
-<meta property="og:updated_time" content="2023-06-05T23:21:34&#43;08:00" />
+<meta property="article:published_time" content="2023-11-20T13:28:08&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-11-20T13:28:08&#43;08:00" />
 
 
 
 <meta property="article:section" content="docs" />
 
 
-<link rel="alternate" type="application/rss+xml" href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" title="一言" />
+
 
 
   <body class="flex min-h-screen flex-col">
@@ -237,6 +245,11 @@
 
 
 
+
+
+
+
+
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -245,7 +258,7 @@
 <div id="sidebar-toc"
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
-        <a class="text-eureka hover:text-eureka"
+        <a class=" hover:text-eureka"
             href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
         
         
@@ -260,7 +273,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/">Centos8部署openvswitch</a>
         </div>
         
@@ -295,6 +308,8 @@
 
 
 
+
+
             </div>
 
         </div>
@@ -302,7 +317,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">云计算</h1>
+  <h1 class="mb-4">Centos8部署openvswitch</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -310,12 +325,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-06-05</span
+      >2023-11-20</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>1分钟阅读时长</span>
   </div>
 
   
@@ -327,7 +342,92 @@
   
   
 
-  
+  <h2 id="安装依赖">安装依赖</h2>
+<pre><code class="language-shell">yum groupinstall -y &quot;Development Tools&quot;
+yum install -y dnf-plugins-core epel-release
+yum config-manager --set-enabled powertools
+yum install -y python3-sphinx python3-six numactl-devel libbpf-devel  libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager
+</code></pre>
+<h2 id="构建rpm包">构建rpm包</h2>
+<pre><code class="language-shell">mkdir  -p  ~/rpmbuild/SOURCES
+cd  /root/rpmbuild/SOURCES/
+wget https://www.openvswitch.org/releases/openvswitch-3.2.1.tar.gz
+tar xzf openvswitch-3.2.1.tar.gz
+rpmbuild -bb --nocheck openvswitch-3.2.1/rhel/openvswitch-fedora.spec
+</code></pre>
+<p>安装</p>
+<pre><code class="language-shell">cd /root/rpmbuild/RPMS/x86_64/
+yum localinstall -y openvswitch-3.2.1-1.el8.x86_64.rpm
+</code></pre>
+<h2 id="配置ovs网桥">配置ovs网桥</h2>
+<p>创建名为ovs_br0的网桥</p>
+<pre><code class="language-shell">ovs-vsctl add-br ovs_br0
+</code></pre>
+<p>将物理网卡ens18添加到 ovs_br0</p>
+<pre><code class="language-shell">ovs-vsctl add-port ovs_br0 ens18
+ovs-vsctl show
+</code></pre>
+<p><img src="/img/image-20231120153414314.png" alt="image-20231120153414314"></p>
+<h2 id="使用os-net-config配置ovs网络">使用os-net-config配置ovs网络</h2>
+<p>每次输命令配置ovs网络太麻烦了，所以我们使用<strong>openstack</strong>官方推出的<strong>os-net-config</strong>工具配置ovs网络，这是以yaml配置文件形式定义的</p>
+<p>安装os-net-config</p>
+<pre><code class="language-shell">pip3 install os-net-config
+</code></pre>
+<p>安装的时候提示PyYAML版本不对，那强制安装下PyYAML这个包再安装os-net-config</p>
+<pre><code class="language-shell">pip3 install PyYAML --ignore-installed
+</code></pre>
+<p>创建配置文件目录</p>
+<pre><code class="language-shell">mkdir /etc/os-net-config
+</code></pre>
+<p>在这下面创建config.yaml,内容如下：</p>
+<pre><code class="language-yaml">network_config:
+  - type: ovs_bridge
+    name: ovs-br0
+    use_dhcp: false
+    use_dhcpv6: false
+    addresses:
+    - ip_netmask: 10.249.2.102/24
+    routes:
+      - ip_netmask: 10.249.2.0/24
+        next_hop: 10.249.2.1
+        default: true
+    dns_servers: 223.5.5.5
+    members:
+      -
+        type: interface
+        name: ens18
+</code></pre>
+<p>这是将绑定单张物理网卡到ovs-br0网桥的配置文件，如果想要其他的像VLAN之类的定义，请参考 <a href="https://docs.openstack.org/os-net-config/latest/examples.html#">链接</a></p>
+<p>执行命令 <strong>os-net-config</strong>即可生效</p>
+<img src="/img/image-20231120154658401.png" alt="image-20231120154658401" style="zoom: 67%;" />
+<p>但发现开机并不会自动启动，需要重启network服务,新建 /usr/local/bin/restart_network.sh 并赋予可执行权限：</p>
+<pre><code class="language-shell">#!/bin/bash
+sleep 5
+systemctl restart network
+</code></pre>
+<p>打开 /etc/rc.local 文件，并在文件的末尾添加以下行：</p>
+<pre><code class="language-shell">/usr/local/bin/restart_network.sh &amp;
+</code></pre>
+<p>通过查看network-scripts里的脚本可知，这个工具修改了network-scripts的network配置文件</p>
+<p><img src="/img/image-20231120154924252.png" alt="image-20231120154924252"></p>
+<h2 id="虚拟机相关配置">虚拟机相关配置</h2>
+<p>新建 /etc/libvirt/qemu/networks/ovs.xml:</p>
+<pre><code class="language-xml">&lt;network&gt;
+  &lt;name&gt;ovs&lt;/name&gt;
+  &lt;forward mode=&quot;bridge&quot;/&gt;
+  &lt;bridge name=&quot;ovs-br0&quot;/&gt;
+  &lt;virtualport type=&quot;openvswitch&quot;/&gt;
+&lt;/network&gt;
+</code></pre>
+<p>将配置文件加到virsh网络中</p>
+<pre><code class="language-shell">virsh net-define /etc/libvirt/qemu/networks/ovs.xml
+</code></pre>
+<p><img src="/img/image-20231120163853210.png" alt="image-20231120163853210"></p>
+<p>查看</p>
+<pre><code class="language-shell">virsh net-list --all
+</code></pre>
+<p><img src="/img/image-20231120163807056.png" alt="image-20231120163807056"></p>
+
 </article>
 
                     
@@ -339,6 +439,20 @@
 
 
                     
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/" class="block">Lvm实战</a>
+      
+    </div>
+  </div>
+
 
                     
 
@@ -359,6 +473,39 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装依赖">安装依赖</a></li>
+    <li><a href="#构建rpm包">构建rpm包</a></li>
+    <li><a href="#配置ovs网桥">配置ovs网桥</a></li>
+    <li><a href="#使用os-net-config配置ovs网络">使用os-net-config配置ovs网络</a></li>
+    <li><a href="#虚拟机相关配置">虚拟机相关配置</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>
