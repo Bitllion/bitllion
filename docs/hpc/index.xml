@@ -8,6 +8,25 @@
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Centos7安装pbs</title>
+      <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</link>
+      <pubDate>Sat, 16 Dec 2023 15:27:41 +0800</pubDate>
+      
+      <guid>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Centos7离线安装luster</title>
+      <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/</link>
+      <pubDate>Tue, 12 Dec 2023 09:42:01 +0800</pubDate>
+      
+      <guid>/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/</guid>
+      <description>集群规划如下：
+节点以太IP 节点IB IP 磁盘数目 服务 10.</description>
+    </item>
+    
+    <item>
       <title>Ipmitool 教程</title>
       <link>/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/</link>
       <pubDate>Tue, 07 Nov 2023 10:38:22 +0800</pubDate>
@@ -71,11 +90,11 @@
     </item>
     
     <item>
-      <title>Lustre安装</title>
-      <link>/docs/hpc/lustre%E5%AE%89%E8%A3%85/</link>
+      <title>Lustre编译安装</title>
+      <link>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Wed, 24 May 2023 16:31:33 +0800</pubDate>
       
-      <guid>/docs/hpc/lustre%E5%AE%89%E8%A3%85/</guid>
+      <guid>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>1. 添加lustre官方源 编辑 /etc/yum.</description>
     </item>
     

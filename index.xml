@@ -6,7 +6,26 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 20 Nov 2023 13:28:08 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Dec 2023 15:27:41 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Centos7安装pbs</title>
+      <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</link>
+      <pubDate>Sat, 16 Dec 2023 15:27:41 +0800</pubDate>
+      
+      <guid>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Centos7离线安装luster</title>
+      <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/</link>
+      <pubDate>Tue, 12 Dec 2023 09:42:01 +0800</pubDate>
+      
+      <guid>/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/</guid>
+      <description>集群规划如下：
+节点以太IP 节点IB IP 磁盘数目 服务 10.</description>
+    </item>
+    
     <item>
       <title>Centos8部署openvswitch</title>
       <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/</link>
@@ -135,11 +154,11 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
     </item>
     
     <item>
-      <title>Lustre安装</title>
-      <link>/docs/hpc/lustre%E5%AE%89%E8%A3%85/</link>
+      <title>Lustre编译安装</title>
+      <link>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Wed, 24 May 2023 16:31:33 +0800</pubDate>
       
-      <guid>/docs/hpc/lustre%E5%AE%89%E8%A3%85/</guid>
+      <guid>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>1. 添加lustre官方源 编辑 /etc/yum.</description>
     </item>
     
