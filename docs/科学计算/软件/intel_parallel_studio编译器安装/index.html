@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Ubuntu下slurm单节点部署与配置 | HPC集群搭建 | 一言</title>
+<title>Intel_parallel_studio编译器安装 | 科学计算 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="安装slurm 先自行切到root用户方便配置">
+  content="1.先安装依赖 yum install -y gcc gcc-c&#43;&#43; gcc-gfortran pango gtk2.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -87,12 +87,16 @@
       "item":"/docs/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"HPC集群搭建",
-      "item":"/docs/hpc/"},{
+      "name":"科学计算",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/"},{
       "@type": "ListItem",
       "position": 3 ,
-      "name":"Ubuntu下slurm单节点部署与配置",
-      "item":"/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/"}]
+      "name":"软件",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Intel_parallel_studio编译器安装",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/"}]
 }
 </script>
 
@@ -104,11 +108,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+        "@id": "/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/"
     },
-    "headline": "Ubuntu下slurm单节点部署与配置 | HPC集群搭建 | 一言","datePublished": "2023-06-06T08:16:50+08:00",
-    "dateModified": "2023-06-06T08:16:50+08:00",
-    "wordCount":  69 ,
+    "headline": "Intel_parallel_studio编译器安装 | 科学计算 | 一言","datePublished": "2023-12-16T15:43:14+08:00",
+    "dateModified": "2023-12-16T15:43:14+08:00",
+    "wordCount":  200 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -117,21 +121,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "安装slurm 先自行切到root用户方便配置"
+    "description": "1.先安装依赖 yum install -y gcc gcc-c\u002b\u002b gcc-gfortran pango gtk2."
 }
-</script><meta property="og:title" content="Ubuntu下slurm单节点部署与配置 | HPC集群搭建 | 一言" />
+</script><meta property="og:title" content="Intel_parallel_studio编译器安装 | 科学计算 | 一言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/" />
+<meta property="og:url" content="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/" />
 
 
 
 
-<meta property="og:description" content="安装slurm 先自行切到root用户方便配置" />
+<meta property="og:description" content="1.先安装依赖 yum install -y gcc gcc-c&#43;&#43; gcc-gfortran pango gtk2." />
 
 
 
@@ -148,10 +152,10 @@
 
 
 
-<meta property="article:published_time" content="2023-06-06T08:16:50&#43;08:00" />
+<meta property="article:published_time" content="2023-12-16T15:43:14&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2023-06-06T08:16:50&#43;08:00" />
+<meta property="article:modified_time" content="2023-12-16T15:43:14&#43;08:00" />
 
 
 
@@ -250,6 +254,11 @@
 
 
 
+
+
+
+
+
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -259,7 +268,7 @@
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class=" hover:text-eureka"
-            href="/docs/hpc/">HPC集群搭建</a>
+            href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/">科学计算</a>
         
         
         
@@ -272,10 +281,27 @@
     
     
     <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/">编译</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/hpc/centos7%E4%B8%8Bio500%E5%AE%89%E8%A3%85%E5%92%8C%E6%B5%8B%E8%AF%95/">Centos7下io500安装和测试</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">编译过程</a>
         </div>
+        
+    </li>
+    
+    
+</ul>
+
         
     </li>
     
@@ -283,75 +309,20 @@
     
     
     <li class="py-2">
-        <div class="">
+        <div class=" pb-2 ">
             <a class=" hover:text-eureka"
-                href="/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/">Centos7安装pbs</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/">软件</a>
         </div>
         
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/">Centos7离线安装luster</a>
-        </div>
         
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">Ubuntu下slurm GPU集群编译安装</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">Diskless 无盘linux集群搭建</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">Slurm使用手册</a>
-        </div>
-        
-    </li>
-    
+<ul class="ps-6">
     
     
     
     <li class="py-2">
         <div class="">
             <a class=" text-eureka  hover:text-eureka"
-                href="/docs/hpc/ubuntu%E4%B8%8Bslurm%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%85%8D%E7%BD%AE/">Ubuntu下slurm单节点部署与配置</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/">Intel_parallel_studio编译器安装</a>
         </div>
         
     </li>
@@ -362,7 +333,7 @@
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/">Vasp编译安装教程一</a>
         </div>
         
     </li>
@@ -373,41 +344,14 @@
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/hpc/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Nvidia显卡驱动安装</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/">Vasp编译安装教程二-插件篇</a>
         </div>
         
     </li>
     
     
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">Lustre编译安装</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/">slurm集群部署Centos7版</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Ldap用户统一认证服务安装</a>
-        </div>
+</ul>
+
         
     </li>
     
@@ -420,6 +364,8 @@
 
 
 
+
+
             </div>
 
         </div>
@@ -427,7 +373,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">Ubuntu下slurm单节点部署与配置</h1>
+  <h1 class="mb-4">Intel_parallel_studio编译器安装</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -435,7 +381,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-06-06</span
+      >2023-12-16</span
     >
   </div>
   <div class="me-6 my-2">
@@ -452,53 +398,78 @@
   
   
 
-  <h2 id="安装slurm">安装slurm</h2>
-<p>先自行切到root用户方便配置</p>
-<pre><code class="language-shell">apt install slurm slurm-wlm -y
+  <h2 id="1先安装依赖">1.先安装依赖</h2>
+<pre><code>yum install -y gcc gcc-c++ gcc-gfortran pango gtk2.x86_64 xorg-x11-server-Xorg xorg-x11-apps xorg-x11-font-utils xorg-x11-fonts-Type1 xclock xorg-x11-xauth xorg-x11-utils xorg-x11-fonts-* libstdc++.i686 compat-libstdc+±33.i686 glibc-devel.i686
 </code></pre>
-<h2 id="配置slurm">配置slurm</h2>
-<p>进入/etc/slurm</p>
-<p>创建<strong>slurm.conf</strong>文件</p>
-<pre><code>ClusterName=cool
-ControlMachine=orange
-SlurmUser=root
-SlurmctldPort=6817
-SlurmdPort=6818
-AuthType=auth/munge
-StateSaveLocation=/var/spool/slurmctld
-SlurmdSpoolDir=/var/spool/slurmd
-SwitchType=switch/none
-MpiDefault=none
-SlurmctldPidFile=/var/run/slurmctld.pid
-SlurmdPidFile=/var/run/slurmd.pid
-ProctrackType=proctrack/pgid
-SelectType=select/cons_tres
-SelectTypeParameters=CR_Core_Memory
-ReturnToService=0
-SlurmctldTimeout=300
-SlurmdTimeout=300
-InactiveLimit=0
-MinJobAge=300
-KillWait=30
-Waittime=0
-SlurmctldDebug=info
-SlurmctldLogFile=/var/log/slurm/slurmctld.log
-SlurmdDebug=info
-SlurmdLogFile=/var/log/slurm/slurmd.log
-JobCompType=jobcomp/none
+<h2 id="2安装intel2018">2.安装intel2018</h2>
+<p>解压安装包</p>
+<pre><code>cd /root/parallel_studio_xe_2018_update4_cluster_edition
+./install.sh
+#看提示选择
+</code></pre>
+<h2 id="3证书">3.证书</h2>
+<p><a href="http://pan.bitllion.top:88/d/jn/hpc/intel/intel.lic">http://pan.bitllion.top:88/d/jn/hpc/intel/intel.lic</a></p>
+<h2 id="4配置环境变量">4.配置环境变量</h2>
+<p>modulefile示例</p>
+<pre><code class="language-shell">#%Module1.0
 
-PartitionName=orange Nodes=orange Default=YES MaxTime=INFINITE State=UP
-NodeName=orange RealMemory=1837 Sockets=2 CoresPerSocket=4  ThreadsPerCore=1 State=UNKNOWN
-</code></pre>
-<h2 id="启动服务">启动服务</h2>
-<pre><code>systemctl start slurmctld
-systemctl start slurmd
-</code></pre>
-<p>开机自启</p>
-<pre><code class="language-shell">systemctl enable slurmctld slurmd
-</code></pre>
-<p>一键部署脚本</p>
-<pre><code class="language-shell">wget https://raw.iqiq.io/Bitllion/scripts/main/slurm/ubuntu/ubunut-single-genconf.sh &amp;&amp; chmod +x ubunut-single-genconf.sh &amp;&amp; ./ubunut-single-genconf.sh
+module-whatis &quot;Intel Parallel Studio.&quot;
+
+proc ModulesHelp { } {
+puts stderr &quot;Intel Parallel Studio.&quot;
+}
+
+
+prepend-path LD_LIBRARY_PATH &quot;/share/app/intel2018/lib&quot;
+prepend-path PATH &quot;/share/app/intel2018/bin&quot;
+prepend-path MANPATH &quot;/share/app/intel2018/man&quot;
+prepend-path CMAKE_PREFIX_PATH &quot;/share/app/intel2018/&quot;
+prepend-path CPATH &quot;/share/app/intel2018/include&quot;
+setenv ADVISOR_2018_DIR &quot;/share/app/intel2018/advisor_2018.4.0.574144&quot;
+prepend-path CLASSPATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib/mpi.jar:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/lib/daal.jar&quot;
+prepend-path CPATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/ipp/include:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/include:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/pstl/include:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/include:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/include:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/include&quot;
+setenv DAALROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal&quot;
+setenv GDBSERVER_MIC &quot;/share/app/intel2018/debugger_2018/gdb/targets/intel64/x200/bin/gdbserver&quot;
+setenv GDB_CROSS &quot;/share/app/intel2018/debugger_2018/gdb/intel64/bin/gdb-ia&quot;
+prepend-path INFOPATH &quot;/share/app/intel2018/documentation_2018/en/debugger//gdb-ia/info/:/share/app/intel2018/documentation_2018/en/debugger//gdb-igfx/info/&quot;
+setenv INSPECTOR_2018_DIR &quot;/share/app/intel2018/inspector_2018.4.0.574143&quot;
+prepend-path INTEL_LICENSE_FILE &quot;/share/app/intel2018/licenses:/opt/intel/licenses:/share/app/intel2018/intel/licenses:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/licenses:/opt/intel/licenses:/sh3/ysuanbase/home/yeesuan10000/intel/licenses&quot;
+setenv INTEL_PYTHONHOME &quot;/share/app/intel2018/debugger_2018/python/intel64/&quot;
+setenv IPPROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/ipp&quot;
+setenv I_MPI_ROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi&quot;
+prepend-path LD_LIBRARY_PATH &quot;/share/app/intel2018/itac/2018.4.025/intel64/slib:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/lib:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/mic/lib:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/ipp/lib/intel64:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.1:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.1:/share/app/intel2018/debugger_2018/iga/lib:/share/app/intel2018/debugger_2018/libipt/intel64/lib:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/../tbb/lib/intel64_lin/gcc4.4&quot;
+prepend-path LIBRARY_PATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/ipp/lib/intel64:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.1:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb/lib/intel64/gcc4.1:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/lib/intel64_lin:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/daal/../tbb/lib/intel64_lin/gcc4.4&quot;
+setenv MKLROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl&quot;
+setenv MPM_LAUNCHER &quot;/share/app/intel2018/debugger_2018/mpm/mic/bin/start_mpm.sh&quot;
+prepend-path NLSPATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/compiler/lib/intel64/locale/%l_%t/%N:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/lib/intel64_lin/locale/%l_%t/%N:/share/app/intel2018/debugger_2018/gdb/intel64/share/locale/%l_%t/%N&quot;
+prepend-path PKG_CONFIG_PATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/bin/pkgconfig&quot;
+setenv PSTLROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/pstl&quot;
+prepend-path PYTHONPATH &quot;/share/app/intel2018/advisor_2018.4.0.574144/pythonapi&quot;
+setenv TBBROOT &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/tbb&quot;
+setenv VT_ADD_LIBS &quot;-ldwarf -lelf -lvtunwind -lm -lpthread&quot;
+setenv VT_ARCH &quot;intel64&quot;
+setenv VT_LIB_DIR &quot;/share/app/intel2018/itac/2018.4.025/intel64/lib&quot;
+setenv VT_MPI &quot;impi4&quot;
+setenv VT_ROOT &quot;/share/app/intel2018/itac/2018.4.025&quot;
+setenv VT_SLIB_DIR &quot;/share/app/intel2018/itac/2018.4.025/intel64/slib&quot;
+prepend-path MANPATH &quot;/share/app/intel2018/itac/2018.4.025/man:/share/app/intel2018/man/common:/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/man:/share/app/intel2018/documentation_2018/en/debugger//gdb-ia/man/:/share/app/intel2018/documentation_2018/en/debugger//gdb-igfx/man/:::&quot;
+append-path PATH &quot;/share/app/intel2018/parallel_studio_xe_2018.4.057/bin&quot;
+prepend-path PATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin&quot;
+prepend-path PATH &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/bin/intel64&quot;
+prepend-path PATH &quot;/share/app/intel2018/itac/2018.4.025/intel64/bin&quot;
+prepend-path PATH &quot;/share/app/intel2018/itac/2018.4.025/intel64/bin&quot;
+prepend-path PATH &quot;/share/app/intel2018/inspector_2018.4.0.574143/bin64&quot;
+prepend-path PATH &quot;/share/app/intel2018/advisor_2018.4.0.574144/bin64&quot;
+setenv CC &quot;/share/app/intel2018/bin/icc&quot;
+setenv CXX &quot;/share/app/intel2018/bin/icpc&quot;
+setenv FC &quot;/share/app/intel2018/bin/ifort&quot;
+setenv F77 &quot;/share/app/intel2018/bin/ifort&quot;
+setenv F90 &quot;/share/app/intel2018/bin/ifort&quot;
+setenv MPIFC &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpif90&quot;
+setenv MPICXX &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpicxx&quot;
+setenv MPIF77 &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpif77&quot;
+setenv MPICC &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpicc&quot;
+setenv MPIF90 &quot;/share/app/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpif90&quot;
 </code></pre>
 
 </article>
@@ -517,16 +488,11 @@ systemctl start slurmd
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/docs/hpc/slurm%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" class="block">Slurm使用手册</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/docs/hpc/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="block">IB网络配置</a>
+        <a href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/" class="block">Vasp编译安装教程一</a>
       
     </div>
   </div>
@@ -569,9 +535,10 @@ systemctl start slurmd
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#安装slurm">安装slurm</a></li>
-    <li><a href="#配置slurm">配置slurm</a></li>
-    <li><a href="#启动服务">启动服务</a></li>
+    <li><a href="#1先安装依赖">1.先安装依赖</a></li>
+    <li><a href="#2安装intel2018">2.安装intel2018</a></li>
+    <li><a href="#3证书">3.证书</a></li>
+    <li><a href="#4配置环境变量">4.配置环境变量</a></li>
   </ul>
 </nav>
 </div>
