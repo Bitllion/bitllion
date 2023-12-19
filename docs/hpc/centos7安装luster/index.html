@@ -109,7 +109,7 @@
     },
     "headline": "Centos7离线安装luster | HPC集群搭建 | 一言","datePublished": "2023-12-12T09:42:01+08:00",
     "dateModified": "2023-12-12T09:42:01+08:00",
-    "wordCount":  932 ,
+    "wordCount":  949 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -270,17 +270,6 @@
     </div>
     
 <ul class="ps-6">
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/hpc/centos7%E4%B8%8Bio500%E5%AE%89%E8%A3%85%E5%92%8C%E6%B5%8B%E8%AF%95/">Centos7下io500安装和测试</a>
-        </div>
-        
-    </li>
-    
     
     
     
@@ -736,6 +725,19 @@ mkdir /mnt/ost0
 #lustre01
 mount.lustre lustre01@o2ib:/lustre /share
 </code></pre>
+<h2 id="9io500性能测试">9.IO500性能测试</h2>
+<p>1.下载源码包</p>
+<p><a href="http://pan.bitllion.top:88/d/jn/hpc/test/io500.tgz">http://pan.bitllion.top:88/d/jn/hpc/test/io500.tgz</a></p>
+<p>2.解压编译安装</p>
+<pre><code>tar xzf io500.tgz
+cd io500
+module load mpi/mpich-3.0-x86_64
+CC=mpicc ./prepare.sh
+</code></pre>
+<p>执行prepare.sh即可编译，并在当前目录下生成io500可执行程序和配置文件</p>
+<p>3.测试</p>
+<p><img src="/img/771130158b2e833eb0f7efa9914d768.png" alt="771130158b2e833eb0f7efa9914d768"></p>
+<p>可以看到单机32线程跑的结果如图，但因为是在存储服务器做的测试，会有通信阻塞，实际性能会比图中更高</p>
 
 </article>
 
@@ -826,6 +828,7 @@ mount.lustre lustre01@o2ib:/lustre /share
     </li>
     <li><a href="#7测试">7.测试</a></li>
     <li><a href="#8测试raid6下创建oss">8.测试raid6下创建oss</a></li>
+    <li><a href="#9io500性能测试">9.IO500性能测试</a></li>
   </ul>
 </nav>
 </div>

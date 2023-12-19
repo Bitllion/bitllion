@@ -17,22 +17,13 @@
     </item>
     
     <item>
-      <title>Centos7下io500安装和测试</title>
-      <link>/docs/hpc/centos7%E4%B8%8Bio500%E5%AE%89%E8%A3%85%E5%92%8C%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Sat, 16 Dec 2023 15:37:19 +0800</pubDate>
-      
-      <guid>/docs/hpc/centos7%E4%B8%8Bio500%E5%AE%89%E8%A3%85%E5%92%8C%E6%B5%8B%E8%AF%95/</guid>
-      <description>1.下载源码包
-http://pan.bitllion.top:88/d/jn/hpc/test/io500.tgz</description>
-    </item>
-    
-    <item>
       <title>Centos7安装pbs</title>
       <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</link>
       <pubDate>Sat, 16 Dec 2023 15:27:41 +0800</pubDate>
       
       <guid>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</guid>
-      <description></description>
+      <description>机器配置
+主机名 ip master 192.</description>
     </item>
     
     <item>
