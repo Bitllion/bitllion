@@ -8,6 +8,15 @@
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Ubuntu搭建nis服务</title>
+      <link>/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 19 Dec 2023 14:15:01 +0800</pubDate>
+      
+      <guid>/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/</guid>
+      <description>节点名 节点ip master.</description>
+    </item>
+    
+    <item>
       <title>Centos7安装pbs</title>
       <link>/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/</link>
       <pubDate>Sat, 16 Dec 2023 15:27:41 +0800</pubDate>

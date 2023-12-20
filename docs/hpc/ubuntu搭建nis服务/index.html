@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>Centos7安装pbs | HPC集群搭建 | 一言</title>
+<title>Ubuntu搭建nis服务 | HPC集群搭建 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="机器配置
-主机名 ip master 192.">
+  content="节点名 节点ip master.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -92,8 +91,8 @@
       "item":"/docs/hpc/"},{
       "@type": "ListItem",
       "position": 3 ,
-      "name":"Centos7安装pbs",
-      "item":"/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/"}]
+      "name":"Ubuntu搭建nis服务",
+      "item":"/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/"}]
 }
 </script>
 
@@ -105,11 +104,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/"
+        "@id": "/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/"
     },
-    "headline": "Centos7安装pbs | HPC集群搭建 | 一言","datePublished": "2023-12-16T15:27:41+08:00",
-    "dateModified": "2023-12-16T15:27:41+08:00",
-    "wordCount":  164 ,
+    "headline": "Ubuntu搭建nis服务 | HPC集群搭建 | 一言","datePublished": "2023-12-19T14:15:01+08:00",
+    "dateModified": "2023-12-19T14:15:01+08:00",
+    "wordCount":  127 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -118,22 +117,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "机器配置\n主机名 ip master 192."
+    "description": "节点名 节点ip master."
 }
-</script><meta property="og:title" content="Centos7安装pbs | HPC集群搭建 | 一言" />
+</script><meta property="og:title" content="Ubuntu搭建nis服务 | HPC集群搭建 | 一言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/" />
+<meta property="og:url" content="/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/" />
 
 
 
 
-<meta property="og:description" content="机器配置
-主机名 ip master 192." />
+<meta property="og:description" content="节点名 节点ip master." />
 
 
 
@@ -150,10 +148,10 @@
 
 
 
-<meta property="article:published_time" content="2023-12-16T15:27:41&#43;08:00" />
+<meta property="article:published_time" content="2023-12-19T14:15:01&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2023-12-16T15:27:41&#43;08:00" />
+<meta property="article:modified_time" content="2023-12-19T14:15:01&#43;08:00" />
 
 
 
@@ -275,7 +273,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/">Ubuntu搭建nis服务</a>
         </div>
         
@@ -286,7 +284,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" text-eureka  hover:text-eureka"
+            <a class=" hover:text-eureka"
                 href="/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/">Centos7安装pbs</a>
         </div>
         
@@ -429,7 +427,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">Centos7安装pbs</h1>
+  <h1 class="mb-4">Ubuntu搭建nis服务</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -437,7 +435,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-12-16</span
+      >2023-12-19</span
     >
   </div>
   <div class="me-6 my-2">
@@ -454,101 +452,93 @@
   
   
 
-  <p>机器配置</p>
-<table>
+  <table>
 <thead>
 <tr>
-<th>主机名</th>
-<th>ip</th>
+<th>节点名</th>
+<th>节点ip</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>master</td>
-<td>192.168.2.1</td>
+<td>master.nis.local</td>
+<td>10.249.2.104</td>
 </tr>
 <tr>
-<td>node01</td>
-<td>192.168.2.2</td>
-</tr>
-<tr>
-<td>node02</td>
-<td>192.168.2.3</td>
-</tr>
-<tr>
-<td>node03</td>
-<td>192.168.2.4</td>
-</tr>
-<tr>
-<td>node04</td>
-<td>192.168.2.5</td>
-</tr>
-<tr>
-<td>node05</td>
-<td>192.168.2.6</td>
-</tr>
-<tr>
-<td>node07</td>
-<td>192.168.2.7</td>
+<td>node1</td>
+<td>10.249.2.105</td>
 </tr>
 </tbody>
 </table>
-<h2 id="安装">安装</h2>
-<p>配置好主机名和SSH互相免密</p>
-<p>安装依赖</p>
-<pre><code class="language-shell">yum -y install libX11-devel libXt-devel libedit-devel libical-devel ncurses-devel postgresql-devel python-devel python-devel tcl-devel tk-devel swig expat-devel openssl-devel libXext libXft gcc autoconf automake libtool hwloc-devel rpm-build
+<h2 id="1配置hostname和hosts">1.配置hostname和hosts</h2>
+<p>配置hostname</p>
+<pre><code class="language-shell">root@master:~# hostnamectl set-hostname master.nis.local
+root@node1:~# hostnamectl set-hostname node1
 </code></pre>
-<p>pbs github地址</p>
-<p><a href="https://github.com/openpbs/openpbs/releases">Releases · openpbs/openpbs (github.com)</a></p>
-<pre><code class="language-shell">wget https://github.com/openpbs/openpbs/releases/download/v19.1.3/pbspro_19.1.3.centos_7.zip
-tar zxvf pbspro_19.1.3.centos_7.zip
+<p>编辑/etc/hosts</p>
+<pre><code class="language-shell">10.249.2.104 master master.nis.local nis.local
+10.249.2.105 node1 
 </code></pre>
-<p>设置环境变量 追加到/etc/profile</p>
-<pre><code class="language-shell">export PBS_SERVER=master
-export PBS_EXEC=/opt/pbs
-export PBS_HOME=/var/spool/pbs
+<h2 id="2安装nis服务">2.安装nis服务</h2>
+<p>所有节点</p>
+<pre><code class="language-shell">apt install -y rpcbind nis
+systemctl enable rpcbind nis
 </code></pre>
-<p>master节点 安装 pbspro-server-19.1.3-0.x86_64.rpm</p>
-<p>node节点 安装 pbspro-execution-19.1.3-0.x86_64.rpm</p>
-<p>master节点和node节点依次启动pbs</p>
-<pre><code class="language-shell">systemctl start pbs
+<p>安装时输入 <strong>nisdomainname</strong></p>
+<p>注意这里的时nis的域名，均为 nis.local 它在/etc/hosts里绑定了master节点</p>
+<p><img src="/img/image-20231220103714124.png" alt="image-20231220103714124"></p>
+<p>安装完后/etc/defaultdomain 这里内容就是 nis.local</p>
+<h2 id="3服务端配置">3.服务端配置</h2>
+<h3 id="31修改nis配置文件">3.1修改nis配置文件</h3>
+<p>vim /etc/default/nis</p>
+<pre><code class="language-shell">NISSERVER=master
+NISCLIENT=false
 </code></pre>
-<p>如果想让master节点也参与计算，将/etc/pbs.conf 中 PBS_START_MOM的值由0修改为1</p>
-<h2 id="配置">配置</h2>
-<p>master节点其他配置</p>
-<pre><code class="language-shell">qmgr -c &quot;set server flatuid=true&quot;
-qmgr -c &quot;set server scheduling=true&quot;
-qmgr -c &quot;s s job_history_enable=1&quot;
+<p>这里指定nis服务器节点为master节点 该节点客户端功能禁用</p>
+<h3 id="32修改客户端连接权限">3.2修改客户端连接权限</h3>
+<p>vim /etc/ypserv.securenets</p>
+<pre><code class="language-shell">255.255.255.0 10.249.2.0
 </code></pre>
-<p>master节点添加节点node01</p>
-<pre><code class="language-shell">qmgr -c &quot;create node node01&quot;
+<p>掩码 网段 格式 或者  host  指定ip 格式</p>
+<h3 id="35更新数据库">3.5更新数据库</h3>
+<pre><code class="language-shell">/usr/lib/yp/ypinit -m
 </code></pre>
-<p>查看节点状态</p>
-<pre><code>pbsnodes -aSj
+<p><img src="/img/image-20231220111039673.png" alt="image-20231220111039673"></p>
+<p>重启服务</p>
+<pre><code class="language-shell">systemctl restart nis ypbind
 </code></pre>
-<p><img src="/img/image-20231219092249224.png" alt="image-20231219092249224"></p>
-<p>master节点创建队列big</p>
-<pre><code class="language-shell">qmgr -c &quot;create queue big&quot;
+<p>查看服务状态</p>
+<pre><code class="language-shell">systemctl status rpcbind nis
 </code></pre>
-<p>将node7添加到队列big</p>
-<pre><code class="language-shell">qmgr -c &quot;set node node7 queue=big&quot;
+<h2 id="4-客户端配置">4. 客户端配置</h2>
+<h3 id="41-修改yp配置文件">4.1 修改yp配置文件</h3>
+<p>vim /etc/yp.conf</p>
+<pre><code class="language-shell">domain nis.local server master.nis.local
 </code></pre>
-<p>设置big队列资源限制</p>
-<pre><code class="language-shell">qmgr -c &quot;set queue big resources_max.ncpus = 80&quot;
-qmgr -c &quot;set queue big resources_max.mem = 503&quot;
-qmgr -c &quot;set queue big resources_max.nodect = 1&quot;
+<h3 id="42-账号密码查询顺序中加入nis">4.2 账号密码查询顺序中加入nis</h3>
+<p>vim /etc/nsswitch.conf</p>
+<pre><code>passwd:         files nis
+group:          files nis
+shadow:         fiels nis
 </code></pre>
-<p>启用big队列</p>
-<pre><code class="language-shell">qmgr -c &quot;set queue big enabled = true&quot;
-qmgr -c &quot;set queue big started = true&quot;
+<h2 id="44-自动创建家目录">4.4 自动创建家目录</h2>
+<pre><code class="language-shell">echo 'session optional        pam_mkhomedir.so skel=/etc/skel umask=077' &gt;&gt; /etc/pam.d/common-session
 </code></pre>
-<p>查看big队列参数</p>
-<pre><code class="language-shell">qstat -Q -f big
+<p>重启服务器 reboot</p>
+<h2 id="5添加用户">5.添加用户</h2>
+<p>如果想更改adduser默认的家目录路径，修改  /etc/adduser.conf 中 DHOME 的值</p>
+<pre><code class="language-shell">adduser bob
 </code></pre>
-<p><img src="/img/image-20231219092121756.png" alt="image-20231219092121756"></p>
-<blockquote>
-<p>注意 普通用户提交作业前需要配置和计算节点间的SSH互相免密</p>
-</blockquote>
+<p>添加用户后需要手动更新nis服务器的数据库</p>
+<pre><code class="language-shell">make -C /var/yp
+</code></pre>
+<p><img src="/img/image-20231220111533448.png" alt="image-20231220111533448"></p>
+<p>在node节点测试</p>
+<p><img src="/img/image-20231220111702995.png" alt="image-20231220111702995"></p>
+<p>查看id也一致</p>
+<p><img src="/img/image-20231220111742296.png" alt="image-20231220111742296"></p>
+<p>在计算节点也可以通过ypcat passwd 命令查看nis的用户</p>
+<p><img src="/img/image-20231220111845349.png" alt="image-20231220111845349"></p>
 
 </article>
 
@@ -566,16 +556,11 @@ qmgr -c &quot;set queue big started = true&quot;
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/" class="block">Ubuntu搭建nis服务</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/docs/hpc/centos7%E5%AE%89%E8%A3%85luster/" class="block">Centos7离线安装luster</a>
+        <a href="/docs/hpc/centos7%E5%AE%89%E8%A3%85pbs/" class="block">Centos7安装pbs</a>
       
     </div>
   </div>
@@ -618,8 +603,23 @@ qmgr -c &quot;set queue big started = true&quot;
 >
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#安装">安装</a></li>
-    <li><a href="#配置">配置</a></li>
+    <li><a href="#1配置hostname和hosts">1.配置hostname和hosts</a></li>
+    <li><a href="#2安装nis服务">2.安装nis服务</a></li>
+    <li><a href="#3服务端配置">3.服务端配置</a>
+      <ul>
+        <li><a href="#31修改nis配置文件">3.1修改nis配置文件</a></li>
+        <li><a href="#32修改客户端连接权限">3.2修改客户端连接权限</a></li>
+        <li><a href="#35更新数据库">3.5更新数据库</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-客户端配置">4. 客户端配置</a>
+      <ul>
+        <li><a href="#41-修改yp配置文件">4.1 修改yp配置文件</a></li>
+        <li><a href="#42-账号密码查询顺序中加入nis">4.2 账号密码查询顺序中加入nis</a></li>
+      </ul>
+    </li>
+    <li><a href="#44-自动创建家目录">4.4 自动创建家目录</a></li>
+    <li><a href="#5添加用户">5.添加用户</a></li>
   </ul>
 </nav>
 </div>

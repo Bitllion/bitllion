@@ -6,7 +6,16 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 16 Dec 2023 15:43:14 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Dec 2023 14:15:01 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu搭建nis服务</title>
+      <link>/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 19 Dec 2023 14:15:01 +0800</pubDate>
+      
+      <guid>/docs/hpc/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/</guid>
+      <description>节点名 节点ip master.</description>
+    </item>
+    
     <item>
       <title>Intel_parallel_studio编译器安装</title>
       <link>/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/</link>
