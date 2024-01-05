@@ -109,20 +109,20 @@
     </item>
     
     <item>
-      <title>Lustre编译安装</title>
-      <link>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <title>rh8下Lustre编译安装</title>
+      <link>/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Wed, 24 May 2023 16:31:33 +0800</pubDate>
       
-      <guid>/docs/hpc/lustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <guid>/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>1. 添加lustre官方源 编辑 /etc/yum.</description>
     </item>
     
     <item>
-      <title>slurm集群部署Centos7版</title>
-      <link>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</link>
+      <title>Centos7下slurm集群部署</title>
+      <link>/docs/hpc/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Tue, 23 May 2023 16:31:25 +0800</pubDate>
       
-      <guid>/docs/hpc/slurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2centos7%E7%89%88/</guid>
+      <guid>/docs/hpc/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
       <description>1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</description>
     </item>
     
