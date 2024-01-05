@@ -108,7 +108,7 @@
     },
     "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
     "dateModified": "2024-01-03T15:54:19+08:00",
-    "wordCount":  693 ,
+    "wordCount":  921 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -285,17 +285,6 @@
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E6%90%AD%E5%BB%BApxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/">Centos7搭建pxe服务器自动安装系统</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
                 href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/">Centos8部署openvswitch</a>
         </div>
         
@@ -352,7 +341,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>4分钟阅读时长</span>
+    <span>5分钟阅读时长</span>
   </div>
 
   
@@ -506,6 +495,9 @@ goto start
 </code></pre>
 <h2 id="7测试">7.测试</h2>
 <p><img src="/img/image-20240104161214453.png" alt="image-20240104161214453"></p>
+<blockquote>
+<p>虚拟机测试时如遇到no space left on device 报错，请调大内存，因为ipxe引导的镜像时加载到内存里的</p>
+</blockquote>
 <h2 id="8配置自动安装系统脚本">8.配置自动安装系统脚本</h2>
 <h3 id="centos7">Centos7</h3>
 <p>创建ks目录，注意该目录和boot.pxe配置文件相关，因此无法改变，如果自定义请一并修改boot.ipxe</p>
@@ -614,6 +606,121 @@ sh init.sh
 rm init.sh -f
 %end
 </code></pre>
+<h3 id="ubuntu">ubuntu</h3>
+<p>创建目录</p>
+<pre><code class="language-shell">mkdir -p /pxe/http/autoinstall
+cd /pxe/http/autoinstall
+touch meta-data user-data vendor-data
+</code></pre>
+<p>在autoinstall目录分别创建meta-data、user-data、vendor-data文件，内容可以一样</p>
+<pre><code>autoinstall:
+  apt:
+    disable_components: []
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches:
+      - amd64
+      - i386
+      uri: http://cn.archive.ubuntu.com/ubuntu
+    - arches:
+      - default
+      uri: http://ports.ubuntu.com/ubuntu-ports
+  drivers:
+    install: false
+  identity:
+    hostname: ubuntu
+    password: $6$cAYWJLiTQ1P6FnlX$09dPD7qwdfzWYIPfCteBUL9Guhcnc7YqOfJEwYrDwN1dU1z7SSrgPXWTxGzG8P/KexwutVANvUi7P.FGzpO7x/
+    realname: ubuntu
+    username: ubuntu
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: cn
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    ethernets:
+      ens33:
+        dhcp4: true
+    version: 2
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  storage:
+    config:
+    - ptable: gpt
+      serial: VMware_Virtual_NVMe_Disk_VMware_NVME_0000
+      wwn: eui.8e39c51f7fdc13c3000c296361f5c2df
+      path: /dev/nvme0n1
+      wipe: superblock
+      preserve: false
+      name: ''
+      grub_device: true
+      type: disk
+      id: disk-nvme0n1
+    - device: disk-nvme0n1
+      size: 1048576
+      flag: bios_grub
+      number: 1
+      preserve: false
+      grub_device: false
+      type: partition
+      id: partition-0
+    - device: disk-nvme0n1
+      size: 1902116864
+      wipe: superblock
+      flag: ''
+      number: 2
+      preserve: false
+      grub_device: false
+      type: partition
+      id: partition-1
+    - fstype: ext4
+      volume: partition-1
+      preserve: false
+      type: format
+      id: format-0
+    - device: disk-nvme0n1
+      size: 19569573888
+      wipe: superblock
+      flag: ''
+      number: 3
+      preserve: false
+      grub_device: false
+      type: partition
+      id: partition-2
+    - name: ubuntu-vg
+      devices:
+      - partition-2
+      preserve: false
+      type: lvm_volgroup
+      id: lvm_volgroup-0
+    - name: ubuntu-lv
+      volgroup: lvm_volgroup-0
+      size: 10737418240B
+      wipe: superblock
+      preserve: false
+      type: lvm_partition
+      id: lvm_partition-0
+    - fstype: ext4
+      volume: lvm_partition-0
+      preserve: false
+      type: format
+      id: format-1
+    - path: /
+      device: format-1
+      type: mount
+      id: mount-1
+    - path: /boot
+      device: format-0
+      type: mount
+      id: mount-0
+  updates: security
+  version: 1
+</code></pre>
 
 </article>
 
@@ -635,7 +742,7 @@ rm init.sh -f
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E6%90%AD%E5%BB%BApxe%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/" class="block">Centos7搭建pxe服务器自动安装系统</a>
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/" class="block">Centos8部署openvswitch</a>
       
     </div>
   </div>
@@ -688,6 +795,7 @@ rm init.sh -f
     <li><a href="#8配置自动安装系统脚本">8.配置自动安装系统脚本</a>
       <ul>
         <li><a href="#centos7">Centos7</a></li>
+        <li><a href="#ubuntu">ubuntu</a></li>
       </ul>
     </li>
   </ul>
