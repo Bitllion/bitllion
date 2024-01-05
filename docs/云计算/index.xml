@@ -13,7 +13,8 @@
       <pubDate>Wed, 03 Jan 2024 15:54:19 +0800</pubDate>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-      <description>1.安装ipxe yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 2.</description>
+      <description>pxe网络安装系统流程图
+其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe.</description>
     </item>
     
     <item>

@@ -75,7 +75,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="1.安装ipxe yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 2.">
+  content="pxe网络安装系统流程图
+其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,7 +109,7 @@
     },
     "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
     "dateModified": "2024-01-03T15:54:19+08:00",
-    "wordCount":  921 ,
+    "wordCount":  937 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -117,7 +118,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "1.安装ipxe yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 2."
+    "description": "pxe网络安装系统流程图\n其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe."
 }
 </script><meta property="og:title" content="centos7下搭建ipxe服务器 | 云计算 | 一言" />
 <meta property="og:type" content="article" />
@@ -131,7 +132,8 @@
 
 
 
-<meta property="og:description" content="1.安装ipxe yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 2." />
+<meta property="og:description" content="pxe网络安装系统流程图
+其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe." />
 
 
 
@@ -353,7 +355,11 @@
   
   
 
-  <p><img src="/img/14a99a227f5ea9daf3c0e5101e4eba3c.png" alt="20220610121400"></p>
+  <p>pxe网络安装系统流程图</p>
+<p><img src="/img/14a99a227f5ea9daf3c0e5101e4eba3c.png" alt="20220610121400"></p>
+<blockquote>
+<p>其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe.efi等文件 适配了 uefi boot启动模式和更新的网络硬件支持</p>
+</blockquote>
 <h2 id="1安装ipxe">1.安装ipxe</h2>
 <pre><code class="language-shell">yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 
 </code></pre>
@@ -612,114 +618,56 @@ rm init.sh -f
 cd /pxe/http/autoinstall
 touch meta-data user-data vendor-data
 </code></pre>
-<p>在autoinstall目录分别创建meta-data、user-data、vendor-data文件，内容可以一样</p>
-<pre><code>autoinstall:
-  apt:
-    disable_components: []
-    geoip: true
-    preserve_sources_list: false
-    primary:
-    - arches:
-      - amd64
-      - i386
-      uri: http://cn.archive.ubuntu.com/ubuntu
-    - arches:
-      - default
-      uri: http://ports.ubuntu.com/ubuntu-ports
-  drivers:
-    install: false
+<p>在autoinstall目录分别创建meta-data、user-data、vendor-data文件，内容一样</p>
+<pre><code class="language-yaml">#cloud-config
+autoinstall:
+  version: 1
   identity:
     hostname: ubuntu
     password: $6$cAYWJLiTQ1P6FnlX$09dPD7qwdfzWYIPfCteBUL9Guhcnc7YqOfJEwYrDwN1dU1z7SSrgPXWTxGzG8P/KexwutVANvUi7P.FGzpO7x/
     realname: ubuntu
     username: ubuntu
-  kernel:
-    package: linux-generic
-  keyboard:
-    layout: cn
-    toggle: null
-    variant: ''
-  locale: en_US.UTF-8
   network:
-    ethernets:
-      ens33:
-        dhcp4: true
-    version: 2
+    network:
+      version: 2
+      ethernets:
+        id0:
+          match:
+            macaddress: BC:24:11:A4:99:10
+          dhcp4: true
   ssh:
-    allow-pw: true
-    authorized-keys: []
     install-server: true
+    allow-pw: true
   storage:
-    config:
-    - ptable: gpt
-      serial: VMware_Virtual_NVMe_Disk_VMware_NVME_0000
-      wwn: eui.8e39c51f7fdc13c3000c296361f5c2df
-      path: /dev/nvme0n1
-      wipe: superblock
-      preserve: false
-      name: ''
-      grub_device: true
-      type: disk
-      id: disk-nvme0n1
-    - device: disk-nvme0n1
-      size: 1048576
-      flag: bios_grub
-      number: 1
-      preserve: false
-      grub_device: false
-      type: partition
-      id: partition-0
-    - device: disk-nvme0n1
-      size: 1902116864
-      wipe: superblock
-      flag: ''
-      number: 2
-      preserve: false
-      grub_device: false
-      type: partition
-      id: partition-1
-    - fstype: ext4
-      volume: partition-1
-      preserve: false
-      type: format
-      id: format-0
-    - device: disk-nvme0n1
-      size: 19569573888
-      wipe: superblock
-      flag: ''
-      number: 3
-      preserve: false
-      grub_device: false
-      type: partition
-      id: partition-2
-    - name: ubuntu-vg
-      devices:
-      - partition-2
-      preserve: false
-      type: lvm_volgroup
-      id: lvm_volgroup-0
-    - name: ubuntu-lv
-      volgroup: lvm_volgroup-0
-      size: 10737418240B
-      wipe: superblock
-      preserve: false
-      type: lvm_partition
-      id: lvm_partition-0
-    - fstype: ext4
-      volume: lvm_partition-0
-      preserve: false
-      type: format
-      id: format-1
-    - path: /
-      device: format-1
-      type: mount
-      id: mount-1
-    - path: /boot
-      device: format-0
-      type: mount
-      id: mount-0
-  updates: security
-  version: 1
+    layout:
+        name: lvm
+  apt:
+    preserve_sources_list: false
+  packages:
+    - openssh-server
+  late-commands:
+    - echo 'SELINUX=disabled' &gt; /target/etc/selinux/config
+    - ufw disable
+</code></pre>
+<p>这里在不知网卡名的情况下，用mac地址匹配获取dhcp地址，兼容BOIS和UEFI</p>
+<p>如果机器有多块盘，storage可以指定下</p>
+<h4 id="非lvm">非LVM</h4>
+<p>BOIS版</p>
+<pre><code class="language-yaml">    config:
+    - {ptable: gpt, path: /dev/sda, wipe: superblock-recursive, preserve: false, name: '', grub_device: true, type: disk, id: disk-sda}
+    - {device: disk-sda, size: 536870912, wipe: superblock, flag: bios_grub, number: 1, preserve: false, grub_device: false, type: partition, id: partition-0}
+    - {device: disk-sda, size: -1, wipe: superblock, flag: '', number: 2, preserve: false, type: partition, id: partition-1}
+    - {fstype: ext4, volume: partition-1, preserve: false, type: format, id: format-1}
+    - {device: format-1, path: /, type: mount, id: mount-1}
+</code></pre>
+<p>UEFI版</p>
+<pre><code class="language-yaml">    - {ptable: gpt, path: /dev/sda, wipe: superblock-recursive, preserve: false, name: '', grub_device: false, type: disk, id: disk-sda}
+    - {device: disk-sda, size: 536870912, wipe: superblock, flag: boot, number: 1,preserve: false, grub_device: true, type: partition, id: partition-0}
+    - {fstype: fat32, volume: partition-0, preserve: false, type: format, id: format-0}
+    - {device: disk-sda, size: -1, wipe: superblock, flag: '', number: 2,preserve: false, type: partition, id: partition-1}
+    - {fstype: ext4, volume: partition-1, preserve: false, type: format, id: format-1}
+    - {device: format-1, path: /, type: mount, id: mount-1}
+    - {device: format-0, path: /boot/efi, type: mount, id: mount-0}
 </code></pre>
 
 </article>
@@ -795,7 +743,11 @@ touch meta-data user-data vendor-data
     <li><a href="#8配置自动安装系统脚本">8.配置自动安装系统脚本</a>
       <ul>
         <li><a href="#centos7">Centos7</a></li>
-        <li><a href="#ubuntu">ubuntu</a></li>
+        <li><a href="#ubuntu">ubuntu</a>
+          <ul>
+            <li><a href="#非lvm">非LVM</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
