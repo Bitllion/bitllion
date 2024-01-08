@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="进入nvidia驱动下载页面，下载合适的驱动 https://www.nvidia.cn/Download/index.aspx?lang=cn">
+  content="nvidia driver 安装 进入nvidia驱动下载页面，下载合适的驱动 https://www.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -108,7 +108,7 @@
     },
     "headline": "Nvidia显卡驱动安装 | HPC集群搭建 | 一言","datePublished": "2023-05-25T10:55:58+08:00",
     "dateModified": "2023-05-25T10:55:58+08:00",
-    "wordCount":  40 ,
+    "wordCount":  90 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -117,7 +117,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "进入nvidia驱动下载页面，下载合适的驱动 https:\/\/www.nvidia.cn\/Download\/index.aspx?lang=cn"
+    "description": "nvidia driver 安装 进入nvidia驱动下载页面，下载合适的驱动 https:\/\/www."
 }
 </script><meta property="og:title" content="Nvidia显卡驱动安装 | HPC集群搭建 | 一言" />
 <meta property="og:type" content="article" />
@@ -131,7 +131,7 @@
 
 
 
-<meta property="og:description" content="进入nvidia驱动下载页面，下载合适的驱动 https://www.nvidia.cn/Download/index.aspx?lang=cn" />
+<meta property="og:description" content="nvidia driver 安装 进入nvidia驱动下载页面，下载合适的驱动 https://www." />
 
 
 
@@ -463,23 +463,25 @@
   
   
 
-  <p>进入nvidia驱动下载页面，下载合适的驱动 <a href="https://www.nvidia.cn/Download/index.aspx?lang=cn">https://www.nvidia.cn/Download/index.aspx?lang=cn</a></p>
+  <h2 id="nvidia-driver">nvidia driver</h2>
+<h3 id="安装">安装</h3>
+<p>进入nvidia驱动下载页面，下载合适的驱动 <a href="https://www.nvidia.cn/Download/index.aspx?lang=cn">https://www.nvidia.cn/Download/index.aspx?lang=cn</a></p>
 <img src="/img/image-20230526105657778.png" alt="image-20230526105657778" style="zoom:50%;" />
 <p>安装依赖</p>
-<pre><code>yum -y groupinstall &quot;Development Tools&quot;
-yum install -y libglvnd-devel elfutils-libelf-devel
+<pre><code class="language-shell">yum -y groupinstall &quot;Development Tools&quot;
+yum install -y dkms libglvnd-devel elfutils-libelf-devel kernel-devel-$(uname -r)  kernel-headers-$(uname -r)
 </code></pre>
 <p>关闭集成显卡</p>
-<pre><code>grub2-editenv - set &quot;$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0&quot;
+<pre><code class="language-shell">grub2-editenv - set &quot;$(grub2-editenv - list | grep kernelopts) nouveau.modeset=0&quot;
 </code></pre>
 <p>重启</p>
-<pre><code>reboot
+<pre><code class="language-shell">reboot
 </code></pre>
 <p>安装前关闭图形界面</p>
-<pre><code>systemctl isolate multi-user.target
+<pre><code class="language-shell">systemctl isolate multi-user.target
 </code></pre>
 <p>安装</p>
-<pre><code>bash NVIDIA-Linux-x86_64-*
+<pre><code class="language-shell">bash NVIDIA-Linux-x86_64-*
 </code></pre>
 <p>以下为可视化安装选择</p>
 <p><img src="/img/image-20230526110104514.png" alt="image-20230526110104514"></p>
@@ -492,6 +494,32 @@ yum install -y libglvnd-devel elfutils-libelf-devel
 <p><img src="/img/image-20230526110202893.png" alt="image-20230526110202893"></p>
 <p>安装成功 ok</p>
 <p><img src="/img/image-20230526110213901.png" alt="image-20230526110213901"></p>
+<h3 id="输出详解">输出详解</h3>
+<img src="/img/image-20240108140208186.png" alt="image-20240108140208186" style="zoom:50%;" />
+<p>上图中风扇转速未知是因为这是SMX版的，没有风扇</p>
+<h3 id="开启持久模式">开启持久模式</h3>
+<p>GPU长时间无负载会发生“掉卡”的情况</p>
+<pre><code class="language-shell">nvidia-smi -pm 1
+</code></pre>
+<p>注意每次主机重新启动后，持久性模式将默认为“禁用”</p>
+<h3 id="硬件重置">硬件重置</h3>
+<pre><code class="language-shell">nvidia-smi -r
+</code></pre>
+<h2 id="nvlink-服务安装">NVLINK 服务安装</h2>
+<pre><code class="language-shell">version=535.129.03
+yum-config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-rhel7.repo
+yum install -y nvidia-fabric-manager-${version}-1
+</code></pre>
+<p>version通过nvidia-smi查知</p>
+<p>加载直通模块</p>
+<pre><code class="language-shell">modprobe -v nvidia-peermem 
+</code></pre>
+<p>ubuntu&gt;</p>
+<pre><code class="language-shell">version=535.129.03
+main_version=$(echo $version | awk -F '.' '{print $1}')
+apt-get update
+apt-get -y install nvidia-fabricmanager-${main_version}=${version}-*
+</code></pre>
 
 </article>
 
@@ -543,6 +571,43 @@ yum install -y libglvnd-devel elfutils-libelf-devel
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nvidia-driver">nvidia driver</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#输出详解">输出详解</a></li>
+        <li><a href="#开启持久模式">开启持久模式</a></li>
+        <li><a href="#硬件重置">硬件重置</a></li>
+      </ul>
+    </li>
+    <li><a href="#nvlink-服务安装">NVLINK 服务安装</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>

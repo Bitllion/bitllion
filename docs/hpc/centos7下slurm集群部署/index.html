@@ -108,7 +108,7 @@
     },
     "headline": "Centos7下slurm集群部署 | HPC集群搭建 | 一言","datePublished": "2023-05-23T16:31:25+08:00",
     "dateModified": "2023-05-23T16:31:25+08:00",
-    "wordCount":  618 ,
+    "wordCount":  623 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -542,6 +542,9 @@ yum install -y mysql-server
 <p>查看状态</p>
 <pre><code class="language-shell">systemctl status mysqld
 </code></pre>
+<p>查看初始密码</p>
+<pre><code>grep 'temporary password' /var/log/mysqld.log
+</code></pre>
 <p>初始化数据库</p>
 <pre><code class="language-shell">mysql_secure_installation
 </code></pre>
@@ -610,8 +613,8 @@ innodb_lock_wait_timeout=900
 <p><strong>/etc/slurm/slurmdbd.conf</strong>   :</p>
 <pre><code class="language-shell">AuthType=auth/munge
 AuthInfo=/var/run/munge/munge.socket.2
-AuthAltTypes=auth/jwt
-AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
+#AuthAltTypes=auth/jwt
+#AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
 DbdHost=localhost
 DbdAddr=127.0.0.1
 SlurmUser=root
@@ -650,8 +653,8 @@ SlurmdSpoolDir=/var/spool/slurmd
 ReturnToService=1 
 MPIDefault=pmi2
 
-AuthAltTypes=auth/jwt
-AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
+#AuthAltTypes=auth/jwt
+#AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
 
 ProctrackType=proctrack/cgroup
 SchedulerType=sched/backfill
