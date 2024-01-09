@@ -108,7 +108,7 @@
     },
     "headline": "Nvidia显卡驱动安装 | HPC集群搭建 | 一言","datePublished": "2023-05-25T10:55:58+08:00",
     "dateModified": "2023-05-25T10:55:58+08:00",
-    "wordCount":  90 ,
+    "wordCount":  91 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -506,6 +506,7 @@ yum install -y dkms libglvnd-devel elfutils-libelf-devel kernel-devel-$(uname -r
 <pre><code class="language-shell">nvidia-smi -r
 </code></pre>
 <h2 id="nvlink-服务安装">NVLINK 服务安装</h2>
+<p>centos&gt;</p>
 <pre><code class="language-shell">version=535.129.03
 yum-config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-rhel7.repo
 yum install -y nvidia-fabric-manager-${version}-1
