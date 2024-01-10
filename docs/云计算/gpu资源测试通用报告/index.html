@@ -108,7 +108,7 @@
     },
     "headline": "Gpu资源测试通用报告 | 云计算 | 一言","datePublished": "2024-01-09T15:41:53+08:00",
     "dateModified": "2024-01-09T15:41:53+08:00",
-    "wordCount":  1423 ,
+    "wordCount":  1537 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -352,7 +352,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>7分钟阅读时长</span>
+    <span>8分钟阅读时长</span>
   </div>
 
   
@@ -1866,108 +1866,146 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.8/nsight-compute-2022.3.0/host/linux-d
 <h3 id="3测试工具-5">3.测试工具</h3>
 <p>NVSMI</p>
 <h3 id="4测试过程-5">4.测试过程</h3>
+<p>查看 nvswicth拓扑</p>
+<img src="/img/image-20240110143455653.png" alt="image-20240110143455653" style="zoom:67%;" />
+<p>查看 nvlink 状态</p>
+<img src="/img/image-20240110143534351.png" alt="image-20240110143534351" style="zoom:67%;" />
+<p>测试代码</p>
+<pre><code class="language-shell">import torch
+import numpy as np
+
+device = torch.device(&quot;cuda&quot;)
+
+n_gpus = 8
+data_size = 1024 * 1024 * 1024  # 1 GB
+
+speed_matrix = np.zeros((n_gpus, n_gpus))
+
+for i in range(n_gpus):
+    for j in range(i + 1, n_gpus):
+        print(f&quot;Testing communication between GPU {i} and GPU {j}...&quot;)
+        with torch.cuda.device(i):
+            data = torch.randn(data_size, device=device)
+            torch.cuda.synchronize()
+        with torch.cuda.device(j):
+            result = torch.randn(data_size, device=device)
+            torch.cuda.synchronize()
+        with torch.cuda.device(i):
+            start = torch.cuda.Event(enable_timing=True)
+            end = torch.cuda.Event(enable_timing=True)
+            start.record()
+            result.copy_(data)
+            end.record()
+            torch.cuda.synchronize()
+            elapsed_time_ms = start.elapsed_time(end)
+        transfer_rate = data_size / elapsed_time_ms * 1000 * 8 / 1e9
+        speed_matrix[i][j] = transfer_rate
+        speed_matrix[j][i] = transfer_rate
+
+print(speed_matrix)
+</code></pre>
 <h3 id="5测试结果-5">5.测试结果</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>GPU0</th>
-<th>GPU1</th>
-<th>GPU2</th>
-<th>GPU3</th>
-<th>GPU4</th>
-<th>GPU5</th>
-<th>GPU6</th>
-<th>GPU7</th>
+<th>GPU 1</th>
+<th>GPU 2</th>
+<th>GPU 3</th>
+<th>GPU 4</th>
+<th>GPU 5</th>
+<th>GPU 6</th>
+<th>GPU 7</th>
+<th>GPU 8</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GPU0</td>
+<td>GPU 1</td>
 <td>0</td>
-<td>366.92</td>
-<td>367.36</td>
-<td>367.62</td>
-<td>367.82</td>
-<td>367.14</td>
-<td>366.71</td>
-<td>367.99</td>
+<td>464.9859565</td>
+<td>526.4730694</td>
+<td>526.2759531</td>
+<td>525.7450773</td>
+<td>525.9377422</td>
+<td>473.3910529</td>
+<td>526.7334102</td>
 </tr>
 <tr>
-<td>GPU1</td>
-<td>366.92</td>
+<td>GPU 2</td>
+<td>464.9859565</td>
 <td>0</td>
-<td>368.95</td>
-<td>369.14</td>
-<td>370.02</td>
-<td>369.75</td>
-<td>369.48</td>
-<td>370.03</td>
+<td>436.0805066</td>
+<td>470.8014557</td>
+<td>529.4908943</td>
+<td>527.1316232</td>
+<td>528.5546556</td>
+<td>528.4599488</td>
 </tr>
 <tr>
-<td>GPU2</td>
-<td>367.36</td>
-<td>368.95</td>
+<td>GPU 3</td>
+<td>526.4730694</td>
+<td>436.0805066</td>
 <td>0</td>
-<td>369.44</td>
-<td>370.06</td>
-<td>369.39</td>
-<td>370.04</td>
-<td>370.05</td>
+<td>528.6358067</td>
+<td>529.1016042</td>
+<td>529.6339894</td>
+<td>478.4399884</td>
+<td>529.2038167</td>
 </tr>
 <tr>
-<td>GPU3</td>
-<td>367.62</td>
-<td>369.14</td>
-<td>369.44</td>
+<td>GPU 4</td>
+<td>526.2759531</td>
+<td>470.8014557</td>
+<td>528.6358067</td>
 <td>0</td>
-<td>369.47</td>
-<td>369.64</td>
-<td>369.93</td>
-<td>369.73</td>
+<td>478.959038</td>
+<td>529.4251015</td>
+<td>528.190651</td>
+<td>529.1245426</td>
 </tr>
 <tr>
-<td>GPU4</td>
-<td>367.82</td>
-<td>370.02</td>
-<td>370.06</td>
-<td>369.47</td>
+<td>GPU 5</td>
+<td>525.7450773</td>
+<td>529.4908943</td>
+<td>529.1016042</td>
+<td>478.959038</td>
 <td>0</td>
-<td>369.49</td>
-<td>369.77</td>
-<td>369.93</td>
+<td>529.1850375</td>
+<td>529.5608754</td>
+<td>529.8420447</td>
 </tr>
 <tr>
-<td>GPU5</td>
-<td>367.14</td>
-<td>369.75</td>
-<td>369.39</td>
-<td>369.64</td>
-<td>369.49</td>
+<td>GPU 6</td>
+<td>525.9377422</td>
+<td>527.1316232</td>
+<td>529.6339894</td>
+<td>529.4251015</td>
+<td>529.1850375</td>
 <td>0</td>
-<td>369.60</td>
-<td>368.03</td>
+<td>469.9187813</td>
+<td>529.6298162</td>
 </tr>
 <tr>
-<td>GPU6</td>
-<td>366.71</td>
-<td>369.48</td>
-<td>370.04</td>
-<td>369.93</td>
-<td>369.77</td>
-<td>369.60</td>
+<td>GPU 7</td>
+<td>473.3910529</td>
+<td>528.5546556</td>
+<td>478.4399884</td>
+<td>528.190651</td>
+<td>529.5608754</td>
+<td>469.9187813</td>
 <td>0</td>
-<td>367.97</td>
+<td>527.0560527</td>
 </tr>
 <tr>
-<td>GPU7</td>
-<td>367.99</td>
-<td>370.03</td>
-<td>370.05</td>
-<td>369.73</td>
-<td>369.93</td>
-<td>368.03</td>
-<td>367.97</td>
+<td>GPU 8</td>
+<td>526.7334102</td>
+<td>528.4599488</td>
+<td>529.2038167</td>
+<td>529.1245426</td>
+<td>529.8420447</td>
+<td>529.6298162</td>
+<td>527.0560527</td>
 <td>0</td>
 </tr>
 </tbody>
