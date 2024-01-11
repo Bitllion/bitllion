@@ -108,7 +108,7 @@
     },
     "headline": "Gpu资源测试通用报告 | 云计算 | 一言","datePublished": "2024-01-09T15:41:53+08:00",
     "dateModified": "2024-01-09T15:41:53+08:00",
-    "wordCount":  1537 ,
+    "wordCount":  1542 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -939,6 +939,7 @@ make
 </tr>
 </tbody>
 </table>
+<p>2个GPU间单向带宽是270GB左右</p>
 <p><strong>(4)Bidirectional P2P=Disabled Bandwidth Matrix (GB/s)</strong></p>
 <table>
 <thead>
@@ -1151,6 +1152,7 @@ make
 </tr>
 </tbody>
 </table>
+<p>2个GPU间双向带宽400GB左右</p>
 <p><strong>(6)P2P=Disabled Latency Matrix (us)</strong></p>
 <table>
 <thead>
@@ -1866,9 +1868,11 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.8/nsight-compute-2022.3.0/host/linux-d
 <h3 id="3测试工具-5">3.测试工具</h3>
 <p>NVSMI</p>
 <h3 id="4测试过程-5">4.测试过程</h3>
-<p>查看 nvswicth拓扑</p>
-<img src="/img/image-20240110143455653.png" alt="image-20240110143455653" style="zoom:67%;" />
-<p>查看 nvlink 状态</p>
+<p><strong>查看 nvswicth拓扑</strong></p>
+<img src="/img/image-20240110143455653.png" alt="image-20240110143455653"  />
+<p>可以看到，任意2个GPU卡之间都是 NVLink12。应该是因为A100引入了 NVSwitch的关系</p>
+<p><img src="/img/1686830284011359095.png" alt="img"></p>
+<p><strong>查看 nvlink 状态</strong></p>
 <img src="/img/image-20240110143534351.png" alt="image-20240110143534351" style="zoom:67%;" />
 <p>测试代码</p>
 <pre><code class="language-shell">import torch

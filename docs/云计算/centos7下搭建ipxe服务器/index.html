@@ -109,7 +109,7 @@
     },
     "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
     "dateModified": "2024-01-03T15:54:19+08:00",
-    "wordCount":  937 ,
+    "wordCount":  941 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -403,9 +403,9 @@ dhcp-option=option:dns-server,223.5.5.5
 # 设置引导程序相对tftp根目录的路径
 dhcp-match=set:bios,option:client-arch,0
 dhcp-match=set:ipxe,175
-dhcp-boot=tag:!ipxe,tag:bios,undionly.kpxe
-dhcp-boot=tag:!ipxe,tag:!bios,ipxe.efi
-dhcp-boot=tag:ipxe,boot.ipxe
+dhcp-boot=tag:!ipxe,tag:bios,,undionly.kpxe
+dhcp-boot=tag:!ipxe,tag:!bios,snponly.efi
+dhcp-boot=tag:ipxe,autoexec.ipxe
 
 # 设置tftp服务
 enable-tftp
@@ -457,7 +457,8 @@ systemctl enable gohttpserver
 </code></pre>
 <h2 id="6配置ipxe">6.配置ipxe</h2>
 <p>下载ipxe文件</p>
-<pre><code>wget -P /pxe/http/tftp http://boot.ipxe.org/ipxe.pxe
+<pre><code class="language-shell">wget -P /pxe/http/tftp http://boot.ipxe.org/ipxe.pxe
+wget -P /pxe/http/tftp http://boot.ipxe.org/snponly.efi
 wget -P /pxe/http/tftp http://boot.ipxe.org/undionly.kpxe
 wget -P /pxe/http/tftp http://boot.ipxe.org/ipxe.efi
 </code></pre>
