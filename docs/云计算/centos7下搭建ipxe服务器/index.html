@@ -109,7 +109,7 @@
     },
     "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
     "dateModified": "2024-01-03T15:54:19+08:00",
-    "wordCount":  941 ,
+    "wordCount":  943 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -403,9 +403,10 @@ dhcp-option=option:dns-server,223.5.5.5
 # 设置引导程序相对tftp根目录的路径
 dhcp-match=set:bios,option:client-arch,0
 dhcp-match=set:ipxe,175
-dhcp-boot=tag:!ipxe,tag:bios,,undionly.kpxe
-dhcp-boot=tag:!ipxe,tag:!bios,snponly.efi
-dhcp-boot=tag:ipxe,autoexec.ipxe
+dhcp-boot=tag:!ipxe,tag:bios,undionly.kpxe
+dhcp-boot=tag:!ipxe,tag:!bios,ipxe.efi #如果引导失败用这个 snponly.efi
+dhcp-boot=tag:ipxe,boot.ipxe
+
 
 # 设置tftp服务
 enable-tftp
