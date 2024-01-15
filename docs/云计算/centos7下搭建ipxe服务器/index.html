@@ -109,7 +109,7 @@
     },
     "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
     "dateModified": "2024-01-03T15:54:19+08:00",
-    "wordCount":  943 ,
+    "wordCount":  960 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -309,7 +309,7 @@
     <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/">Centos8部署openvswitch</a>
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E9%83%A8%E7%BD%B2ovs/">Centos7部署openvswitch</a>
         </div>
         
     </li>
@@ -523,6 +523,16 @@ boot || goto failed
 goto start
 
 </code></pre>
+<blockquote>
+<p>ipxe.dsk 是写入软驱用作引导盘的镜像，也可以用作虚拟机的软驱启动；</p>
+<p>ipxe.efi 网启UEFI引导，文件比较大大约就是uefi下的ipxe.pxe，EFI引导推荐先用这个有问题就换snponly.efi；
+ipxe.iso 是写入光盘用作引导盘的镜像，也可以用作虚拟机的光驱启动；</p>
+<p>ipxe.lkrn kernel相当于一个linux系统，功能更加完善，比如支持命令行操作，支持initrd等，；一般用在被GRUB，PXELINUX启动；</p>
+<p>ipxe.pxe 网启传统引导，文件较大包含驱动多，靠自身来驱动网卡，速度快但是有概率网卡不被支持；</p>
+<p>ipxe.usb 是写入U盘启动用的，用dd命令写；</p>
+<p>snponly.efi 网启UEFI引导，文件小不自带驱动，大约就是uefi下的undionly.kpxe ；</p>
+<p>undionly.kpxe 网启传统引导，文件小不自带驱动，靠UNDI通用接口或者pxe来驱动网卡，运行速度慢但是驱动几乎100%支持，但是pxe等驱动跟需要引导的系统又有可能存在兼容等问题。。</p>
+</blockquote>
 <h2 id="7测试">7.测试</h2>
 <p><img src="/img/image-20240104161214453.png" alt="image-20240104161214453"></p>
 <blockquote>
@@ -719,7 +729,7 @@ autoinstall:
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos8%E9%83%A8%E7%BD%B2ovs/" class="block">Centos8部署openvswitch</a>
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E9%83%A8%E7%BD%B2ovs/" class="block">Centos7部署openvswitch</a>
       
     </div>
   </div>
