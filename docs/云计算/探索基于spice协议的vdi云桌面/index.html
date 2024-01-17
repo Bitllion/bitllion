@@ -108,7 +108,7 @@
     },
     "headline": "探索基于SPICE协议的VDI云桌面 | 云计算 | 一言","datePublished": "2024-01-15T16:51:18+08:00",
     "dateModified": "2024-01-15T16:51:18+08:00",
-    "wordCount":  194 ,
+    "wordCount":  196 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -492,6 +492,8 @@ release-cursor=shift+f12
 <p>其他配置如图，也可以增加音频、usb设备的spice设备</p>
 <p>最终效果如图</p>
 <p><img src="/img/image-20240116104709621.png" alt="image-20240116104709621"></p>
+<h2 id="总结">总结</h2>
+<p>基于spice的vdi云桌面，相比于xrdp，它通过<strong>半虚拟化</strong>的方式介入虚拟机的显示、鼠标键盘、usb、音频等“<strong>外设</strong>”，不受虚拟机内部网络和性能限制，举个例子，将虚拟机网卡移除或者停止，vdi云桌面依然能正常连接，又因为它是半虚拟化的硬件，所以它不吃虚拟机内部的资源，占用宿主机资源也是很少，不过缺点也显而易见，它不是真正的gpu，所以处理3D效果时性能拉跨，无法去做视频硬解码等工作</p>
 
 </article>
 
@@ -578,6 +580,7 @@ release-cursor=shift+f12
         <li><a href="#win">win</a></li>
       </ul>
     </li>
+    <li><a href="#总结">总结</a></li>
   </ul>
 </nav>
 </div>
