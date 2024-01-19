@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>rh8下Lustre编译安装 | HPC集群搭建 | 一言</title>
+<title>Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="1. 添加lustre官方源 编辑 /etc/yum.">
+  content="配置时间同步 ntpdata ntp.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,8 +91,8 @@
       "item":"/docs/hpc/"},{
       "@type": "ListItem",
       "position": 3 ,
-      "name":"rh8下Lustre编译安装",
-      "item":"/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"}]
+      "name":"Ubuntu下slurm GPU集群编译安装",
+      "item":"/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"}]
 }
 </script>
 
@@ -104,11 +104,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"
+        "@id": "/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"
     },
-    "headline": "rh8下Lustre编译安装 | HPC集群搭建 | 一言","datePublished": "2023-05-24T16:31:33+08:00",
-    "dateModified": "2023-05-24T16:31:33+08:00",
-    "wordCount":  562 ,
+    "headline": "Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言","datePublished": "2023-10-17T10:23:41+08:00",
+    "dateModified": "2023-10-17T10:23:41+08:00",
+    "wordCount":  280 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -117,21 +117,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "1. 添加lustre官方源 编辑 \/etc\/yum."
+    "description": "配置时间同步 ntpdata ntp."
 }
-</script><meta property="og:title" content="rh8下Lustre编译安装 | HPC集群搭建 | 一言" />
+</script><meta property="og:title" content="Ubuntu下slurm GPU集群编译安装 | HPC集群搭建 | 一言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" />
+<meta property="og:url" content="/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" />
 
 
 
 
-<meta property="og:description" content="1. 添加lustre官方源 编辑 /etc/yum." />
+<meta property="og:description" content="配置时间同步 ntpdata ntp." />
 
 
 
@@ -148,10 +148,10 @@
 
 
 
-<meta property="article:published_time" content="2023-05-24T16:31:33&#43;08:00" />
+<meta property="article:published_time" content="2023-10-17T10:23:41&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2023-05-24T16:31:33&#43;08:00" />
+<meta property="article:modified_time" content="2023-10-17T10:23:41&#43;08:00" />
 
 
 
@@ -328,7 +328,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">Ubuntu下slurm GPU集群编译安装</a>
         </div>
         
@@ -394,7 +394,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" text-eureka  hover:text-eureka"
+            <a class=" hover:text-eureka"
                 href="/docs/hpc/rh8%E4%B8%8Blustre%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">rh8下Lustre编译安装</a>
         </div>
         
@@ -438,7 +438,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">rh8下Lustre编译安装</h1>
+  <h1 class="mb-4">Ubuntu下slurm GPU集群编译安装</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -446,12 +446,12 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-05-24</span
+      >2023-10-17</span
     >
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>3分钟阅读时长</span>
+    <span>2分钟阅读时长</span>
   </div>
 
   
@@ -463,188 +463,168 @@
   
   
 
-  <img src="/img/9ae699a4d3eb1ca56d0ae96c0e41e56.png" alt="9ae699a4d3eb1ca56d0ae96c0e41e56" style="zoom:75%;" />
-<h3 id="1-添加lustre官方源">1. 添加lustre官方源</h3>
-<p>编辑 /etc/yum.repos.d/lustre.repo</p>
-<pre><code class="language-json">[lustre-server]
-name=lustre-server
-baseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/server/
-gpgcheck=0
-[lustre-client]
-name=lustre-client
-baseurl=https://downloads.whamcloud.com/public/lustre/lustre-2.15.2/el8.7/client/
-gpgcheck=0
-[e2fsprogs-wc]
-name=e2fsprogs-wc
-baseurl=https://downloads.whamcloud.com/public/e2fsprogs/latest/el8/
-gpgcheck=0
+  <h2 id="配置时间同步">配置时间同步</h2>
+<pre><code>ntpdata ntp.aliyun.com
 </code></pre>
-<h3 id="2-安装依赖">2. 安装依赖</h3>
-<pre><code class="language-shell">yum --nogpgcheck --enablerepo=*  install -y  audit-libs-devel binutils-devel elfutils-devel kabi-dw ncurses-devel newt-devel numactl-devel openssl-devel pciutils-devel perl perl-devel python2 python3-docutils xmlto xz-devel elfutils-libelf-devel libcap-devel libcap-ng-devel llvm-toolset libyaml libyaml-devel kernel-rpm-macros kernel-abi-whitelists uuid libuuid-devel libblkid libblkid-devel libtirpc-devel libtirpc libaio-devel libattr-devel   libffi-devel libudev-devel ncompress python3-cffi python3-devel python3-packaging  libmount libmount-devel make cmake automake gdb gcc
-yum --nogpgcheck --enablerepo=powertools  install libyaml-devel
-yum --nogpgcheck --disablerepo=* --enablerepo=e2fsprogs-wc  install  e2fsprogs e2fsprogs-devel e2fsprogs-libs libcom_err libcom_err-devel libss libss-devel 
-yum install  --disablerepo=*  --enablerepo=lustre-server kernel-debuginfo-common-x86_64.x86_64 -y
+<h2 id="配置免密和hosts">配置免密和hosts</h2>
+<pre><code>#ib
+10.2.5.10 imaster
+10.2.5.11 inode01
+10.2.5.12 inode02
+10.2.5.13 inode03
 </code></pre>
-<h3 id="3-编译并安装zfs">3. 编译并安装zfs</h3>
-<p>下载源码包</p>
-<pre><code class="language-shell">git clone https://github.com/openzfs/zfs.git &amp;&amp; cd zfs &amp;&amp; git checkout zfs-2.1.5 
+<h2 id="配置全局用户">配置全局用户</h2>
+<p>所有节点创建同样的munge用户</p>
+<pre><code>export MUNGEUSER=991
+groupadd -g $MUNGEUSER munge
+useradd  -m -c &quot;MUNGE Uid 'N' Gid Emporium&quot; -d /var/lib/munge -u $MUNGEUSER -g munge  -s /sbin/nologin munge
 </code></pre>
-<p>编译</p>
-<pre><code>sh autogen.sh
-./configure --with-spec=redhat  --with-linux=/usr/src/kernels/4.18.0-425.19.2.el8_7.x86_64/ 
-make pkg-utils pkg-kmod
-mkdir -p zfs-rpm &amp;&amp;  mv *.rpm zfs-rpm/
+<h2 id="安装依赖">安装依赖</h2>
+<p>所有节点安装</p>
+<pre><code>apt install gcc man2html libnuma-dev libpam0g-dev libjwt-dev libjson-c-dev libhttp-parser-dev libyaml-dev libhdf5-dev liblz4-dev libhwloc-dev libfreeipmi-dev libipmimonitoring-dev libfreeipmi-dev librrd-dev rrdtool libgtk2.0-dev liblua5.2-dev libcurl-ocaml-dev libmysqlclient-dev munge libmunge-dev build-essential libdbus-glib-1-dev libgirepository1.0-dev -y
 </code></pre>
-<p>安装</p>
-<pre><code>cd zfs-rpm/
-yum localinstall  -y  libuutil*.rpm libnvpair*.rpm zfs-debuginfo*.rpm zfs-debugsource*.rpm 
-yum localinstall  -y  libzfs5*.rpm libzfs5*.rpm libzpool5*.rpm  zfs-kmod-debugsource*.rpm
-yum localinstall  -y  kmod-zfs*.rpm zfs-2.1.5-1.el8.x86_64.rpm
-rpm -ivh zfs-2.1.5-1.el8.src.rpm
+<h2 id="配置munge">配置munge</h2>
+<p>管理节点生成munge.key 并设置权限</p>
+<pre><code>dd if=/dev/urandom bs=1 count=1024 &gt; /etc/munge/munge.key
+chown munge: /etc/munge/munge.key 
+chmod 400 /etc/munge/munge.key
 </code></pre>
-<p>加载zfs内核</p>
-<pre><code class="language-shell">modprobe zfs
+<p>将生成的密钥分发到计算节点</p>
+<pre><code>scp /etc/munge/munge.key XXX
 </code></pre>
-<h3 id="4-编译并安装lustre">4. 编译并安装lustre</h3>
-<p><code>Lustre</code> 主要由 <code>MGS</code>、<code>MDS</code>、<code>OST</code> （前三者组成Server端）和 <code>Client</code> 组成</p>
-<p>下载源码包，更改git 版本,生成系统ac</p>
-<pre><code class="language-shell">git clone git://git.whamcloud.com/fs/lustre-release.git
-cd lustre-release &amp;&amp; git checkout 2.15.2 
-cd lustre-release &amp;&amp; sh autogen.sh
+<p>所有节点设置munge权限</p>
+<pre><code>chown -R munge: /etc/munge/ /var/log/munge/ 
+chmod 0700 /etc/munge/ /var/log/munge/
 </code></pre>
-<p>回到上级目录，复制两份,一份编译客户端，一份编译服务端</p>
-<pre><code class="language-shell">cp lustre-release lustre-client -rf
-cp lustre-release lustre-server -rf
+<p>所有节点开启munge服务器</p>
+<pre><code>systemctl restart munge
+systemctl status munge
 </code></pre>
-<h4 id="41-编译服务端">4.1 编译服务端</h4>
-<p>加上oi2b参数可以使用ib网络</p>
-<pre><code class="language-shell">cd lustre-client
-./configure --enable-quota --enable-server --with-o2ib=yes --with-linux=/usr/src/kernels/4.18.0-425.19.2.el8_7.x86_64/ --with-zfs=/usr/src/zfs-2.1.5/
-make rpms 
-mkdir -p server-rpm &amp;&amp;mv *.rpm server-rpm/
+<p>可以在管理节点 验证munge服务和各计算节点的联通性</p>
+<pre><code>munge -n 
+munge -n | unmunge 
+munge -n | ssh NODE1 unmunge
 </code></pre>
-<p>进入server-rpm 安装</p>
-<pre><code class="language-shell">rpm -ivh --nodeps  *lustre*.rpm
+<h2 id="编译安装slurm">编译安装slurm</h2>
+<p>前往slurm官网 <a href="https://www.schedmd.com/downloads.php">https://www.schedmd.com/downloads.php</a></p>
+<p>选择较为稳定的版本下载 <a href="https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2">https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2</a></p>
+<pre><code class="language-shell">wget https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2
 </code></pre>
-<h4 id="42-编译客户端">4.2 编译客户端</h4>
-<pre><code class="language-shell">cd lustre-client
-./configure --disable-server --enable-client --with-o2ib=yes --with-linux=/usr/src/kernels/4.18.0-425.19.2.el8_7.x86_64/ 
-make rpms 
-mkdir -p client-rpm &amp;&amp;mv *.rpm client-rpm/
+<p>解压</p>
+<pre><code class="language-shell">tar xjf slurm-22.05.8.tar.bz2
 </code></pre>
-<p>进入client-rpm 依次安装</p>
-<pre><code class="language-shell">rpm -ivh --nodeps  *lustre*.rpm
+<p>进入解压好的目录，构建并安装</p>
+<pre><code class="language-shell">./configure --prefix=/usr/local/slurm
+make -j
+make install
 </code></pre>
-<h4 id="43-验证">4.3 验证</h4>
-<p>加载lustre内核</p>
-<pre><code>modprobe -v lustre
+<p>安装的目录指定到了/usr/local/slurm</p>
+<p>配置slurm systemd 服务</p>
+<pre><code class="language-shell">cd etc/
+chmod 755 *.service
+cp *.service /lib/systemd/system/
 </code></pre>
-<p>查看版本</p>
-<pre><code>lctl get_param version
+<h2 id="slurm配置">slurm配置</h2>
+<p>/usr/local/slurm/etc/ 下</p>
+<p>gres.conf</p>
+<pre><code class="language-shell">NodeName=gpu Name=gpu Type=a800 File=/dev/nvidia0
+NodeName=gpu Name=gpu Type=rtx4090 File=/dev/nvidia1
+NodeName=gpu Name=gpu Type=rtx4090 File=/dev/nvidia2
+NodeName=gpu Name=gpu Type=rtx4090 File=/dev/nvidia3
+NodeName=gpu Name=gpu Type=rtx4090 File=/dev/nvidia4
 </code></pre>
-<p>验证后，从内核卸载Lustre内核 重启机器</p>
-<pre><code>lustre_rmmod 
-reboot
+<p>cgroup.conf</p>
+<pre><code class="language-shell">CgroupAutomount=yes
+CgroupMountpoint=/sys/fs/cgroup
+ConstrainCores=yes
+ConstrainDevices=yes
+ConstrainRAMSpace=yes
 </code></pre>
-<h3 id="5-配置lnet网络">5. 配置lnet网络</h3>
-<p>配置网络 需要先卸载lustre内核，加载lnet内核，配置lnet (服务端客户端同样操作) (重启服务器后lnet信息会丢失，每次重启服务器请手动加载lnet网络)</p>
-<pre><code>lustre_rmmod
-modprobe -v lnet
-lnetctl lnet configure
+<p>slurmdbd.conf  记得赋予600权限</p>
+<pre><code class="language-shell">DbdHost=localhost
+DbdAddr=127.0.0.1
+SlurmUser=root
+MessageTimeout=60
+DebugLevel=debug5
+DefaultQOS=normal
+LogFile=/var/log/slurm/slurmdbd.log
+PidFile=/var/run/slurmdbd.pid
+StorageType=accounting_storage/mysql
+StorageHost=localhost
+StorageLoc=slurm_acct_db
+StoragePort=3306
+StorageUser=slurm
+StoragePass=ize2^&amp;*FzU6
+</code></pre>
+<p>slurm.conf</p>
+<pre><code class="language-shell">ClusterName=cool
+SlurmctldHost=master
+SlurmUser=root
 
-lnetctl net add --net o2ib --if ib0
-lnetctl net add --net tcp --if ens5f3
-lnetctl net show
 
-lnetctl export &gt; /etc/sysconfig/lnet.conf
-systemctl enable lnet
+SlurmctldPort=6817
+SlurmdPort=6818
+
+
+StateSaveLocation=/var/spool/slurm
+SlurmdSpoolDir=/var/spool/slurm
+MailProg=/usr/bin/s-nail
+ReturnToService=2
+
+MPIDefault=none
+
+PrologFlags=CONTAIN
+ProctrackType=proctrack/cgroup
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+
+TaskPlugin=task/cgroup
+
+
+SlurmctldDebug=info
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdDebug=error
+SlurmdLogFile=/var/log/slurm/slurmd.log
+
+JobCompType=jobcomp/mysql
+JobCompHost=master
+JobCompUser=slurm
+JobCompPass=ize2^&amp;*FzU6
+JobAcctGatherType=jobacct_gather/linux
+JobAcctGatherFrequency=30
+
+
+AccountingStorageType=accounting_storage/slurmdbd
+AccountingStorageHost=master
+#AccountingStorageTRES=gres/gpu,cpu,mem,energy,node,billing,fs/disk,vmem,pages
+AccountingStorageTRES=gres/gpu
+GresTypes=gpu
+
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmdPidFile=/var/run/slurmd.pid
+
+SlurmctldTimeout=60
+SlurmdTimeout=120
+InactiveLimit=0
+MinJobAge=600
+KillWait=10
+WaitTime=10
+
+
+NodeName=master RealMemory=100000 Sockets=2 CoresPerSocket=16 ThreadsPerCore=2 State=UNKNOWN
+NodeName=big RealMemory=257581 Sockets=2 CoresPerSocket=32 ThreadsPerCore=2 State=UNKNOWN
+NodeName=gpu RealMemory=1031710 Sockets=2 CoresPerSocket=28 ThreadsPerCore=2 Gres=gpu:a800:1,gpu:rtx4090:4 State=UNKNOWN
+
+PartitionName=master Nodes=master Default=YES MaxTime=INFINITE State=UP
+PartitionName=big Nodes=big Default=NO MaxTime=INFINITE State=UP
+PartitionName=gpu Nodes=gpu Default=NO MaxTime=INFINITE State=UP
 </code></pre>
-<p><img src="/img/image-20230526094852529.png" alt="image-20230526094852529"></p>
-<h3 id="6服务端创建mgs-mdt">6.服务端创建MGS MDT</h3>
-<p>查看未使用的硬盘</p>
-<pre><code>lsblk
+<p>管理节点启动slurmctld slurmdbd slurmd （如果管理节点也做计算）服务</p>
+<p>计算节点启动slurmd服务</p>
+<p>sbatch提交时 gres要跟在分区参数后面 例子</p>
+<pre><code class="language-shell">#sbatch -p gpu --gres=gpu:rtx4090:2
 </code></pre>
-<img src="/img/image-20230526095408420.png" alt="image-20230526095408420" style="zoom:67%;" />
-<p>服务端创建MGS MDT,index编号为0</p>
-<pre><code>mkfs.lustre --fsname=lustre --mdt --mgs --index=0 --reformat /dev/nvme0n1
-</code></pre>
-<p>MGS和MDS 创建挂载目录，启动服务并挂载</p>
-<pre><code>mkdir -p /mnt/mg
-mount.lustre  /dev/nvme0n1 /mnt/mg
-</code></pre>
-<p><img src="/img/image-20230526095322665.png" alt="image-20230526095322665"></p>
-<h3 id="7服务端创建ost">7.服务端创建OST</h3>
-<p>（可与上面MGS MDT在同一台服务器）</p>
-<pre><code>mkfs.lustre --fsname=lustre --reformat --ost --mgsnode=192.168.6.100@o2ib --index=11 /dev/nvme1n1
-mkfs.lustre --fsname=lustre --reformat --ost --mgsnode=192.168.6.100@o2ib --index=12 /dev/nvme2n1
-mkfs.lustre --fsname=lustre --reformat --ost --mgsnode=192.168.6.100@o2ib --index=13 /dev/nvme3n1
-</code></pre>
-<p>OSS 创建挂载目录，启动服务并挂载</p>
-<pre><code>mkdir -p /mnt/ost1 
-mkdir -p /mnt/ost2 
-mkdir -p /mnt/ost3
-mount -t lustre  /dev/nvme1n1 /mnt/ost1
-mount -t lustre  /dev/nvme2n1 /mnt/ost2
-mount -t lustre  /dev/nvme3n1 /mnt/ost3
-</code></pre>
-<p><img src="/img/image-20230526095514109.png" alt="image-20230526095514109"></p>
-<h3 id="8客户端挂载">8.客户端挂载</h3>
-<p>创建全局共享目录/z3 并将lustre挂载到上面</p>
-<pre><code>mkdir /z3
-mount.lustre 192.168.6.100@o2ib:/lustre /z3
-mkdir -p /z3/home  /z3/public
-</code></pre>
-<p><img src="/img/image-20230526100605288.png" alt="image-20230526100605288"></p>
-<blockquote>
-<p>本项目三台节点都有4块7TNVME，我们每一台服务器都有一块硬盘做MGS/MDT,部署详细如下（注意index编号不要重复了）</p>
-<p>所有节点：</p>
-<p>mkdir /mnt/mg</p>
-<p>mkdir /z3</p>
-<p>mkdir -p /mnt/ost1</p>
-<p>mkdir -p /mnt/ost2</p>
-<p>mkdir -p /mnt/ost3</p>
-<p>mgs mtd&gt;</p>
-<p>node0:</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;mgs &ndash;mdt &ndash;servicenode=192.168.6.100@o2ib &ndash;index=0 /dev/nvme0n1</p>
-<p>mount -t lustre /dev/nvme0n1 /mnt/mg</p>
-<p>node1：</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;mgs &ndash;mdt &ndash;servicenode=192.168.6.101@o2ib &ndash;index=1 /dev/nvme0n1</p>
-<p>mount -t lustre /dev/nvme0n1 /mnt/mg</p>
-<p>node2：</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;mgs &ndash;mdt &ndash;servicenode=192.168.6.102@o2ib &ndash;index=2 /dev/nvme0n1</p>
-<p>mount -t lustre /dev/nvme0n1 /mnt/mg</p>
-<p>ost&gt;</p>
-<p>node0:</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=11 /dev/nvme1n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=12 /dev/nvme2n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=13 /dev/nvme3n1</p>
-<p>mount -t lustre  /dev/nvme1n1 /mnt/ost1</p>
-<p>mount -t lustre  /dev/nvme2n1 /mnt/ost2</p>
-<p>mount -t lustre  /dev/nvme3n1 /mnt/ost3</p>
-<p>node1:</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=101 /dev/nvme1n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=102 /dev/nvme2n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=103 /dev/nvme3n1</p>
-<p>mount -t lustre  /dev/nvme1n1 /mnt/ost1</p>
-<p>mount -t lustre  /dev/nvme2n1 /mnt/ost2</p>
-<p>mount -t lustre  /dev/nvme3n1 /mnt/ost3</p>
-<p>node2</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=201 /dev/nvme1n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=202 /dev/nvme2n1</p>
-<p>mkfs.lustre &ndash;fsname=lustre &ndash;reformat &ndash;ost &ndash;mgsnode=192.168.6.100@o2ib &ndash;mgsnode=192.168.6.101@o2ib  &ndash;mgsnode=192.168.6.102@o2ib &ndash;index=203 /dev/nvme3n1</p>
-<p>mount -t lustre  /dev/nvme1n1 /mnt/ost1</p>
-<p>mount -t lustre  /dev/nvme2n1 /mnt/ost2</p>
-<p>mount -t lustre  /dev/nvme3n1 /mnt/ost3</p>
-<p>umount /mnt/ost*</p>
-<p>umount /mnt/mg</p>
-<p>所有节点 client&gt;</p>
-<p>mount.lustre 192.168.6.100@o2ib:192.168.6.101@o2ib:192.168.6.102@o2ib:/lustre /z3</p>
-<p>最后效果如下</p>
-<p><img src="/img/image-20230526095557437.png" alt="image-20230526095557437"></p>
-</blockquote>
-<blockquote>
-<p>重启服务器后，挂载会失效，请手动复现上述挂载的命令，不用重新格式化</p>
-</blockquote>
 
 </article>
 
@@ -665,13 +645,13 @@ mkdir -p /z3/home  /z3/public
         <span class="text-primary-text block font-bold"
           >上一页</span
         >
-        <a href="/docs/hpc/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/" class="block">Nvidia显卡驱动安装</a>
+        <a href="/docs/hpc/ipmitool%E6%95%99%E7%A8%8B/" class="block">Ipmitool 教程</a>
       
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
       
         <span class="text-primary-text block font-bold">下一页</span>
-        <a href="/docs/hpc/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" class="block">Centos7下slurm集群部署</a>
+        <a href="/docs/hpc/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" class="block">Diskless 无盘linux集群搭建</a>
       
     </div>
   </div>
@@ -714,24 +694,13 @@ mkdir -p /z3/home  /z3/public
 >
   <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#1-添加lustre官方源">1. 添加lustre官方源</a></li>
-        <li><a href="#2-安装依赖">2. 安装依赖</a></li>
-        <li><a href="#3-编译并安装zfs">3. 编译并安装zfs</a></li>
-        <li><a href="#4-编译并安装lustre">4. 编译并安装lustre</a>
-          <ul>
-            <li><a href="#41-编译服务端">4.1 编译服务端</a></li>
-            <li><a href="#42-编译客户端">4.2 编译客户端</a></li>
-            <li><a href="#43-验证">4.3 验证</a></li>
-          </ul>
-        </li>
-        <li><a href="#5-配置lnet网络">5. 配置lnet网络</a></li>
-        <li><a href="#6服务端创建mgs-mdt">6.服务端创建MGS MDT</a></li>
-        <li><a href="#7服务端创建ost">7.服务端创建OST</a></li>
-        <li><a href="#8客户端挂载">8.客户端挂载</a></li>
-      </ul>
-    </li>
+    <li><a href="#配置时间同步">配置时间同步</a></li>
+    <li><a href="#配置免密和hosts">配置免密和hosts</a></li>
+    <li><a href="#配置全局用户">配置全局用户</a></li>
+    <li><a href="#安装依赖">安装依赖</a></li>
+    <li><a href="#配置munge">配置munge</a></li>
+    <li><a href="#编译安装slurm">编译安装slurm</a></li>
+    <li><a href="#slurm配置">slurm配置</a></li>
   </ul>
 </nav>
 </div>

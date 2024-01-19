@@ -130,10 +130,10 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
     
     <item>
       <title>Ubuntu下slurm GPU集群编译安装</title>
-      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
+      <link>/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Tue, 17 Oct 2023 10:23:41 +0800</pubDate>
       
-      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
+      <guid>/docs/hpc/ubuntu%E4%B8%8Bslurm-gpu%E9%9B%86%E7%BE%A4%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>配置时间同步 ntpdata ntp.</description>
     </item>
     
