@@ -6,7 +6,25 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 15 Jan 2024 16:51:18 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Mar 2024 22:28:14 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Centos7部署nis服务</title>
+      <link>/docs/hpc/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Tue, 05 Mar 2024 22:28:14 +0800</pubDate>
+      
+      <guid>/docs/hpc/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/</guid>
+      <description>修改hosts 目前有server端10.249.2.7 和 client端 10.</description>
+    </item>
+    
+    <item>
+      <title>Maas安装和使用</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 29 Feb 2024 09:18:06 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <description>postgresql配置 配置主机名为maas</description>
+    </item>
+    
     <item>
       <title>探索基于SPICE协议的VDI云桌面</title>
       <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E6%8E%A2%E7%B4%A2%E5%9F%BA%E4%BA%8Espice%E5%8D%8F%E8%AE%AE%E7%9A%84vdi%E4%BA%91%E6%A1%8C%E9%9D%A2/</link>
