@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>各厂商服务器IPMI默认密码 | 云计算 | 一言</title>
+<title>Centos7下mpich编译 | 科学计算 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,8 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Dell服务器R620的ipmi默认密码
-ipmi用户名：登录iDRAC的用户名，默认为 root">
+  content="编译mpich 解压源码包 最好在/tmp目录下进行，使用内存盘编译速度更快">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,12 +87,16 @@ ipmi用户名：登录iDRAC的用户名，默认为 root">
       "item":"/docs/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"云计算",
-      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"},{
+      "name":"科学计算",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/"},{
       "@type": "ListItem",
       "position": 3 ,
-      "name":"各厂商服务器IPMI默认密码",
-      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/"}]
+      "name":"软件",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Centos7下mpich编译",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/"}]
 }
 </script>
 
@@ -105,11 +108,11 @@ ipmi用户名：登录iDRAC的用户名，默认为 root">
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/"
+        "@id": "/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/"
     },
-    "headline": "各厂商服务器IPMI默认密码 | 云计算 | 一言","datePublished": "2023-11-07T10:56:26+08:00",
-    "dateModified": "2023-11-07T10:56:26+08:00",
-    "wordCount":  207 ,
+    "headline": "Centos7下mpich编译 | 科学计算 | 一言","datePublished": "2024-03-06T14:05:08+08:00",
+    "dateModified": "2024-03-06T14:05:08+08:00",
+    "wordCount":  157 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -118,22 +121,21 @@ ipmi用户名：登录iDRAC的用户名，默认为 root">
             "url": "/images/icon.png"
         }
         },
-    "description": "Dell服务器R620的ipmi默认密码\nipmi用户名：登录iDRAC的用户名，默认为 root"
+    "description": "编译mpich 解压源码包 最好在\/tmp目录下进行，使用内存盘编译速度更快"
 }
-</script><meta property="og:title" content="各厂商服务器IPMI默认密码 | 云计算 | 一言" />
+</script><meta property="og:title" content="Centos7下mpich编译 | 科学计算 | 一言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/" />
+<meta property="og:url" content="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/" />
 
 
 
 
-<meta property="og:description" content="Dell服务器R620的ipmi默认密码
-ipmi用户名：登录iDRAC的用户名，默认为 root" />
+<meta property="og:description" content="编译mpich 解压源码包 最好在/tmp目录下进行，使用内存盘编译速度更快" />
 
 
 
@@ -150,10 +152,10 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
 
 
 
-<meta property="article:published_time" content="2023-11-07T10:56:26&#43;08:00" />
+<meta property="article:published_time" content="2024-03-06T14:05:08&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2023-11-07T10:56:26&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-06T14:05:08&#43;08:00" />
 
 
 
@@ -252,6 +254,11 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
 
 
 
+
+
+
+
+
 <div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
     <span class="font-semibold">目录</span>
     <i class='fas fa-caret-right ms-1'></i>
@@ -261,7 +268,7 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
     class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
     <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
         <a class=" hover:text-eureka"
-            href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+            href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/">科学计算</a>
         
         
         
@@ -274,10 +281,27 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
     
     
     <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/">编译</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
         <div class="">
             <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Docker部署iredmail邮件系统</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">编译过程</a>
         </div>
+        
+    </li>
+    
+    
+</ul>
+
         
     </li>
     
@@ -285,87 +309,60 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
     
     
     <li class="py-2">
-        <div class="">
+        <div class=" pb-2 ">
             <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">Maas安装和使用</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/">软件</a>
         </div>
         
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E6%8E%A2%E7%B4%A2%E5%9F%BA%E4%BA%8Espice%E5%8D%8F%E8%AE%AE%E7%9A%84vdi%E4%BA%91%E6%A1%8C%E9%9D%A2/">探索基于SPICE协议的VDI云桌面</a>
-        </div>
         
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%88%B6%E4%BD%9C%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E7%9A%84centos7%E9%95%9C%E5%83%8F/">制作自动安装系统的centos7镜像</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/">Gpu资源测试通用报告</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/">centos7下搭建ipxe服务器</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/centos7%E9%83%A8%E7%BD%B2ovs/">Centos7部署openvswitch</a>
-        </div>
-        
-    </li>
-    
-    
-    
-    
-    <li class="py-2">
-        <div class="">
-            <a class=" hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/">Lvm实战</a>
-        </div>
-        
-    </li>
-    
+<ul class="ps-6">
     
     
     
     <li class="py-2">
         <div class="">
             <a class=" text-eureka  hover:text-eureka"
-                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/">各厂商服务器IPMI默认密码</a>
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/">Centos7下mpich编译</a>
         </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/">Intel编译器安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/">Vasp编译安装教程一</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/">Vasp编译安装教程二-插件篇</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
         
     </li>
     
@@ -378,6 +375,8 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
 
 
 
+
+
             </div>
 
         </div>
@@ -385,7 +384,7 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">各厂商服务器IPMI默认密码</h1>
+  <h1 class="mb-4">Centos7下mpich编译</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -393,7 +392,7 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-11-07</span
+      >2024-03-06</span
     >
   </div>
   <div class="me-6 my-2">
@@ -410,112 +409,84 @@ ipmi用户名：登录iDRAC的用户名，默认为 root" />
   
   
 
-  <p>Dell服务器R620的ipmi默认密码</p>
-<p><strong>ipmi用户名</strong>：登录iDRAC的用户名，默认为 <strong>root</strong></p>
-<p><strong>ipmi密码</strong>：登录iDRAC的密码，默认为 <strong>calvin</strong>，以实际自己设置为准。</p>
-<p>BMC/ IPMI 默认用户名密码
-超微主板 用户名：ADMIN 密码：ADMIN
-华硕主板 用户名：admin 密码：admin
-泰安主板 用户名：root 密码：superuser</p>
-<p>一、服务器设备默认管理1、宝德4卡服务器</p>
-<p>默认用户名：ADMIN/密码：11111111</p>
-<p>2、超微服务器
-默认用户名：ADMIN/密码：admin000
-默认用户名：ADMIN/密码：ADMIN</p>
-<p>3、浪潮服务器
-型号:NF5270M4 管理地址：手动配置
-默认用户名：admin/密码：admin
-型号:NF5270M2 管理里地址：192.168.1.100
-默认用户名：admin/密码：admin</p>
-<p>4、IBM服务器
-IBM P小型机ASMI 管理地址：hmc1:192.168.2.147
-用户名：admin/密码：admin
-管理地址：hmc1:192.168.3.147
-用户名：admin/密码：admin
-IBM X系列MM端口 管理地址：192.168.70.125/25
-用户名：USERID 密码：PASSW0RD</p>
-<p>5、联想服务器
-RQ940系列 管理地址：192.168.0.120</p>
-<p>账户/密码：admin/admin</p>
-<p>用户名：lenovo /密码：len0vO
-RD530/RD630/RD540/RD640 管理地址：手动配置
-用户名：lenovo /密码：lenovo
-万全R520系列 管理地址：手动该设置
-用户名：lenovo /密码：lenovo</p>
-<p>6、华为服务器
-E6000 系列 管理地址：10.10.1.101-10.10.1.110
-用户名：root /密码：Huawei12#$
-RH2288 v3 系列 管理地址：192.168.2.100
-用户名：root /密码：Huawei12#$
-RH2288 v5系列 管理地址：192.168.2.100
-用户名：Administrator /密码：Admin@9000
-T600 系列 管理地址：10.10.1.101-10.10.1.102
-用户名：root /密码：Huawei12#$
-X6000系列 管理地址：10.10.1.101-10.10.1.104
-用户名：root /密码：Huawei12#$
-V3服务器BIOS系统的默认密码为:“Huawei12#KaTeX parse error: Expected &lsquo;EOF&rsquo;, got &lsquo;#&rsquo; at position 90: …t，默认密码为Huawei12#̲；V5服务器的iBMC默认用户为Administrator，默认密码为Admin@9000。</p>
-<p>7、H3C服务器
-IDRAC系列 管理地址：192.168.0.120
-用户名：root /密码：calvin</p>
-<p>8、Dell服务
-IDRAC系列 管理地址：192.168.0.120
-用户名：root /密码：calvin</p>
-<p>9、曙光服务器
-I840-G25系列 管理地址：手动设置
-用户名：admin /密码：administrator</p>
-<p>二、存储默认管理</p>
-<p>1、IBM存储
-DS存储 port1 A控192.168.128.101/24
-用IBM DS Storage Manager Client管理软件连接
-port1 B控192.168.128.102/24
-port2 A控192.168.129.101/24
-port2 B控192.168.129.102/24
-v5030 T口管理地址：192.168.0.1
-用户名：superuser/密码：passw0rd
-V7000 上管理口地址：192.168.70.121
-用户名：superuser/密码：passw0rd
-下 管理口地址：192.168.70.122</p>
-<p>2、华为存储
-OceanStor 5300 V3/5500 V3(V300R003C00/V300R003C10版本)
-A管理口地址：192.168.128.101/24
-用户名：admin /密码：Admin@storage
-B管理口地址：192.168.128.102/24
-OceanStor 5300 V3/5500 V3(V300R003C20版本)
-A管理口：192.168.128.101/16
-B管理口：192.168.128.102/16
-用户名：admin /密码：Admin@storage
-OceanStor 5600 V3/5800 V3/6800 V3(V300R003C00/V300R003C10版本)
-A管理口：192.168.128.101/16
-B管理口：192.168.128.102/16
-用户名：admin /密码：Admin@storage
-OceanStor 5600 V3/5800 V3/6800 V3(V300R003C20版本)
-A管理口：192.168.128.101/16
-B管理口：192.168.128.102/16
-用户名：admin /密码：Admin@storage
-以上默认的内部心跳IP 双控：127.127.127.10-11/24
-四控：127.127.127.10-13/24
-以上维护网口IP 172.31.128.101/16
-172.31.128.102/16</p>
-<p>3、华赛存储
-S1200系列 默认管理地址：192.168.168.1
-用户名：root /密码：password
-V1000/S500系列 默认管理地址：192.168.128.101-102/24
-用户名：admin /密码：123456</p>
-<p>4、Dell存储
-MD3600系列 默认管理地址：192.168.128.101/102
-连接方式：用DELL MDSM软件连接</p>
-<p>5、联想EMC
-5100系列 默认管理地址：1.1.1.1/1.1.1.2
-用户名：root /密码：lenovo</p>
-<p>6、曙光存储
-DS800-G35系列 默认地址：192.168.0.210/192.168.0.220
-用户名：admin /密码：admin</p>
-<p>7、宏杉存储
-MS系列 默认地址：192.168.0.210/192.168.0.220
-用户名：admin /密码：admin</p>
-<p>8、同有存储
-NetStor iSUM450G2系列 默认地址：192.168.0.200
-用户名：administator /密码：password</p>
+  <h2 id="编译mpich">编译mpich</h2>
+<p>解压源码包 最好在/tmp目录下进行，使用内存盘编译速度更快</p>
+<pre><code>tar xzf mpich-3.4.3.tar.gz
+</code></pre>
+<p>进入目录</p>
+<pre><code>cd  mpich-3.4.3
+</code></pre>
+<p>配置安装目录,指定使用CH4通信子系统，并且通过OFI接口与网络硬件进行交互</p>
+<pre><code class="language-shell">./configure --prefix=/public/software/mpich-4.0.1 --with-device=ch4:ofi
+</code></pre>
+<p>编译 加入-j自动调用所有核心</p>
+<pre><code>make -j
+</code></pre>
+<p>安装</p>
+<pre><code>make install
+</code></pre>
+<p>配置它的modulefile</p>
+<p>在/public/software/module/tools/modules/modulefiles新建目录mpich</p>
+<p>创建文件/public/software/module/tools/modules/modulefile/mpich/3.4.3</p>
+<pre><code>#%Module1.0
+
+
+module-whatis &quot;MPICH is a high performance and widely portable implementation of the Message Passing Interface (MPI) standard.&quot;
+
+proc ModulesHelp { } {
+puts stderr &quot;MPICH is a high performance and widely portable implementation of the&quot;
+puts stderr &quot;Message Passing Interface (MPI) standard.&quot;
+}
+
+
+prepend-path LD_LIBRARY_PATH &quot;/public/software/mpich-3.4.3/lib&quot;
+prepend-path PATH &quot;/public/software/mpich-3.4.3/bin&quot;
+prepend-path MANPATH &quot;/public/software/mpich-3.4.3/share/man&quot;
+prepend-path PKG_CONFIG_PATH &quot;/public/software/mpich-3.4.3/lib/pkgconfig&quot;
+prepend-path CMAKE_PREFIX_PATH &quot;/public/software/mpich-3.4.3/&quot;
+prepend-path CPATH &quot;/public/software/mpich-3.4.3/include&quot;
+setenv MPICC &quot;/public/software/mpich-3.4.3/bin/mpicc&quot;
+setenv MPICXX &quot;/public/software/mpich-3.4.3/bin/mpic++&quot;
+setenv MPIF77 &quot;/public/software/mpich-3.4.3/bin/mpif77&quot;
+setenv MPIF90 &quot;/public/software/mpich-3.4.3/bin/mpif90&quot;
+</code></pre>
+<h2 id="测试">测试</h2>
+<p>新建mpic的hello.c</p>
+<pre><code>#include &lt;mpi.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(int argc, char** argv){
+    //初始化MPI环境
+    MPI_Init(NULL, NULL);
+
+    //获取进程数
+    int world_size;
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);
+
+    //获取进程的等级
+    int world_rank;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;world_rank);
+
+    //获取进程的名字
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    int name_len;
+    MPI_Get_processor_name(processor_name, &amp;name_len);
+
+    //打印helloworld
+    printf(&quot;Hello world from processor %s, rank %d out of %d processors\n&quot;,processor_name, world_rank, world_size);
+
+    //关闭MPI环境
+    MPI_Finalize();
+}
+</code></pre>
+<p>编译hello.c</p>
+<pre><code>mpicc hello.c -o hello
+</code></pre>
+<p>验证mpirun</p>
+<pre><code>mpirun -n 4 ./hello
+</code></pre>
+<p><img src="/img/image-20240306142231623.png" alt="image-20240306142231623"></p>
+<p>验证mpirun和slurm srun提交到集群都通过</p>
 
 </article>
 
@@ -533,13 +504,11 @@ NetStor iSUM450G2系列 默认地址：192.168.0.200
   >
     <div>
       
-        <span class="text-primary-text block font-bold"
-          >上一页</span
-        >
-        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/lvm%E5%AE%9E%E6%88%98/" class="block">Lvm实战</a>
-      
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/" class="block">Intel编译器安装</a>
       
     </div>
   </div>
@@ -564,6 +533,36 @@ NetStor iSUM450G2系列 默认地址：192.168.0.200
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编译mpich">编译mpich</a></li>
+    <li><a href="#测试">测试</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>

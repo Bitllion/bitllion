@@ -6,7 +6,25 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 05 Mar 2024 22:28:14 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Mar 2024 13:07:20 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker部署iredmail邮件系统</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 12 Mar 2024 13:07:20 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+      <description>部署 mkdir iredmail &amp;amp;&amp;amp; cd iredmailcat &amp;gt; iredmail-docker.</description>
+    </item>
+    
+    <item>
+      <title>Centos7下mpich编译</title>
+      <link>/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/</link>
+      <pubDate>Wed, 06 Mar 2024 14:05:08 +0800</pubDate>
+      
+      <guid>/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/</guid>
+      <description>编译mpich 解压源码包 最好在/tmp目录下进行，使用内存盘编译速度更快</description>
+    </item>
+    
     <item>
       <title>Centos7部署nis服务</title>
       <link>/docs/hpc/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/</link>
