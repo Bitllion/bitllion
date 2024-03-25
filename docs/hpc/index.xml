@@ -8,6 +8,15 @@
     <language>zh</language>
     <lastBuildDate>Thu, 25 May 2023 16:31:22 +0800</lastBuildDate><atom:link href="/docs/hpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Ubuntu22.04部署slurm GPU集群</title>
+      <link>/docs/hpc/ubuntu22.04%E9%83%A8%E7%BD%B2slurm-gpu%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Mon, 25 Mar 2024 09:23:23 +0800</pubDate>
+      
+      <guid>/docs/hpc/ubuntu22.04%E9%83%A8%E7%BD%B2slurm-gpu%E9%9B%86%E7%BE%A4/</guid>
+      <description>nis用户统一认证服务部署 所有节点修改/etc/hosts</description>
+    </item>
+    
+    <item>
       <title>Centos7部署nis服务</title>
       <link>/docs/hpc/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 05 Mar 2024 22:28:14 +0800</pubDate>
