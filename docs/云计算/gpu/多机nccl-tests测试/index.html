@@ -112,7 +112,7 @@
     },
     "headline": "多机nccl Tests测试 | 云计算 | 一言","datePublished": "2024-07-02T16:04:28+08:00",
     "dateModified": "2024-07-02T16:04:28+08:00",
-    "wordCount":  184 ,
+    "wordCount":  224 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -679,7 +679,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
+    <span>2分钟阅读时长</span>
   </div>
 
   
@@ -701,41 +701,50 @@
 <h2 id="环境设置">环境设置</h2>
 <p>ssh 互相免密</p>
 <p>hosts 设置好</p>
+<p>关闭cpu 多线程 和虚拟化</p>
+<p>关闭acs</p>
+<pre><code class="language-shell">#!/bin/bash
+echo &quot;==============`date` stop acs =================&quot;  &gt;&gt; /var/log/acs.log
+for i in `lspci -vvv |grep &quot;PCI bridge&quot; | awk '{print $1}'`
+do
+        lspci -s $i -vvv |grep ACSCtl &gt;/dev/null&amp;&amp; setpci -v -s $i ecap_acs+6.w=0 &amp;&gt;&gt; /var/log/acs.log
+done
+</code></pre>
 <h2 id="安装cuda">安装cuda</h2>
-<pre><code>wget https://developer.download.nvidia.com/compute/cuda/12.5.0/local_installers/cuda_12.5.0_555.42.02_linux.run
+<pre><code class="language-shell">wget https://developer.download.nvidia.com/compute/cuda/12.5.0/local_installers/cuda_12.5.0_555.42.02_linux.run
 bash cuda_12.5.0_555.42.02_linux.run
 </code></pre>
 <p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160603883.png" alt="image-20240702160603883"></p>
 <p>安装时记得取消drvier的选项</p>
 <p>设置环境变量</p>
-<pre><code>echo &quot;export PATH=/usr/local/cuda/bin:$PATH&quot; &gt;&gt; ~/.bashrc
+<pre><code class="language-shell">echo &quot;export PATH=/usr/local/cuda/bin:$PATH&quot; &gt;&gt; ~/.bashrc
 echo &quot;export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH&quot; &gt;&gt; ~/.bashrc
 source ~/.bashrc
 </code></pre>
 <h2 id="安装nccl">安装nccl</h2>
-<pre><code>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
+<pre><code class="language-shell">wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
 apt install ./cuda-keyring_1.0-1_all.deb
 apt update
 apt install libnccl2 libnccl-dev -y
 </code></pre>
 <h2 id="创建共享存储">创建共享存储</h2>
 <p>gpu3</p>
-<pre><code>apt install nfs-server
+<pre><code class="language-shell">apt install nfs-server
 mkdir /share
 echo '/share 10.0.0.4(rw,sync,no_root_squash,no_subtree_check,insecure)' &gt;&gt; /etc/exports
 exportfs -ra
 </code></pre>
 <p>gpu4</p>
-<pre><code>mkdir /share
+<pre><code class="language-shell">mkdir /share
 mount gpu3:/share /share
 </code></pre>
 <h2 id="安装hpcx">安装hpcx</h2>
-<pre><code>cd /share
+<pre><code class="language-shell">cd /share
 wget https://content.mellanox.com/hpc/hpc-x/v2.17.1rc2/hpcx-v2.17.1-gcc-mlnx_ofed-ubuntu22.04-cuda12-x86_64.tbz
 tar xf hpcx-v2.17.1-gcc-mlnx_ofed-ubuntu22.04-cuda12-x86_64.tbz
 </code></pre>
 <h2 id="编译nccl-tests">编译nccl tests</h2>
-<pre><code>cd /share
+<pre><code class="language-shell">cd /share
 wget https://github.com/NVIDIA/nccl-tests/archive/refs/tags/v2.13.9.tar.gz
 tar xf v2.13.9.tar.gz
 cd nccl-tests-2.13.9/
@@ -743,19 +752,19 @@ make -J MPI=1
 </code></pre>
 <h2 id="测试nccl-tests">测试nccl tests</h2>
 <p>单节点:</p>
-<pre><code>all_reduce_perf -b 16M -e 8G -f 2 -g 8 -f 2 -c 1
+<pre><code class="language-shell">all_reduce_perf -b 16M -e 8G -f 2 -g 8 -f 2 -c 1
 </code></pre>
 <p>gpu3结果</p>
 <p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160643606.png" alt="image-20240702160643606"></p>
 <p>多节点 (slurm by srun)</p>
-<pre><code>export NCCL_SOCKET_IFNAME=bond0
+<pre><code class="language-shell">export NCCL_SOCKET_IFNAME=bond0
 export NCCL_IB_HCA=ib0,ib2,ib4
 export NCCL_DEBUG=WARN
 srun -N 2 -c 8  --gres=gpu:a800:8  ./all_reduce_perf -b 16M -e 8G -f 2 -g 8 -c 1
 </code></pre>
 <p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160836422.png" alt="image-20240702160836422"></p>
 <p>sbatch脚本参考 arp.slurm:</p>
-<pre><code>#!/bin/bash
+<pre><code class="language-shell">#!/bin/bash
 #SBATCH --ntasks-per-node=8
 #SBATCH -c 4
 #SBATCH --gres=gpu:8
