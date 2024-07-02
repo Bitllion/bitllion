@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Gpu资源测试通用报告 | 云计算 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="一、通用计算性能测试 1.测试目的 验证 CUDA ⼯具包是否可以正确安装和配置">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"云计算",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"GPU",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Gpu资源测试通用报告",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/"
+    },
+    "headline": "Gpu资源测试通用报告 | 云计算 | 一言","datePublished": "2024-01-09T15:41:53+08:00",
+    "dateModified": "2024-01-09T15:41:53+08:00",
+    "wordCount":  1542 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "一、通用计算性能测试 1.测试目的 验证 CUDA ⼯具包是否可以正确安装和配置"
+}
+</script><meta property="og:title" content="Gpu资源测试通用报告 | 云计算 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/" />
+
+
+
+
+<meta property="og:description" content="一、通用计算性能测试 1.测试目的 验证 CUDA ⼯具包是否可以正确安装和配置" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-09T15:41:53&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2024-01-09T15:41:53&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="http://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/">Pve配置vlan版bond虚拟网桥</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/">GPU</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/">多机nccl Tests测试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/">Gpu资源测试通用报告</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/">Kvm</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/ubuntu22.04%E5%AE%89%E8%A3%85ovs%E5%92%8C%E9%85%8D%E7%BD%AEkvm%E8%99%9A%E6%8B%9F%E5%8C%96/">Ubuntu22.04安装ovs和配置KVM虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/%E6%8E%A2%E7%B4%A2%E5%9F%BA%E4%BA%8Espice%E5%8D%8F%E8%AE%AE%E7%9A%84vdi%E4%BA%91%E6%A1%8C%E9%9D%A2/">探索基于SPICE协议的VDI云桌面</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/">Devops</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/clush%E8%BF%90%E7%BB%B4/">Clush运维</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nexus3%E9%95%9C%E5%83%8F%E6%BA%90%E6%90%AD%E5%BB%BA/">Nexus3镜像源搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/prometheus%E7%9B%91%E6%8E%A7%E9%83%A8%E7%BD%B2/">Prometheus监控部署</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Docker部署iredmail邮件系统</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/">Centos7部署nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">Maas安装和使用</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E5%88%B6%E4%BD%9C%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E7%9A%84centos7%E9%95%9C%E5%83%8F/">制作自动安装系统的centos7镜像</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/">centos7下搭建ipxe服务器</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ubuntu%E9%83%A8%E7%BD%B2ganglia%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/">Ubuntu部署ganglia监控系统</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/">Ubuntu搭建nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/">各厂商服务器IPMI默认密码</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">Diskless 无盘linux集群搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Nvidia显卡驱动安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Ldap用户统一认证服务安装</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/">网络</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/pve%E4%B8%8B%E9%85%8D%E7%BD%AEib%E8%99%9A%E6%8B%9F%E5%8C%96/">Pve下配置ib虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/">Centos7部署ovs</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/">存储</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/centos7%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2luster/">Centos7离线部署luster</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/lvm%E5%AE%9E%E6%88%98/">Lvm实战</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/rh8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85lustre/">RH8编译安装Lustre</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Gpu资源测试通用报告</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-09</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>8分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="一通用计算性能测试">一、通用计算性能测试</h2>
+<h3 id="1测试目的">1.测试目的</h3>
+<ul>
+<li>
+<p>验证 CUDA ⼯具包是否可以正确安装和配置</p>
+</li>
+<li>
+<p>检查 CUDA 可以访 问的 GPU 设备的数量</p>
+</li>
+<li>
+<p>计算能⼒、核⼼数量、内存带宽等硬件规格信息，以及它们是否能正常⼯作，确保系统硬件配置的稳定性</p>
+</li>
+</ul>
+<h3 id="2环境配置">2.环境配置</h3>
+<ul>
+<li>
+<p>NVIDIA A100-SXM4-40GB *8</p>
+</li>
+<li>
+<p>NVIDIA 驱动 535.129.03</p>
+</li>
+<li>
+<p>CUDA 11.8</p>
+</li>
+<li>
+<p>nvidia-fabricmanager服务</p>
+</li>
+</ul>
+<h3 id="3测试工具">3.测试工具</h3>
+<p>deviceQuery,cuda ⼯具包中 samples/1_Utilities/deviceQuery</p>
+<p>项目主页<a href="https://github.com/NVIDIA/cuda-samples">NVIDIA/cuda-samples: Samples for CUDA Developers which demonstrates features in CUDA Toolkit (github.com)</a></p>
+<h3 id="4测试过程">4.测试过程</h3>
+<pre><code class="language-shell"># 下载samples项目
+git clone https://github.moeyy.xyz/https://github.com/NVIDIA/cuda-samples.git
+# 编译deviceQuery
+cd cuda-samples/Samples/1_Utilities/deviceQuery &amp;&amp; make
+# 执行deviceQuery
+./deviceQuery
+</code></pre>
+<h3 id="5测试结果">5.测试结果</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设备</td>
+<td>NVIDIA A100-SXM4-40GB</td>
+</tr>
+<tr>
+<td>CUDA驱动版本 / 运行时版本</td>
+<td>11.8/11.8</td>
+</tr>
+<tr>
+<td>CUDA主/次版本号</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>全局内存总量</td>
+<td>40339 MBytes (42298834944 bytes)</td>
+</tr>
+<tr>
+<td>多处理器数量，CUDA核心/多处理器</td>
+<td>(108) Multiprocessors, (064) CUDA Cores/MP: 6912 CUDA Cores</td>
+</tr>
+<tr>
+<td>GPU最大时钟频率</td>
+<td>1410 MHz (1.41 GHz)</td>
+</tr>
+<tr>
+<td>内存时钟频率</td>
+<td>1215 Mhz</td>
+</tr>
+<tr>
+<td>内存总线宽度</td>
+<td>5120-bit</td>
+</tr>
+<tr>
+<td>L2缓存大小</td>
+<td>41943040 bytes</td>
+</tr>
+<tr>
+<td>最大纹理维度尺寸 (x,y,z)</td>
+<td>1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)</td>
+</tr>
+<tr>
+<td>最大分层1D纹理尺寸，(num) layers</td>
+<td>1D=(32768), 2048 layers</td>
+</tr>
+<tr>
+<td>最大分层2D纹理尺寸，(num) layers</td>
+<td>2D=(32768, 32768), 2048 layers</td>
+</tr>
+<tr>
+<td>常量内存总量</td>
+<td>65536 bytes</td>
+</tr>
+<tr>
+<td>每块的共享内存总量</td>
+<td>49152 bytes</td>
+</tr>
+<tr>
+<td>每个多处理器的共享内存总量</td>
+<td>167936 bytes</td>
+</tr>
+<tr>
+<td>每块可用的寄存器总量</td>
+<td>65536</td>
+</tr>
+<tr>
+<td>线程束大小</td>
+<td>32</td>
+</tr>
+<tr>
+<td>每个多处理器的最大线程数</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>每个块的最大线程数</td>
+<td>1024</td>
+</tr>
+<tr>
+<td>线程块的最大尺寸 (x,y,z)</td>
+<td>(1024, 1024, 64)</td>
+</tr>
+<tr>
+<td>网格尺寸的最大尺寸 (x,y,z)</td>
+<td>(2147483647, 65535, 65535)</td>
+</tr>
+<tr>
+<td>最大内存间距</td>
+<td>2147483647 bytes</td>
+</tr>
+<tr>
+<td>纹理对齐</td>
+<td>512 bytes</td>
+</tr>
+<tr>
+<td>并行复制和内核执行</td>
+<td>Yes with 3 copy engine(s)</td>
+</tr>
+<tr>
+<td>内核运行时限制</td>
+<td>No</td>
+</tr>
+<tr>
+<td>集成GPU共享主机内存</td>
+<td>No</td>
+</tr>
+<tr>
+<td>支持主机页锁定内存映射</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>表面对齐要求</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>设备支持ECC</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td>设备支持统一寻址 (UVA)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>设备支持受管内存</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>设备支持计算抢占</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>支持协作内核启动</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>支持多设备协作内核启动</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>设备PCI域ID / 总线ID / 位置ID</td>
+<td>0 / 207 / 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6测试结论">6.测试结论</h3>
+<p>当前环境，NVIDIA驱动、CUDA工具包、nvlink服务均已正常安装和配置，系统硬件配置稳定</p>
+<h2 id="二gpu显存带宽测试">二、GPU显存带宽测试</h2>
+<h3 id="1测试目的-1">1.测试目的</h3>
+<p>测试主机到GPU设备、GPU设备到主机、以及设备到设备之间的数据传输速度，可用于评估GPU设备与主机之间的带宽，以及用于优化GPU计算应用程序的数据传输性能</p>
+<h3 id="2环境配置-1">2.环境配置</h3>
+<ul>
+<li>显卡规格：NVIDIA A100-SXM4-40GB *8</li>
+<li>CUDA版本：11.7</li>
+<li>NVIDIA驱动版本：525.125.06</li>
+<li>nvidia-fabricmanager服务</li>
+</ul>
+<h3 id="3测试工具-1">3.测试工具</h3>
+<p>NVIDIA官方提供的命令行工具bandwidthTest</p>
+<h3 id="4测试过程-1">4.测试过程</h3>
+<pre><code>cd cuda-samples/Samples/1_Utilities/bandwidthTest/
+make
+./bandwidthTest
+</code></pre>
+<h3 id="5测试结果-1">5.测试结果</h3>
+<table>
+<thead>
+<tr>
+<th>Transfer Direction</th>
+<th>Transfer Size (Bytes)</th>
+<th>Bandwidth (GB/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host to Device</td>
+<td>32000000</td>
+<td>25.2</td>
+</tr>
+<tr>
+<td>Device to Host</td>
+<td>32000000</td>
+<td>26.3</td>
+</tr>
+<tr>
+<td>Device to Device</td>
+<td>32000000</td>
+<td>1154.8</td>
+</tr>
+</tbody>
+</table>
+<p>测试主机到设备、设备到主机、设备到设备的带宽峰值值如上表所示，一般以 GB/s 为单位，该值越高则说明设备和主机之间的数据传输速度越快，系统整体带宽性能越好。其中设备到设备的速度测试实际测试内容为当前GPU的显存性能。</p>
+<h3 id="6测试结论-1">6.测试结论</h3>
+<p>数据传输的大小32000000 Bytes， A100 GPU主机到设备，设备到主机，设备与设备的显存带宽均低于理论封值，主机到设备、设备到主机影响参数太多，没有理论峰值速度。其中设备到设备的带宽A100 40GB SXM4显卡的理论显存带宽为1555 GB/s，实际测试仅有1154.8GB/s,设备到设备数据传输速度比官方理论峰值低25.79%。（实际带宽会受到多种因素的影响，比如说系统架构和配置、数据传输类型、驱动程序和其他软件等，所以实际带宽都会低于理论峰值）</p>
+<h2 id="三gpu之间的p2p带宽和延迟测试">三、GPU之间的P2P带宽和延迟测试</h2>
+<h3 id="1测试目的-2">1.测试目的</h3>
+<p>评估两个GPU之间的连接性能，包括带宽和延迟，从而评估GPU之间的数据传输性能。在多GPU并行计算中，GPU之间的高速数据传输是保证计算性能的重要因素，因此评估GPU之间连接性能是非常重要的。</p>
+<h3 id="2环境配置-2">2.环境配置</h3>
+<ul>
+<li>显卡规格：NVIDIA A100-SXM4-40GB *8</li>
+<li>CUDA版本：11.7</li>
+<li>NVIDIA驱动版本：525.125.06</li>
+<li>nvidia-fabricmanager服务</li>
+</ul>
+<h3 id="3测试工具-2">3.测试工具</h3>
+<p>NVIDIA官方提供的命令行工具p2pBandwidthLatencyTest</p>
+<h3 id="4测试过程-2">4.测试过程</h3>
+<pre><code>cd cuda-samples/Samples/5_Domain_Specific/p2pBandwidthLatencyTest
+make
+./p2pBandwidthLatencyTest
+</code></pre>
+<h3 id="5测试结果-2">5.测试结果</h3>
+<p><strong>(1)P2P Connectivity Matrix</strong></p>
+<table>
+<thead>
+<tr>
+<th>D\D</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(2)Unidirectional P2P=Disabled Bandwidth Matrix (GB/s)</strong></p>
+<table>
+<thead>
+<tr>
+<th>D\D</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1274.47</td>
+<td>17.87</td>
+<td>12.43</td>
+<td>12.42</td>
+<td>20.61</td>
+<td>20.78</td>
+<td>20.84</td>
+<td>20.88</td>
+</tr>
+<tr>
+<td>1</td>
+<td>17.88</td>
+<td>1284.95</td>
+<td>12.43</td>
+<td>12.42</td>
+<td>20.43</td>
+<td>20.35</td>
+<td>20.90</td>
+<td>20.87</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12.55</td>
+<td>12.55</td>
+<td>1283.89</td>
+<td>8.30</td>
+<td>12.61</td>
+<td>12.61</td>
+<td>12.61</td>
+<td>12.59</td>
+</tr>
+<tr>
+<td>3</td>
+<td>12.55</td>
+<td>12.55</td>
+<td>8.34</td>
+<td>1287.07</td>
+<td>12.61</td>
+<td>12.60</td>
+<td>12.60</td>
+<td>12.59</td>
+</tr>
+<tr>
+<td>4</td>
+<td>20.59</td>
+<td>20.59</td>
+<td>12.49</td>
+<td>12.48</td>
+<td>1289.19</td>
+<td>17.90</td>
+<td>20.83</td>
+<td>20.93</td>
+</tr>
+<tr>
+<td>5</td>
+<td>20.57</td>
+<td>20.84</td>
+<td>12.49</td>
+<td>12.48</td>
+<td>17.93</td>
+<td>1292.39</td>
+<td>20.82</td>
+<td>20.97</td>
+</tr>
+<tr>
+<td>6</td>
+<td>20.42</td>
+<td>20.66</td>
+<td>12.49</td>
+<td>12.48</td>
+<td>20.89</td>
+<td>20.91</td>
+<td>1292.39</td>
+<td>18.29</td>
+</tr>
+<tr>
+<td>7</td>
+<td>20.51</td>
+<td>20.42</td>
+<td>12.49</td>
+<td>12.48</td>
+<td>20.84</td>
+<td>20.91</td>
+<td>17.84</td>
+<td>1291.32</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(3)Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)</strong></p>
+<table>
+<thead>
+<tr>
+<th>D\D</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1286.01</td>
+<td>273.08</td>
+<td>274.19</td>
+<td>274.89</td>
+<td>275.20</td>
+<td>272.64</td>
+<td>275.20</td>
+<td>274.49</td>
+</tr>
+<tr>
+<td>1</td>
+<td>273.70</td>
+<td>1299.92</td>
+<td>275.18</td>
+<td>274.67</td>
+<td>274.69</td>
+<td>273.92</td>
+<td>274.49</td>
+<td>274.47</td>
+</tr>
+<tr>
+<td>2</td>
+<td>273.39</td>
+<td>275.27</td>
+<td>1296.68</td>
+<td>274.91</td>
+<td>274.99</td>
+<td>275.08</td>
+<td>274.38</td>
+<td>274.87</td>
+</tr>
+<tr>
+<td>3</td>
+<td>274.09</td>
+<td>274.91</td>
+<td>275.01</td>
+<td>1305.35</td>
+<td>275.47</td>
+<td>274.04</td>
+<td>273.62</td>
+<td>274.99</td>
+</tr>
+<tr>
+<td>4</td>
+<td>274.19</td>
+<td>275.08</td>
+<td>274.51</td>
+<td>275.49</td>
+<td>1307.53</td>
+<td>275.92</td>
+<td>274.70</td>
+<td>274.86</td>
+</tr>
+<tr>
+<td>5</td>
+<td>274.70</td>
+<td>275.66</td>
+<td>273.96</td>
+<td>274.52</td>
+<td>275.54</td>
+<td>1301.00</td>
+<td>275.40</td>
+<td>275.30</td>
+</tr>
+<tr>
+<td>6</td>
+<td>275.15</td>
+<td>275.18</td>
+<td>275.02</td>
+<td>275.18</td>
+<td>275.61</td>
+<td>275.45</td>
+<td>1305.35</td>
+<td>272.18</td>
+</tr>
+<tr>
+<td>7</td>
+<td>275.18</td>
+<td>275.59</td>
+<td>271.25</td>
+<td>275.15</td>
+<td>274.13</td>
+<td>272.81</td>
+<td>275.40</td>
+<td>1304.26</td>
+</tr>
+</tbody>
+</table>
+<p>2个GPU间单向带宽是270GB左右</p>
+<p><strong>(4)Bidirectional P2P=Disabled Bandwidth Matrix (GB/s)</strong></p>
+<table>
+<thead>
+<tr>
+<th>D\D</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1306.98</td>
+<td>19.76</td>
+<td>14.34</td>
+<td>14.38</td>
+<td>28.89</td>
+<td>29.44</td>
+<td>29.36</td>
+<td>29.27</td>
+</tr>
+<tr>
+<td>1</td>
+<td>19.89</td>
+<td>1313.58</td>
+<td>14.38</td>
+<td>14.38</td>
+<td>29.01</td>
+<td>29.02</td>
+<td>29.08</td>
+<td>29.30</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15.51</td>
+<td>15.48</td>
+<td>1312.47</td>
+<td>9.46</td>
+<td>15.55</td>
+<td>15.56</td>
+<td>15.54</td>
+<td>15.52</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15.58</td>
+<td>15.57</td>
+<td>9.50</td>
+<td>1314.68</td>
+<td>15.57</td>
+<td>15.58</td>
+<td>15.56</td>
+<td>15.52</td>
+</tr>
+<tr>
+<td>4</td>
+<td>28.57</td>
+<td>28.94</td>
+<td>14.38</td>
+<td>14.41</td>
+<td>1313.03</td>
+<td>19.85</td>
+<td>28.45</td>
+<td>28.88</td>
+</tr>
+<tr>
+<td>5</td>
+<td>28.54</td>
+<td>28.51</td>
+<td>14.38</td>
+<td>14.39</td>
+<td>19.89</td>
+<td>1314.13</td>
+<td>28.48</td>
+<td>28.92</td>
+</tr>
+<tr>
+<td>6</td>
+<td>28.58</td>
+<td>28.94</td>
+<td>14.37</td>
+<td>14.42</td>
+<td>28.67</td>
+<td>28.69</td>
+<td>1313.58</td>
+<td>20.08</td>
+</tr>
+<tr>
+<td>7</td>
+<td>28.59</td>
+<td>28.78</td>
+<td>14.38</td>
+<td>14.37</td>
+<td>29.33</td>
+<td>29.47</td>
+<td>20.03</td>
+<td>1313.03</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(5)Bidirectional P2P=Enabled Bandwidth Matrix (GB/s)</strong></p>
+<table>
+<thead>
+<tr>
+<th>D\D</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1306.44</td>
+<td>447.94</td>
+<td>445.13</td>
+<td>445.26</td>
+<td>445.11</td>
+<td>445.49</td>
+<td>444.36</td>
+<td>445.00</td>
+</tr>
+<tr>
+<td>1</td>
+<td>447.30</td>
+<td>1308.08</td>
+<td>445.13</td>
+<td>444.88</td>
+<td>444.86</td>
+<td>444.99</td>
+<td>444.86</td>
+<td>445.67</td>
+</tr>
+<tr>
+<td>2</td>
+<td>446.70</td>
+<td>446.94</td>
+<td>1318.57</td>
+<td>518.03</td>
+<td>519.71</td>
+<td>519.37</td>
+<td>517.66</td>
+<td>521.20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>446.82</td>
+<td>447.00</td>
+<td>516.49</td>
+<td>1313.58</td>
+<td>519.53</td>
+<td>518.34</td>
+<td>518.85</td>
+<td>520.45</td>
+</tr>
+<tr>
+<td>4</td>
+<td>446.26</td>
+<td>447.03</td>
+<td>443.35</td>
+<td>444.35</td>
+<td>1306.98</td>
+<td>445.26</td>
+<td>444.25</td>
+<td>445.64</td>
+</tr>
+<tr>
+<td>5</td>
+<td>446.91</td>
+<td>447.17</td>
+<td>519.05</td>
+<td>518.19</td>
+<td>447.30</td>
+<td>1320.79</td>
+<td>520.11</td>
+<td>519.59</td>
+</tr>
+<tr>
+<td>6</td>
+<td>446.25</td>
+<td>447.70</td>
+<td>519.22</td>
+<td>520.07</td>
+<td>446.45</td>
+<td>518.22</td>
+<td>1313.58</td>
+<td>519.59</td>
+</tr>
+<tr>
+<td>7</td>
+<td>447.20</td>
+<td>447.32</td>
+<td>517.28</td>
+<td>519.74</td>
+<td>447.47</td>
+<td>519.08</td>
+<td>518.39</td>
+<td>1311.37</td>
+</tr>
+</tbody>
+</table>
+<p>2个GPU间双向带宽400GB左右</p>
+<p><strong>(6)P2P=Disabled Latency Matrix (us)</strong></p>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3.01</td>
+<td>21.49</td>
+<td>21.51</td>
+<td>21.51</td>
+<td>21.56</td>
+<td>20.20</td>
+<td>18.86</td>
+<td>21.56</td>
+</tr>
+<tr>
+<td>1</td>
+<td>21.60</td>
+<td>2.90</td>
+<td>21.58</td>
+<td>21.57</td>
+<td>21.70</td>
+<td>21.56</td>
+<td>21.47</td>
+<td>21.57</td>
+</tr>
+<tr>
+<td>2</td>
+<td>21.51</td>
+<td>21.46</td>
+<td>2.70</td>
+<td>21.57</td>
+<td>18.33</td>
+<td>18.83</td>
+<td>21.40</td>
+<td>20.60</td>
+</tr>
+<tr>
+<td>3</td>
+<td>21.42</td>
+<td>21.37</td>
+<td>21.56</td>
+<td>2.55</td>
+<td>16.51</td>
+<td>21.59</td>
+<td>17.95</td>
+<td>21.14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>21.55</td>
+<td>21.48</td>
+<td>21.55</td>
+<td>21.71</td>
+<td>3.00</td>
+<td>21.46</td>
+<td>21.46</td>
+<td>21.46</td>
+</tr>
+<tr>
+<td>5</td>
+<td>21.53</td>
+<td>20.64</td>
+<td>21.48</td>
+<td>21.56</td>
+<td>21.55</td>
+<td>2.64</td>
+<td>21.39</td>
+<td>21.28</td>
+</tr>
+<tr>
+<td>6</td>
+<td>21.49</td>
+<td>21.54</td>
+<td>21.59</td>
+<td>21.59</td>
+<td>21.57</td>
+<td>21.44</td>
+<td>2.54</td>
+<td>21.46</td>
+</tr>
+<tr>
+<td>7</td>
+<td>21.75</td>
+<td>21.56</td>
+<td>21.67</td>
+<td>21.58</td>
+<td>21.45</td>
+<td>21.15</td>
+<td>21.57</td>
+<td>2.66</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3.01</td>
+<td>8.01</td>
+<td>7.93</td>
+<td>7.84</td>
+<td>8.23</td>
+<td>7.04</td>
+<td>7.11</td>
+<td>8.24</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7.98</td>
+<td>2.97</td>
+<td>7.96</td>
+<td>7.90</td>
+<td>8.21</td>
+<td>7.08</td>
+<td>7.13</td>
+<td>8.24</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7.83</td>
+<td>7.88</td>
+<td>3.02</td>
+<td>7.89</td>
+<td>8.19</td>
+<td>7.12</td>
+<td>7.03</td>
+<td>8.20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7.81</td>
+<td>7.84</td>
+<td>7.84</td>
+<td>2.94</td>
+<td>8.20</td>
+<td>7.08</td>
+<td>7.03</td>
+<td>8.12</td>
+</tr>
+<tr>
+<td>4</td>
+<td>7.92</td>
+<td>7.99</td>
+<td>7.98</td>
+<td>7.97</td>
+<td>3.07</td>
+<td>7.28</td>
+<td>7.30</td>
+<td>8.39</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7.02</td>
+<td>7.10</td>
+<td>7.07</td>
+<td>7.06</td>
+<td>7.46</td>
+<td>2.39</td>
+<td>6.43</td>
+<td>7.50</td>
+</tr>
+<tr>
+<td>6</td>
+<td>7.00</td>
+<td>7.14</td>
+<td>7.10</td>
+<td>7.08</td>
+<td>7.48</td>
+<td>6.34</td>
+<td>2.41</td>
+<td>7.46</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8.28</td>
+<td>8.34</td>
+<td>8.11</td>
+<td>8.04</td>
+<td>8.52</td>
+<td>7.33</td>
+<td>7.33</td>
+<td>3.08</td>
+</tr>
+</tbody>
+</table>
+<p><strong>(7)P2P=Enabled Latency (P2P Writes) Matrix (us)</strong></p>
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>3.01</td>
+<td>2.89</td>
+<td>2.90</td>
+<td>2.90</td>
+<td>2.88</td>
+<td>2.90</td>
+<td>2.90</td>
+<td>2.90</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2.96</td>
+<td>2.91</td>
+<td>2.91</td>
+<td>2.96</td>
+<td>2.92</td>
+<td>2.92</td>
+<td>2.91</td>
+<td>2.91</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.79</td>
+<td>2.73</td>
+<td>2.71</td>
+<td>2.75</td>
+<td>2.73</td>
+<td>2.74</td>
+<td>2.80</td>
+<td>2.72</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3.10</td>
+<td>3.06</td>
+<td>3.03</td>
+<td>2.98</td>
+<td>3.00</td>
+<td>3.03</td>
+<td>3.03</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.95</td>
+<td>2.95</td>
+<td>3.02</td>
+<td>2.97</td>
+<td>3.01</td>
+<td>2.96</td>
+<td>2.96</td>
+<td>2.96</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.61</td>
+<td>2.62</td>
+<td>2.60</td>
+<td>2.64</td>
+<td>2.61</td>
+<td>2.64</td>
+<td>2.63</td>
+<td>2.71</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.68</td>
+<td>2.64</td>
+<td>2.70</td>
+<td>2.70</td>
+<td>2.62</td>
+<td>2.60</td>
+<td>2.53</td>
+<td>2.62</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.63</td>
+<td>2.58</td>
+<td>2.56</td>
+<td>2.63</td>
+<td>2.55</td>
+<td>2.77</td>
+<td>2.63</td>
+<td>2.65</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2.96</td>
+<td>2.23</td>
+<td>2.16</td>
+<td>2.16</td>
+<td>2.17</td>
+<td>2.16</td>
+<td>2.16</td>
+<td>2.18</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2.33</td>
+<td>3.00</td>
+<td>2.25</td>
+<td>2.23</td>
+<td>2.32</td>
+<td>2.26</td>
+<td>2.29</td>
+<td>2.29</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.30</td>
+<td>2.27</td>
+<td>3.06</td>
+<td>2.27</td>
+<td>2.28</td>
+<td>2.25</td>
+<td>2.25</td>
+<td>2.28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.34</td>
+<td>2.27</td>
+<td>2.27</td>
+<td>3.09</td>
+<td>2.26</td>
+<td>2.22</td>
+<td>2.24</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.38</td>
+<td>2.38</td>
+<td>2.33</td>
+<td>2.34</td>
+<td>3.06</td>
+<td>2.35</td>
+<td>2.31</td>
+<td>2.38</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.01</td>
+<td>1.96</td>
+<td>1.95</td>
+<td>1.97</td>
+<td>1.96</td>
+<td>2.48</td>
+<td>1.94</td>
+<td>1.94</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.00</td>
+<td>2.05</td>
+<td>1.99</td>
+<td>1.98</td>
+<td>1.99</td>
+<td>1.99</td>
+<td>2.47</td>
+<td>1.97</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.52</td>
+<td>2.40</td>
+<td>2.42</td>
+<td>2.44</td>
+<td>2.44</td>
+<td>2.41</td>
+<td>2.39</td>
+<td>3.25</td>
+</tr>
+</tbody>
+</table>
+<p>p2pBandwidthLatencyTest测试结果主要包括两个指标：带宽和延迟。带宽是指两个GPU之间传输数据的速度，一般用GB/s作为单位。p2pBandwidthLatencyTest测试结果中，带宽值越高表示两个GPU之间传输数据的速度越快，性能越好。一般来说，如果两个GPU连接到同一个根节点，则带宽会比连接到不同根节点的GPU之间的带宽要快。延迟是指两个GPU数据传输所需要的时间，一般用us作为单位。p2pBandwidthLatencyTest测试结果中，延迟值越低表示数据传输所需要的时间越短，性能越好。一般来说，如果两个GPU连接到同一个根节点，则延迟会比连接到不同节点的GPU之间的延迟要低。</p>
+<h3 id="6测试结论-2">6.测试结论</h3>
+<p>GPU A100 各卡间通信正常，带宽比理论值低32.34%，卡间延迟无异常</p>
+<h2 id="四浮点计算性能测试">四、浮点计算性能测试</h2>
+<h3 id="1测试目的-3">1.测试目的</h3>
+<p>浮点运算实际性能</p>
+<h3 id="2环境配置-3">2.环境配置</h3>
+<ul>
+<li>显卡规格：NVIDIA A100-SXM4-40GB *8</li>
+<li>CUDA版本：11.8</li>
+<li>NVIDIA驱动版本：525.125.06</li>
+<li>nvidia-fabricmanager服务</li>
+<li>pyTorch</li>
+</ul>
+<h3 id="3测试工具-3">3.测试工具</h3>
+<ul>
+<li>方法一：NVIDIA官方的<a href="http://pan.bitllion.top:88/d/jn/hpc/test/io500.tgz">GEMM</a>(General matrix multiplication)工具</li>
+<li>方法二：PyTorch 提供的 Benchmark</li>
+</ul>
+<h3 id="4测试过程-3">4.测试过程</h3>
+<p>测试前将GPU时钟频率调整到此GPU所支持的最大频率</p>
+<p>查看GPU所支持的最大时钟频率</p>
+<pre><code class="language-shell">nvidia-smi -q -d clock
+</code></pre>
+<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240109155422277.png" alt="image-20240109155422277" style="zoom:67%;" />
+<p>设置GPU应用程序时钟频率 , 语法 <strong>nvidia-smi -ac &lt;MEM clock, Graphics clock&gt;</strong></p>
+<pre><code class="language-shell">nvidia-smi -lgc 1215,1440
+</code></pre>
+<h4 id="pytorch方法">PyTorch方法</h4>
+<p>测试代码 flops.py</p>
+<pre><code class="language-python">import torch
+from torch.utils import benchmark
+
+typ = torch.float16
+n = 1024 * 16
+a = torch.randn(n, n).type(typ).cuda()
+b = torch.randn(n, n).type(typ).cuda()
+
+t = benchmark.Timer(
+      stmt='a @ b',
+      globals={'a': a, 'b': b})
+
+x = t.timeit(50)
+print('float16 ,',2*n**3 / x.median /1e12)
+
+
+typ = torch.float32
+n = 1024 * 16
+a = torch.randn(n, n).type(typ).cuda()
+b = torch.randn(n, n).type(typ).cuda()
+
+t = benchmark.Timer(
+              stmt='a @ b',
+                    globals={'a': a, 'b': b})
+
+x = t.timeit(50)
+print('float32 ,',2*n**3 / x.median /1e12)
+
+
+typ = torch.float64
+n = 1024 * 16
+a = torch.randn(n, n).type(typ).cuda()
+b = torch.randn(n, n).type(typ).cuda()
+
+t = benchmark.Timer(
+              stmt='a @ b',
+                    globals={'a': a, 'b': b})
+
+x = t.timeit(50)
+print('float64 ,',2*n**3 / x.median /1e12)
+</code></pre>
+<h4 id="gemm方法">gemm方法</h4>
+<pre><code class="language-shell">#gemm程序需要更高版本的glibcxx,我们用cuda里自带的
+export LD_LIBRARY_PATH=/usr/local/cuda-11.8/nsight-compute-2022.3.0/host/linux-desktop-glibc_2_11_3-x64:$LD_LIBRARY_PATH
+#INT 8:
+./cublasMatmulBench -P=bisb_imma -m=8192 -n=3456 -k=16384 -T=1000 -ta=1 -B=0
+#FP16：
+./cublasMatmulBench -P=hsh -m=12288 -n=9216 -k=32768 -T=1000-tb=1 -B=0
+#TF32:
+./cublasMatmulBench -P=sss_fast_tf32 -m=8192 -n=3456 -k=16384-T=1000 -ta=1 -B=0
+#FP32:
+./cublasMatmulBench -P=ddd -m=3456 -n=2048 -k=16384 -T=1000-tb=1 -B=0
+#FP64:
+./cublasMatmulBench -P=sss -m=3456 -n=2048 -k=16384 -T=1000-tb=1 -B=0
+</code></pre>
+<h3 id="5测试结果-3">5.测试结果</h3>
+<table>
+<thead>
+<tr>
+<th>浮点类型</th>
+<th>理论性能(TFLOPS)</th>
+<th>实测性能(TFLOPS)</th>
+<th>实测性能(GFLOPS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INT8</td>
+<td>501</td>
+<td>498.848973</td>
+<td>498848.973</td>
+</tr>
+<tr>
+<td>FP16</td>
+<td>259</td>
+<td>236.967211</td>
+<td>236967.211</td>
+</tr>
+<tr>
+<td>TF32</td>
+<td>117</td>
+<td>57.980576</td>
+<td>57980.576</td>
+</tr>
+<tr>
+<td>FP64</td>
+<td>19.2</td>
+<td>18.100587</td>
+<td>18100.587</td>
+</tr>
+<tr>
+<td>FP64</td>
+<td>18.6</td>
+<td>19.212092</td>
+<td>19212.092</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6测试结论-3">6.测试结论</h3>
+<ol>
+<li>对于INT8浮点类型，实测性能略高于理论性能，这可能是由于硬件优化或者其他因素导致的。</li>
+<li>FP16和TF32浮点类型的实测性能都略低于其理论性能，这可能表明在这些类型上存在一些性能损失或者硬件限制。</li>
+<li>而对于FP64浮点类型，实测性能与理论性能相比也有所下降，这可能是由于硬件限制或者测试条件的影响。</li>
+</ol>
+<p>综上所述，测试结果表明在不同的浮点类型下，实测性能与理论性能之间存在一些差异，这可能受到硬件、优化以及测试条件等多种因素的影响。</p>
+<h2 id="五transformerwmt14">五、Transformer+WMT’14</h2>
+<h3 id="1测试目的-4">1.测试目的</h3>
+<p>测试长时间运行时的性能稳定性，以及整体性能。</p>
+<h3 id="2环境配置-4">2.环境配置</h3>
+<ul>
+<li>显卡规格：NVIDIA A100-SXM4-40GB *8</li>
+<li>CUDA版本：11.8</li>
+<li>NVIDIA驱动版本：525.125.06</li>
+<li>nvidia-fabricmanager服务</li>
+<li>pyTorch</li>
+</ul>
+<h3 id="3测试工具-4">3.测试工具</h3>
+<p>pyTorch1.13.1、sockeye3.1.34</p>
+<h3 id="4测试过程-4">4.测试过程</h3>
+<h3 id="5测试结果-4">5.测试结果</h3>
+<table>
+<thead>
+<tr>
+<th>GPUs</th>
+<th>Updates（平均）</th>
+<th>Epoch（平均）</th>
+<th>Updates/sec</th>
+<th>Time-cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>500</td>
+<td>1</td>
+<td>0.748</td>
+<td>2429.823</td>
+</tr>
+<tr>
+<td>2</td>
+<td>500</td>
+<td>1</td>
+<td>0.812</td>
+<td>615.760</td>
+</tr>
+<tr>
+<td>8</td>
+<td>500</td>
+<td>1</td>
+<td>1.578</td>
+<td>316.931</td>
+</tr>
+</tbody>
+</table>
+<p>该程序主要使用pytorch的Transformer模型，数据集使用WMT’14英语翻译为德语数据并进行byte-pair encoding编码，测试训练耗时耗时。数据处理参数，训练参数在每次训练中均不改变。测试结果中GPUs表示的GPU数量，Updates表示参数更新次数，Epoch标示训练轮数，Updates/sec表示每秒钟的参数更新次数（模型训练的速度），Time-cost表示训练耗时。</p>
+<table>
+<thead>
+<tr>
+<th>数据预处理参数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>word-min-count</td>
+<td>2</td>
+</tr>
+<tr>
+<td>pad-vocab-to-multiple-of</td>
+<td>8</td>
+</tr>
+<tr>
+<td>max-seq-len</td>
+<td>95</td>
+</tr>
+<tr>
+<td>num-samples-per-shard</td>
+<td>10000000</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>训练参数</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num-layers</td>
+<td>6</td>
+</tr>
+<tr>
+<td>transformer-model-size</td>
+<td>1024</td>
+</tr>
+<tr>
+<td>transformer-attention-heads</td>
+<td>16</td>
+</tr>
+<tr>
+<td>transformer-feed-forward-num-hidden</td>
+<td>4096</td>
+</tr>
+<tr>
+<td>batch-type</td>
+<td>max-word</td>
+</tr>
+<tr>
+<td>batch-size</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>update-interval</td>
+<td>20</td>
+</tr>
+<tr>
+<td>checkpoint-interval</td>
+<td>500</td>
+</tr>
+<tr>
+<td>max-updates</td>
+<td>15000</td>
+</tr>
+<tr>
+<td>optimizer-betas</td>
+<td>0.9:0.98</td>
+</tr>
+<tr>
+<td>initial-learning-rate</td>
+<td>0.06325</td>
+</tr>
+<tr>
+<td>learning-rate-scheduler-type</td>
+<td>inv-sqrt-decay</td>
+</tr>
+<tr>
+<td>learning-rate-warmup</td>
+<td>4000</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6测试结论-4">6.测试结论</h3>
+<p>。。。</p>
+<h2 id="六nvlink测试">六、NVLink测试</h2>
+<h3 id="1测试目的-5">1.测试目的</h3>
+<p>测试NVLink使用状况，性能</p>
+<h3 id="2环境配置-5">2.环境配置</h3>
+<ul>
+<li>显卡规格：NVIDIA A100-SXM4-40GB *8</li>
+<li>CUDA版本：11.8</li>
+<li>NVIDIA驱动版本：525.125.06</li>
+<li>nvidia-fabricmanager服务</li>
+<li>pyTorch</li>
+</ul>
+<h3 id="3测试工具-5">3.测试工具</h3>
+<p>NVSMI</p>
+<h3 id="4测试过程-5">4.测试过程</h3>
+<p><strong>查看 nvswicth拓扑</strong></p>
+<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240110143455653.png" alt="image-20240110143455653"  />
+<p>可以看到，任意2个GPU卡之间都是 NVLink12。应该是因为A100引入了 NVSwitch的关系</p>
+<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/1686830284011359095.png" alt="img"></p>
+<p><strong>查看 nvlink 状态</strong></p>
+<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240110143534351.png" alt="image-20240110143534351" style="zoom:67%;" />
+<p>测试代码</p>
+<pre><code class="language-shell">import torch
+import numpy as np
+
+device = torch.device(&quot;cuda&quot;)
+
+n_gpus = 8
+data_size = 1024 * 1024 * 1024  # 1 GB
+
+speed_matrix = np.zeros((n_gpus, n_gpus))
+
+for i in range(n_gpus):
+    for j in range(i + 1, n_gpus):
+        print(f&quot;Testing communication between GPU {i} and GPU {j}...&quot;)
+        with torch.cuda.device(i):
+            data = torch.randn(data_size, device=device)
+            torch.cuda.synchronize()
+        with torch.cuda.device(j):
+            result = torch.randn(data_size, device=device)
+            torch.cuda.synchronize()
+        with torch.cuda.device(i):
+            start = torch.cuda.Event(enable_timing=True)
+            end = torch.cuda.Event(enable_timing=True)
+            start.record()
+            result.copy_(data)
+            end.record()
+            torch.cuda.synchronize()
+            elapsed_time_ms = start.elapsed_time(end)
+        transfer_rate = data_size / elapsed_time_ms * 1000 * 8 / 1e9
+        speed_matrix[i][j] = transfer_rate
+        speed_matrix[j][i] = transfer_rate
+
+print(speed_matrix)
+</code></pre>
+<h3 id="5测试结果-5">5.测试结果</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GPU 1</th>
+<th>GPU 2</th>
+<th>GPU 3</th>
+<th>GPU 4</th>
+<th>GPU 5</th>
+<th>GPU 6</th>
+<th>GPU 7</th>
+<th>GPU 8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU 1</td>
+<td>0</td>
+<td>464.9859565</td>
+<td>526.4730694</td>
+<td>526.2759531</td>
+<td>525.7450773</td>
+<td>525.9377422</td>
+<td>473.3910529</td>
+<td>526.7334102</td>
+</tr>
+<tr>
+<td>GPU 2</td>
+<td>464.9859565</td>
+<td>0</td>
+<td>436.0805066</td>
+<td>470.8014557</td>
+<td>529.4908943</td>
+<td>527.1316232</td>
+<td>528.5546556</td>
+<td>528.4599488</td>
+</tr>
+<tr>
+<td>GPU 3</td>
+<td>526.4730694</td>
+<td>436.0805066</td>
+<td>0</td>
+<td>528.6358067</td>
+<td>529.1016042</td>
+<td>529.6339894</td>
+<td>478.4399884</td>
+<td>529.2038167</td>
+</tr>
+<tr>
+<td>GPU 4</td>
+<td>526.2759531</td>
+<td>470.8014557</td>
+<td>528.6358067</td>
+<td>0</td>
+<td>478.959038</td>
+<td>529.4251015</td>
+<td>528.190651</td>
+<td>529.1245426</td>
+</tr>
+<tr>
+<td>GPU 5</td>
+<td>525.7450773</td>
+<td>529.4908943</td>
+<td>529.1016042</td>
+<td>478.959038</td>
+<td>0</td>
+<td>529.1850375</td>
+<td>529.5608754</td>
+<td>529.8420447</td>
+</tr>
+<tr>
+<td>GPU 6</td>
+<td>525.9377422</td>
+<td>527.1316232</td>
+<td>529.6339894</td>
+<td>529.4251015</td>
+<td>529.1850375</td>
+<td>0</td>
+<td>469.9187813</td>
+<td>529.6298162</td>
+</tr>
+<tr>
+<td>GPU 7</td>
+<td>473.3910529</td>
+<td>528.5546556</td>
+<td>478.4399884</td>
+<td>528.190651</td>
+<td>529.5608754</td>
+<td>469.9187813</td>
+<td>0</td>
+<td>527.0560527</td>
+</tr>
+<tr>
+<td>GPU 8</td>
+<td>526.7334102</td>
+<td>528.4599488</td>
+<td>529.2038167</td>
+<td>529.1245426</td>
+<td>529.8420447</td>
+<td>529.6298162</td>
+<td>527.0560527</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>GPU服务器内NVLINK带宽测试</p>
+<h3 id="6测试结论-5">6.测试结论</h3>
+<p>A100 40GB SXM 理论GPU卡间带宽400GB/s,正常模式NVLink全互通带宽约为370GB基本符合预期。</p>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/" class="block">多机nccl Tests测试</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一通用计算性能测试">一、通用计算性能测试</a>
+      <ul>
+        <li><a href="#1测试目的">1.测试目的</a></li>
+        <li><a href="#2环境配置">2.环境配置</a></li>
+        <li><a href="#3测试工具">3.测试工具</a></li>
+        <li><a href="#4测试过程">4.测试过程</a></li>
+        <li><a href="#5测试结果">5.测试结果</a></li>
+        <li><a href="#6测试结论">6.测试结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#二gpu显存带宽测试">二、GPU显存带宽测试</a>
+      <ul>
+        <li><a href="#1测试目的-1">1.测试目的</a></li>
+        <li><a href="#2环境配置-1">2.环境配置</a></li>
+        <li><a href="#3测试工具-1">3.测试工具</a></li>
+        <li><a href="#4测试过程-1">4.测试过程</a></li>
+        <li><a href="#5测试结果-1">5.测试结果</a></li>
+        <li><a href="#6测试结论-1">6.测试结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#三gpu之间的p2p带宽和延迟测试">三、GPU之间的P2P带宽和延迟测试</a>
+      <ul>
+        <li><a href="#1测试目的-2">1.测试目的</a></li>
+        <li><a href="#2环境配置-2">2.环境配置</a></li>
+        <li><a href="#3测试工具-2">3.测试工具</a></li>
+        <li><a href="#4测试过程-2">4.测试过程</a></li>
+        <li><a href="#5测试结果-2">5.测试结果</a></li>
+        <li><a href="#6测试结论-2">6.测试结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#四浮点计算性能测试">四、浮点计算性能测试</a>
+      <ul>
+        <li><a href="#1测试目的-3">1.测试目的</a></li>
+        <li><a href="#2环境配置-3">2.环境配置</a></li>
+        <li><a href="#3测试工具-3">3.测试工具</a></li>
+        <li><a href="#4测试过程-3">4.测试过程</a>
+          <ul>
+            <li><a href="#pytorch方法">PyTorch方法</a></li>
+            <li><a href="#gemm方法">gemm方法</a></li>
+          </ul>
+        </li>
+        <li><a href="#5测试结果-3">5.测试结果</a></li>
+        <li><a href="#6测试结论-3">6.测试结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#五transformerwmt14">五、Transformer+WMT’14</a>
+      <ul>
+        <li><a href="#1测试目的-4">1.测试目的</a></li>
+        <li><a href="#2环境配置-4">2.环境配置</a></li>
+        <li><a href="#3测试工具-4">3.测试工具</a></li>
+        <li><a href="#4测试过程-4">4.测试过程</a></li>
+        <li><a href="#5测试结果-4">5.测试结果</a></li>
+        <li><a href="#6测试结论-4">6.测试结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#六nvlink测试">六、NVLink测试</a>
+      <ul>
+        <li><a href="#1测试目的-5">1.测试目的</a></li>
+        <li><a href="#2环境配置-5">2.环境配置</a></li>
+        <li><a href="#3测试工具-5">3.测试工具</a></li>
+        <li><a href="#4测试过程-5">4.测试过程</a></li>
+        <li><a href="#5测试结果-5">5.测试结果</a></li>
+        <li><a href="#6测试结论-5">6.测试结论</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

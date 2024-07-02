@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slurm on 一言</title>
+    <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/</link>
+    <description>Recent content in Slurm on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 May 2024 14:55:22 +0800</lastBuildDate><atom:link href="/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu22.04部署slurm GPU集群</title>
+      <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu22.04%E9%83%A8%E7%BD%B2slurm-gpu%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Mon, 25 Mar 2024 09:23:23 +0800</pubDate>
+      
+      <guid>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu22.04%E9%83%A8%E7%BD%B2slurm-gpu%E9%9B%86%E7%BE%A4/</guid>
+      <description>nis用户统一认证服务部署 所有节点修改/etc/hosts</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu部署slurm单节点</title>
+      <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu%E9%83%A8%E7%BD%B2slurm%E5%8D%95%E8%8A%82%E7%82%B9/</link>
+      <pubDate>Tue, 06 Jun 2023 08:16:50 +0800</pubDate>
+      
+      <guid>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu%E9%83%A8%E7%BD%B2slurm%E5%8D%95%E8%8A%82%E7%82%B9/</guid>
+      <description>安装slurm 先自行切到root用户方便配置</description>
+    </item>
+    
+    <item>
+      <title>Centos7部署slurm集群</title>
+      <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 23 May 2023 16:31:25 +0800</pubDate>
+      
+      <guid>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</guid>
+      <description>1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</description>
+    </item>
+    
+  </channel>
+</rss>

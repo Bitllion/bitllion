@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Vasp编译安装教程二-插件篇 | 科学计算 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="VTST 1.拷贝源码 在vtst官网下载vtst-code源码包">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"科学计算",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"软件",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Vasp编译安装教程二-插件篇",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/"
+    },
+    "headline": "Vasp编译安装教程二-插件篇 | 科学计算 | 一言","datePublished": "2023-05-26T13:31:32+08:00",
+    "dateModified": "2023-05-26T13:31:32+08:00",
+    "wordCount":  846 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "VTST 1.拷贝源码 在vtst官网下载vtst-code源码包"
+}
+</script><meta property="og:title" content="Vasp编译安装教程二-插件篇 | 科学计算 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/" />
+
+
+
+
+<meta property="og:description" content="VTST 1.拷贝源码 在vtst官网下载vtst-code源码包" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-05-26T13:31:32&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-05-26T13:31:32&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="http://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/">科学计算</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/mpi%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">MPI并行计算</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/">编译</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">编译过程</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/">软件</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/">Centos7下mpich编译</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/">Intel编译器安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/">Vasp编译安装教程一</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/">Vasp编译安装教程二-插件篇</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/">Spack</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/spack%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">Spack使用手册</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Vasp编译安装教程二-插件篇</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-05-26</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="vtst">VTST</h2>
+<h3 id="1拷贝源码">1.拷贝源码</h3>
+<p>在vtst官网下载vtst-code源码包</p>
+<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601094840427.png" alt="image-20230601094840427" style="zoom:33%;" />
+<p><a href="https://theory.cm.utexas.edu/vtsttools/download.html">https://theory.cm.utexas.edu/vtsttools/download.html</a></p>
+<p>解压</p>
+<pre><code class="language-shell">tar xzf vtstcode-197.tgz
+</code></pre>
+<p>复制对应vasp版本的vtst到src里</p>
+<pre><code class="language-shell">cp vtstcode-197/vtstcode6.3/* src/ -rf
+</code></pre>
+<h3 id="2修改-mainf">2.修改 main.F</h3>
+<p>修改src下main.F文件，vim/vi 打开文件 关键词CHAIN_FORCE定位到3519行</p>
+<p>将</p>
+<pre><code>CALL CHAIN_FORCE(T_INFO%NIONS,DYN%POSION,TOTEN,TIFOR, &amp;
+     LATT_CUR%A,LATT_CUR%B,IO%IU6)
+</code></pre>
+<p>修改为(添加TSIF)</p>
+<pre><code>CALL CHAIN_FORCE(T_INFO%NIONS,DYN%POSION,TOTEN,TIFOR, &amp;
+     TSIF,LATT_CUR%A,LATT_CUR%B,IO%IU6)
+</code></pre>
+<p>vasp&gt;=6.2 还需要修改</p>
+<pre><code>IF (LCHAIN) CALL chain_init( T_INFO, IO)
+</code></pre>
+<p>修改为</p>
+<pre><code>CALL chain_init( T_INFO, IO)
+</code></pre>
+<h3 id="3修改-objects">3.修改 .objects</h3>
+<p>修改src下.objects文件(注意是个隐藏文件)</p>
+<p>定位到chain.o这一行，再它前面添加下面信息，注意斜杠后面没有空格，制表符用tab打出来</p>
+<p>vasp5 和 6.1 添加的内容</p>
+<pre><code>bfgs.o dynmat.o instanton.o lbfgs.o sd.o cg.o dimer.o bbm.o \
+fire.o lanczos.o neb.o qm.o opt.o
+</code></pre>
+<p>vasp6.3</p>
+<pre><code>bfgs.o dynmat.o instanton.o lbfgs.o sd.o cg.o dimer.o bbm.o \
+fire.o lanczos.o neb.o qm.o \
+pyamff_fortran/*.o ml_pyamff.o \
+opt.o \
+</code></pre>
+<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601094037628.png" alt="image-20230601094037628"></p>
+<p>对于vasp6.3还需要修改一处，src/makefile 文件中找到LIB 和 dependencies 对应的行 分别改成如下</p>
+<pre><code>LIB= lib parser pyamff_fortran
+dependencies: sources libs
+</code></pre>
+<h3 id="4vtstscripts">4.VTSTSCRIPTS</h3>
+<p>VTST下还有一些vtstscripts脚本，它的安装很简单</p>
+<p>下载好后解压，将其路径添加到系统PATH环境变量里</p>
+<p>例如解压后路径为 /home/bit/vasp.6.3.0/vtstscripts-1033</p>
+<p>添加/etc/profile或~/.bashrc最后一行,重新登陆终端或source环境变量配置文件生效</p>
+<pre><code class="language-shell">export PATH=/home/bit/vasp.6.3.0/vtstscripts-1033:$PATH
+</code></pre>
+<h2 id="vaspsol">VASPSOL</h2>
+<p>vasp隐式溶剂化模型,该模型描述了静电、空化和色散对溶质和溶剂之间相互作用的影响,提供了一种计算上有效的方法来计算溶剂化对分子和晶体表面以及反应势垒的影响</p>
+<h3 id="1下载源码">1.下载源码</h3>
+<pre><code>git clone https://github.com/henniggroup/VASPsol.git
+</code></pre>
+<p>国内网慢可以试试加速器下载</p>
+<pre><code>git clone https://ghproxy.com/https://github.com/henniggroup/VASPsol.git
+</code></pre>
+<p>将solvation.F拷贝到vasp的src目录下</p>
+<pre><code class="language-shell">cp VASPsol/src/solvation.F src/ -rf
+</code></pre>
+<h3 id="2打补丁">2.打补丁</h3>
+<h4 id="vasp-5212--533--535">VASP 5.2.12 / 5.3.3 / 5.3.5</h4>
+<p>(注意打补丁符号是 &lt;)</p>
+<pre><code>cd src
+patch -p1 &lt; &lt;path to the interface patch file&gt;
+</code></pre>
+<p>注意这3个版本的补丁不在网上提供，需要联系 <a href="mailto:rhennig@mse.ufl.edu">rhennig@mse.ufl.edu</a></p>
+<h4 id="vasp--541">VASP &gt;= 5.4.1</h4>
+<pre><code>patch src/pot.F &lt; &lt;path to the pbz_patch_541 patch file&gt;
+</code></pre>
+<h4 id="vasp--610">VASP &gt;= 6.1.0</h4>
+<pre><code>patch -p0 &lt; &lt;path to the pbz_patch_610 patch file&gt;
+</code></pre>
+<h4 id="vasp-630">vasp 6.3.0</h4>
+<p>下载第三方补丁并解压</p>
+<pre><code>wget https://github.com/henniggroup/VASPsol/files/8495230/VASPsol_VASP630.zip &amp;&amp; unzip VASPsol_VASP630.zip
+</code></pre>
+<p>然后复制到src里，再进行打补丁</p>
+<pre><code>patch -p0 &lt; VASPsol_VASP630.patch
+</code></pre>
+<h3 id="3修改makefileinclude">3.修改makefile.include</h3>
+<p>vasp&gt;=5.4.4 , CPP_OPTIONS选项里添加 <strong>-Dsol_compat</strong></p>
+<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601102951263.png" alt="image-20230601102951263"></p>
+<h2 id="vasp-opt-固定基矢优化结构">VASP OPT 固定基矢优化结构</h2>
+<h3 id="1旧版-应力张量法">1.旧版 应力张量法</h3>
+<p>重写vasp源码下 src/constr_cell_relax.F 文件</p>
+<pre><code>!-----------------------------------------------------------------------
+!
+! At present, VASP does not allow to relax the cellshape selectively
+! i.e. for instance only cell relaxation in x direction.
+! To be more precisse, this behaviour can not be achived via the INCAR
+! or POSCAR file.
+! However, it is possible to set selected components of the stress tensor
+! to zero.
+! The most conveninent position to do this is the routines 
+! CONSTR_CELL_RELAX  (constraint cell relaxation).
+! FCELL contains the forces on the basis vectors.
+! These forces are used to modify the basis vectors according
+! to the following equations:
+!
+!      A_OLD(1:3,1:3)=A(1:3,1:3) ! F90 style 
+!      DO J=1,3
+!      DO I=1,3
+!      DO K=1,3
+!        A(I,J)=A(I,J) + FCELL(I,K)*A_OLD(K,J)*STEP_SIZE
+!      ENDDO
+!      ENDDO
+!      ENDDO
+! where A holds the basis vectors (in cartesian coordinates).
+!
+!-----------------------------------------------------------------------
+
+      SUBROUTINE CONSTR_CELL_RELAX(FCELL)
+      USE prec
+      REAL(q) FCELL(3,3)
+
+!     just one simple example
+!     relaxation in x directions only
+!      SAVE=FCELL(1,1)
+!      FCELL=0   ! F90 style: set the whole array to zero
+!      FCELL(1,1)=SAVE
+!     relaxation in z direction only
+!      SAVE=FCELL(3,3)
+!      FCELL=0   ! F90 style: set the whole array to zero
+!      FCELL(3,3)=SAVE
+
+      LOGICAL FILFLG
+      INTEGER ICELL(3,3)
+      INQUIRE(FILE='OPTCELL',EXIST=FILFLG)
+      IF (FILFLG) THEN
+         OPEN(67,FILE='OPTCELL',FORM='FORMATTED',STATUS='OLD')
+         DO J=1,3
+            READ(67,&quot;(3I1)&quot;) (ICELL(I,J),I=1,3)
+         ENDDO
+         CLOSE(67)
+         DO J=1,3
+         DO I=1,3
+            IF (ICELL(I,J)==0) FCELL(I,J)=0.0
+         ENDDO
+         ENDDO
+      ENDIF
+    
+      RETURN
+      END SUBROUTINE
+</code></pre>
+<p>参考 <a href="https://blog.shishiruqi.com/2019/05/05/constr/">https://blog.shishiruqi.com/2019/05/05/constr/</a></p>
+<h3 id="2新版">2.新版</h3>
+<p>下载源码</p>
+<pre><code class="language-shell">git clone  https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS.git
+</code></pre>
+<p>国内镜像加速可用</p>
+<pre><code class="language-shell">git clone https://ghproxy.com/https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS.git
+</code></pre>
+<h4 id="仅固定对角线项法">仅固定对角线项法</h4>
+<p>将<strong>stress_relax.patch</strong>文件拷贝到 VASP 发行版的根目录中，运行命令</p>
+<pre><code class="language-shell">patch -p0 &lt; stress_relax.patch
+</code></pre>
+<p>此补丁让 VASP 读取在每个 SCF 循环之后调用的文件<strong>OPTCELL</strong>，并使用其中的信息来确定要修复的对角线应力分量。</p>
+<p><strong>OPTCELL</strong>文件格式</p>
+<pre><code>xx yy zz
+</code></pre>
+<p>例如：</p>
+<pre><code>1 1 0
+</code></pre>
+<p>将修复<strong>zz</strong>应力张量的分量。</p>
+<p>请注意，对于此补丁，我们只能修复对角线应力张量元素，因此它更适合正交晶胞或至少与其他晶格矢量垂直的晶格矢量。</p>
+<p>另请注意，<strong>ISIF=3</strong>晶格弛豫需要 。</p>
+<h4 id="固定特定的应力张量元素法">固定特定的应力张量元素法</h4>
+<p>将<strong>stress_relax_finner.patch</strong>文件拷贝到 VASP 发行版的根目录，运行命令</p>
+<pre><code class="language-shell">patch -p0 &lt; stress_relax_finner.patch
+</code></pre>
+<p>这个补丁让 VASP<strong>IOPTCELL</strong>直接从<strong>INCAR</strong>.</p>
+<p><strong>IOPTCELL</strong>格式：</p>
+<pre><code>IOPTCELL = xx yx zx xy yy zy xz yz zz
+</code></pre>
+<p>例如：</p>
+<pre><code>IOPTCELL = 1 1 0 1 1 0 0 0 0
+</code></pre>
+<p>将放松应力张量的<strong>xx</strong>、<strong>xy</strong> 、<strong>yx</strong>、 <strong>yy</strong>分量，同时保持其他分量固定（为零）</p>
+<h4 id="点阵法">点阵法</h4>
+<p><strong>警告：此方法仅适用于</strong>IBRION=2<strong>并可能导致数值不稳定性</strong></p>
+<p>该补丁可以直接固定格子。</p>
+<p>这是通过在共轭梯度步骤的每次几何更新之后重新分配晶格元素的原始值来实现的。（修改于<strong>dyna.F</strong>）</p>
+<p>此外，修改应力张量以减少直接固定引入的不稳定性。（修改于<strong>constr_cell_relax.F</strong>）。</p>
+<p>要使用此方法：</p>
+<p>将<strong>cell_relax.patch</strong>文件拷贝到 VASP 发行版的根目录中。并输入：</p>
+<pre><code>patch -p0 &lt; cell_relax.patch
+</code></pre>
+<p>这个补丁让 VASP<strong>IOPTCELL</strong>直接从<strong>INCAR</strong>.</p>
+<p><strong>IOPTCELL</strong>格式：</p>
+<pre><code>IOPTCELL = xx xy xz yx yy yz zx zy zz
+</code></pre>
+<p>例如：</p>
+<pre><code>IOPTCELL = 1 1 0 1 1 0 0 0 0
+</code></pre>
+<p>将放松点阵矩阵的<strong>xx</strong>、<strong>xy</strong>、<strong>yx</strong>、<strong>yy</strong>分量，同时保持其他分量固定它还将修复应力张量的<strong>xz</strong>、<strong>yz</strong>、<strong>zx</strong>、<strong>zy</strong> 、<strong>zz</strong></p>
+<h2 id="vaspkit">VASPKIT</h2>
+<p>建议使用conda创建虚拟环境再安装vaspkit</p>
+<h3 id="1conda安装教程">1.conda安装教程</h3>
+<p>这里使用mini版的conda (<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/">清华源</a>)</p>
+<pre><code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</code></pre>
+<p>安装</p>
+<pre><code>bash Miniconda3-latest-Linux-x86_64.sh
+</code></pre>
+<blockquote>
+<p>1.Please, press ENTER to continue</p>
+<p>回车继续</p>
+<p>2.按下q跳过产品介绍</p>
+<p>3.Do you accept the license terms? [yes|no]
+[no] &raquo;&gt; yes</p>
+<p>输入yes 接受条款 回车继续</p>
+<p>4.Miniconda3 will now be installed into this location:
+/home/bit/miniconda3</p>
+<ul>
+<li>Press ENTER to confirm the location</li>
+<li>Press CTRL-C to abort the installation</li>
+<li>Or specify a different location below</li>
+</ul>
+<p>[/home/bit/miniconda3] &raquo;&gt;</p>
+<p>选择安装目录，回车就用上面给的默认的，也可以输入路径回车将会安装到指定目录中</p>
+<p>4.Do you wish the installer to initialize Miniconda3
+by running conda init? [yes|no]
+[no] &raquo;&gt; yes</p>
+<p>初始化 输入yes 回车</p>
+</blockquote>
+<p>重新登陆终端，创建一个虚拟环境，这里python用了3.6版本，虚拟环境的名字叫vasp</p>
+<pre><code class="language-shell">conda create -n vasp python=3.6
+</code></pre>
+<p>激活环境</p>
+<pre><code class="language-shell">conda activate vasp
+</code></pre>
+<p>如果觉得创建虚拟环境慢，可以添加加速源 编辑 ~/.condarc</p>
+<pre><code class="language-shell">channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</code></pre>
+<p>运行 <strong>conda clean -i</strong> 清除索引缓存</p>
+<h3 id="2安装依赖">2.安装依赖</h3>
+<pre><code class="language-shell">pip install numpy scipy matplotlib
+</code></pre>
+<h3 id="3安装vaspkist">3.安装vaspkist</h3>
+<p>下载源码包 <a href="https://sourceforge.net/projects/vaspkit/files/Binaries/">https://sourceforge.net/projects/vaspkit/files/Binaries/</a></p>
+<pre><code class="language-shell">wget https://gigenet.dl.sourceforge.net/project/vaspkit/Binaries/vaspkit.1.4.1.linux.x64.tar.gz
+</code></pre>
+<p>解压</p>
+<pre><code class="language-shell">tar xzf vaspkit.1.4.1.linux.x64.tar.gz
+</code></pre>
+<p>进入目录执行安装脚本</p>
+<pre><code class="language-shell">cd vaspkit.1.4.1/ 
+./setup.sh
+</code></pre>
+<h3 id="4配置vaspkit">4.配置vaspkit</h3>
+<p>编辑~/.vaspkit</p>
+<p>修改下面几项为你的赝势文件和python可执行文件的正确路径</p>
+<pre><code class="language-shell">LDA_PATH                      =     ~/POTCAR/LDA                   #  Path of LDA potential
+PBE_PATH                      =     ~/POTCAR/PBE                   #  Path of PBE potential
+GGA_PATH                      =     ~/POTCAR/GGA                   #  Path of PW91 potential
+PYTHON_BIN                    =     ~/anaconda3/bin/python3        #  Python executable program with its installation path. Recommend Anaconda package
+</code></pre>
+<p>重新登陆终端vaspkist正常可用</p>
+<h2 id="phonopy">phonopy</h2>
+<h3 id="安装">安装</h3>
+<p>在上面的vaspkit的vasp虚拟环境下继续</p>
+<pre><code class="language-shell">pip install phonopy
+</code></pre>
+<h3 id="验证">验证</h3>
+<pre><code class="language-shell">git clone https://github.com/phonopy/phonopy.git
+</code></pre>
+<p>进入Si算例目录</p>
+<pre><code class="language-shell">cd phonopy/example/Si/
+</code></pre>
+<p>执行</p>
+<pre><code class="language-shell">phonopy -f vasprun.xml
+</code></pre>
+<p>输出</p>
+<pre><code class="language-shell">        _
+  _ __ | |__   ___  _ __   ___   _ __  _   _
+ | '_ \| '_ \ / _ \| '_ \ / _ \ | '_ \| | | |
+ | |_) | | | | (_) | | | | (_) || |_) | |_| |
+ | .__/|_| |_|\___/|_| |_|\___(_) .__/ \__, |
+ |_|                            |_|    |___/
+                                      2.12.0
+
+Python version 3.6.13
+Spglib version 2.0.2
+
+Displacements were read from &quot;phonopy_disp.yaml&quot;.
+counter (file index): 1
+&quot;FORCE_SETS&quot; has been created.
+                 _
+   ___ _ __   __| |
+  / _ \ '_ \ / _` |
+ |  __/ | | | (_| |
+  \___|_| |_|\__,_|
+
+</code></pre>
+<h2 id="ase">ase</h2>
+<p>ASE是用<a href="https://www.python.org/">Python</a>编程语言编写的原子模拟环境，旨在设置，引导和 分析原子模拟</p>
+<p>安装，同样使用刚才创建的conda虚拟环境</p>
+<p>然后安装依赖</p>
+<pre><code>pip install numpy scipy matplotlib flask pytest pytest-mock pytest-xdist spglib
+</code></pre>
+<p>安装ase</p>
+<pre><code>pip install ase
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/" class="block">Vasp编译安装教程一</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#vtst">VTST</a>
+      <ul>
+        <li><a href="#1拷贝源码">1.拷贝源码</a></li>
+        <li><a href="#2修改-mainf">2.修改 main.F</a></li>
+        <li><a href="#3修改-objects">3.修改 .objects</a></li>
+        <li><a href="#4vtstscripts">4.VTSTSCRIPTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#vaspsol">VASPSOL</a>
+      <ul>
+        <li><a href="#1下载源码">1.下载源码</a></li>
+        <li><a href="#2打补丁">2.打补丁</a>
+          <ul>
+            <li><a href="#vasp-5212--533--535">VASP 5.2.12 / 5.3.3 / 5.3.5</a></li>
+            <li><a href="#vasp--541">VASP &gt;= 5.4.1</a></li>
+            <li><a href="#vasp--610">VASP &gt;= 6.1.0</a></li>
+            <li><a href="#vasp-630">vasp 6.3.0</a></li>
+          </ul>
+        </li>
+        <li><a href="#3修改makefileinclude">3.修改makefile.include</a></li>
+      </ul>
+    </li>
+    <li><a href="#vasp-opt-固定基矢优化结构">VASP OPT 固定基矢优化结构</a>
+      <ul>
+        <li><a href="#1旧版-应力张量法">1.旧版 应力张量法</a></li>
+        <li><a href="#2新版">2.新版</a>
+          <ul>
+            <li><a href="#仅固定对角线项法">仅固定对角线项法</a></li>
+            <li><a href="#固定特定的应力张量元素法">固定特定的应力张量元素法</a></li>
+            <li><a href="#点阵法">点阵法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#vaspkit">VASPKIT</a>
+      <ul>
+        <li><a href="#1conda安装教程">1.conda安装教程</a></li>
+        <li><a href="#2安装依赖">2.安装依赖</a></li>
+        <li><a href="#3安装vaspkist">3.安装vaspkist</a></li>
+        <li><a href="#4配置vaspkit">4.配置vaspkit</a></li>
+      </ul>
+    </li>
+    <li><a href="#phonopy">phonopy</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#验证">验证</a></li>
+      </ul>
+    </li>
+    <li><a href="#ase">ase</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

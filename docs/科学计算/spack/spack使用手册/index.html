@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Spack使用手册 | 科学计算 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="一、部署spack 下载 1.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"科学计算",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Spack",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Spack使用手册",
+      "item":"/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/spack%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/spack%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"
+    },
+    "headline": "Spack使用手册 | 科学计算 | 一言","datePublished": "2023-05-26T13:13:04+08:00",
+    "dateModified": "2023-05-26T13:13:04+08:00",
+    "wordCount":  1304 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "一、部署spack 下载 1."
+}
+</script><meta property="og:title" content="Spack使用手册 | 科学计算 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/spack%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" />
+
+
+
+
+<meta property="og:description" content="一、部署spack 下载 1." />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-05-26T13:13:04&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-05-26T13:13:04&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="http://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/">科学计算</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/mpi%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/">MPI并行计算</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/">编译</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E7%BC%96%E8%AF%91/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">编译过程</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/">软件</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/centos7%E4%B8%8Bmpich%E7%BC%96%E8%AF%91/">Centos7下mpich编译</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/intel_parallel_studio%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85/">Intel编译器安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%B8%80/">Vasp编译安装教程一</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/%E8%BD%AF%E4%BB%B6/vasp%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BA%8C/">Vasp编译安装教程二-插件篇</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/">Spack</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/spack/spack%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">Spack使用手册</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Spack使用手册</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-05-26</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>7分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="一部署spack">一、部署spack</h2>
+<h3 id="下载">下载</h3>
+<h4 id="1-release推荐">1. release（推荐）</h4>
+<p>github下载最新的release：https://github.com/spack/spack/releases</p>
+<h4 id="2-git">2. git</h4>
+<pre><code class="language-shell">git clone https://github.com/spack/spack.git ~/spack
+cd ~/spack
+git checkout releases/v0.17
+</code></pre>
+<blockquote>
+<p>✨tips: github 国内下载慢，百度 github镜像加速站 或 油猴脚本 - <a href="https://greasyfork.org/zh-CN/scripts/412245-github-%E5%A2%9E%E5%BC%BA-%E9%AB%98%E9%80%9F%E4%B8%8B%E8%BD%BD">github 高速下载</a></p>
+</blockquote>
+<h3 id="2激活">2.激活</h3>
+<blockquote>
+<p>对于超算/lab/hpc等多用户场景,建议将spack本地放在<code>全局/共享目录</code>下</p>
+<p>单个普通用户建议放在 <code>~/.spack/</code> 或 <code>/opt</code>下</p>
+</blockquote>
+<p>解压下载好的压缩包, 加载环境变量（根据具体情况变更路径)：</p>
+<pre><code class="language-shell">source spack/share/spack/setup-env.sh
+</code></pre>
+<p>可以将此命令写在<code>~/.bashrc</code> 或 <code>/etc/profile</code> 中 ， 打开终端自动生效</p>
+<h3 id="3配置">3.配置</h3>
+<p>spack 的用户配置文件均在 <code>~/.spack</code> 下，首次使用 spack 可能没有此目录，使用 3.2 会自动创建</p>
+<h4 id="31-基本配置">3.1 基本配置</h4>
+<pre><code class="language-shell">$ spack config get config &gt; ~/.spack/config.yaml
+$ spack config get config
+config:
+  install_tree:
+    root: $spack/opt/spack
+    projections:
+      all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
+  template_dirs:
+  - $spack/share/spack/templates
+  build_stage:
+  - $tempdir/$user/spack-stage
+  - $user_cache_path/stage
+  test_stage: $user_cache_path/test
+  source_cache: $spack/var/spack/cache
+  misc_cache: $user_cache_path/cache
+  connect_timeout: 10
+  verify_ssl: true
+  suppress_gpg_warnings: false
+  install_missing_compilers: false
+  checksum: true
+  deprecated: false
+  dirty: false
+  build_language: C
+  locks: true
+  url_fetch_method: urllib
+  ccache: false
+  concretizer: clingo
+  db_lock_timeout: 3
+  package_lock_timeout: null
+  shared_linking: rpath
+  allow_sgid: true
+  terminal_title: false
+  debug: false
+  build_jobs: 16
+</code></pre>
+<p><strong>解析：</strong></p>
+<ol>
+<li><code>install_tree</code> 中 <code>root</code> 为当前用户 软件安装的路径 ,  <code>projections</code> 为软件路径的命名规范</li>
+<li><code>verify_ssl</code> 在<code>install</code>时会校验url的ssl证书，离线环境可以选择关闭（值为 <code>fasle</code>）</li>
+<li><code>locks</code> 锁机制： 默认开启，同一用户分别安装相同的软件，只允许有一个进程执行，执行完后，另一个进程将跳过该软件安装；关闭的话，可能制造重复安装，但在某些文件系统的特殊权限限制下，需要关闭，否则会报奇怪的读写错误</li>
+<li><code>build_job</code> 安装时默认使用的最大cpu核心数</li>
+<li><code>checksum</code>  校验源码包的<code>hash</code>值</li>
+</ol>
+<h4 id="32-编译器">3.2 编译器</h4>
+<p>使用<code>spack compiler find</code>将会自动查找本机的所有编译器，生成配置文件<code>~/.spack/linux/compilers.yaml</code></p>
+<p><code>spack compilers</code>查看添加到配置文件中的编译器</p>
+<pre><code class="language-shell">$ spack compilers
+==&gt; Available compilers
+-- clang centos7-x86_64 -----------------------------------------
+clang@12.0.1  clang@3.4.2
+
+-- gcc centos7-x86_64 -------------------------------------------
+gcc@10.2.0  gcc@8.5.0  gcc@7.5.0  gcc@6.5.0  gcc@4.9.4  gcc@4.8.5
+
+-- intel centos7-x86_64 -----------------------------------------
+intel@2021.4.0  intel@19.0.5.281
+
+-- oneapi centos7-x86_64 ----------------------------------------
+oneapi@2021.4.0
+</code></pre>
+<h4 id="33-源码镜像仓库">3.3 源码镜像仓库</h4>
+<h5 id="331-自建源码镜像仓库">3.3.1 自建源码镜像仓库</h5>
+<pre><code class="language-shell">$ spack mirror create -d &lt;PATH&gt; --all
+</code></pre>
+<p>一个标准的源码镜像仓库符合以下目录规范：</p>
+<pre><code class="language-shell">mirror/
+    cmake/
+        cmake-2.8.10.2.tar.gz
+    dyninst/
+        dyninst-8.1.1.tgz
+        dyninst-8.1.2.tgz
+    libdwarf/
+        libdwarf-20130126.tar.gz
+        libdwarf-20130207.tar.gz
+        libdwarf-20130729.tar.gz
+    libelf/
+        libelf-0.8.12.tar.gz
+        libelf-0.8.13.tar.gz
+    libunwind/
+        libunwind-1.1.tar.gz
+    mpich/
+        mpich-3.0.4.tar.gz
+    mvapich2/
+        mvapich2-1.9.tgz
+</code></pre>
+<h5 id="342-添加私有源码镜像仓库">3.4.2 添加私有源码镜像仓库</h5>
+<pre><code class="language-shell">$ spack mirror add &lt;scope&gt; &lt;path&gt;
+</code></pre>
+<p>生成配置文件<code>~/.spack/linux/mirrors.yaml</code></p>
+<p>例如 添加 一个 在<code>/opt/mirror</code>下的源码镜像仓库，给它取名为haha:</p>
+<pre><code class="language-shell">spack mirror add haha /opt/mirror
+</code></pre>
+<h5 id="343-查看已添加的源码镜像仓库">3.4.3 查看已添加的源码镜像仓库</h5>
+<pre><code class="language-shell">$ spack mirror list
+spack-public    https://mirror.spack.io
+</code></pre>
+<p>默认使用 位于美国亚马逊云的 spack公共仓库 <a href="https://mirror.spack.io">https://mirror.spack.io</a> ，在国内获取 源码/索引 的速度可能会很慢</p>
+<h4 id="34-脚本源">3.4 脚本源</h4>
+<p>查看当前使用的脚本源</p>
+<pre><code class="language-shell">$ spack repo list
+==&gt; 1 package repository.
+builtin    /root/spack/var/spack/repos/builtin
+</code></pre>
+<p>默认使用spack官方的脚本源</p>
+<h5 id="341-添加私有脚本源">3.4.1 添加私有脚本源</h5>
+<p>一个标准的spack脚本源符合如下的路径规范：</p>
+<pre><code class="language-shell">$ tree -L /root/spack/var/spack/repos/yeesuan
+/root/spack/var/spack/repos/yeesuan
+├── packages
+│   ├── gromacs
+│   │   ├── package.py
+│   │   └── __pycache__	
+└── repo.yaml
+</code></pre>
+<p>其中 <code>repo.yaml</code> 定义了该脚本源的<code>命名空间</code>：</p>
+<pre><code class="language-yaml">repo:
+  namespace: 'yeesuan'
+</code></pre>
+<p>添加该脚本源：</p>
+<pre><code class="language-shell">$ spack repo add /root/spack/var/spack/repos/yeesuan
+</code></pre>
+<h4 id="35-modules">3.5 modules</h4>
+<pre><code class="language-shell">$ spack config get modules &gt; ~/.spack/modules
+$ spack config get modules 
+modules:
+  prefix_inspections:
+    lib:
+    - LD_LIBRARY_PATH
+    lib64:
+    - LD_LIBRARY_PATH
+    bin:
+    - PATH
+    man:
+    - MANPATH
+    share/man:
+    - MANPATH
+    share/aclocal:
+    - ACLOCAL_PATH
+    lib/pkgconfig:
+    - PKG_CONFIG_PATH
+    lib64/pkgconfig:
+    - PKG_CONFIG_PATH
+    share/pkgconfig:
+    - PKG_CONFIG_PATH
+    ? ''
+    : - CMAKE_PREFIX_PATH
+
+  # These are configurations for the module set named &quot;default&quot;
+  default:
+    # roots:
+    #  tcl:    $spack/share/spack/modules
+    #  lmod:   $spack/share/spack/lmod
+    enable:
+    - tcl
+
+    # Default configurations if lmod is enabled
+    lmod:
+      hierarchy:
+      - mpi
+</code></pre>
+<p><code>prefix_inspections</code>：定义了声明的环境变量和路径的对应关系</p>
+<p>其中<code>defalut</code>中<code>roots</code>的<code>tcl /lmod </code>定义了 安装软件后，modules 文件的安装位置</p>
+<p>其他，待补充</p>
+<h4 id="36-自定义packages">3.6 自定义packages</h4>
+<p><code>spack external find</code> 可以添加系统中的软件，为spack 管理 (超算环境不推荐)</p>
+<pre><code class="language-shell">$ spack external find
+==&gt; The following specs have been detected on this system and added to /root/.spack/packages.yaml
+bash@4.2.46       gawk@4.0.2    krb5@1.15.1          pkg-config@0.27.1  sqlite@3.7.17
+bzip2@1.0.6       gcc@4.8.5     llvm@3.4.2           python@2.7.5       tar@1.26
+cpio@2.11         git@2.36.0    llvm-doe@3.4.2       python@3.6.8       texinfo@5.1
+diffutils@3.3     gmake@3.82    openssh@7.4p1        rsync@3.1.2        xz@5.2.2
+file@5.11         go@1.18.1     openssl@1.0.2k-fips  rust@1.60.0
+findutils@4.5.11  groff@1.22.2  perl@5.16.3          sed@4.2.2
+</code></pre>
+<p>这是我们自定义添加的两块软件：</p>
+<pre><code class="language-yaml">packages:
+  cmake:
+    externals:
+    - spec: cmake@3.21.4
+      prefix: /yeesuan/linux-centos7-haswell/gcc-4.8.5/cmake-3.21.4-4q7yowzqqc6x36tsxd2bsgeenwci6iqt
+  util-linux-uuid:
+    externals:
+    - spec: util-linux-uuid@2.36.2
+      prefix: /yeesuan/linux-centos7-haswell/gcc-4.8.5/util-linux-uuid-2.36.2-psepywix72fmt453hwcmrepmqslrai3a
+</code></pre>
+<p>可以按照上述规范添加自己的软件</p>
+<h2 id="二基本使用">二、基本使用</h2>
+<h3 id="1spack中有什么">1.spack中有什么？</h3>
+<p>基础命令：<code>spack list</code></p>
+<p>默认返回所有<code>支持spack安装</code>的软件：</p>
+<pre><code class="language-shell">$ spack list
+==&gt; 5969 packages.
+3dtk	intel-oneapi-inspector	    pexsi		   py-pygeos 	r-parallelmap
+3proxy	intel-oneapi-ipp pfapack	py-pygetwindow r-param      helpers
+</code></pre>
+<p>支持<code>通配符</code>查找:</p>
+<pre><code class="language-shell">$ spack list *blas*
+==&gt; 18 packages.
+blaspp        blast-legacy  cblas       hipblas            ncbi-magicblast  openblas
+blasr         blast-plus    flexiblas   libblastrampoline  ncbi-rmblastn    rocblas
+blasr-libcpp  blast2go      graphblast  liblas             netlib-xblas     samblaster
+</code></pre>
+<p>查找<code>描述</code>里包含某个关键词：</p>
+<pre><code class="language-shell">$ spack list -d physics
+==&gt; 46 packages.
+albany  cradl            flecsph   herwig3    n2p2         py-openmc           sombrero
+alps    damask           freefem   herwigpp   openmc       py-uproot3-methods  thepeg
+amp     datatransferkit  geant4    jali       pennant      pythia6             trilinos
+ascent  delphes          genfit    libsakura  podio        pythia8             yambo
+axom    exciting         hepmc     lorene     portage      r-qvalue
+clhep   fastjet          hepmc3    mcutils    precice      recola
+cp2k    flecsi           heputils  minuit     py-espresso  rivet
+</code></pre>
+<h3 id="2查看软件详细信息">2.查看软件详细信息</h3>
+<p>基础命令：<code>spack info &lt;package_name&gt;</code></p>
+<pre><code class="language-shell">$ spack info vasp
+MakefilePackage:   vasp
+
+Description:
+ The Vienna Ab initio Simulation Package (VASP) is a computer program
+for atomic scale materials modelling, e.g. electronic structure
+calculations and quantum-mechanical molecular dynamics, from first
+principles.
+
+Homepage: https://vasp.at
+
+Externally Detectable:
+    False
+
+Tags:
+    None
+
+Preferred version:
+    6.1.1        file:///root/vasp.6.1.1.tgz
+
+Safe versions:
+    6.1.1        file:///root/vasp.6.1.1.tgz
+    5.4.4.pl2    file:///root/vasp.5.4.4.pl2.tgz
+    5.4.4        file:///root/vasp.5.4.4.tgz
+
+Deprecated versions:
+    None
+
+Variants:
+    Name [Default]     When    Allowed values    Description
+    ===============    ====    ===============   ====================================
+
+    cuda [off]         --      on, off           Enables running on Nvidia GPUs
+    scalapack [off]    --      on, off           Enables build with SCALAPACK
+    vaspsol [off]      --      on, off           Enable VASPsol implicit solvation model
+                                                 https://github.com/henniggroup/VASPsol
+Installation Phases:
+    edit    build    install
+
+Build Dependencies:
+    blas  cuda  fftw  lapack  mpi  netlib-scalapack  qd  rsync
+
+Link Dependencies:
+    blas  cuda  fftw  lapack  mpi  netlib-scalapack  qd
+    
+Run Dependencies:
+    mpi
+
+Virtual Packages:
+    None
+</code></pre>
+<h4 id="解析"><strong>解析</strong></h4>
+<p>1.<code>MakefilePackage</code>表示vasp用<code>make</code>构建</p>
+<pre><code>其他的，像gromacs 是`CMakePackage`，表示用`cmake`构建，
+
+                 fftw 是 `Autotools`, 流程中需要先`configure`再`make`
+</code></pre>
+<blockquote>
+<p>✨tips: 更为详细的请阅读spack官方中关于构建系统的介绍(有流程图)：</p>
+<p><a href="https://spack.readthedocs.io/en/latest/build_systems.html">https://spack.readthedocs.io/en/latest/build_systems.html</a></p>
+</blockquote>
+<p>2.<code>Description</code>： 软件的介绍</p>
+<p>3.<code>Homepage</code>：软件官网</p>
+<p>4.<code>Preferred version</code>是推荐版本，<code>Safe versions</code>是安全的（经过充分验证的）版本</p>
+<pre><code>其中，左侧列是`版本号`，右侧列是`软件的URL地址`
+
+spack默认使用 系统命令 `curl` &quot;下载&quot;软件 ，curl支持的协议有 https/http/file/.... ，上面例子表示默认使用当前路径下的源码包
+</code></pre>
+<p>5.<code>Variants</code> 我翻译为“特性”</p>
+<p>第一列为特性的名字，第二列为特性的条件，第三列为特性的值</p>
+<pre><code>其中，第一列，变量名后的中括号内，是`默认`的变量值
+</code></pre>
+<p>6.<code>Installation Phases</code>  表示了该软件安装时的三个步骤</p>
+<p>7.<code>Build Dependencies</code> 表示了构建前需要加载的<code>环境</code></p>
+<p>8.<code>Link Dependencies</code> 表示了构建时用到的<code>链接库</code></p>
+<p>9.<code>Run Dependencies</code> 表示了在使用软件时，需要加载的<code>环境</code></p>
+<h3 id="3安装软件">3.安装软件</h3>
+<p>基础命令：<code>spack install &lt;package_name&gt;</code></p>
+<pre><code class="language-shell">$ spack install zlib
+==&gt; Bootstrapping clingo from pre-built binaries
+==&gt; Installing zlib-1.2.11-3rlgy7ycxtoho44una6o3itgfjltkmpd
+==&gt; No binary for zlib-1.2.11-3rlgy7ycxtoho44una6o3itgfjltkmpd found: installing from source
+==&gt; Fetching https://mirror.spack.io/_source-cache/archive/c3/c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1.tar.gz
+==&gt; No patches needed for zlib
+==&gt; zlib: Executing phase: 'install'
+==&gt; zlib: Successfully installed zlib-1.2.11-3rlgy7ycxtoho44una6o3itgfjltkmpd
+  Fetch: 1.06s.  Build: 3.09s.	Total: 4.15s.
+[+] /home/spack/spack/opt/spack/linux-ubuntu18.04-x86_64/gcc-7.5.0/zlib-1.2.11-3rlgy7ycxtoho44una6o3itgfjltkmpd
+</code></pre>
+<h3 id="进阶-高度自定义的安装命令">进阶-高度自定义的安装命令</h3>
+<h4 id="31-指定编译器">3.1 指定编译器</h4>
+<p>编译器需要搭配 百分号 “%”，只能跟在软件名后面</p>
+<p>例如使用gcc编译器：</p>
+<pre><code class="language-shell">spack install zlib%gcc
+</code></pre>
+<p>软件名和编译器之间允许有多个空格，所以也可以写成这样：</p>
+<pre><code class="language-shell">spack install zlib %gcc
+</code></pre>
+<p>一般地，我们的系统中存在多个版本的gcc编译器，所以需要指定使用哪一个版本的编译器：</p>
+<pre><code class="language-shell">spack install zlib %gcc@6.5.0
+</code></pre>
+<p>需要说明的是，这里的编译器 名称，可能不会和 <code>spack list</code> 中一一对应，</p>
+<p>例如，英特尔oneapi的编译器，list表里的名称为 <code>intel-oneapi-compilers</code>, 但<code>spack compilers</code>里则是<code>intel</code></p>
+<h4 id="34-指定依赖">3.4 指定依赖</h4>
+<p>以2.1为例，vasp的依赖，其中的<code>blas、lapack、netlib-scalapack </code> 这三个数学库在英特尔的mkl库中均有实现，</p>
+<p>所以安装vasp时可以指定使用mkl,搭配 “^”</p>
+<pre><code class="language-shell">spack install vasp ^intel-mkl
+</code></pre>
+<p>2020之后的mkl库的包名发生了变化，我们指定适合用2021.4.0版本的</p>
+<pre><code class="language-shell">spack install vasp ^intel-oneapi-mkl@2021.4.0
+</code></pre>
+<p>我们的cc编译器也想用intel的icc, 版本号和mkl相同</p>
+<pre><code class="language-shell">spack install vasp %intel@2021.4.0 ^intel-oneapi-mkl@2021.4.0
+</code></pre>
+<h4 id="34-特性">3.4 特性</h4>
+<p>仍以2.1为例，官方提供的vasp有一个叫<code>vaspsol</code>的特性，它是vasp的一个扩展包，默认关闭状态，如果想开启此特性,需要搭配“+”使用</p>
+<pre><code class="language-shell">spack install vasp +vaspsol
+</code></pre>
+<p>mpich的特性<code>pmi</code>的值有多个，默认为mpi</p>
+<pre><code class="language-shell">pmi [pmi]            --      off, pmi, pmi2, pmix    PMI interface.
+</code></pre>
+<p>我们想全都使用，则使用“=”表达，以英文小写逗号“，”分隔不同的值</p>
+<pre><code class="language-shell">spack install mpich mpi=pmi,pmi2,pmix
+</code></pre>
+<p>mpich的特性<code>fortran</code>的值默认时开启状态，我们不想使用它,搭配波浪线</p>
+<pre><code class="language-shell">spack install mpich ~fortran
+</code></pre>
+<h4 id="35-多线程">3.5 多线程</h4>
+<p>构建时可以指定使用的最大cpu核心数，在install后面 加入 -j 参数， 后接核心数</p>
+<pre><code class="language-shell">spack install -j 64 vasp
+</code></pre>
+<blockquote>
+<p>✨tips: 可以通过系统命令 <code>nproc</code> 查询到最大核心数 ，也可以写成变量的形式</p>
+</blockquote>
+<h4 id="综合">综合</h4>
+<p>以安装gcc6.5.0为例，使用系统自带的gcc4.8.5编译，需要开启几乎全部的特性，其中的go使用1.16版本</p>
+<pre><code class="language-shell">spack install -j 64 -y gcc@6.5.0 %gcc@4.8.5 +binutils+bootstrap+piclibs+strip languages=ada,c,c++,fortran,go,java,jit,lto,objc,obj-c++ ^go@1.16
+</code></pre>
+<blockquote>
+<p>✨tips: 其中的 “-y”可以默认选择一些软件的提示性的编译选项或其他选项</p>
+</blockquote>
+<h4 id="36-卸载软件">3.6 卸载软件</h4>
+<p>基础命令： <code>spakc uninstall &lt;package_name&gt;</code></p>
+<pre><code class="language-shell">$ spack uninstall autoconf
+==&gt; Error: autoconf matches multiple packages:
+
+    -- linux-centos7-cascadelake / gcc@10.2.0 -----------------------
+    kwq2zrg autoconf@2.69
+
+    -- linux-centos7-skylake_avx512 / gcc@6.5.0 ---------------------
+    2vv3qa2 autoconf@2.69
+
+==&gt; Error: You can either:
+    a) use a more specific spec, or
+    b) specify the spec by its hash (e.g. `spack uninstall /hash`), or
+    c) use `spack uninstall --all` to uninstall ALL matching specs.
+</code></pre>
+<p>像上面，卸载报错，我们可以指定编译器：</p>
+<pre><code class="language-shell">spack uninstall autoconf %gcc@6.5.0
+</code></pre>
+<p>方便地，使用其<code>hash</code>值：</p>
+<pre><code class="language-shell">spack uninstall /2vv3qa2
+</code></pre>
+<p>默认卸载全部autoconf:</p>
+<pre><code class="language-shell">spack uninstall --all autoconf
+</code></pre>
+<p>有时候，卸载该软件也需要卸载其依赖：</p>
+<pre><code class="language-shell">spack uninstall -d &lt;package_name&gt;
+</code></pre>
+<h3 id="4查找已安装的软件">4.查找已安装的软件</h3>
+<p>基础命令：<code>spack find </code></p>
+<pre><code class="language-shell">$ spack find
+==&gt; 805 installed packages
+-- linux-centos7-cascadelake / gcc@10.2.0 -----------------------
+boost@1.77.0            intel-oneapi-mpi@2021.4.0  python@3.8.12
+bzip2@1.0.8             libbsd@0.11.3              readline@8.1
+cereal@1.3.0            libffi@3.3                 sqlite@3.36.0
+
+-- linux-centos7-cascadelake / intel@19.0.5.281 -----------------
+abinit@9.4.2          intel-mpi@2019.5.281    parmetis@4.0.3
+amg@1.2               intel-tbb@2020.3        parmetis@4.0.3
+...
+</code></pre>
+<h4 id="41-指定包名">4.1 指定包名</h4>
+<pre><code class="language-shell">$ spack find vasp
+==&gt; 2 installed packages
+-- linux-centos7-cascadelake / intel@19.0.5.281 -----------------
+vasp@5.4.4
+
+-- linux-centos7-cascadelake / intel@2021.4.0 -------------------
+vasp@6.1.0
+</code></pre>
+<h4 id="42-指定编译器">4.2 指定编译器</h4>
+<pre><code class="language-shell">$ spack find vasp %intel@2021.4.0
+==&gt; 1 installed package
+-- linux-centos7-cascadelake / intel@2021.4.0 -------------------
+vasp@6.1.0
+</code></pre>
+<h4 id="43-指定版本号">4.3 指定版本号</h4>
+<pre><code class="language-shell">$ spack find vasp@5.4.4
+==&gt; 1 installed package
+-- linux-centos7-cascadelake / intel@19.0.5.281 -----------------
+vasp@5.4.4
+</code></pre>
+<h4 id="44-查看软件的特征值">4.4 查看软件的特征值</h4>
+<pre><code class="language-shell">$ spack find -l openmpi
+==&gt; 2 installed packages
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+pt2putc openmpi@4.1.1
+
+-- linux-centos7-skylake_avx512 / gcc@6.5.0 ---------------------
+tchnk2v openmpi@4.1.1
+</code></pre>
+<blockquote>
+<p>✨tips:  1.spack支持使用 <code>/&lt;hash_value&gt;</code>  的方式替代<code>&lt;package_name&gt;</code>，<code>hash_vaule</code>支持长写（完整 ）和短写（前面3到7个字符）
+2.可以使用 -L 查看完整的特征值</p>
+</blockquote>
+<h4 id="45-查看软件的特征值和依赖">4.5 查看软件的特征值和依赖</h4>
+<pre><code class="language-shell">$ spack find -l -d openmpi
+==&gt; 2 installed packages
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+pt2putc openmpi@4.1.1
+y5iroad     hwloc@2.6.0
+bmzkyfq         libpciaccess@0.16
+xkbs7ll         libxml2@2.9.12
+rpsecj5             libiconv@1.16
+e6cbjcd             xz@5.2.5
+z6uqlxn             zlib@1.2.11
+ez4gk67         ncurses@6.2
+owe3cjs     libevent@2.1.12
+jwr4s44         openssl@1.1.1l
+2hfxs5z     numactl@2.0.14
+tjk74sh     openssh@8.7p1
+ugfkpjd         libedit@3.1-20210216
+</code></pre>
+<h4 id="46-查看软件的路径">4.6 查看软件的路径</h4>
+<pre><code class="language-shell">spack find -p openmpi
+==&gt; 2 installed packages
+-- linux-centos7-haswell / gcc@4.8.5 ----------------------------
+openmpi@4.1.1  /yeesuan495/.spack/software/linux-centos7-haswell/gcc-4.8.5/openmpi-4.1.1-pt2putcrv2o53naxpesk3rsb4xl44pqa
+
+-- linux-centos7-skylake_avx512 / gcc@6.5.0 ---------------------
+openmpi@4.1.1  /yeesuan495/.spack/software/linux-centos7-skylake_avx512/gcc-6.5.0/openmpi-4.1.1-tchnk2vf4iskpfkh7giwurtmyipwmjma
+</code></pre>
+<h5 id="461-location-建议用find--p">4.6.1 location （建议用find -p）</h5>
+<p>location 命令也可以定位软件的路径</p>
+<pre><code class="language-shell">$ spack location -i openmpi%gcc@4.8.5
+/yeesuan495/.spack/software/linux-centos7-haswell/gcc-4.8.5/openmpi-4.1.1-pt2putcrv2o53naxpesk3rsb4xl44pqa
+</code></pre>
+<h5 id="462-cd--进入软件根目录">4.6.2 cd  进入软件根目录</h5>
+<pre><code class="language-shell">$ spack cd -i openmpi%gcc@4.8.5
+[yxxxx@xxxx openmpi-4.1.1-pt2putcrv2o53naxpesk3rsb4xl44pqa]$
+</code></pre>
+<h4 id="47-查看软件的命名空间">4.7 查看软件的命名空间</h4>
+<pre><code class="language-shell">$ spack find -N mpich
+==&gt; 1 installed package
+-- linux-centos7-skylake_avx512 / gcc@6.5.0 ---------------------
+local.mpich@3.4.2
+
+$ spack find -N xz
+==&gt; 3 installed packages
+-- linux-centos7-cascadelake / gcc@10.2.0 -----------------------
+builtin.xz@5.2.5
+...
+</code></pre>
+<h3 id="5使用软件">5.使用软件</h3>
+<p>基础命令：</p>
+<p>加载软件环境变量 <code>spack load &lt;package_name&gt;</code></p>
+<p>卸载软件环境变量  <code>spack unload &lt;package_name&gt;</code></p>
+<h4 id="51-查看已加载的依赖">5.1 查看已加载的依赖</h4>
+<pre><code class="language-shell">$ spack find --loaded
+==&gt; 4 loaded packages
+-- linux-centos7-cascadelake / intel@2021.4.0 -------------------
+fftw@3.3.10                intel-oneapi-mpi@2021.4.0
+intel-oneapi-mkl@2021.4.0  intel-oneapi-tbb@2021.4.0
+</code></pre>
+<h4 id="52-仅加载软件本身或它的依赖">5.2 仅加载软件本身或它的依赖</h4>
+<p>仅软件本身：</p>
+<pre><code class="language-shell">spack load --only package &lt;package_name&gt;
+</code></pre>
+<p>仅依赖：</p>
+<pre><code class="language-shell">spack load --only dependencies &lt;package_name&gt;
+</code></pre>
+<h4 id="53-查看加载软件的所有环境变量">5.3 查看加载软件的所有环境变量</h4>
+<pre><code class="language-shell">spack load --sh &lt;package_name&gt;
+</code></pre>
+<h4 id="54-指定参数加载环境变量">5.4 指定参数加载环境变量</h4>
+<ul>
+<li>
+<p>指定版本号 <code>spack load &lt;package_name&gt;@&lt;package_version&gt;</code></p>
+</li>
+<li>
+<p>指定编译器  <code>spack load &lt;package_name&gt; %&lt;compiler_name&gt;@&lt;compiler_version&gt;</code></p>
+</li>
+<li>
+<p>指定用到的依赖/特性  <code>spack load &lt;package_name&gt; ^&lt;dependency_name&gt;  </code></p>
+</li>
+<li>
+<p>指定命名空间 <code>spack load &lt;scope&gt;.&lt;package_name&gt;</code></p>
+<p>上述加载方式都可以组合使用</p>
+</li>
+<li>
+<p>使用hash值 :  <code>spack load /&lt;hash_value&gt;</code></p>
+<blockquote>
+<p>✨tips: 有时候我们查到的软件版本号和编译器甚至命名空间都一样，它将很难区分</p>
+<pre><code>    通常，使用`spack find -l -d  &lt;package_name&gt;` 可以打印多个“相同”的软件的依赖详情，我们选择其中一个的hash值加载
+</code></pre>
+</blockquote>
+</li>
+</ul>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一部署spack">一、部署spack</a>
+      <ul>
+        <li><a href="#下载">下载</a>
+          <ul>
+            <li><a href="#1-release推荐">1. release（推荐）</a></li>
+            <li><a href="#2-git">2. git</a></li>
+          </ul>
+        </li>
+        <li><a href="#2激活">2.激活</a></li>
+        <li><a href="#3配置">3.配置</a>
+          <ul>
+            <li><a href="#31-基本配置">3.1 基本配置</a></li>
+            <li><a href="#32-编译器">3.2 编译器</a></li>
+            <li><a href="#33-源码镜像仓库">3.3 源码镜像仓库</a>
+              <ul>
+                <li><a href="#331-自建源码镜像仓库">3.3.1 自建源码镜像仓库</a></li>
+                <li><a href="#342-添加私有源码镜像仓库">3.4.2 添加私有源码镜像仓库</a></li>
+                <li><a href="#343-查看已添加的源码镜像仓库">3.4.3 查看已添加的源码镜像仓库</a></li>
+              </ul>
+            </li>
+            <li><a href="#34-脚本源">3.4 脚本源</a>
+              <ul>
+                <li><a href="#341-添加私有脚本源">3.4.1 添加私有脚本源</a></li>
+              </ul>
+            </li>
+            <li><a href="#35-modules">3.5 modules</a></li>
+            <li><a href="#36-自定义packages">3.6 自定义packages</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二基本使用">二、基本使用</a>
+      <ul>
+        <li><a href="#1spack中有什么">1.spack中有什么？</a></li>
+        <li><a href="#2查看软件详细信息">2.查看软件详细信息</a>
+          <ul>
+            <li><a href="#解析"><strong>解析</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#3安装软件">3.安装软件</a></li>
+        <li><a href="#进阶-高度自定义的安装命令">进阶-高度自定义的安装命令</a>
+          <ul>
+            <li><a href="#31-指定编译器">3.1 指定编译器</a></li>
+            <li><a href="#34-指定依赖">3.4 指定依赖</a></li>
+            <li><a href="#34-特性">3.4 特性</a></li>
+            <li><a href="#35-多线程">3.5 多线程</a></li>
+            <li><a href="#综合">综合</a></li>
+            <li><a href="#36-卸载软件">3.6 卸载软件</a></li>
+          </ul>
+        </li>
+        <li><a href="#4查找已安装的软件">4.查找已安装的软件</a>
+          <ul>
+            <li><a href="#41-指定包名">4.1 指定包名</a></li>
+            <li><a href="#42-指定编译器">4.2 指定编译器</a></li>
+            <li><a href="#43-指定版本号">4.3 指定版本号</a></li>
+            <li><a href="#44-查看软件的特征值">4.4 查看软件的特征值</a></li>
+            <li><a href="#45-查看软件的特征值和依赖">4.5 查看软件的特征值和依赖</a></li>
+            <li><a href="#46-查看软件的路径">4.6 查看软件的路径</a>
+              <ul>
+                <li><a href="#461-location-建议用find--p">4.6.1 location （建议用find -p）</a></li>
+                <li><a href="#462-cd--进入软件根目录">4.6.2 cd  进入软件根目录</a></li>
+              </ul>
+            </li>
+            <li><a href="#47-查看软件的命名空间">4.7 查看软件的命名空间</a></li>
+          </ul>
+        </li>
+        <li><a href="#5使用软件">5.使用软件</a>
+          <ul>
+            <li><a href="#51-查看已加载的依赖">5.1 查看已加载的依赖</a></li>
+            <li><a href="#52-仅加载软件本身或它的依赖">5.2 仅加载软件本身或它的依赖</a></li>
+            <li><a href="#53-查看加载软件的所有环境变量">5.3 查看加载软件的所有环境变量</a></li>
+            <li><a href="#54-指定参数加载环境变量">5.4 指定参数加载环境变量</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>云计算 on 一言</title>
+    <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/</link>
+    <description>Recent content in 云计算 on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 05 Jun 2023 23:21:34 +0800</lastBuildDate><atom:link href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pve配置vlan版bond虚拟网桥</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/</link>
+      <pubDate>Thu, 23 May 2024 21:14:19 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/</guid>
+      <description>test</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MPI并行计算 on 一言</title>
+    <link>/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/mpi%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/</link>
+    <description>Recent content in MPI并行计算 on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 May 2024 15:45:54 +0800</lastBuildDate><atom:link href="/docs/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97/mpi%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

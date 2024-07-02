@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>centos7下搭建ipxe服务器 | 云计算 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.8c77c7521b1f95ec2031c2a79f5c6a698aa4a0dba5ba649dfbc7f73994cddf3f494be6aac7e5724f35cbf72cfde09703.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="pxe网络安装系统流程图
+其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"云计算",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"Devops",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"centos7下搭建ipxe服务器",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+    },
+    "headline": "centos7下搭建ipxe服务器 | 云计算 | 一言","datePublished": "2024-01-03T15:54:19+08:00",
+    "dateModified": "2024-01-03T15:54:19+08:00",
+    "wordCount":  976 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "pxe网络安装系统流程图\n其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe."
+}
+</script><meta property="og:title" content="centos7下搭建ipxe服务器 | 云计算 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/" />
+
+
+
+
+<meta property="og:description" content="pxe网络安装系统流程图
+其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe." />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2024-01-03T15:54:19&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2024-01-03T15:54:19&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="http://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/">Pve配置vlan版bond虚拟网桥</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/">GPU</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/">多机nccl Tests测试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/">Gpu资源测试通用报告</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/">Kvm</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/ubuntu22.04%E5%AE%89%E8%A3%85ovs%E5%92%8C%E9%85%8D%E7%BD%AEkvm%E8%99%9A%E6%8B%9F%E5%8C%96/">Ubuntu22.04安装ovs和配置KVM虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/kvm/%E6%8E%A2%E7%B4%A2%E5%9F%BA%E4%BA%8Espice%E5%8D%8F%E8%AE%AE%E7%9A%84vdi%E4%BA%91%E6%A1%8C%E9%9D%A2/">探索基于SPICE协议的VDI云桌面</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/">Devops</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/clush%E8%BF%90%E7%BB%B4/">Clush运维</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nexus3%E9%95%9C%E5%83%8F%E6%BA%90%E6%90%AD%E5%BB%BA/">Nexus3镜像源搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/prometheus%E7%9B%91%E6%8E%A7%E9%83%A8%E7%BD%B2/">Prometheus监控部署</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Docker部署iredmail邮件系统</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/">Centos7部署nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">Maas安装和使用</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E5%88%B6%E4%BD%9C%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E7%9A%84centos7%E9%95%9C%E5%83%8F/">制作自动安装系统的centos7镜像</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/centos7%E4%B8%8B%E6%90%AD%E5%BB%BAipxe%E6%9C%8D%E5%8A%A1%E5%99%A8/">centos7下搭建ipxe服务器</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ubuntu%E9%83%A8%E7%BD%B2ganglia%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/">Ubuntu部署ganglia监控系统</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/">Ubuntu搭建nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/">各厂商服务器IPMI默认密码</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">Diskless 无盘linux集群搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Nvidia显卡驱动安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Ldap用户统一认证服务安装</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/">网络</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/pve%E4%B8%8B%E9%85%8D%E7%BD%AEib%E8%99%9A%E6%8B%9F%E5%8C%96/">Pve下配置ib虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/">Centos7部署ovs</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/">存储</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/centos7%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2luster/">Centos7离线部署luster</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/lvm%E5%AE%9E%E6%88%98/">Lvm实战</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E5%AD%98%E5%82%A8/rh8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85lustre/">RH8编译安装Lustre</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">centos7下搭建ipxe服务器</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2024-01-03</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>5分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <p>pxe网络安装系统流程图</p>
+<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/14a99a227f5ea9daf3c0e5101e4eba3c.png" alt="20220610121400"></p>
+<blockquote>
+<p>其中pxe引导文件，pxelinux.0 只适用于 传统启动方式（Legency boot），而ipxe项目提供的ipxe.efi等文件 适配了 uefi boot启动模式和更新的网络硬件支持</p>
+</blockquote>
+<h2 id="1安装ipxe">1.安装ipxe</h2>
+<pre><code class="language-shell">yum install -y gcc binutils make perl xz-devel mtools mkisofs syslinux 
+</code></pre>
+<h2 id="2关闭selinux和防火墙">2.关闭selinux和防火墙</h2>
+<pre><code class="language-shell">systemctl stop firewalld &amp;&amp; systemctl disable firewalld
+sed -i '/^SELINUX=/c SELINUX=disabled' /etc/selinux/config
+setenforce 0
+</code></pre>
+<h2 id="3配置dhcp和tftp">3.配置dhcp和tftp</h2>
+<p>安装dnsmasq</p>
+<pre><code>yum install -y dnsmasq
+</code></pre>
+<p>创建pxe工作目录</p>
+<pre><code class="language-shell">mkdir -p /pxe/http/iso  /pxe/http/tftp
+</code></pre>
+<p>将镜像上传到/pxe/http/iso</p>
+<p>编辑/etc/dnsmasq.conf</p>
+<pre><code class="language-shell"># 关闭DNS解析
+port=0
+
+#Setup the server to be your authoritative DHCP server
+dhcp-authoritative
+
+#Set the DHCP server to hand addresses sequentially
+dhcp-sequential-ip
+
+# 设置DHCP分发IP端范围、地址掩码、IP地址有效时间
+dhcp-range=192.168.1.60,192.168.1.80,255.255.255.0,12h
+dhcp-option=option:router,192.168.1.1
+dhcp-option=option:dns-server,223.5.5.5
+
+
+# 设置引导程序相对tftp根目录的路径
+dhcp-match=set:bios,option:client-arch,0
+dhcp-match=set:ipxe,175
+dhcp-boot=tag:!ipxe,tag:bios,undionly.kpxe
+dhcp-boot=tag:!ipxe,tag:!bios,ipxe.efi #如果引导失败用这个 snponly.efi
+dhcp-boot=tag:ipxe,boot.ipxe
+
+
+# 设置tftp服务
+enable-tftp
+tftp-lowercase
+dhcp-no-override
+tftp-root=/pxe/http/tftp  
+</code></pre>
+<p>启动dnsmasq服务</p>
+<pre><code class="language-shell">systemctl restart dnsmasq &amp;&amp; systemctl status dnsmasq
+</code></pre>
+<h2 id="4挂载镜像">4.挂载镜像</h2>
+<pre><code class="language-shell">cd /pxe/http/iso &amp;&amp; mkdir ubuntu centos7
+mount CentOS-7-x86_64-Minimal-2009.iso centos7/
+mount ubuntu-20.04.6-live-server-amd64.iso ubuntu
+</code></pre>
+<p>查看挂载情况</p>
+<pre><code class="language-shell">[root@kvm iso]# lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda               8:0    0  100G  0 disk
+├─sda1            8:1    0    1G  0 part /boot
+└─sda2            8:2    0   99G  0 part
+  └─centos-root 253:0    0   99G  0 lvm  /
+loop0             7:0    0  973M  0 loop /pxe/http/iso/centos7
+loop1             7:1    0  1.4G  0 loop /pxe/http/iso/ubuntu
+</code></pre>
+<h2 id="5配置http服务">5.配置http服务</h2>
+<pre><code class="language-shell">wget https://hub.gitmirror.com/https://github.com/codeskyblue/gohttpserver/releases/download/1.1.4/gohttpserver_1.1.4_linux_amd64.tar.gz
+tar xzf gohttpserver_1.1.4_linux_amd64.tar.gz -C /usr/bin/
+</code></pre>
+<p>配饰systemd服务</p>
+<pre><code class="language-shell">cat &lt;&lt; EOF &gt;/etc/systemd/system/gohttpserver.service
+[Unit]
+Description=Systemd gohttpserver
+After=network.target
+
+[Service]
+User=root
+# Execute `systemctl daemon-reload` after ExecStart= is changed.
+ExecStart=/usr/bin/gohttpserver -r /pxe/http --addr :80 --auth-type http
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+<p>启动gohttp服务器</p>
+<pre><code class="language-shell">systemctl daemon-reload
+systemctl start gohttpserver
+systemctl status gohttpserver 
+systemctl enable gohttpserver
+</code></pre>
+<h2 id="6配置ipxe">6.配置ipxe</h2>
+<p>下载ipxe文件</p>
+<pre><code class="language-shell">wget -P /pxe/http/tftp http://boot.ipxe.org/ipxe.pxe
+wget -P /pxe/http/tftp http://boot.ipxe.org/snponly.efi
+wget -P /pxe/http/tftp http://boot.ipxe.org/undionly.kpxe
+wget -P /pxe/http/tftp http://boot.ipxe.org/ipxe.efi
+</code></pre>
+<p>配置/pxe/http/tftp/boot.ipxe</p>
+<pre><code>#!ipxe
+
+set boot-url http://${next-server}
+
+# Setup some basic convenience variables
+set menu-timeout 5000
+
+# Ensure we have menu-default set to something
+isset ${menu-default} || set menu-default exit
+
+######## MAIN MENU ###################
+:start
+menu Welcome to iPXE's Boot Menu
+item
+item --gap -- ------------------------- Utilities ------------------------------
+item centos7       Install Centos7
+item ubuntu-server Install ubuntu server
+item --gap -- ------------------------------ Advanced ---------------------------------
+item --key r reboot     [R] Reboot the Computer
+item --key x exit       [X] Exit (boot local disk)
+choose --default exit --timeout 30000 target &amp;&amp; goto ${target}
+
+########## UTILITY ITEMS ####################
+:failed
+echo Booting failed, dropping to shell
+goto start
+
+:reboot
+reboot
+
+:exit
+exit
+
+:centos7
+initrd ${boot-url}/iso/centos7/images/pxeboot/initrd.img
+kernel ${boot-url}/iso/centos7/images/pxeboot/vmlinuz 
+imgargs vmlinuz initrd=initrd.img inst.ks=${boot-url}/ks/ks-c7.cfg inst.repo=${boot-url}/iso/centos7
+boot || goto failed
+goto start
+
+:ubuntu-server
+kernel ${boot-url}/iso/ubuntu/casper/vmlinuz
+initrd ${boot-url}/iso/ubuntu/casper/initrd
+imgargs vmlinuz initrd=initrd url=${boot-url}/iso/ubuntu-20.04.6-live-server-amd64.iso cloud-config-url=/dev/null ip=dhcp fsck.mode=skip --
+boot || goto failed
+goto start
+
+</code></pre>
+<blockquote>
+<p>ipxe.dsk 是写入软驱用作引导盘的镜像，也可以用作虚拟机的软驱启动；</p>
+<p>ipxe.efi 网启UEFI引导，文件比较大大约就是uefi下的ipxe.pxe，EFI引导推荐先用这个有问题就换snponly.efi；
+ipxe.iso 是写入光盘用作引导盘的镜像，也可以用作虚拟机的光驱启动；</p>
+<p>ipxe.lkrn kernel相当于一个linux系统，功能更加完善，比如支持命令行操作，支持initrd等，；一般用在被GRUB，PXELINUX启动；</p>
+<p>ipxe.pxe 网启传统引导，文件较大包含驱动多，靠自身来驱动网卡，速度快但是有概率网卡不被支持；</p>
+<p>ipxe.usb 是写入U盘启动用的，用dd命令写；</p>
+<p>snponly.efi 网启UEFI引导，文件小不自带驱动，大约就是uefi下的undionly.kpxe ；</p>
+<p>undionly.kpxe 网启传统引导，文件小不自带驱动，靠UNDI通用接口或者pxe来驱动网卡，运行速度慢但是驱动几乎100%支持，但是pxe等驱动跟需要引导的系统又有可能存在兼容等问题。。</p>
+</blockquote>
+<h2 id="7测试">7.测试</h2>
+<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240104161214453.png" alt="image-20240104161214453"></p>
+<blockquote>
+<p>虚拟机测试时如遇到no space left on device 报错，请调大内存，因为ipxe引导的镜像时加载到内存里的</p>
+</blockquote>
+<p>ipxe可手动选择自动灌装多种系统，也可以直接默认，指定boot.ipxe配置文件中<code>choose --default exit --timeout 30000 target &amp;&amp; goto ${target} </code>的target为lable name</p>
+<h2 id="8配置自动安装系统脚本">8.配置自动安装系统脚本</h2>
+<h3 id="centos7">Centos7</h3>
+<p>创建ks目录，注意该目录和boot.pxe配置文件相关，因此无法改变，如果自定义请一并修改boot.ipxe</p>
+<pre><code>mkdir /pxe/http/ks /pxe/http/init
+</code></pre>
+<p>编辑 /pxe/http/ks/ks-c7.cfg</p>
+<pre><code class="language-shell">#platform=x86, AMD64, 或 Intel EM64T
+#version=DEVEL
+# Install OS instead of upgrade
+install
+# Keyboard layouts
+keyboard 'cn'
+
+network --bootproto=dhcp
+
+# Root password 可调用python模块生成加密后的密码 python -c 'import crypt,getpass;pw=&quot;admin&quot;;print(crypt.crypt(pw))'
+rootpw --iscrypted $6$cAYWJLiTQ1P6FnlX$09dPD7qwdfzWYIPfCteBUL9Guhcnc7YqOfJEwYrDwN1dU1z7SSrgPXWTxGzG8P/KexwutVANvUi7P.FGzpO7x/
+
+
+# System language
+lang zh_CN.UTF-8
+# System authorization information
+auth  --useshadow  --passalgo=sha512
+
+# Use graphical install
+graphical
+
+firstboot --disable
+# SELinux configuration
+selinux --disabled
+
+# Firewall configuration
+firewall --disabled
+# Halt after installation
+#poweroff
+reboot
+
+# System timezone
+timezone Asia/Shanghai
+
+
+%include /tmp/part-include
+%pre
+
+disk=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;nvme0n1&quot;) print $4} END{}';done &lt; /proc/partitions)
+size=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;nvme0n1&quot;) print $3} END{}';done &lt; /proc/partitions)
+if [ -z &quot;$disk&quot; ];then
+    disk=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;sda&quot;) print $4} END{}';done &lt; /proc/partitions)
+    size=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;sda&quot;) print $3} END{}';done &lt; /proc/partitions)
+    if [ -z &quot;$disk&quot; ];then
+        disk=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;vda&quot;) print $4} END{}';done &lt; /proc/partitions)
+        size=$(while read line;do awk 'BEGIN{} {if ($2 == &quot;0&quot; &amp;&amp; $4 == &quot;vda&quot;) print $3} END{}';done &lt; /proc/partitions)
+    fi
+fi
+
+# partition
+if [ $size -lt 2000000000 ];then
+cat &gt; /tmp/part-include &lt;&lt; EOF
+# System bootloader configuration
+bootloader --location=mbr --boot-drive=$disk
+
+# Partition clearing information
+clearpart --all --initlabel --drives=$disk
+
+# Disk partitioning information
+#part /boot/efi --fstype=&quot;efi&quot; --ondisk=$disk --size=600 --fsoptions=&quot;umask=0077,shortname=winnt&quot;
+#part biosboot --fstype=&quot;biosboot&quot; --ondisk=$disk --size=1
+part /boot --fstype=&quot;ext4&quot; --ondisk=$disk --size=1024
+part /     --fstype=&quot;xfs&quot; --grow --ondisk=$disk --size=1
+EOF
+else
+cat &gt; /tmp/part-include &lt;&lt; EOF
+# System bootloader configuration
+bootloader --location=mbr --boot-drive=$disk
+
+# Partition clearing information
+clearpart --all --initlabel --drives=$disk
+
+# Disk partitioning information
+#part /boot/efi --fstype=&quot;efi&quot; --ondisk=$disk --size=600 --fsoptions=&quot;umask=0077,shortname=winnt&quot;
+part biosboot --fstype=&quot;biosboot&quot; --ondisk=$disk --size=1
+part /boot    --fstype=&quot;ext4&quot; --ondisk=$disk --size=1024
+part /        --fstype=&quot;xfs&quot; --grow --ondisk=$disk --size=1
+EOF
+fi
+
+if [ -d /sys/firmware/efi ] ; then
+        sed -i 's/^[^#].*biosboot*/#&amp;/g' -i /tmp/part-include
+        sed -i '/^#.*efi/s/^#//g'   -i /tmp/part-include
+fi
+
+%end
+
+%packages
+@^minimal
+@core
+chrony
+kexec-tools
+
+%end
+
+#%post   #脚本段，可以放脚本或命令，需要根据实际位置修改脚本
+%post --log=/var/log/kickstart-post.log
+wget http://192.168.1.22/init/init.sh
+sh init.sh
+rm init.sh -f
+%end
+</code></pre>
+<h3 id="ubuntu">ubuntu</h3>
+<p>创建目录</p>
+<pre><code class="language-shell">mkdir -p /pxe/http/autoinstall
+cd /pxe/http/autoinstall
+touch meta-data user-data vendor-data
+</code></pre>
+<p>在autoinstall目录分别创建meta-data、user-data、vendor-data文件，内容一样</p>
+<pre><code class="language-yaml">#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu
+    password: $6$cAYWJLiTQ1P6FnlX$09dPD7qwdfzWYIPfCteBUL9Guhcnc7YqOfJEwYrDwN1dU1z7SSrgPXWTxGzG8P/KexwutVANvUi7P.FGzpO7x/
+    realname: ubuntu
+    username: ubuntu
+  network:
+    network:
+      version: 2
+      ethernets:
+        id0:
+          match:
+            macaddress: BC:24:11:A4:99:10
+          dhcp4: true
+  ssh:
+    install-server: true
+    allow-pw: true
+  storage:
+    layout:
+        name: lvm
+  apt:
+    preserve_sources_list: false
+  packages:
+    - openssh-server
+  late-commands:
+    - echo 'SELINUX=disabled' &gt; /target/etc/selinux/config
+    - ufw disable
+</code></pre>
+<p>这里在不知网卡名的情况下，用mac地址匹配获取dhcp地址，兼容BOIS和UEFI</p>
+<p>如果机器有多块盘，storage可以指定下</p>
+<h4 id="非lvm">非LVM</h4>
+<p>BOIS版</p>
+<pre><code class="language-yaml">    config:
+    - {ptable: gpt, path: /dev/sda, wipe: superblock-recursive, preserve: false, name: '', grub_device: true, type: disk, id: disk-sda}
+    - {device: disk-sda, size: 536870912, wipe: superblock, flag: bios_grub, number: 1, preserve: false, grub_device: false, type: partition, id: partition-0}
+    - {device: disk-sda, size: -1, wipe: superblock, flag: '', number: 2, preserve: false, type: partition, id: partition-1}
+    - {fstype: ext4, volume: partition-1, preserve: false, type: format, id: format-1}
+    - {device: format-1, path: /, type: mount, id: mount-1}
+</code></pre>
+<p>UEFI版</p>
+<pre><code class="language-yaml">    - {ptable: gpt, path: /dev/sda, wipe: superblock-recursive, preserve: false, name: '', grub_device: false, type: disk, id: disk-sda}
+    - {device: disk-sda, size: 536870912, wipe: superblock, flag: boot, number: 1,preserve: false, grub_device: true, type: partition, id: partition-0}
+    - {fstype: fat32, volume: partition-0, preserve: false, type: format, id: format-0}
+    - {device: disk-sda, size: -1, wipe: superblock, flag: '', number: 2,preserve: false, type: partition, id: partition-1}
+    - {fstype: ext4, volume: partition-1, preserve: false, type: format, id: format-1}
+    - {device: format-1, path: /, type: mount, id: mount-1}
+    - {device: format-0, path: /boot/efi, type: mount, id: mount-0}
+</code></pre>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E5%88%B6%E4%BD%9C%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E7%9A%84centos7%E9%95%9C%E5%83%8F/" class="block">制作自动安装系统的centos7镜像</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+        <span class="text-primary-text block font-bold">下一页</span>
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ubuntu%E9%83%A8%E7%BD%B2ganglia%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/" class="block">Ubuntu部署ganglia监控系统</a>
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1安装ipxe">1.安装ipxe</a></li>
+    <li><a href="#2关闭selinux和防火墙">2.关闭selinux和防火墙</a></li>
+    <li><a href="#3配置dhcp和tftp">3.配置dhcp和tftp</a></li>
+    <li><a href="#4挂载镜像">4.挂载镜像</a></li>
+    <li><a href="#5配置http服务">5.配置http服务</a></li>
+    <li><a href="#6配置ipxe">6.配置ipxe</a></li>
+    <li><a href="#7测试">7.测试</a></li>
+    <li><a href="#8配置自动安装系统脚本">8.配置自动安装系统脚本</a>
+      <ul>
+        <li><a href="#centos7">Centos7</a></li>
+        <li><a href="#ubuntu">ubuntu</a>
+          <ul>
+            <li><a href="#非lvm">非LVM</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>
