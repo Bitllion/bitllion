@@ -113,7 +113,7 @@
     },
     "headline": "Centos7离线部署luster | 云计算 | 一言","datePublished": "2023-12-12T09:42:01+08:00",
     "dateModified": "2023-12-12T09:42:01+08:00",
-    "wordCount":  949 ,
+    "wordCount":  988 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -988,6 +988,20 @@ CC=mpicc ./prepare.sh
 <p>3.测试</p>
 <p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/771130158b2e833eb0f7efa9914d768.png" alt="771130158b2e833eb0f7efa9914d768"></p>
 <p>可以看到单机32线程跑的结果如图，但因为是在存储服务器做的测试，会有通信阻塞，实际性能会比图中更高</p>
+<p>sbatch脚本参考</p>
+<pre><code class="language-shell">#!/bin/bash
+#SBATCH --job-name=io500_test
+#SBATCH --partition=cpu64
+#SBATCH --nodes=10
+#SBATCH --ntasks-per-node=64
+#SBATCH -o io_500_out_%J
+#SBATCH -e io_500_err_%J
+# Load the necessary MPI environment
+module load intel/2021.4.0
+
+# Run the IO500 test with your configuration file
+mpirun -np $SLURM_NTASKS /share/app/io500/io500 config-minimal.ini
+</code></pre>
 
 </article>
 
