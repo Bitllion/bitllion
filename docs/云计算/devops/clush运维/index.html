@@ -112,7 +112,7 @@
     },
     "headline": "Clush运维 | 云计算 | 一言","datePublished": "2024-06-20T00:00:33+08:00",
     "dateModified": "2024-06-20T00:00:33+08:00",
-    "wordCount":  25 ,
+    "wordCount":  37 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -693,6 +693,9 @@
 
   <p>你可以通过以下一行命令自动输入 <code>yes</code> 来跳过 SSH 的初次连接确认提示：</p>
 <pre><code class="language-bash">for i in {001..130}; do ssh -o StrictHostKeyChecking=no gpu$i hostname; done
+</code></pre>
+<p>parallel版本</p>
+<pre><code>parallel -j 130 -k 'ssh -o StrictHostKeyChecking=no gpu{} hostname' ::: {001..130}
 </code></pre>
 <h2 id="查看ib驱动版本">查看ib驱动版本</h2>
 <pre><code>clush -w gpu[001-128] &quot;modinfo mlx4_core | grep 'version'&quot;
