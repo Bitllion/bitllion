@@ -144,5 +144,14 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
       <description>Centos7 下部署操作</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nexus-%E9%85%8D%E7%BD%AEapt-hosted/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/nexus-%E9%85%8D%E7%BD%AEapt-hosted/</guid>
+      <description>nexus 配置apt hosted nexus web url http://10.</description>
+    </item>
+    
   </channel>
 </rss>
