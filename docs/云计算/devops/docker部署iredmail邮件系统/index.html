@@ -843,7 +843,7 @@ SQL_DB_DRIVER = 'pymysql'
 <p>默认管理员账户都是 <a href="mailto:postmaster@home.bitllion.top">postmaster@home.bitllion.top</a> 密码是上面iredmail-docker.conf设置好的</p>
 <h2 id="批量创建用户">批量创建用户</h2>
 <p>提前在excle表格中设置豪要创建的用户</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240312131935459.png" alt="image-20240312131935459"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164431851.png" alt="image-20241114164431851"></p>
 <p>然后全选复制到一个脚本里，并把这个脚本上传到容器中,create_mail_user_SQL.sh脚本在这里下载：<a href="https://github.com/iredmail/iRedMail/blob/master/tools/create_mail_user_SQL.sh">iRedMail/tools/create_mail_user_SQL.sh at master · iredmail/iRedMail (github.com)</a></p>
 <p>然后进入数据库（密码root</p>
 <pre><code>mysql -uroot -p
@@ -851,14 +851,14 @@ use vmail
 source /tmp/user.sql;
 </code></pre>
 <h2 id="dns解析配置">dns解析配置</h2>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240312134147583.png" alt="image-20240312134147583"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164438242.png" alt="image-20241114164438242"></p>
 <h3 id="a记录将你邮箱的公网ip地址域名进行解析">A记录：将你邮箱的公网IP地址域名进行解析</h3>
 <p>记录类型：A
 主机记录：mail
 记录值：XXX.XXX.XXX.XXX #你的公网IP
 TTL：10 #公网固定ip建议为30
 例：mail.test.com XXX.XXX.XXX.XXX</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240312135156578.png" alt="image-20240312135156578"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164444403.png" alt="image-20241114164444403"></p>
 <h3 id="mx记录">MX记录</h3>
 <p>记录类型：MX
 主机记录：@
@@ -879,7 +879,7 @@ TTL：10</p>
 <pre><code>/usr/sbin/amavisd-new showkeys
 </code></pre>
 <p>去掉引号合并成一行</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240312135120750.png" alt="image-20240312135120750"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164450556.png" alt="image-20241114164450556"></p>
 
 </article>
 

@@ -468,7 +468,7 @@
   <h2 id="vtst">VTST</h2>
 <h3 id="1拷贝源码">1.拷贝源码</h3>
 <p>在vtst官网下载vtst-code源码包</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601094840427.png" alt="image-20230601094840427" style="zoom:33%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164210707.png" alt="image-20241114164210707"></p>
 <p><a href="https://theory.cm.utexas.edu/vtsttools/download.html">https://theory.cm.utexas.edu/vtsttools/download.html</a></p>
 <p>解压</p>
 <pre><code class="language-shell">tar xzf vtstcode-197.tgz
@@ -505,7 +505,7 @@ fire.o lanczos.o neb.o qm.o \
 pyamff_fortran/*.o ml_pyamff.o \
 opt.o \
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601094037628.png" alt="image-20230601094037628"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164224204.png" alt="image-20241114164224204"></p>
 <p>对于vasp6.3还需要修改一处，src/makefile 文件中找到LIB 和 dependencies 对应的行 分别改成如下</p>
 <pre><code>LIB= lib parser pyamff_fortran
 dependencies: sources libs
@@ -550,7 +550,7 @@ patch -p1 &lt; &lt;path to the interface patch file&gt;
 </code></pre>
 <h3 id="3修改makefileinclude">3.修改makefile.include</h3>
 <p>vasp&gt;=5.4.4 , CPP_OPTIONS选项里添加 <strong>-Dsol_compat</strong></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230601102951263.png" alt="image-20230601102951263"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164235975.png" alt="image-20241114164235975"></p>
 <h2 id="vasp-opt-固定基矢优化结构">VASP OPT 固定基矢优化结构</h2>
 <h3 id="1旧版-应力张量法">1.旧版 应力张量法</h3>
 <p>重写vasp源码下 src/constr_cell_relax.F 文件</p>

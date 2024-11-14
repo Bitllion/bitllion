@@ -791,7 +791,7 @@ ou: Group
 <pre><code class="language-shell">ldapadd -x -W -D &quot;cn=ldapadm,dc=jnist,dc=com&quot; -f base.ldif
 </code></pre>
 <p>成功返回如下</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606153422148.png" alt="image-20230606153422148" style="zoom:50%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164546159.png" alt="image-20241114164546159"></p>
 <h2 id="4图形化管理">4.图形化管理</h2>
 <h3 id="41防火墙配置">4.1防火墙配置</h3>
 <p>使用前，防火墙放行ldap服务端口：</p>
@@ -801,9 +801,9 @@ firewall-cmd --reload
 <h3 id="42-ldap-admin">4.2 LDAP Admin</h3>
 <p><a href="http://www.ldapadmin.org/download/ldapadmin.html">LADP Admin下载地址</a>：</p>
 <p>下载运行该软件（单文件）</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606152021945.png" alt="image-20230606152021945" style="zoom:50%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164552676.png" alt="image-20241114164552676"></p>
 <p>按上图依次操作，输入相应信息建立连接</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606152059209.png" alt="image-20230606152059209" style="zoom:33%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164558577.png" alt="image-20241114164558577"></p>
 <h2 id="5客户端配置">5.客户端配置</h2>
 <h3 id="1安装相关包">1.安装相关包</h3>
 <pre><code class="language-shell">yum install -y openldap openldap-clients nss_ldap nss-pam-ldapd  openssh-ldap oddjob oddjob-mkhomedir openldap-clients
@@ -821,24 +821,24 @@ systemctl restart sshd
 </code></pre>
 <h3 id="3服务端配置">3.服务端配置</h3>
 <p>在<code>ou=Group</code>里创建用户组
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606154004191.png" alt="image-20230606154004191" style="zoom:50%;" />
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164608232.png" alt="image-20241114164608232">
 在<code>ou=People</code>里创建用户
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160802441.png" alt="image-20230606160802441">
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164633707.png" alt="image-20241114164633707">
 注意勾选<code>Shadow Account</code>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606154059325.png" alt="image-20230606154059325" style="zoom:33%;" /></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164641242.png" alt="image-20241114164641242"></p>
 <p>在<code>Membership</code>里选择刚才创建的用户组
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160049900.png" alt="image-20230606160049900" style="zoom:33%;" />
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164650233.png" alt="image-20241114164650233">
 选中刚才创建的用户，右键单击选择设置密码
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160105647.png" alt="image-20230606160105647" style="zoom:33%;" />
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164657991.png" alt="image-20241114164657991">
 加密方式任意,因为是根据服务端的<code>nss</code>认证的，不是linux系统本身的认证方式
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160136036.png" alt="image-20230606160136036" style="zoom:33%;" /></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164707085.png" alt="image-20241114164707085"></p>
 <h3 id="4测试">4.测试</h3>
 <pre><code class="language-shell">ssh jnist02@10.249.2.10
 </code></pre>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160204469.png" alt="image-20230606160204469" style="zoom:33%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164713966.png" alt="image-20241114164713966">
 ssh登陆上去自动创建用户家目录
 查看下权限
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230606160217629.png" alt="image-20230606160217629" style="zoom:33%;" />
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164723263.png" alt="image-20241114164723263"></p>
 <p>权限对应关系正确</p>
 
 </article>

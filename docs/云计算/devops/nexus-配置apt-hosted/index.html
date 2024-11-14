@@ -736,9 +736,9 @@ gpg --armor --output private.gpg.key --export-secret-key &lt;gpg key Id&gt;
 </ul>
 <p>To use an Apt hosted repository you need to export the gpg public key into your Linux system. Use the public key () from the key pair generated above.<code>public.gpg.key</code></p>
 <h3 id="2create-a-blob-store-and-repo">2.Create a blob store and repo</h3>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240723211517376.png" alt="image-20240723211517376"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240723211627158.png" alt="image-20240723211627158"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240723211759812.png" alt="image-20240723211759812"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164842505.png" alt="image-20241114164842505"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164850294.png" alt="image-20241114164850294"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164903159.png" alt="image-20241114164903159"></p>
 <h3 id="3-deploying-packages-to-apt-hosted-repositories">3. Deploying Packages to Apt Hosted Repositories</h3>
 <p>The following example uses the command and example credentials of **admin **for user and <strong>Ysuan@2024</strong> for password to upload a file to a hosted Apt repository:<code>curl nvidia-gpu-exporter_1.2.1_linux_amd64.deb</code></p>
 <pre><code>curl -u &quot;admin:Ysuan@2024&quot; -H &quot;Content-Type: multipart/form-data&quot; --data-binary &quot;@./nvidia-gpu-exporter_1.2.1_linux_amd64.deb&quot; &quot;http://10.100.1.32:8081/repository/ubuntu22-hosted/&quot;
@@ -751,7 +751,7 @@ gpg --armor --output private.gpg.key --export-secret-key &lt;gpg key Id&gt;
 <p>For a hosted repository you should use the <distribution> from the repository properties. For a proxy repository, the <distribution> should be the same as in the original remote repository settings.</p>
 <p>You can get the <repository URL> from the table in<a href="https://help.sonatype.com/en/browsing-repositories-and-repository-groups.html">Browsing Repositories and Repository Groups</a> via the UI.</p>
 <p>test output:</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240723212426233.png" alt="image-20240723212426233"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164917489.png" alt="image-20241114164917489"></p>
 
 </article>
 

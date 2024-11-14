@@ -706,16 +706,16 @@
 <h3 id="查看用户列表">查看用户列表</h3>
 <pre><code class="language-shell">ipmitool user list 1
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231107110546572.png" alt="image-20231107110546572"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164457946.png" alt="image-20241114164457946"></p>
 <p>可以看到有个管理员ID 为2 的用户名为zbwdzsjq , 需要注意的是不一定所有服务器的管理员ID为 1或者2  ，所以需要根据上面的命令实际查看</p>
 <h3 id="创建用户">创建用户</h3>
 <pre><code class="language-shell">格式： ipmitool user set name 用户ID  用户名
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231107111311235.png" alt="image-20231107111311235"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164503737.png" alt="image-20241114164503737"></p>
 <h3 id="设置密码">设置密码</h3>
 <pre><code class="language-shell">格式： ipmitool user set password  用户ID号  密码
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231107112016924.png" alt="image-20231107112016924"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164510517.png" alt="image-20241114164510517"></p>
 <h3 id="给用户权限">给用户权限</h3>
 <pre><code class="language-shell">格式：ipmitool channel setaccess 1 用户ID callin=on ipmi=on link=on privilege=值
 privilege的值：
@@ -735,12 +735,12 @@ privilege的值：
 <h3 id="远程访问">远程访问</h3>
 <pre><code class="language-shell">格式：ipmitool -I lanplus -H ip地址 -U 用户名 -P 用户密码 命令
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231110145933264.png" alt="image-20231110145933264"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164521325.png" alt="image-20241114164521325"></p>
 <h2 id="系统信息">系统信息</h2>
 <h3 id="查看功耗信息">查看功耗信息</h3>
 <pre><code class="language-shell">ipmitool dcmi power reading
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231107143634544.png" alt="image-20231107143634544"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164526840.png" alt="image-20241114164526840"></p>
 <h3 id="查看电源状态">查看电源状态</h3>
 <pre><code>ipmitool chassis power status
 </code></pre>
@@ -763,7 +763,7 @@ privilege的值：
 <h3 id="查看网络">查看网络</h3>
 <pre><code>ipmitool lan print 1
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231110150402073.png" alt="image-20231110150402073"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164536899.png" alt="image-20241114164536899"></p>
 <h3 id="修改网络">修改网络</h3>
 <p>设置BMC IPV4地址为 10.1.10.201  掩码255.255.255.0  网关10.1.10.1</p>
 <pre><code>ipmitool lan set 1 ipaddr 10.1.10.201  

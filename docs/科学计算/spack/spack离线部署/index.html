@@ -483,7 +483,7 @@
 </code></pre>
 <h3 id="4配置离线-clingo-bootstrap">4.配置离线 clingo-bootstrap</h3>
 <p>如果没配置，spec某个软件会报这样的错误</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101153327569.png" alt="image-20241101153327569" style="zoom: 50%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163944285.png" alt="image-20241114163944285"></p>
 <p>原因是spack 依靠 clingo-bootstrap 这个python库实现解析软件的一些功能</p>
 <p>我们在一台联网机器上，使用相同版本的spack 创建一个离线的clingo-bootstrap的源码仓库</p>
 <pre><code>spack bootstrap mirror --binary-packages ~/mirror
@@ -492,7 +492,7 @@
 <pre><code>spack bootstrap add --trust local-sources mirror所在的目录/metadata/sources
 </code></pre>
 <p>然后再次 spack spec zlib</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101165130440.png" alt="image-20241101165130440"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163957881.png" alt="image-20241114163957881"></p>
 <p>这次会自动编译相关依赖库，最后编译好clingo-bootstrap ，spack spec就正常输出了，而clingo-bootstrap和它的依赖安装目录是在 ~/.spack/bootstrap下</p>
 <h2 id="二离线编译和管理已编译好的软件">二、离线编译和管理已编译好的软件</h2>
 <h3 id="1spack-基础配置">1.spack 基础配置</h3>
@@ -564,10 +564,10 @@ spack mirror add private private_mirror
 <pre><code>spack repo create private_repo
 spack repo add /yeesuanAI01/spack/private_repo
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101171403931.png" alt="image-20241101171403931"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164014256.png" alt="image-20241114164014256"></p>
 <h4 id="34-管理已编译软件的基本流程">3.4 管理已编译软件的基本流程</h4>
 <p>假设我们有个hello 软件，已经在本地编译好，目录结构如下</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101171913409.png" alt="image-20241101171913409"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164027584.png" alt="image-20241114164027584"></p>
 <blockquote>
 <p>spack软件包名规则，无论是mirror下的源码还是repo下的包名，都需要遵循全部小写的规则，名字中有中划线的改下划线</p>
 </blockquote>
@@ -578,7 +578,7 @@ mv hello.tgz /yeesuanAI01/spack/private_mirror/hello/hello_1.0.tgz
 <p>创建hello的自动安装脚本 这里大N是指定私有repo源的namespace  小n是这个软件的名字</p>
 <pre><code>spack create -N private_repo -n hello /yeesuanAI01/spack/private_mirror/hello/hello_1.0.tgz
 </code></pre>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101172745105.png" alt="image-20241101172745105" style="zoom: 67%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164044573.png" alt="image-20241114164044573"></p>
 <p>我们将其改造一下，</p>
 <pre><code class="language-python">from spack.package import *
 
@@ -596,13 +596,13 @@ class Hello(Package):
 <p>其中最关键的就是install这个函数，这个脚本只执行安装操作，install_tree的作用就是讲源码包解压后的所有文件和文件夹拷贝到spack软件安装目录，其中prefix是解压后的文件夹的根目录，所以这里用了 “.” 代表所有文件和文件夹</p>
 <p>每个version里的url 要指明要安装的软件的源码仓库的<strong>绝对路径</strong></p>
 <p>此时我们再次info下，就有了我们的hello软件</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101174930948.png" alt="image-20241101174930948"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164056539.png" alt="image-20241114164056539"></p>
 <p>我们执行安装操作</p>
 <pre><code>spack install hello@1.0 %gcc@7.5.0
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101174729562.png" alt="image-20241101174729562"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164112456.png" alt="image-20241114164112456"></p>
 <p>我们load下测试下</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20241101174804012.png" alt="image-20241101174804012"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164126594.png" alt="image-20241114164126594"></p>
 <p>可以正常运行其bin目录下我们写好的echo hello脚本</p>
 <h4 id="34-脚本参考">3.4 脚本参考</h4>
 <p>这里是cp2k的脚本,用到了<strong>setup_run_environment</strong> 这个环境变量，我们可以在python脚本自定义各种环境变量，并添加多个“源码包”的版本号和其sha256值（sha256可以忽略不写）</p>

@@ -471,7 +471,7 @@
 <h2 id="gnu版">GNU版</h2>
 <p><strong>AMD系列处理器下编译vasp 要用GNU版，如果使用intel全家桶在vasp默认O2优化下会导致未知的段错误等</strong></p>
 <p>编译vasp前需要有框选的这5个依赖，我们需要把编译好的依赖的安装路径替换它们，其中前三个是必须的，hdf5一般在某些超算会用到，我们暂且不讲，wannier90接口看自己需求</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230605101624489.png" alt="image-20230605101624489"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164253076.png" alt="image-20241114164253076"></p>
 <h3 id="编译依赖前准备">编译依赖前准备</h3>
 <table>
 <thead>
@@ -506,11 +506,11 @@ yum install devtoolset-9-gcc* -y
 <pre><code>yum install environment-modules -y
 </code></pre>
 <p>安装完module后可能需要重新登陆下终端才能启动</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230605103402574.png" alt="image-20230605103402574"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164259886.png" alt="image-20241114164259886"></p>
 <p>加载mpi环境</p>
 <pre><code>module load mpi/mpich-3.2-x86_64
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230605103436610.png" alt="image-20230605103436610"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164306122.png" alt="image-20241114164306122"></p>
 <h3 id="编译依赖">编译依赖</h3>
 <h4 id="openblas">openblas</h4>
 <pre><code>wget https://github.com/xianyi/OpenBLAS/archive/refs/tags/v0.3.23.tar.gz

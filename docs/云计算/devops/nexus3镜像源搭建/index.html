@@ -717,7 +717,7 @@ docker run -tid \
 <p>nexus3里各类仓库源的持久化目录的UID需要为200 ,否则会启动失败</p>
 <h2 id="配置nexus3镜像源">配置nexus3镜像源</h2>
 <p>登录nexus ip:8081</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240419142831699.png" alt="image-20240419142831699"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164925427.png" alt="image-20241114164925427"></p>
 <p>首次登陆会提示默认admin用户的密码的位置</p>
 <p>这里我们通过下面命令获取</p>
 <pre><code>cat /data/nexus/data/admin.password
@@ -732,19 +732,19 @@ proxy：代理类型，可以配置aliyun的仓库
 central：中央仓库</p>
 <h2 id="conda镜像源">conda镜像源</h2>
 <p>先新建一个存储池，类型可以选择file或者s3 , 这里用了本地的file，填写name为conda（自定义），下面path就自动生成对应文件夹路径，点击Save保存</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418142322742.png" alt="image-20240418142322742"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164935330.png" alt="image-20241114164935330"></p>
 <p>创建一个conda proxy</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418142554927.png" alt="image-20240418142554927"  />
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418142624982.png" alt="image-20240418142624982"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164943041.png" alt="image-20241114164943041"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164948647.png" alt="image-20241114164948647"></p>
 <h3 id="pkgs-channels">pkgs channels</h3>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418142722085.png" alt="image-20240418142722085"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164956868.png" alt="image-20241114164956868"></p>
 <p>依次填写上图中3个红框内的信息，对于pkgs 的channels，我们使用清华源，最后点击页面底部的“Create repository”菜单创建这个repository</p>
 <h3 id="cloud-channel">cloud channel</h3>
 <p>同理cloud channel</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418143202045.png" alt="image-20240418143202045"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165005618.png" alt="image-20241114165005618"></p>
 <h3 id="nvidia-channel">nvidia channel</h3>
 <p>国内目前只有南方科技大学的镜像源提供nvidia channel</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418143312291.png" alt="image-20240418143312291"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165012513.png" alt="image-20241114165012513"></p>
 <h3 id="客户端配置">客户端配置</h3>
 <p>~/.condarc</p>
 <pre><code class="language-yaml">channels:
@@ -766,11 +766,11 @@ custom_channels:
   nvidia: http://10.11.0.33:8081/repository/conda-nvidia
 </code></pre>
 <h3 id="测试">测试</h3>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418144027318.png" alt="image-20240418144027318"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165020578.png" alt="image-20241114165020578"></p>
 <h2 id="pypi镜像源">pypi镜像源</h2>
 <p>同理创建一个pypi存储池</p>
 <p>然后创建一个pypi代理仓库源</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240419230709866.png" alt="image-20240419230709866"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165035816.png" alt="image-20241114165035816"></p>
 <h3 id="客户端配置-1">客户端配置</h3>
 <p>~/.pip/pip.conf</p>
 <pre><code class="language-yaml">[global]
@@ -782,13 +782,13 @@ index-url = http://10.11.0.33:8081/repository/pypi/simple
 <h3 id="docker-hub-官方源">docker hub 官方源</h3>
 <p>参考上面conda创建一个blob存储池</p>
 <p>再创建一个docker proxy</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418161956509.png" alt="image-20240418161956509"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165044012.png" alt="image-20241114165044012"></p>
 <p>依次填选红框内3处信息，其他不用管</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418162131528.png" alt="image-20240418162131528"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165050585.png" alt="image-20241114165050585"></p>
 <p>再创建一个group</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418162506814.png" alt="image-20240418162506814"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165056768.png" alt="image-20241114165056768"></p>
 <p>依次填选红框内信息</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240418162758881.png" alt="image-20240418162758881"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165104630.png" alt="image-20241114165104630"></p>
 <h4 id="客户端配置-2">客户端配置</h4>
 <p>/etc/docker/daemon.json</p>
 <pre><code class="language-json">{
@@ -801,7 +801,7 @@ index-url = http://10.11.0.33:8081/repository/pypi/simple
 </code></pre>
 <h3 id="nvidia-gpu-cloud-ngc">NVIDIA GPU Cloud （NGC)</h3>
 <p>创建一个docker proxy 代理这个地址https://nvcr.io，其他的和上面docker hub官方源一样的操作，最后在docker-group里添加nvcr源</p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240514154455025.png" alt="image-20240514154455025"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165110707.png" alt="image-20241114165110707"></p>
 <h4 id="客户端说明">客户端说明</h4>
 <pre><code>docker pull nvcr.io/nvidia/pytorch:21.12-py3
 </code></pre>
@@ -842,7 +842,7 @@ index-url = http://10.11.0.33:8081/repository/pypi/simple
 <h3 id="centos7官方源">centos7官方源</h3>
 <p>先创建一个blob 名叫centos的存储池</p>
 <p>再创建yum proxy，填选下面红框内容</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240419224448345.png" alt="image-20240419224448345"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165121953.png" alt="image-20241114165121953"></p>
 <h4 id="客户端配置-3">客户端配置</h4>
 <p>将/etc/yum.repos.d/下所有repo删掉，新建一个centos.rpeo：</p>
 <pre><code class="language-yaml">[base]
@@ -894,7 +894,7 @@ yum makecache
 <h3 id="epel源centos7">epel源(centos7）</h3>
 <p>先创建一个epel存储池</p>
 <p>再创建yum proxy</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240419225841795.png" alt="image-20240419225841795"></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165140070.png" alt="image-20241114165140070" style="zoom:67%;" />
 <h4 id="客户端配置-4">客户端配置</h4>
 <p>配置前需要</p>
 <pre><code>yum install epel-release -y
@@ -930,7 +930,7 @@ yum makecache
 </code></pre>
 <h3 id="docker-ce-centos7">docker-ce (centos7)</h3>
 <p>创建一个yum proxy仓库源</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240419233528052.png" alt="image-20240419233528052"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165208320.png" alt="image-20241114165208320"></p>
 <h4 id="客户端配置-5">客户端配置</h4>
 <pre><code class="language-shell">yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre>
@@ -1012,7 +1012,7 @@ yum -y install docker-ce
 <h3 id="ubuntu-2204-官方源">ubuntu 22.04 官方源</h3>
 <p>创建一个ubuntu22的blob</p>
 <p>再创建一个apt proxy</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240420002813915.png" alt="image-20240420002813915"></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165226690.png" alt="image-20241114165226690" style="zoom:67%;" />
 <p>其中ubuntu22.04 的Distribution 代号是jammy</p>
 <h4 id="客户端配置-7">客户端配置</h4>
 <p>/etc/apt/sources.list</p>
@@ -1022,7 +1022,7 @@ deb http://10.11.0.33:8081/repository/ubuntu22/ jammy-backports main restricted 
 </code></pre>
 <h3 id="docker-ce-ubuntu2204">docker-ce (ubuntu22.04)</h3>
 <p>创建一个apt proxy</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240420005433958.png" alt="image-20240420005433958"></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165241575.png" alt="image-20241114165241575" style="zoom:67%;" />
 <p>代理这个地址 <a href="https://mirrors.aliyun.com/docker-ce/linux/ubuntu">https://mirrors.aliyun.com/docker-ce/linux/ubuntu</a></p>
 <h4 id="客户端配置-8">客户端配置</h4>
 <pre><code>apt-get -y install apt-transport-https ca-certificates curl software-properties-common
@@ -1032,7 +1032,7 @@ apt-get -y install docker-ce
 </code></pre>
 <h3 id="nvidia-dockerubuntu1804-2204通用">nvidia-docker（ubuntu18.04-22.04通用)</h3>
 <p>新建一个apt 的proxy</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240514153549848.png" alt="image-20240514153549848"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165351360.png" alt="image-20241114165351360"></p>
 <p>代理这个地址https://nvidia.github.io</p>
 <h4 id="客户端配置-9">客户端配置</h4>
 <p>/etc/apt/sources.list.d/nvdocker.list</p>
@@ -1044,7 +1044,7 @@ deb http://10.11.0.33:8081/repository/nvidia-docker-apt/nvidia-docker/ubuntu18.0
 </code></pre>
 <h3 id="nccl-cuda源">nccl cuda源</h3>
 <p>创建一个apt proxy代理 <a href="https://developer.download.nvidia.com/compute/cuda/repos/">https://developer.download.nvidia.com/compute/cuda/repos/</a> 这个地址</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240514154725662.png" alt="image-20240514154725662"></p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20241114165402533.png" alt="image-20241114165402533" style="zoom:67%;" />
 <h4 id="客户端配置-10">客户端配置</h4>
 <p>/etc/apt/sources.list.d/cuda-ubuntu2204-x86_64.list</p>
 <pre><code>deb [signed-by=/usr/share/keyrings/cuda-archive-keyring.gpg] http://10.11.0.33:8081/repository/nvidia-cuda-apt/ubuntu2204/x86_64/ /
