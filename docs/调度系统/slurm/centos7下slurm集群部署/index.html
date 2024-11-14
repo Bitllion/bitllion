@@ -673,7 +673,7 @@ systemctl enable slurmd
 </code></pre>
 <p>通过上面启动slurmd方式 连接上控制节点后，计算节点会在/var/spool/slurmd/conf-cache 下生成slurm.conf cgroup.conf等配置文件</p>
 <p>测试</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230605223932934.png" alt="image-20230605223932934"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163154617.png" alt="image-20241114163154617"></p>
 <h3 id="slurm禁止普通用户ssh计算节点">Slurm禁止普通用户SSH计算节点</h3>
 <p>确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数</p>
 <p>编辑SSHD的PAM配置文件/etc/pam.d/sshd，添加</p>
@@ -683,7 +683,7 @@ account required pam_slurm_adopt.so
 <p>/etc/pam.d/system-auth和/etc/pam.d/password-auth中取消pam_localuser.so和pam_systemd.so所在行的注释</p>
 <p>确保/etc/ssh/sshd_config中UsePAM yes</p>
 <p><strong>/etc/ssh/allowed_users</strong> 里配置白名单用户</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230613153748654.png" alt="image-20230613153748654"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163212218.png" alt="image-20241114163212218"></p>
 <p>slurm.conf配置文件中有这三个参数</p>
 <pre><code class="language-plaintext">PrologFlags=CONTAIN
 TaskPlugin=task/cgroup
@@ -698,10 +698,10 @@ ConstrainCores=yes
 </code></pre>
 <p>重启计算节点sshd服务，即生效</p>
 <p>测试：</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230607133405030.png" alt="image-20230607133405030"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163226902.png" alt="image-20241114163226902"></p>
 <p>直接ssh计算节点失败</p>
 <p>先salloc申请节点，再ssh成功</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230613160718199.png" alt="image-20230613160718199"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163240910.png" alt="image-20241114163240910"></p>
 <h3 id="slurm-api-安装和配置">Slurm API 安装和配置</h3>
 <h4 id="编译">编译</h4>
 <p>编译时加上 &ndash;with slurmrestd 选项</p>
@@ -729,7 +729,7 @@ AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
 SLURM_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYxMjc5MzAsImlhdCI6MTY4NjEyNjEzMCwic3VuIjoiam5pc3QwMSJ9.ZvDbMDUNBv1RMGRwH7dGfHHelQzEXI5-oypyaa_8TLs
 </code></pre>
 <h4 id="测试">测试</h4>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230613150616079.png" alt="image-20230613150616079"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163257118.png" alt="image-20241114163257118"></p>
 <p>headers里加上下面这两个参数 分别为刚才用scontrol命令生成的token和用户名</p>
 <p>X-SLURM-USER-TOKEN</p>
 <p>X-SLURM-USER-NAME</p>
@@ -764,7 +764,7 @@ SLURMRESTD_OPTIONS=-u bit -a rest_auth/jwt
 <p>启动</p>
 <pre><code>systemctl daemon-reload &amp;&amp; systemctl restart slurmrestd &amp;&amp; systemctl status slurmrestd
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230613153116591.png" alt="image-20230613153116591"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163319423.png" alt="image-20241114163319423"></p>
 <h4 id="总结">总结</h4>
 <p>slurm无配置模式并不是一个配置文件也不写，而是指计算节点无需配置文件，若计算节点的机器规格不统一，则不建议使用此模式，这种模式适合计算节点机器规格统一的时候，无需systemd服务，所以也适合跑在容器里</p>
 <h2 id="8常见问题">8.常见问题</h2>
