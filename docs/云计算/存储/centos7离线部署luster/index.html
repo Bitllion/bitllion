@@ -814,7 +814,7 @@ lnetctl net add --net o2ib --if ib0
 <p>查看网络</p>
 <pre><code>lnetctl net show
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231213143712664.png" alt="image-20231213143712664"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152436016.png" alt="image-20241115152436016"></p>
 <p>写入配置文件</p>
 <pre><code>lnetctl export &gt; /etc/sysconfig/lnet.conf
 </code></pre>
@@ -955,7 +955,7 @@ mount -t lustre /dev/nvme9n1 /mnt/ost19
 <pre><code class="language-shell">mkdir /share
 mount.lustre lustre01@o2ib:/lustre /share
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231213154132983.png" alt="image-20231213154132983"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152443329.png" alt="image-20241115152443329"></p>
 <h2 id="8测试raid6下创建oss">8.测试raid6下创建oss</h2>
 <p>使用mdadm创建软raid6 lustre也能支持后端存储为raid的设备</p>
 <pre><code class="language-shell"># lustre01
@@ -997,7 +997,7 @@ CC=mpicc ./prepare.sh
 </code></pre>
 <p>执行prepare.sh即可编译，并在当前目录下生成io500可执行程序和配置文件</p>
 <p>3.测试</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/771130158b2e833eb0f7efa9914d768.png" alt="771130158b2e833eb0f7efa9914d768"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152449307.png" alt="image-20241115152449307"></p>
 <p>可以看到单机32线程跑的结果如图，但因为是在存储服务器做的测试，会有通信阻塞，实际性能会比图中更高</p>
 <p>sbatch脚本参考</p>
 <pre><code class="language-shell">#!/bin/bash

@@ -703,12 +703,12 @@
   
 
   <p>系统已经预先安装了nvidia driver   550.90.07</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160517222.png" alt="image-20240702160517222"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151305749.png" alt="image-20241115151305749"></p>
 <p>和 所兼容的 nvidia-fabricmanager</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160525668.png" alt="image-20240702160525668"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151314468.png" alt="image-20241115151314468"></p>
 <p>有四张计算用的IB网卡 速率都是200Gb/s的</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160533318.png" alt="image-20240626181550403"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160548235.png" alt="image-20240702160548235"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151319675.png" alt="image-20241115151319675"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151326890.png" alt="image-20241115151326890"></p>
 <h2 id="环境设置">环境设置</h2>
 <p>ssh 互相免密</p>
 <p>hosts 设置好</p>
@@ -725,7 +725,7 @@ done
 <pre><code class="language-shell">wget https://developer.download.nvidia.com/compute/cuda/12.5.0/local_installers/cuda_12.5.0_555.42.02_linux.run
 bash cuda_12.5.0_555.42.02_linux.run
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160603883.png" alt="image-20240702160603883"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151333704.png" alt="image-20241115151333704"></p>
 <p>安装时记得取消drvier的选项</p>
 <p>设置环境变量</p>
 <pre><code class="language-shell">echo &quot;export PATH=/usr/local/cuda/bin:$PATH&quot; &gt;&gt; ~/.bashrc
@@ -766,14 +766,14 @@ make -J MPI=1
 <pre><code class="language-shell">all_reduce_perf -b 16M -e 8G -f 2 -g 8 -f 2 -c 1
 </code></pre>
 <p>gpu3结果</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160643606.png" alt="image-20240702160643606"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151341469.png" alt="image-20241115151341469"></p>
 <p>多节点 (slurm by srun)</p>
 <pre><code class="language-shell">export NCCL_SOCKET_IFNAME=bond0
 export NCCL_IB_HCA=ib0,ib2,ib4
 export NCCL_DEBUG=WARN
 srun -N 2 -c 8  --gres=gpu:a800:8  ./all_reduce_perf -b 16M -e 8G -f 2 -g 8 -c 1
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240702160836422.png" alt="image-20240702160836422"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151351688.png" alt="image-20241115151351688"></p>
 <p>sbatch脚本参考 arp.slurm:</p>
 <pre><code class="language-shell">#!/bin/bash
 #SBATCH --ntasks-per-node=8

@@ -1937,7 +1937,7 @@ make
 <p>查看GPU所支持的最大时钟频率</p>
 <pre><code class="language-shell">nvidia-smi -q -d clock
 </code></pre>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240109155422277.png" alt="image-20240109155422277" style="zoom:67%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151650104.png" alt="image-20241115151650104"></p>
 <p>设置GPU应用程序时钟频率 , 语法 <strong>nvidia-smi -ac &lt;MEM clock, Graphics clock&gt;</strong></p>
 <pre><code class="language-shell">nvidia-smi -lgc 1215,1440
 </code></pre>
@@ -2207,11 +2207,11 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.8/nsight-compute-2022.3.0/host/linux-d
 <p>NVSMI</p>
 <h3 id="4测试过程-5">4.测试过程</h3>
 <p><strong>查看 nvswicth拓扑</strong></p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240110143455653.png" alt="image-20240110143455653"  />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151658162.png" alt="image-20241115151658162"></p>
 <p>可以看到，任意2个GPU卡之间都是 NVLink12。应该是因为A100引入了 NVSwitch的关系</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/1686830284011359095.png" alt="img"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151704328.png" alt="image-20241115151704328"></p>
 <p><strong>查看 nvlink 状态</strong></p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240110143534351.png" alt="image-20240110143534351" style="zoom:67%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151709797.png" alt="image-20241115151709797"></p>
 <p>测试代码</p>
 <pre><code class="language-shell">import torch
 import numpy as np

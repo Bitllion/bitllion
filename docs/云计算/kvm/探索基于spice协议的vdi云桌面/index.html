@@ -706,7 +706,7 @@
 <blockquote>
 <p>spice是由Qumranet开发的开源网络协议，2008年红帽收购了Qumranet获得了这个协议。SPICE是红帽在虚拟化领域除了KVM的又一“新兴技术”，它提供与虚拟桌面设备的远程交互实现. 目前,spice主要目标是为qemu虚拟机提供高质量的远程桌面访问,它致力于克服传统虚拟桌面的一些弊端,并且强调用户体验</p>
 </blockquote>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/spice1-1.png" alt="spice1-1"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151718698.png" alt="image-20241115151718698"></p>
 <blockquote>
 <p>spice包含有3个组件</p>
 <ul>
@@ -716,7 +716,7 @@
 </ul>
 </blockquote>
 <h2 id="spice架构">spice架构</h2>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/spice2.png" alt="img"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151723818.png" alt="image-20241115151723818"></p>
 <blockquote>
 <p>Spice agent运行在客户机（虚拟机）操作系统中。Spice server和Spice client利用spice agent来执行一些需要在虚拟机里执行的任务，如配置分辨率，另外还有通过剪贴板来拷贝文件等。从上图可以看出，Spice client与server与Spice Agent的通信需要借助一些其他的软件模块，如在客户机里面，Spice Agent需要通过VDIPort Driver与主机上 QEMU的VDIPort Device进行交互，他们的交互通过一种叫做输入/输出的环进行。Spice Client和Server产生的消息被写入到设备的输出环中，由VDI Port Driver读取；而Spice Agent发出的消息则通过VDI Port Driver先写入到VDI Port Device输入环中,被QEMU读入到Spice server的缓冲区中，然后再根据消息决定由Spice Server直接处理，还是被发往Spice Client中</p>
 </blockquote>
@@ -743,11 +743,11 @@
 </code></pre>
 <p>其中 <code>5902</code>是未加密端口，<code>5903</code>是加密端口</p>
 <p>如果使用图形化的libvirt mangaer软件，则如图配置</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116091943691.png" alt="image-20240116091943691"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151731835.png" alt="image-20241115151731835"></p>
 <h2 id="客户端连接">客户端连接</h2>
 <h3 id="linux">linux</h3>
 <p>装了libvirt view可以直接像这样连接</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116092225047.png" alt="image-20240116092225047"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151742732.png" alt="image-20241115151742732"></p>
 <h3 id="windows">windows</h3>
 <p>下载安装http://virt-manager.org/download</p>
 <p>新建test.vv</p>
@@ -766,7 +766,7 @@ release-cursor=shift+f12
 <p>（这里用frp将spice 服务转到公网上了所以端口发生了变化，测试也能用）</p>
 <p>双击这个文件</p>
 <p>效果如图</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116095451191.png" alt="image-20240116095451191"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151752715.png" alt="image-20241115151752715"></p>
 <h3 id="web">web</h3>
 <p>1.需要用到[websockify](<a href="https://github.com/novnc/websockify">novnc/websockify: Websockify is a WebSocket to TCP proxy/bridge. This allows a browser to connect to any application/server/service. (github.com)</a>)工具，这是一个将websocket流转化成tcp流的工具，可使用pip直接安装（python版本尽量高点，低的会报错）</p>
 <pre><code class="language-shell">pip install websockify
@@ -781,16 +781,16 @@ release-cursor=shift+f12
 <p>将项目下载下来后，移入你的web服务器，比如nginx中，访问它的index.html页面</p>
 <p>访问http://10.249.2.100/index.html?host=10.249.2.100&amp;port=5959</p>
 <p>最终效果如下</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116093207510.png" alt="image-20240116093207510"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151800350.png" alt="image-20241115151800350"></p>
 <p>不过这个项目的屏幕设置有问题，是镜像倒置的，不过我找到了一个修改办法，需要将它的分支flexVDI项目中的<a href="https://github.com/flexVDI/spice-web-client/blob/master/lib/images/bitmap.js">spice-web-client/lib/images/bitmap.js at master · flexVDI/spice-web-client (github.com)</a>这个文件覆盖到相应位置</p>
 <h3 id="其他系统的客户端">其他系统的客户端</h3>
 <p><a href="https://www.spice-space.org/download.html">下载 (spice-space.org)</a></p>
 <h2 id="pve中spice实现">pve中spice实现</h2>
 <h3 id="linux-1">linux</h3>
 <p>将硬件中显示的属性改为SPICE实现的</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116095937020.png" alt="image-20240116095937020"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151807855.png" alt="image-20241115151807855"></p>
 <p>选项中，启用spice增强</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116100012582.png" alt="image-20240116100012582"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151812717.png" alt="image-20241115151812717"></p>
 <blockquote>
 <ul>
 <li>all: 任何快速刷新区域都编码到视频流中</li>
@@ -800,14 +800,14 @@ release-cursor=shift+f12
 </ul>
 </blockquote>
 <p>然后点击控制台中SPICE项目下载一份vv后缀的配置文件，打开即可使用</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116100048309.png" alt="image-20240116100048309"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151817761.png" alt="image-20241115151817761"></p>
 <h3 id="win">win</h3>
 <p>除上面的配置，windows的特别需要在虚拟机内安装<strong>VirtIO</strong> 驱动程序</p>
 <p>找个最新的 目前是 <a href="https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.240-1/virtio-win.iso">https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.240-1/virtio-win.iso</a></p>
 <p>打开后安装最下面的 virtio-win-guest-tools.exe 程序</p>
 <p>其他配置如图，也可以增加音频、usb设备的spice设备</p>
 <p>最终效果如图</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240116104709621.png" alt="image-20240116104709621"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151826183.png" alt="image-20241115151826183"></p>
 <h2 id="总结">总结</h2>
 <p>基于spice的vdi云桌面，相比于xrdp，它通过<strong>半虚拟化</strong>的方式介入虚拟机的显示、鼠标键盘、usb、音频等“<strong>外设</strong>”，不受虚拟机内部网络和性能限制，举个例子，将虚拟机网卡移除或者停止，vdi云桌面依然能正常连接，又因为它是半虚拟化的硬件，所以它不吃虚拟机内部的资源，占用宿主机资源也是很少，不过缺点也显而易见，它不是真正的gpu，所以处理3D效果时性能拉跨，无法去做视频硬解码等工作</p>
 

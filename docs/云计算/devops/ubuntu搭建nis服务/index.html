@@ -735,7 +735,7 @@ root@node1:~# hostnamectl set-hostname node1
 systemctl enable rpcbind nis
 </code></pre>
 <p>安装时输入 <strong>nisdomainname</strong></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220103714124.png" alt="image-20231220103714124"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151200796.png" alt="image-20241115151200796"></p>
 <p>安装完后/etc/defaultdomain 这里内容就是 nis.local</p>
 <h2 id="3服务端配置">3.服务端配置</h2>
 <h3 id="31修改nis配置文件">3.1修改nis配置文件</h3>
@@ -752,7 +752,7 @@ NISCLIENT=false
 <h3 id="35更新数据库">3.5更新数据库</h3>
 <pre><code class="language-shell">/usr/lib/yp/ypinit -m
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220111039673.png" alt="image-20231220111039673"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151206864.png" alt="image-20241115151206864"></p>
 <p>重启服务</p>
 <pre><code class="language-shell">systemctl restart nis ypbind
 </code></pre>
@@ -781,12 +781,13 @@ shadow:         fiels nis
 <p>添加用户后需要手动更新nis服务器的数据库</p>
 <pre><code class="language-shell">make -C /var/yp
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220111533448.png" alt="image-20231220111533448"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151213767.png" alt="image-20241115151213767"></p>
 <p>在node节点测试</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220111702995.png" alt="image-20231220111702995">查看id也一致</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220111742296.png" alt="image-20231220111742296"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151228818.png" alt="image-20241115151228818"></p>
+<p>查看id也一致</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151238821.png" alt="image-20241115151238821"></p>
 <p>在计算节点也可以通过ypcat passwd 命令查看nis的用户</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220111845349.png" alt="image-20231220111845349"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151252983.png" alt="image-20241115151252983"></p>
 
 </article>
 

@@ -711,7 +711,7 @@ reboot
 <h3 id="2-生成适配当前内核的驱动">2. 生成适配当前内核的驱动</h3>
 <p>根据自己的系统版本下载IB驱动(红框里的链接需要点开，接受相关条款才能下载）</p>
 <p><a href="https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/">https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/</a></p>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526105309342.png" alt="image-20230526105309342" style="zoom: 50%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152359488.png" alt="image-20241115152359488"></p>
 <p>解压，并进入文件夹</p>
 <pre><code class="language-shell">tar xzf MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64.tgz
 cd MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64
@@ -727,7 +727,7 @@ reboot
 <p>查看ib状态</p>
 <pre><code class="language-shell">ibstat
 </code></pre>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526105416457.png" alt="image-20230526105416457" style="zoom:67%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152406359.png" alt="image-20241115152406359"></p>
 <p>State状态为活跃的网卡端口号为0 ，连接模式有两种，这里是IB网络，也可以选择低速的以太网</p>
 <p>如果State为Initializing,重启opensmd服务</p>
 <pre><code>service opensmd restart

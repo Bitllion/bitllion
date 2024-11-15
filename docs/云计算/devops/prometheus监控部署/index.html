@@ -705,7 +705,7 @@
   <h2 id="被监控端">被监控端</h2>
 <h3 id="基础信息cpu-内存-网络-硬盘采集器">基础信息（cpu 内存 网络 硬盘）采集器</h3>
 <p>在 <a href="https://prometheus.io/download/">Download | Prometheus</a>下载监控</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403102314287.png" alt="image-20240403102314287"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150901706.png" alt="image-20241115150901706"></p>
 <pre><code class="language-shell">wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
 tar xzf node_exporter-1.7.0.linux-amd64.tar.gz
 cd node_exporter-1.7.0.linux-amd64
@@ -793,37 +793,37 @@ scrape_configs:
 <pre><code class="language-shell">docker run -d  --name=prometheus -p 9090:9090 -v /opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 </code></pre>
 <p>访问 http://10.1.1.249:9090/</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403103822846.png" alt="image-20240403103822846"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150909455.png" alt="image-20241115150909455"></p>
 <h2 id="grafana-面板">Grafana 面板</h2>
 <p>运行</p>
 <pre><code class="language-shell">docker  run -d --name=grafana  -p 3000:3000  grafana/grafana
 </code></pre>
 <p>默认用户名密码都是admin</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104502353.png" alt="image-20240403104502353"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150915493.png" alt="image-20241115150915493"></p>
 <h3 id="更改语言时区">更改语言时区</h3>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104555536.png" alt="image-20240403104555536"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104631402.png" alt="image-20240403104631402"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150921494.png" alt="image-20241115150921494"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150928641.png" alt="image-20241115150928641"></p>
 <h3 id="添加数据源">添加数据源</h3>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104727492.png" alt="image-20240403104727492"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104739556.png" alt="image-20240403104739556"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104757563.png" alt="image-20240403104757563"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150936074.png" alt="image-20241115150936074"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150941951.png" alt="image-20241115150941951"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150946931.png" alt="image-20241115150946931"></p>
 <p>将上面Prometheus 地址填入其中 save保存</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104854515.png" alt="image-20240403104854515"></p>
-<p>正确的话弹窗<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403104941267.png" alt="image-20240403104941267"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115150956367.png" alt="image-20241115150956367"></p>
+<p>正确的话弹窗<img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151002504.png" alt="image-20241115151002504"></p>
 <h3 id="添加仪表盘">添加仪表盘</h3>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105041494.png" alt="image-20240403105041494"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151008610.png" alt="image-20241115151008610"></p>
 <p>选择导入一个</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105114640.png" alt="image-20240403105114640"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151015351.png" alt="image-20241115151015351"></p>
 <p>在<a href="https://grafana.com/grafana/dashboards/">Dashboards | Grafana Labs</a> 找到自己喜欢的仪表盘</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105159858.png" alt="image-20240403105159858"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151032219.png" alt="image-20241115151032219"></p>
 <p>点进去，复制ID</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105240839.png" alt="image-20240403105240839"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151041868.png" alt="image-20241115151041868"></p>
 <p>填入对应位置，点击加载</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105324739.png" alt="image-20240403105324739"></p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105409361.png" alt="image-20240403105409361"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151049679.png" alt="image-20241115151049679"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151056436.png" alt="image-20241115151056436"></p>
 <p>选择我们的数据源 然后import下</p>
 <p>即可</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20240403105444472.png" alt="image-20240403105444472"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151103970.png" alt="image-20241115151103970"></p>
 <p>这是node export采集器展示的，同理你可以添加gpu docker的dashboard</p>
 
 </article>

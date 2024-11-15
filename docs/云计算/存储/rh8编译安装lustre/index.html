@@ -702,7 +702,7 @@
   
   
 
-  <img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/9ae699a4d3eb1ca56d0ae96c0e41e56.png" alt="9ae699a4d3eb1ca56d0ae96c0e41e56" style="zoom: 80%;" />
+  <p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152457584.png" alt="image-20241115152457584"></p>
 <h3 id="1-添加lustre官方源">1. 添加lustre官方源</h3>
 <p>编辑 /etc/yum.repos.d/lustre.repo</p>
 <pre><code class="language-json">[lustre-server]
@@ -798,12 +798,12 @@ lnetctl net show
 lnetctl export &gt; /etc/sysconfig/lnet.conf
 systemctl enable lnet
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526094852529.png" alt="image-20230526094852529"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152505544.png" alt="image-20241115152505544"></p>
 <h3 id="6服务端创建mgs-mdt">6.服务端创建MGS MDT</h3>
 <p>查看未使用的硬盘</p>
 <pre><code>lsblk
 </code></pre>
-<img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526095408420.png" alt="image-20230526095408420" style="zoom:67%;" />
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152512316.png" alt="image-20241115152512316"></p>
 <p>服务端创建MGS MDT,index编号为0</p>
 <pre><code>mkfs.lustre --fsname=lustre --mdt --mgs --index=0 --reformat /dev/nvme0n1
 </code></pre>
@@ -811,7 +811,7 @@ systemctl enable lnet
 <pre><code>mkdir -p /mnt/mg
 mount.lustre  /dev/nvme0n1 /mnt/mg
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526095322665.png" alt="image-20230526095322665"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152522293.png" alt="image-20241115152522293"></p>
 <h3 id="7服务端创建ost">7.服务端创建OST</h3>
 <p>（可与上面MGS MDT在同一台服务器）</p>
 <pre><code>mkfs.lustre --fsname=lustre --reformat --ost --mgsnode=192.168.6.100@o2ib --index=11 /dev/nvme1n1
@@ -826,14 +826,14 @@ mount -t lustre  /dev/nvme1n1 /mnt/ost1
 mount -t lustre  /dev/nvme2n1 /mnt/ost2
 mount -t lustre  /dev/nvme3n1 /mnt/ost3
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526095514109.png" alt="image-20230526095514109"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152528425.png" alt="image-20241115152528425"></p>
 <h3 id="8客户端挂载">8.客户端挂载</h3>
 <p>创建全局共享目录/z3 并将lustre挂载到上面</p>
 <pre><code>mkdir /z3
 mount.lustre 192.168.6.100@o2ib:/lustre /z3
 mkdir -p /z3/home  /z3/public
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526100605288.png" alt="image-20230526100605288"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152535944.png" alt="image-20241115152535944"></p>
 <blockquote>
 <p>本项目三台节点都有4块7TNVME，我们每一台服务器都有一块硬盘做MGS/MDT,部署详细如下（注意index编号不要重复了）</p>
 <p>所有节点：</p>
@@ -879,7 +879,7 @@ mkdir -p /z3/home  /z3/public
 <p>所有节点 client&gt;</p>
 <p>mount.lustre 192.168.6.100@o2ib:192.168.6.101@o2ib:192.168.6.102@o2ib:/lustre /z3</p>
 <p>最后效果如下</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20230526095557437.png" alt="image-20230526095557437"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152545902.png" alt="image-20241115152545902"></p>
 </blockquote>
 <blockquote>
 <p>重启服务器后，挂载会失效，请手动复现上述挂载的命令，不用重新格式化</p>

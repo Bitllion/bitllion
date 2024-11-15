@@ -703,7 +703,7 @@
   
 
   <p>一个简单的 ganglia 系统如下：</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/webp.webp" alt="img"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151601830.png" alt="image-20241115151601830"></p>
 <p>一个典型的 HDFS Ganglia 集群基本上包括下面三个部分：</p>
 <ol>
 <li>gmond
@@ -738,7 +738,7 @@ systemctl enable docker --now
 <pre><code>apt-get install ganglia-monitor -y
 vim /etc/ganglia/gmond.conf 
 </code></pre>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220134035309.png" alt="image-20231220134035309"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151123581.png" alt="image-20241115151123581"></p>
 <p>修改clustre中name参数后</p>
 <pre><code>systemctl restart ganglia-monitor
 systemctl enable ganglia-monitor
@@ -748,11 +748,11 @@ systemctl enable ganglia-monitor
 </code></pre>
 <p>编辑 /etc/ganglia/gmetad.conf</p>
 <p>新增一行配置</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220134507933.png" alt="image-20231220134507933"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151129076.png" alt="image-20241115151129076"></p>
 <p>保存后重启容器</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220134603110.png" alt="image-20231220134603110"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151141376.png" alt="image-20241115151141376"></p>
 <p>浏览器访问 server_ip:8649/ganglia</p>
-<p><img src="https://bitblog.oss-cn-shanghai.aliyuncs.com/img/image-20231220134707882.png" alt="image-20231220134707882"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115151150781.png" alt="image-20241115151150781"></p>
 
 </article>
 
