@@ -113,7 +113,7 @@
     },
     "headline": "Centos7安装pbs | 调度系统 | 一言","datePublished": "2023-12-16T15:27:41+08:00",
     "dateModified": "2023-12-16T15:27:41+08:00",
-    "wordCount":  164 ,
+    "wordCount":  246 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -388,7 +388,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>1分钟阅读时长</span>
+    <span>2分钟阅读时长</span>
   </div>
 
   
@@ -459,7 +459,7 @@ export PBS_HOME=/var/spool/pbs
 <p>master节点和node节点依次启动pbs</p>
 <pre><code class="language-shell">systemctl start pbs
 </code></pre>
-<p>如果想让master节点也参与计算，将/etc/pbs.conf 中 PBS_START_MOM的值由0修改为1</p>
+<p>如果想让master节点也参与计算，将/etc/pbs.conf 中 PBS_START_MOM的值由0修改为1 ，其他节点psb.conf不用改变</p>
 <h2 id="配置">配置</h2>
 <p>master节点其他配置</p>
 <pre><code class="language-shell">qmgr -c &quot;set server flatuid=true&quot;
@@ -495,6 +495,30 @@ qmgr -c &quot;set queue big started = true&quot;
 <blockquote>
 <p>注意 普通用户提交作业前需要配置和计算节点间的SSH互相免密</p>
 </blockquote>
+<h3 id="配置gpu队列">配置gpu队列</h3>
+<p>管理节点  /var/spool/pbs/sched_priv/sched_config  新增</p>
+<pre><code>resources: &quot;ncpus, mem, arch, host, vnode, aoe, eoe, ngpus, gpu_id&quot;
+</code></pre>
+<p>然后重启pbs</p>
+<pre><code>service pbs restart 
+</code></pre>
+<p>设置下gpu节点的资源</p>
+<pre><code class="language-shell"># qmgr
+set node node1 resources_available.ncpus=48, resources_available.mem=100gb, resources_available.ngpus=2 
+</code></pre>
+<p>创建gpu队列qgpu 并重启</p>
+<pre><code class="language-shell"># qmgr
+create queue qgpu
+set queue qgpu queue_type = Execution 
+set queue qgpu resources_default.nodect = 1
+set queue qgpu resources_default.nodes = node1
+set queue qgpu resources_default.ngpus = 2
+set queue qgpu resources_default.ncpus = 48
+set queue qgpu enabled = True 
+set queue qgpu started = True
+exit
+# service pbs restart
+</code></pre>
 
 </article>
 
@@ -546,7 +570,11 @@ qmgr -c &quot;set queue big started = true&quot;
   <nav id="TableOfContents">
   <ul>
     <li><a href="#安装">安装</a></li>
-    <li><a href="#配置">配置</a></li>
+    <li><a href="#配置">配置</a>
+      <ul>
+        <li><a href="#配置gpu队列">配置gpu队列</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>

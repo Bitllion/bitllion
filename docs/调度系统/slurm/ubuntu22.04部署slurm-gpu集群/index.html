@@ -112,7 +112,7 @@
     },
     "headline": "Ubuntu22.04部署slurm GPU集群 | 调度系统 | 一言","datePublished": "2024-03-25T09:23:23+08:00",
     "dateModified": "2024-03-25T09:23:23+08:00",
-    "wordCount":  1014 ,
+    "wordCount":  937 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -534,7 +534,7 @@ mount master:/share /share
 <h2 id="配置时间同步服务">配置时间同步服务</h2>
 <p>server&gt;</p>
 <p>安装时间同步服务</p>
-<pre><code class="language-shell">yum install chrony -y
+<pre><code class="language-shell">apt install chrony -y
 </code></pre>
 <p>开机自启动</p>
 <pre><code class="language-shell">systemctl enable chronyd
@@ -621,13 +621,13 @@ GRANT ALL PRIVILEGES on slurm_jobcomp_db.* to 'slurm'@'%';
 FLUSH privileges;
 quit
 </code></pre>
-<p><del>编辑/etc/mysql/mysql.cnf 增加内容</del></p>
+<p><del>编辑/etc/mysql/mysql.cnf 增加内容</del> 新版本不需要加下面的参数了</p>
 <pre><code class="language-shell">[mysqld]
 innodb_buffer_pool_size=1024M
 innodb_log_file_size=64M
 innodb_lock_wait_timeout=900
 </code></pre>
-<p><del>修改 /etc/mysql/mysql.conf.d/mysqld.cnf 中</del></p>
+<p>修改 /etc/mysql/mysql.conf.d/mysqld.cnf 中</p>
 <pre><code class="language-shell">bind-address = 0.0.0.0
 </code></pre>
 <h2 id="编译安装pmi">编译安装pmi</h2>
@@ -677,11 +677,6 @@ ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65536
 TasksMax=infinity
 
-# Uncomment the following lines to disable logging through journald.
-# NOTE: It may be preferable to set these through an override file instead.
-#StandardOutput=null
-#StandardError=null
-
 [Install]
 WantedBy=multi-user.target
 </code></pre>
@@ -705,11 +700,6 @@ ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=65536
 TasksMax=infinity
 
-# Uncomment the following lines to disable logging through journald.
-# NOTE: It may be preferable to set these through an override file instead.
-#StandardOutput=null
-#StandardError=null
-
 [Install]
 WantedBy=multi-user.target
 </code></pre>
@@ -730,11 +720,6 @@ LimitNOFILE=131072
 LimitMEMLOCK=infinity
 LimitSTACK=infinity
 TasksMax=infinity
-
-# Uncomment the following lines to disable logging through journald.
-# NOTE: It may be preferable to set these through an override file instead.
-#StandardOutput=null
-#StandardError=null
 
 [Install]
 WantedBy=multi-user.target

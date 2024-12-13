@@ -25,5 +25,14 @@
       <description>一、通用计算性能测试 1.测试目的 验证 CUDA ⼯具包是否可以正确安装和配置</description>
     </item>
     
+    <item>
+      <title>Nvidia常见问题及解决办法</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <pubDate>Tue, 26 Nov 2024 15:16:29 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <description>GPU ECC 问题处理 1.</description>
+    </item>
+    
   </channel>
 </rss>

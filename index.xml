@@ -6,7 +6,7 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 15 Nov 2024 17:58:58 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Nov 2024 15:16:29 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用piclist配置typora的alist图床</title>
       <link>/posts/%E4%BD%BF%E7%94%A8piclist%E9%85%8D%E7%BD%AEtypora%E7%9A%84alist%E5%9B%BE%E5%BA%8A/</link>
@@ -360,6 +360,15 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</guid>
       <description>Centos7 下部署操作</description>
+    </item>
+    
+    <item>
+      <title>Nvidia常见问题及解决办法</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <pubDate>Tue, 26 Nov 2024 15:16:29 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <description>GPU ECC 问题处理 1.</description>
     </item>
     
     <item>
