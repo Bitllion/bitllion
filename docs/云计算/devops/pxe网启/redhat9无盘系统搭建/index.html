@@ -116,7 +116,7 @@
     },
     "headline": "Redhat9无盘系统搭建 | 云计算 | 一言","datePublished": "2025-03-07T11:39:51+08:00",
     "dateModified": "2025-03-07T11:39:51+08:00",
-    "wordCount":  796 ,
+    "wordCount":  795 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -567,6 +567,17 @@
     
     <li class="py-2">
         <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/test/">Test</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
             <a class=" text-eureka  hover:text-eureka"
                 href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">Redhat9无盘系统搭建</a>
         </div>
@@ -996,7 +1007,7 @@ log-facility=/var/log/dnsmasq.log
 <pre><code class="language-bash">systemctl enable dnsmasq --now
 systemctl status dnsmasq
 </code></pre>
-<h2 id="五配置nfs服务器">五、配置NFS服务器</h2>
+<h2 id="五配置nfs服务器">五、配置nfs服务器</h2>
 <h3 id="1安装">1.安装</h3>
 <pre><code class="language-bash">dnf -y install nfs-utils
 </code></pre>
@@ -1006,7 +1017,7 @@ chmod 755 /pxe
 chmod 755 /pxe/diskless
 chmod 1777 /pxe/diskless/rh9
 </code></pre>
-<h3 id="3配置-etcexports">3.配置 /etc/exports</h3>
+<h3 id="3配置etcexports">3.配置/etc/exports</h3>
 <pre><code class="language-bash">echo '/pxe/diskless/rh9 *(rw,sync,no_root_squash)' &gt;&gt; /etc/exports
 </code></pre>
 <blockquote>
@@ -1076,7 +1087,7 @@ exit
 :rh9-installer
 initrd ${boot-url}/iso/rh9/images/pxeboot/initrd.img
 kernel ${boot-url}/iso/rh9/images/pxeboot/vmlinuz
-imgargs vmlinuz initrd=initrd.img inst.ks=${boot-url}/ks/ks-c7.cfg inst.repo=${boot-url}/iso/rh9
+imgargs vmlinuz initrd=initrd.img inst.ks=${boot-url}/ks/ks-rh9.cfg inst.repo=${boot-url}/iso/rh9
 boot || goto failed
 goto start
 
@@ -1119,6 +1130,22 @@ boot || read void
 
 
                     
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/test/" class="block">Test</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
 
                     
 
@@ -1139,6 +1166,73 @@ boot || read void
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一安装和配置redhat94">一、安装和配置RedHat9.4</a>
+      <ul>
+        <li><a href="#1安装过程略">1.安装过程略</a></li>
+        <li><a href="#2配置本地iso源">2.配置本地iso源</a></li>
+        <li><a href="#3禁用selinux和防火墙">3.禁用selinux和防火墙</a></li>
+      </ul>
+    </li>
+    <li><a href="#二构建无盘系统">二、构建无盘系统</a>
+      <ul>
+        <li><a href="#1设置环境变量">1.设置环境变量</a></li>
+        <li><a href="#2安装基础环境">2.安装基础环境</a></li>
+        <li><a href="#3配置无盘系统的iso镜像源">3.配置无盘系统的iso镜像源</a></li>
+        <li><a href="#4安装其他依赖">4.安装其他依赖</a></li>
+        <li><a href="#5配置自动挂载">5.配置自动挂载</a></li>
+        <li><a href="#6配置hostname">6.配置hostname</a></li>
+        <li><a href="#7配置whereami">7.配置whereami</a></li>
+        <li><a href="#8配置rclocal">8.配置rc.local</a></li>
+        <li><a href="#9配置root用户">9.配置root用户</a></li>
+        <li><a href="#10创建基于ram的引导内核">10.创建基于ram的引导内核</a></li>
+        <li><a href="#11配置ssh免密">11.配置ssh免密</a></li>
+      </ul>
+    </li>
+    <li><a href="#三配置http服务">三、配置http服务</a></li>
+    <li><a href="#四配置dnsmasq">四、配置dnsmasq</a></li>
+    <li><a href="#五配置nfs服务器">五、配置nfs服务器</a>
+      <ul>
+        <li><a href="#1安装">1.安装</a></li>
+        <li><a href="#2创建共享目录">2.创建共享目录</a></li>
+        <li><a href="#3配置etcexports">3.配置/etc/exports</a></li>
+        <li><a href="#4启动服务">4.启动服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#六配置ipxe">六、配置iPXE</a>
+      <ul>
+        <li><a href="#1编译开启nfs功能的ipxe固件">1.编译开启NFS功能的ipxe固件</a></li>
+        <li><a href="#2配置ipxe-menu-脚本">2.配置ipxe menu 脚本</a></li>
+      </ul>
+    </li>
+    <li><a href="#七无盘系统软件安装">七、无盘系统软件安装</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>

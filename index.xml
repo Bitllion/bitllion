@@ -6,7 +6,25 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 07 Mar 2025 11:39:51 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Mar 2025 20:39:09 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/test/</link>
+      <pubDate>Mon, 10 Mar 2025 20:39:09 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redhat9无盘系统搭建</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 07 Mar 2025 11:39:51 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
+      <description>一、安装和配置RedHat9.4 1.安装过程略 2.</description>
+    </item>
+    
     <item>
       <title>Ubuntu安装openpbs</title>
       <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/ubuntu%E5%AE%89%E8%A3%85openpbs/</link>
@@ -361,15 +379,6 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</guid>
       <description>Centos7 下部署操作</description>
-    </item>
-    
-    <item>
-      <title>Redhat9无盘系统搭建</title>
-      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Fri, 07 Mar 2025 11:39:51 +0800</pubDate>
-      
-      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
-      <description>一、安装和配置RedHat9.4 1.安装过程略 2.</description>
     </item>
     
     <item>
