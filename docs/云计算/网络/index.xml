@@ -22,7 +22,7 @@
       <pubDate>Mon, 20 Nov 2023 13:28:08 +0800</pubDate>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/</guid>
-      <description>安装依赖 yum groupinstall -y &amp;quot;Development Tools&amp;quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager构建rpm包 wget https://www.</description>
+      <description>1.安装依赖 yum groupinstall -y &amp;quot;Development Tools&amp;quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager2.</description>
     </item>
     
     <item>

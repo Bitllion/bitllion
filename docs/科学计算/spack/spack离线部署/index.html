@@ -112,7 +112,7 @@
     },
     "headline": "Spack离线部署 | 科学计算 | 一言","datePublished": "2024-11-01T15:01:00+08:00",
     "dateModified": "2024-11-01T15:01:00+08:00",
-    "wordCount":  315 ,
+    "wordCount":  325 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -490,10 +490,14 @@
 </code></pre>
 <p>创建好后，压缩，上传到目标服务器，解压,配置bootstrap.yaml，运行下面的命令</p>
 <pre><code>spack bootstrap add --trust local-sources mirror所在的目录/metadata/sources
+spack bootstrap add --trust local-binaries mirror所在的目录/metadata/binaries
 </code></pre>
 <p>然后再次 spack spec zlib</p>
 <p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163957881.png" alt="image-20241114163957881"></p>
 <p>这次会自动编译相关依赖库，最后编译好clingo-bootstrap ，spack spec就正常输出了，而clingo-bootstrap和它的依赖安装目录是在 ~/.spack/bootstrap下</p>
+<p>如果使用上面的方法依然报错，也可以用本地python</p>
+<pre><code>pip install clingo
+</code></pre>
 <h2 id="二离线编译和管理已编译好的软件">二、离线编译和管理已编译好的软件</h2>
 <h3 id="1spack-基础配置">1.spack 基础配置</h3>
 <p>进入~/.spack，先运行下面的命令</p>

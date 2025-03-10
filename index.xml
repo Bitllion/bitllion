@@ -6,7 +6,7 @@
     <description>Recent content on 一言</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 26 Dec 2024 14:33:09 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Mar 2025 11:39:51 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu安装openpbs</title>
       <link>/docs/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/ubuntu%E5%AE%89%E8%A3%85openpbs/</link>
@@ -69,15 +69,6 @@ apt install -y gcc make libtool libhwloc-dev libx11-dev libxt-dev libedit-dev li
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/clush%E8%BF%90%E7%BB%B4/</guid>
       <description>你可以通过以下一行命令自动输入 yes 来跳过 SSH 的初次连接确认提示：</description>
-    </item>
-    
-    <item>
-      <title>Pve配置vlan版bond虚拟网桥</title>
-      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/</link>
-      <pubDate>Thu, 23 May 2024 21:14:19 +0800</pubDate>
-      
-      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pve/pve%E9%85%8D%E7%BD%AEvlan%E7%89%88bond%E8%99%9A%E6%8B%9F%E7%BD%91%E6%A1%A5/</guid>
-      <description>test</description>
     </item>
     
     <item>
@@ -242,7 +233,7 @@ apt install -y gcc make libtool libhwloc-dev libx11-dev libxt-dev libedit-dev li
       <pubDate>Mon, 20 Nov 2023 13:28:08 +0800</pubDate>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/</guid>
-      <description>安装依赖 yum groupinstall -y &amp;quot;Development Tools&amp;quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager构建rpm包 wget https://www.</description>
+      <description>1.安装依赖 yum groupinstall -y &amp;quot;Development Tools&amp;quot;yum install -y dnf-plugins-core epel-releaseyum config-manager --set-enabled powertoolsyum install -y python3-sphinx python3-six numactl-devel libbpf-devel libbpf libxdp-devel libxdp wget openssl-devel gcc make python3-devel openssl-devel kernel-devel graphviz kernel-debug-devel autoconf automake rpm-build redhat-rpm-config libtool deskto NetworkManager2.</description>
     </item>
     
     <item>
@@ -274,7 +265,7 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
     </item>
     
     <item>
-      <title>Diskless 无盘linux集群搭建</title>
+      <title>搭建centos无盘系统</title>
       <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/diskless-%E6%97%A0%E7%9B%98linux%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Mon, 12 Jun 2023 13:09:00 +0800</pubDate>
       
@@ -370,6 +361,24 @@ ipmi用户名：登录iDRAC的用户名，默认为 root</description>
       
       <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</guid>
       <description>Centos7 下部署操作</description>
+    </item>
+    
+    <item>
+      <title>Redhat9无盘系统搭建</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 07 Mar 2025 11:39:51 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/</guid>
+      <description>一、安装和配置RedHat9.4 1.安装过程略 2.</description>
+    </item>
+    
+    <item>
+      <title>搭建debian无盘系统</title>
+      <link>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E6%90%AD%E5%BB%BAdebian%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Wed, 26 Feb 2025 15:00:53 +0800</pubDate>
+      
+      <guid>/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/devops/%E6%90%AD%E5%BB%BAdebian%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F/</guid>
+      <description></description>
     </item>
     
     <item>
