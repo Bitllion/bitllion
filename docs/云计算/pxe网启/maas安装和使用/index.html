@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<title>IB网络配置 | 云计算 | 一言</title>
+<title>Maas安装和使用 | 云计算 | 一言</title>
 
 <meta name="generator" content="Hugo Eureka 0.9.3" />
 <link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="1. 安装依赖 先更新系统,安装依赖,重启切换到新的内核">
+  content="postgresql配置 配置主机名为maas">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -91,12 +91,12 @@
       "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/"},{
       "@type": "ListItem",
       "position": 3 ,
-      "name":"网络",
-      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/"},{
+      "name":"PXE网启",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/"},{
       "@type": "ListItem",
       "position": 4 ,
-      "name":"IB网络配置",
-      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"}]
+      "name":"Maas安装和使用",
+      "item":"/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/"}]
 }
 </script>
 
@@ -108,11 +108,11 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"
+        "@id": "/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/"
     },
-    "headline": "IB网络配置 | 云计算 | 一言","datePublished": "2023-05-26T10:51:07+08:00",
-    "dateModified": "2023-05-26T10:51:07+08:00",
-    "wordCount":  76 ,
+    "headline": "Maas安装和使用 | 云计算 | 一言","datePublished": "2024-02-29T09:18:06+08:00",
+    "dateModified": "2024-02-29T09:18:06+08:00",
+    "wordCount":  202 ,
     "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
@@ -121,21 +121,21 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "1. 安装依赖 先更新系统,安装依赖,重启切换到新的内核"
+    "description": "postgresql配置 配置主机名为maas"
 }
-</script><meta property="og:title" content="IB网络配置 | 云计算 | 一言" />
+</script><meta property="og:title" content="Maas安装和使用 | 云计算 | 一言" />
 <meta property="og:type" content="article" />
 
 
 <meta property="og:image" content="/images/icon.png">
 
 
-<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" />
+<meta property="og:url" content="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" />
 
 
 
 
-<meta property="og:description" content="1. 安装依赖 先更新系统,安装依赖,重启切换到新的内核" />
+<meta property="og:description" content="postgresql配置 配置主机名为maas" />
 
 
 
@@ -152,10 +152,10 @@
 
 
 
-<meta property="article:published_time" content="2023-05-26T10:51:07&#43;08:00" />
+<meta property="article:published_time" content="2024-02-29T09:18:06&#43;08:00" />
 
 
-<meta property="article:modified_time" content="2023-05-26T10:51:07&#43;08:00" />
+<meta property="article:modified_time" content="2024-02-29T09:18:06&#43;08:00" />
 
 
 
@@ -304,7 +304,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" hover:text-eureka"
+            <a class=" text-eureka  hover:text-eureka"
                 href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">Maas安装和使用</a>
         </div>
         
@@ -592,7 +592,7 @@
     
     <li class="py-2">
         <div class="">
-            <a class=" text-eureka  hover:text-eureka"
+            <a class=" hover:text-eureka"
                 href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
         </div>
         
@@ -672,7 +672,7 @@
             <div class="flex">
                 <div class="w-full lg:w-3/4 px-6">
                     <article class="prose">
-  <h1 class="mb-4">IB网络配置</h1>
+  <h1 class="mb-4">Maas安装和使用</h1>
 
   <div
   class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
@@ -680,7 +680,7 @@
   <div class="me-6 my-2">
     <i class="fas fa-calendar me-1"></i>
     <span
-      >2023-05-26</span
+      >2024-02-29</span
     >
   </div>
   <div class="me-6 my-2">
@@ -697,54 +697,85 @@
   
   
 
-  <h3 id="1-安装依赖">1. 安装依赖</h3>
-<p>先更新系统,安装依赖,重启切换到新的内核</p>
-<pre><code class="language-shell">yum -y groupinstall &quot;Development Tools&quot;
-yum install kernel-devel createrepo tcl gcc-gfortran tcsh tk lsof kernel-modules-extra python36 python36-devel kernel-rpm-macros -y
-reboot 
+  <h2 id="postgresql配置">postgresql配置</h2>
+<p>配置主机名为maas</p>
+<pre><code class="language-shell">hostnamectl set-hostname maas
 </code></pre>
-<h3 id="2-生成适配当前内核的驱动">2. 生成适配当前内核的驱动</h3>
-<p>根据自己的系统版本下载IB驱动(红框里的链接需要点开，接受相关条款才能下载）</p>
-<p><a href="https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/">https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/</a></p>
-<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152359488.png" alt="image-20241115152359488"></p>
-<p>解压，并进入文件夹</p>
-<pre><code class="language-shell">tar xzf MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64.tgz
-cd MLNX_OFED_LINUX-5.9-0.5.6.0-rhel8.7-x86_64
+<p>/etc/hosts 也修改maas为</p>
+<pre><code class="language-shell">127.0.0.1 maas
 </code></pre>
-<p>安装驱动,一般内核不匹配所以强制安装符合当前内核版本的，如果有nfs使用rdma协议需求可以佳nfsrdma选项</p>
-<pre><code class="language-shell">./mlnxofedinstall --all --force --add-kernel-support  --with-nfsrdma
+<p>安装postgresql</p>
+<pre><code class="language-shell">apt install -y postgresql
+export MAAS_DBUSER=maas
+export MAAS_DBPASS=maas
+export MAAS_DBNAME=maas
+sudo -i -u postgres psql -c &quot;CREATE USER \&quot;$MAAS_DBUSER\&quot; WITH ENCRYPTED PASSWORD '$MAAS_DBPASS'&quot;
+sudo -i -u postgres createdb -O &quot;$MAAS_DBUSER&quot; &quot;$MAAS_DBNAME&quot;
+echo &quot;host $MAAS_DBNAME $MAAS_DBUSER 0/0 md5&quot; &gt;&gt; /etc/postgresql/12/main/pg_hba.conf
 </code></pre>
-<h3 id="3-启动ib设备配置网络">3. 启动IB设备，配置网络</h3>
-<pre><code class="language-shell">/etc/init.d/openibd restart
-mst start
-reboot
+<p>/etc/postgresql/12/ 这里不同版本系统可能会不一样</p>
+<h2 id="maas安装">maas安装</h2>
+<h3 id="snap安装maas">snap安装maas</h3>
+<pre><code class="language-shell">snap install --channel=3.4 maas
+systemctl disable --now systemd-timesyncd
 </code></pre>
-<p>查看ib状态</p>
-<pre><code class="language-shell">ibstat
+<h3 id="初始化maas">初始化maas</h3>
+<p>其中ip请修改为部署maas主机的ip</p>
+<pre><code class="language-shell">root@maas:~# maas init region+rack --maas-url http://192.168.1.2:5240/MAAS --database-uri &quot;postgres://$MAAS_DBUSER:$MAAS_DBPASS@$HOSTNAME/$MAAS_DBNAME&quot;
+MAAS has been set up.
+
+If you want to configure external authentication or use
+MAAS with Canonical RBAC, please run
+
+  sudo maas configauth
+
+To create admins when not using external authentication, run
+
+  sudo maas createadmin
+
+To enable TLS for secured communication, please run
+
+  sudo maas config-tls enable
 </code></pre>
-<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241115152406359.png" alt="image-20241115152406359"></p>
-<p>State状态为活跃的网卡端口号为0 ，连接模式有两种，这里是IB网络，也可以选择低速的以太网</p>
-<p>如果State为Initializing,重启opensmd服务</p>
-<pre><code>service opensmd restart
+<h3 id="验证maas状态">验证maas状态</h3>
+<pre><code class="language-shell">root@maas:~# maas status
+bind9                            RUNNING   pid 5103, uptime 0:11:31
+dhcpd                            STOPPED   Not started
+dhcpd6                           STOPPED   Not started
+http                             RUNNING   pid 5429, uptime 0:11:12
+ntp                              RUNNING   pid 5231, uptime 0:11:28
+proxy                            RUNNING   pid 5511, uptime 0:10:51
+rackd                            RUNNING   pid 5107, uptime 0:11:31
+regiond                          RUNNING   pid 5109, uptime 0:11:31
+syslog                           RUNNING   pid 5360, uptime 0:11:17
 </code></pre>
-<p>ib 网络配置如下<code>/etc/sysconfig/network-scripts/ifcfg-ib0</code>  （这里的ib0 的0是根据上面的port来的，网络配置内容和以太网配置很像）</p>
-<pre><code class="language-shell">TYPE=InfiniBand
-BOOTPROTO=static
-NAME=ib0
-DEVICE=ib0
-ONBOOT=yes
-IPADDR=192.168.6.100
-NETMASK=255.255.255.0
-GATEWAY=192.168.6.1
-METRIC=200
+<h3 id="配置超管账号">配置超管账号</h3>
+<pre><code class="language-shell">root@maas:~# maas createadmin --username admin --password admin123 --email 823719988@qq.com
 </code></pre>
-<p>重启网络生效（rh8 后弃用了network)</p>
-<pre><code class="language-shell">nmcli c reload
+<p>导出admin密钥</p>
+<pre><code class="language-shell">root@maas:~# maas apikey --username admin &gt; /root/admin-api-key
 </code></pre>
-<p>查看配置的网络</p>
-<pre><code class="language-shell">ip a
-</code></pre>
-<p>果然，我们的ib配置好了，也有了ip地址</p>
+<h2 id="maas配置">maas配置</h2>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164734501.png" alt="image-20241114164734501"></p>
+<p>这里使用阿里DNS</p>
+<p>源用清华源</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu">https://mirrors.tuna.tsinghua.edu.cn/ubuntu</a></p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports</a></p>
+<h3 id="镜像配置">镜像配置</h3>
+<p>选择maas.io连接下载镜像</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164740910.png" alt="image-20241114164740910"></p>
+<h3 id="免密登陆配置">免密登陆配置</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164749791.png" alt="image-20241114164749791"></p>
+<h3 id="主界面">主界面</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164756750.png" alt="image-20241114164756750"></p>
+<h3 id="配置dhcp">配置dhcp</h3>
+<h4 id="设置网段起始">设置网段起始</h4>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164803294.png" alt="image-20241114164803294"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164809245.png" alt="image-20241114164809245"></p>
+<h4 id="vlan">vlan</h4>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164814954.png" alt="image-20241114164814954"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164821903.png" alt="image-20241114164821903"></p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114164830574.png" alt="image-20241114164830574"></p>
 
 </article>
 
@@ -765,7 +796,7 @@ METRIC=200
         <span class="text-primary-text block font-bold"
           >上一页</span
         >
-        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/" class="block">Centos7部署ovs</a>
+        <a href="/docs/%E4%BA%91%E8%AE%A1%E7%AE%97/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/" class="block">Redhat9无盘系统搭建</a>
       
     </div>
     <div class="mt-4 md:mt-0 md:text-right">
@@ -811,11 +842,26 @@ METRIC=200
 >
   <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#postgresql配置">postgresql配置</a></li>
+    <li><a href="#maas安装">maas安装</a>
       <ul>
-        <li><a href="#1-安装依赖">1. 安装依赖</a></li>
-        <li><a href="#2-生成适配当前内核的驱动">2. 生成适配当前内核的驱动</a></li>
-        <li><a href="#3-启动ib设备配置网络">3. 启动IB设备，配置网络</a></li>
+        <li><a href="#snap安装maas">snap安装maas</a></li>
+        <li><a href="#初始化maas">初始化maas</a></li>
+        <li><a href="#验证maas状态">验证maas状态</a></li>
+        <li><a href="#配置超管账号">配置超管账号</a></li>
+      </ul>
+    </li>
+    <li><a href="#maas配置">maas配置</a>
+      <ul>
+        <li><a href="#镜像配置">镜像配置</a></li>
+        <li><a href="#免密登陆配置">免密登陆配置</a></li>
+        <li><a href="#主界面">主界面</a></li>
+        <li><a href="#配置dhcp">配置dhcp</a>
+          <ul>
+            <li><a href="#设置网段起始">设置网段起始</a></li>
+            <li><a href="#vlan">vlan</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
