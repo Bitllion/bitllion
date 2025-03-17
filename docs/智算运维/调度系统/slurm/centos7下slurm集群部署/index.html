@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html
+  lang="zh"
+  dir="ltr"
+  
+><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Centos7部署slurm集群 | 智算运维 | 一言</title>
+
+<meta name="generator" content="Hugo Eureka 0.9.3" />
+<link rel="stylesheet" href="/css/eureka.min.9cec6350e37e534b0338fa9a085bf06855de3b0f2dcf857e792e5e97b07ea905d4d5513db554cbc26a9c3da622bae92d.css">
+<script defer src="/js/eureka.min.e8043b71b627e3cfd9b2a5de56adf007f5af83dee672ca0c186aa2e29a10d6f648632064d0c00b2fa4d1b11e0f196af3.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&amp;family=Noto&#43;Serif&#43;SC:wght@400;600;700&amp;display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/styles/base16/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"
+   crossorigin></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/languages/dart.min.js"
+     crossorigin></script>
+<link rel="stylesheet" href="/css/highlightjs.min.2958991528e43eb6fc9b8c4f2b8e052f79c4010718e1d1e888a777620e9ee63021c2c57ec7417a3108019bb8c41943e6.css" media="print" onload="this.media='all';this.onload=null">
+
+
+<script defer type="text/javascript" src="/js/fontawesome.min.a975d08212c5439f29e6074e7ad58e159ae1ef5efb6a31962fa3b6885557e794dd9315f4a8a16d705066d023f4eaaf07.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+   integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" 
+  integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+   integrity="sha384-&#43;XBljXPPiv&#43;OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js" 
+  integrity="sha384-atOyb0FxAgN9LyAc6PEf9BjgwLISyansgdH8/VXQH8p2o5vfrRgmGIJ2Sg22L0A0"  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"文档",
+      "item":"/docs/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"智算运维",
+      "item":"/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/"},{
+      "@type": "ListItem",
+      "position": 3 ,
+      "name":"调度系统",
+      "item":"/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/"},{
+      "@type": "ListItem",
+      "position": 4 ,
+      "name":"Slurm",
+      "item":"/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/"},{
+      "@type": "ListItem",
+      "position": 5 ,
+      "name":"Centos7部署slurm集群",
+      "item":"/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/"
+    },
+    "headline": "Centos7部署slurm集群 | 智算运维 | 一言","datePublished": "2023-05-23T16:31:25+08:00",
+    "dateModified": "2023-05-23T16:31:25+08:00",
+    "wordCount":  647 ,
+    "publisher": {
+        "@type": "Person",
+        "name": "WANG Chucheng",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)"
+}
+</script><meta property="og:title" content="Centos7部署slurm集群 | 智算运维 | 一言" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" />
+
+
+
+
+<meta property="og:description" content="1.安装munge服务 创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)" />
+
+
+
+
+<meta property="og:locale" content="zh" />
+
+
+
+
+<meta property="og:site_name" content="一言" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2023-05-23T16:31:25&#43;08:00" />
+
+
+<meta property="article:modified_time" content="2023-05-23T16:31:25&#43;08:00" />
+
+
+
+<meta property="article:section" content="docs" />
+
+
+
+
+
+  <body class="flex min-h-screen flex-col">
+    <header
+      class="min-h-16 pl-scrollbar bg-secondary-bg fixed z-50 flex w-full items-center shadow-sm"
+    >
+      <div class="mx-auto w-full max-w-screen-xl"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="me-6 text-primary-text text-xl font-bold">一言</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  me-4">文档</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">文章</a>
+            <a href="https://pan.bitllion.top:88/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  me-4">云盘</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col start-0 md:start-auto end-auto md:end-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">浅色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">深色</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">自动</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+    </header>
+    <main class="grow pt-16">
+        <div class="pl-scrollbar">
+          <div class="mx-auto w-full max-w-screen-xl lg:px-4 xl:px-8">
+
+
+<div class="lg:pt-12">
+    <div class="flex flex-col md:flex-row bg-secondary-bg rounded">
+        <div class="md:w-1/4 lg:w-1/5 border-e">
+            <div class="sticky top-16 pt-6">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="sidebar-title" class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text">
+    <span class="font-semibold">目录</span>
+    <i class='fas fa-caret-right ms-1'></i>
+</div>
+
+<div id="sidebar-toc"
+    class="hidden md:block overflow-y-auto mx-6 md:mx-0 pe-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent">
+    <div class="flex flex-wrap ms-4 -me-2 p-2 bg-secondary-bg md:bg-primary-bg rounded">
+        <a class=" hover:text-eureka"
+            href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/">智算运维</a>
+        
+        
+        
+
+
+    </div>
+    
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">调度系统</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/k8s/">K8S</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/k8s/debian11%E9%83%A8%E7%BD%B2k8s/">Debian11部署k8s</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/">Slurm</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu22.04%E9%83%A8%E7%BD%B2slurm-gpu%E9%9B%86%E7%BE%A4/">Ubuntu22.04部署slurm GPU集群</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu%E9%83%A8%E7%BD%B2slurm%E5%8D%95%E8%8A%82%E7%82%B9/">Ubuntu部署slurm单节点</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" text-eureka  hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/centos7%E4%B8%8Bslurm%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">Centos7部署slurm集群</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/">Pbs</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/ubuntu%E5%AE%89%E8%A3%85openpbs/">Ubuntu安装openpbs</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/centos7%E5%AE%89%E8%A3%85pbs/">Centos7安装pbs</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/">监控系统</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/prometheus%E7%9B%91%E6%8E%A7%E9%83%A8%E7%BD%B2/">Prometheus监控部署</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/ubuntu%E9%83%A8%E7%BD%B2ganglia%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/">Ubuntu部署ganglia监控系统</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/pxe%E7%BD%91%E5%90%AF/">PXE网启</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/pxe%E7%BD%91%E5%90%AF/redhat9%E6%97%A0%E7%9B%98%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA/">Redhat9无盘系统搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/pxe%E7%BD%91%E5%90%AF/maas%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/">Maas安装和使用</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/">批处理</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/clush%E8%BF%90%E7%BB%B4/">Clush运维</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/nexus3%E9%95%9C%E5%83%8F%E6%BA%90%E6%90%AD%E5%BB%BA/">Nexus3镜像源搭建</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/docker%E9%83%A8%E7%BD%B2iredmail%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F/">Docker部署iredmail邮件系统</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/%E5%90%84%E5%8E%82%E5%95%86%E6%9C%8D%E5%8A%A1%E5%99%A8ipmi%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81/">各厂商服务器IPMI默认密码</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/ipmitool%E6%95%99%E7%A8%8B/">Ipmitool 教程</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E6%89%B9%E5%A4%84%E7%90%86/nexus-%E9%85%8D%E7%BD%AEapt-hosted/"></a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/">用户管理</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/centos7%E9%83%A8%E7%BD%B2nis%E6%9C%8D%E5%8A%A1/">Centos7部署nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/ubuntu%E6%90%AD%E5%BB%BAnis%E6%9C%8D%E5%8A%A1/">Ubuntu搭建nis服务</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/ldap%E7%94%A8%E6%88%B7%E7%BB%9F%E4%B8%80%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Ldap用户统一认证服务安装</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/">GPU</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/">多机nccl Tests测试</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/">Gpu资源测试通用报告</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/">Nvidia显卡驱动安装</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Nvidia常见问题及解决办法</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%99%9A%E6%8B%9F%E5%8C%96/">Kvm</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%99%9A%E6%8B%9F%E5%8C%96/ubuntu22.04%E5%AE%89%E8%A3%85ovs%E5%92%8C%E9%85%8D%E7%BD%AEkvm%E8%99%9A%E6%8B%9F%E5%8C%96/">Ubuntu22.04安装ovs和配置KVM虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%99%9A%E6%8B%9F%E5%8C%96/%E6%8E%A2%E7%B4%A2%E5%9F%BA%E4%BA%8Espice%E5%8D%8F%E8%AE%AE%E7%9A%84vdi%E4%BA%91%E6%A1%8C%E9%9D%A2/">探索基于SPICE协议的VDI云桌面</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C/">网络</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C/pve%E4%B8%8B%E9%85%8D%E7%BD%AEib%E8%99%9A%E6%8B%9F%E5%8C%96/">Pve下配置ib虚拟化</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C/centos7%E9%83%A8%E7%BD%B2ovs/">Centos7部署ovs</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C/ib%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">IB网络配置</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/">存储</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lustre/">lustre</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lustre/centos7%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2luster/">Centos7离线部署luster</a>
+        </div>
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lustre/rh8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85lustre/">RH8编译安装Lustre</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/ceph/">ceph</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class=" pb-2 ">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/gpfs/">gpfs</a>
+        </div>
+        
+        
+<ul class="ps-6">
+    
+</ul>
+
+        
+    </li>
+    
+    
+    
+    
+    <li class="py-2">
+        <div class="">
+            <a class=" hover:text-eureka"
+                href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lvm%E5%AE%9E%E6%88%98/">Lvm实战</a>
+        </div>
+        
+    </li>
+    
+    
+</ul>
+
+        
+    </li>
+    
+    
+</ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8">
+            <div class="flex">
+                <div class="w-full lg:w-3/4 px-6">
+                    <article class="prose">
+  <h1 class="mb-4">Centos7部署slurm集群</h1>
+
+  <div
+  class="text-tertiary-text not-prose mt-2 flex flex-row flex-wrap items-center"
+>
+  <div class="me-6 my-2">
+    <i class="fas fa-calendar me-1"></i>
+    <span
+      >2023-05-23</span
+    >
+  </div>
+  <div class="me-6 my-2">
+    <i class="fas fa-clock me-1"></i>
+    <span>4分钟阅读时长</span>
+  </div>
+
+  
+
+  
+</div>
+
+
+  
+  
+
+  <h2 id="1安装munge服务">1.安装munge服务</h2>
+<p>创建全局用户 (slurm munge 用户所有节点的gid uid必须一致)</p>
+<pre><code>export MUNGEUSER=991
+groupadd -g $MUNGEUSER munge
+useradd  -m -c &quot;MUNGE Uid 'N' Gid Emporium&quot; -d /var/lib/munge -u $MUNGEUSER -g munge  -s /sbin/nologin munge
+</code></pre>
+<p>安装munge包</p>
+<pre><code class="language-shell">yum install -y munge munge-devel munge-libs
+</code></pre>
+<p>如果上面安装时找不到包，先安装 <code>epel-release</code> 这个仓库</p>
+<p>管理节点创建密钥</p>
+<pre><code class="language-shell">/usr/sbin/create-munge-key
+</code></pre>
+<p>将密钥拷贝到计算节点</p>
+<pre><code>scp /etc/munge/munge.key node:/etc/munge/
+</code></pre>
+<blockquote>
+<p>注意： 有的系统 拷贝munge.key到计算节点后需要重新设置下计算节点的munge.key的权限 （ubuntu的 scp继承，centos不继承）</p>
+<pre><code>chown -R munge: /etc/munge/ /var/log/munge/ 
+chmod 0700 /etc/munge/ /var/log/munge/
+</code></pre>
+</blockquote>
+<p>开机自启服务</p>
+<pre><code class="language-shell">systemctl enable munge --now
+</code></pre>
+<h2 id="2-编译安装pmi">2. 编译安装pmi</h2>
+<p>openpmix项目主页 <a href="https://github.com/openpmix/openpmix/releases">Releases · openpmix/openpmix (github.com)</a></p>
+<p>下载bz2结尾的（一般bz2结尾的压缩包包含rpmbuild所需的信息）</p>
+<pre><code class="language-shell">wget https://dl.ghpig.top/https://github.com/openpmix/openpmix/releases/download/v5.0.1/pmix-5.0.1.tar.bz2
+</code></pre>
+<p>如果没有rpmbuild命令先安装下</p>
+<pre><code class="language-shell">yum install -y rpm-build 
+</code></pre>
+<p>构建时提示错误</p>
+<pre><code>error: Failed build dependencies:
+	gcc is needed by pmix-5.0.1-1.el7.x86_64
+	libevent-devel is needed by pmix-5.0.1-1.el7.x86_64
+	hwloc-devel is needed by pmix-5.0.1-1.el7.x86_64
+	python3-devel is needed by pmix-5.0.1-1.el7.x86_64
+</code></pre>
+<p>先安装它的依赖</p>
+<pre><code class="language-shell">yum install -y gcc gcc-c++ libevent-devel hwloc-devel python3-devel zlib-devel
+</code></pre>
+<p>然后构建</p>
+<pre><code class="language-shell">rpmbuild -ta pmix-5.0.1.tar.bz2
+</code></pre>
+<p>等待构建完成，安装构建好的rpm,默认目录在**~/rpmbuild/RPMS/x86_64/**</p>
+<pre><code class="language-shell">yum localinstall -y ~/rpmbuild/RPMS/x86_64/pmix-5.0.1-1.el7.x86_64.rpm
+</code></pre>
+<h2 id="3编译安装slurm">3.编译安装slurm</h2>
+<p>前往slurm官网 <a href="https://www.schedmd.com/downloads.php">https://www.schedmd.com/downloads.php</a></p>
+<p>选择较为稳定的版本下载 <a href="https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2">https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2</a></p>
+<pre><code>wget https://download.schedmd.com/slurm/slurm-22.05.8.tar.bz2
+</code></pre>
+<p>安装依赖</p>
+<pre><code class="language-shell">yum install -y openssl openssl-devel pam-devel numactl numactl-devel hwloc hwloc-devel lua lua-devel readline-devel rrdtool-devel ncurses-devel man2html libibmad libibumad  rng-tools mysql-devel http-parser-devel json-c-devel libjwt-devel libjwt cpanm* perl-Switch s-nail -y
+</code></pre>
+<p>构建slurm的rpm （带jwt /mysql /slurmrestd 功能）</p>
+<pre><code class="language-shell">rpmbuild -ta --with mysql --with slurmrestd --with jwt slurm-22.05.8.tar.bz2
+</code></pre>
+<p>安装rpm</p>
+<pre><code>cd /root/rpmbuild/RPMS/x86_64
+yum localinstall slurm* -y
+</code></pre>
+<h2 id="4配置数据库">4.配置数据库</h2>
+<p>管理节点&gt;</p>
+<pre><code class="language-shell">wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+rpm -ivh mysql80-community-release-el7-3.noarch.rpm
+yum install -y mysql-server
+</code></pre>
+<p>报错缺少key请执行</p>
+<pre><code>rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+</code></pre>
+<p>启动数据库服务,添加到开机自动启动项目</p>
+<pre><code class="language-shell">systemctl start mysqld &amp;&amp; systemctl enable mysqld
+</code></pre>
+<p>查看状态</p>
+<pre><code class="language-shell">systemctl status mysqld
+</code></pre>
+<p>查看初始密码</p>
+<pre><code>grep 'temporary password' /var/log/mysqld.log
+</code></pre>
+<p>初始化数据库</p>
+<pre><code class="language-shell">mysql_secure_installation
+</code></pre>
+<p>进入数据库</p>
+<pre><code class="language-shell">mysql -uroot -p
+</code></pre>
+<p>创建slurm用户，允许远程登录，密码为 ize2^&amp;*FzU6</p>
+<pre><code class="language-shell">CREATE USER 'slurm'@'%' IDENTIFIED BY 'ize2^&amp;*FzU6';
+FLUSH privileges;
+</code></pre>
+<p>建两张表，存放slurm信息，授予slurm用户对这两种表的所有权限</p>
+<blockquote>
+<pre><code class="language-shell">作业信息数据库slurm_jobcomp_db
+账户数据库slurm_acct_db
+</code></pre>
+</blockquote>
+<pre><code class="language-shell">CREATE DATABASE IF NOT EXISTS slurm_acct_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS slurm_jobcomp_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES on slurm_acct_db.* to 'slurm'@'%';
+GRANT ALL PRIVILEGES on slurm_jobcomp_db.* to 'slurm'@'%';
+FLUSH privileges;
+quit
+</code></pre>
+<p>如果slurm 连接数据库报错</p>
+<blockquote>
+<p>error: Database settings not recommended values: innodb_buffer_pool_size innodb_lock_wait_timeout</p>
+</blockquote>
+<p>编辑/etc/my.cnf:</p>
+<pre><code class="language-shell">[mysqld]
+innodb_buffer_pool_size=1024M
+innodb_log_file_size=64M
+innodb_lock_wait_timeout=900
+</code></pre>
+<p>重启mysql服务，问题解决</p>
+<pre><code class="language-shell">systemctl restart mysqld
+</code></pre>
+<h2 id="5配置时间同步服务">5.配置时间同步服务</h2>
+<p>master&gt;</p>
+<p>安装时间同步服务</p>
+<pre><code class="language-shell">yum install chrony -y
+</code></pre>
+<p>开机自启动</p>
+<pre><code class="language-shell">systemctl enable chronyd
+</code></pre>
+<p>添加<code>/etc/chrony.conf</code>,放行ip段</p>
+<pre><code class="language-shell">server 127.0.0.1  iburst      #只留这一个，服务端写本机ip
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+allow all  #允许那些网段
+local stratum 10
+logdir /var/log/chrony
+</code></pre>
+<p>重启服务</p>
+<pre><code class="language-shell">systemctl restart chronyd
+</code></pre>
+<p>client&gt;</p>
+<p>添加<code>/etc/chrony.conf</code>:</p>
+<pre><code class="language-shell">server master iburst
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+logdir /var/log/chrony
+</code></pre>
+<p>重启服务</p>
+<pre><code class="language-shell">systemctl restart chronyd
+</code></pre>
+<p>查看时间源</p>
+<pre><code class="language-shell">chronyc sources
+</code></pre>
+<p>服务端查看客户端</p>
+<pre><code class="language-shell">chronyc clients
+</code></pre>
+<h2 id="6配置slurm">6.配置slurm</h2>
+<h3 id="slurmdbd">slurmdbd</h3>
+<p><strong>/etc/slurm/slurmdbd.conf</strong>   :</p>
+<pre><code class="language-shell">AuthType=auth/munge
+AuthInfo=/var/run/munge/munge.socket.2
+#AuthAltTypes=auth/jwt
+#AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
+DbdHost=localhost
+DbdAddr=127.0.0.1
+SlurmUser=root
+MessageTimeout=60 
+DebugLevel=debug5 
+DefaultQOS=normal 
+LogFile=/var/log/slurm/slurmdbd.log 
+PidFile=/var/run/slurmdbd.pid 
+StorageType=accounting_storage/mysql 
+StorageHost=localhost
+StorageLoc=slurm_acct_db 
+StoragePort=3306
+StorageUser=slurm
+StoragePass=ize2^&amp;*FzU6
+</code></pre>
+<p>编辑完后赋予600权限</p>
+<h3 id="slurmctld--slurmd">slurmctld &amp; slurmd</h3>
+<p><strong>/etc/slurm/cgroup.conf</strong>   :</p>
+<pre><code class="language-shell">CgroupAutomount=yes 
+CgroupMountpoint=/sys/fs/cgroup 
+ConstrainCores=yes
+ConstrainDevices=yes
+ConstrainRAMSpace=yes
+</code></pre>
+<p><strong>/etc/slurm/slurm.conf</strong>   :</p>
+<pre><code class="language-shell">ClusterName=cool
+SlurmctldHost=master
+SlurmctldParameters=enable_configless #无配置模式
+SlurmUser=root
+SlurmctldPort=6817 
+SlurmdPort=6818   
+
+StateSaveLocation=/var/spool/slurmctld 
+SlurmdSpoolDir=/var/spool/slurmd 
+
+ReturnToService=1 
+MPIDefault=pmi2
+
+#AuthAltTypes=auth/jwt
+#AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
+
+ProctrackType=proctrack/cgroup
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core_Memory
+TaskPlugin=task/cgroup,task/affinity
+SlurmctldDebug=info 
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdDebug=info
+SlurmdLogFile=/var/log/slurm/slurmd.log
+
+JobCompType=jobcomp/mysql
+JobCompHost=localhost
+JobCompUser=slurm
+JobCompPass=ize2^&amp;*FzU6
+
+JobAcctGatherType=jobacct_gather/linux
+JobAcctGatherFrequency=30 
+AccountingStorageType=accounting_storage/slurmdbd 
+AccountingStorageHost=localhost
+SlurmctldPidFile=/var/run/slurmctld.pid 
+SlurmdPidFile=/var/run/slurmd.pid
+
+SlurmctldTimeout=120
+SlurmdTimeout=300
+InactiveLimit=0
+MinJobAge=300
+KillWait=30 
+WaitTime=0 
+
+NodeName=master CPUs=2 RealMemory=1837 Sockets=1 CoresPerSocket=2 ThreadsPerCore=1 State=UNKNOWN
+NodeName=node01 CPUs=2 RealMemory=1837 Sockets=1 CoresPerSocket=2 ThreadsPerCore=1 State=UNKNOWN
+
+PartitionName=master Nodes=master Default=YES MaxTime=INFINITE State=UP
+PartitionName=node01 Nodes=node01 Default=NO MaxTime=INFINITE State=UP
+</code></pre>
+<p>所有节点创建日志文件夹</p>
+<pre><code class="language-shell">mkdir /var/log/slurm/  /var/spool/slurmctld /var/spool/slurmd
+</code></pre>
+<p>gpu节点配置**/etc/slum/gres.conf**:</p>
+<pre><code class="language-yaml">Name=gpu Type=A800 File=/dev/nvidia[0-1]
+</code></pre>
+<blockquote>
+<p><strong>注意</strong> nvidia显卡设备文件在机器重启后会消失，需要运行<code>nvidia-smi</code>命令才会出现，可以运行 <code>nvidia-smi -pm 1 </code> 保持驱动为<strong>持久模式</strong>（长时间不用的显卡会进入电源休眠模式，有时候可能掉几张）</p>
+</blockquote>
+<h2 id="7启动slurm服务">7.启动slurm服务</h2>
+<p>按顺序先启动slurm数据库服务,并加入开机自动启动项目</p>
+<pre><code class="language-shell">systemctl start slurmdbd
+</code></pre>
+<p>查看状态：</p>
+<pre><code class="language-shell">systemctl status slurmdbd
+</code></pre>
+<p>如果有报错，根据报错和/var/log/slurm下的日志修复,修好重启再检查状态，以下服务同理</p>
+<pre><code class="language-shell">systemctl restart slurmdbd
+</code></pre>
+<p>再启动slurm控制服务</p>
+<pre><code class="language-shell">systemctl start slurmctld
+</code></pre>
+<p>再启动slurm受控服务</p>
+<pre><code class="language-shell">systemctl start slurmd
+</code></pre>
+<p>所有服务都正常后，加入开机启动项目</p>
+<pre><code class="language-shell">systemctl enable slurmdbd
+systemctl enable slurmctld
+systemctl enable slurmd
+</code></pre>
+<h3 id="无配置模式可选">无配置模式（可选）</h3>
+<p>计算节点 (提前配置好dns解析，这里master对应的是管理节点的ip)</p>
+<p>将上述munge服务安装并启动好，并拷贝/etc/munge/munge.key 到计算节点目录，还有其他mpi等依赖安装好后，启动slurmd服务（计算节点无配置模式）</p>
+<pre><code class="language-shell">slurmd --conf-server master:6817
+</code></pre>
+<p>通过上面启动slurmd方式 连接上控制节点后，计算节点会在/var/spool/slurmd/conf-cache 下生成slurm.conf cgroup.conf等配置文件</p>
+<p>测试</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163154617.png" alt="image-20241114163154617"></p>
+<h3 id="slurm禁止普通用户ssh计算节点">Slurm禁止普通用户SSH计算节点</h3>
+<p>确保系统中有这个库 pam_slurm_adopt.so，rpm安装时默认有这个库，源码安装 加上&ndash;enable-pam这个参数</p>
+<p>编辑SSHD的PAM配置文件/etc/pam.d/sshd，添加</p>
+<pre><code class="language-shell">account sufficient pam_listfile.so item=user sense=allow file=/etc/ssh/allowed_users onerr=fail
+account required pam_slurm_adopt.so
+</code></pre>
+<p>/etc/pam.d/system-auth和/etc/pam.d/password-auth中取消pam_localuser.so和pam_systemd.so所在行的注释</p>
+<p>确保/etc/ssh/sshd_config中UsePAM yes</p>
+<p><strong>/etc/ssh/allowed_users</strong> 里配置白名单用户</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163212218.png" alt="image-20241114163212218"></p>
+<p>slurm.conf配置文件中有这三个参数</p>
+<pre><code class="language-plaintext">PrologFlags=CONTAIN
+TaskPlugin=task/cgroup
+ProctrackType=proctrack/cgroup
+</code></pre>
+<blockquote>
+<p>注意：如果没有PrologFlags=CONTAIN 这项参数 则salloc后无法ssh计算节点</p>
+</blockquote>
+<p>cgruop.conf有这两个参数</p>
+<pre><code>CgroupAutomount=yes
+ConstrainCores=yes
+</code></pre>
+<p>重启计算节点sshd服务，即生效</p>
+<p>测试：</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163226902.png" alt="image-20241114163226902"></p>
+<p>直接ssh计算节点失败</p>
+<p>先salloc申请节点，再ssh成功</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163240910.png" alt="image-20241114163240910"></p>
+<h3 id="slurm-api-安装和配置">Slurm API 安装和配置</h3>
+<h4 id="编译">编译</h4>
+<p>编译时加上 &ndash;with slurmrestd 选项</p>
+<h4 id="配置">配置</h4>
+<pre><code class="language-shell">AuthAltTypes=auth/jwt
+AuthAltParameters=jwt_key=/etc/slurm/jwt_hs256.key
+</code></pre>
+<p>slurm.conf  slurmdbd.conf 添加上面两行</p>
+<p>禁止普通用生成令牌在slurm中添加</p>
+<pre><code class="language-shell">AuthAltParameters=disable_token_creation
+</code></pre>
+<h4 id="启动slurmrestd">启动slurmrestd</h4>
+<p>先随便声明一个SLURM_JWT变量</p>
+<pre><code>export SLURM_JWT=daemon
+</code></pre>
+<p>命令方式启动</p>
+<p>使用jnist01<strong>普通用户</strong>启动</p>
+<p>认证方式为<strong>rest_auth/jwt</strong></p>
+<p><strong>配置文件</strong>使用/etc/slurm/slurm.conf</p>
+<p><strong>路由地址</strong>0.0.0.0:8080</p>
+<pre><code class="language-shell">slurmrestd -vvv -u jnist01 -a rest_auth/jwt -f /etc/slurm/slurm.conf 0.0.0.0:8080
+</code></pre>
+<p><strong>scontrol</strong>命令获取token</p>
+<pre><code class="language-shell">[jnist01@master ~]$ scontrol token username=jnist01 lifespan=3600
+SLURM_JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODYxMjc5MzAsImlhdCI6MTY4NjEyNjEzMCwic3VuIjoiam5pc3QwMSJ9.ZvDbMDUNBv1RMGRwH7dGfHHelQzEXI5-oypyaa_8TLs
+</code></pre>
+<h4 id="测试">测试</h4>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163257118.png" alt="image-20241114163257118"></p>
+<p>headers里加上下面这两个参数 分别为刚才用scontrol命令生成的token和用户名</p>
+<p>X-SLURM-USER-TOKEN</p>
+<p>X-SLURM-USER-NAME</p>
+<h4 id="进阶systemd服务">进阶systemd服务</h4>
+<p>配置 <strong>/usr/lib/systemd/system/slurmrestd.service</strong>：</p>
+<pre><code class="language-shell">[Unit]
+Description=Slurm REST daemon
+After=network-online.target slurmctld.service
+Wants=network-online.target
+ConditionPathExists=/etc/slurm/slurm.conf
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/slurmrestd
+User=bit
+Group=bit
+ExecStart=/usr/sbin/slurmrestd $SLURMRESTD_OPTIONS 0.0.0.0:8080
+Environment=&quot;SLURM_JWT=$SLURM_JWT&quot;
+Environment=&quot;SLURM_CONF=$SLURM_CONF&quot;
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>这里用user group用普通用户bit</p>
+<p>配置 <strong>/etc/sysconfig/slurmrestd</strong>：</p>
+<pre><code class="language-shell">SLURMRESTD_DEBUG=4
+SLURM_CONF=/etc/slurm/slurm.conf
+SLURM_JWT=daemon
+SLURMRESTD_OPTIONS=-u bit -a rest_auth/jwt
+</code></pre>
+<p>启动</p>
+<pre><code>systemctl daemon-reload &amp;&amp; systemctl restart slurmrestd &amp;&amp; systemctl status slurmrestd
+</code></pre>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20241114163319423.png" alt="image-20241114163319423"></p>
+<h4 id="总结">总结</h4>
+<p>slurm无配置模式并不是一个配置文件也不写，而是指计算节点无需配置文件，若计算节点的机器规格不统一，则不建议使用此模式，这种模式适合计算节点机器规格统一的时候，无需systemd服务，所以也适合跑在容器里</p>
+<h2 id="8常见问题">8.常见问题</h2>
+<blockquote>
+<p>1.sinfo 显示节点STATE（状态）为darin 尝试运行下面的命令</p>
+<pre><code class="language-shell">scontrol update NodeName=node0 State=RESUME
+</code></pre>
+<p>2.sinfo 显示节点状态带*</p>
+<p>尝试在该节点重启slurmd服务</p>
+<pre><code class="language-shell">systemctl restart slurmd
+</code></pre>
+</blockquote>
+
+</article>
+
+                    
+                    
+                    
+
+                    
+
+
+
+                    
+  <div
+    class="-mx-2 mt-4 flex flex-col border-t px-2 pt-4 md:flex-row md:justify-between"
+  >
+    <div>
+      
+        <span class="text-primary-text block font-bold"
+          >上一页</span
+        >
+        <a href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/slurm/ubuntu%E9%83%A8%E7%BD%B2slurm%E5%8D%95%E8%8A%82%E7%82%B9/" class="block">Ubuntu部署slurm单节点</a>
+      
+    </div>
+    <div class="mt-4 md:mt-0 md:text-right">
+      
+    </div>
+  </div>
+
+
+                    
+
+
+
+  <script id="utterances" src="https://utteranc.es/client.js"
+            issue-term=pathname
+            repo=Bitllion/hugoblogtalks
+              theme=preferred-color-scheme
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+    if (storageColorScheme == "Light") {
+      document.getElementById('utterances').setAttribute('theme', 'github-light')
+    } else if (storageColorScheme == "Dark") {
+      document.getElementById('utterances').setAttribute('theme', 'github-dark')
+    }
+</script>
+
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1安装munge服务">1.安装munge服务</a></li>
+    <li><a href="#2-编译安装pmi">2. 编译安装pmi</a></li>
+    <li><a href="#3编译安装slurm">3.编译安装slurm</a></li>
+    <li><a href="#4配置数据库">4.配置数据库</a></li>
+    <li><a href="#5配置时间同步服务">5.配置时间同步服务</a></li>
+    <li><a href="#6配置slurm">6.配置slurm</a>
+      <ul>
+        <li><a href="#slurmdbd">slurmdbd</a></li>
+        <li><a href="#slurmctld--slurmd">slurmctld &amp; slurmd</a></li>
+      </ul>
+    </li>
+    <li><a href="#7启动slurm服务">7.启动slurm服务</a>
+      <ul>
+        <li><a href="#无配置模式可选">无配置模式（可选）</a></li>
+        <li><a href="#slurm禁止普通用户ssh计算节点">Slurm禁止普通用户SSH计算节点</a></li>
+        <li><a href="#slurm-api-安装和配置">Slurm API 安装和配置</a>
+          <ul>
+            <li><a href="#编译">编译</a></li>
+            <li><a href="#配置">配置</a></li>
+            <li><a href="#启动slurmrestd">启动slurmrestd</a></li>
+            <li><a href="#测试">测试</a></li>
+            <li><a href="#进阶systemd服务">进阶systemd服务</a></li>
+            <li><a href="#总结">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#8常见问题">8.常见问题</a></li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        hljs.highlightAll();
+        changeSidebarHeight();
+        switchDocToc();
+    })
+</script>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      
+    </main>
+    <footer class="pl-scrollbar">
+      <div class="mx-auto w-full max-w-screen-xl"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text"> Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>存储 on 一言</title>
+    <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/</link>
+    <description>Recent content in 存储 on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 May 2024 14:44:45 +0800</lastBuildDate><atom:link href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lvm实战</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lvm%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Fri, 10 Nov 2023 16:40:43 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E5%AD%98%E5%82%A8/lvm%E5%AE%9E%E6%88%98/</guid>
+      <description>案例 将lvm home分区 空间分给lvm 根分区 1.</description>
+    </item>
+    
+  </channel>
+</rss>

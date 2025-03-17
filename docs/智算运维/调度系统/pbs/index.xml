@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pbs on 一言</title>
+    <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/</link>
+    <description>Recent content in Pbs on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 May 2024 14:36:39 +0800</lastBuildDate><atom:link href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu安装openpbs</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/ubuntu%E5%AE%89%E8%A3%85openpbs/</link>
+      <pubDate>Thu, 26 Dec 2024 14:33:09 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/ubuntu%E5%AE%89%E8%A3%85openpbs/</guid>
+      <description>1.安装依赖
+apt install -y gcc make libtool libhwloc-dev libx11-dev libxt-dev libedit-dev libical-dev ncurses-dev perl postgresql-server-dev-all postgresql-contrib python3-dev tcl-dev tk-dev swig libexpat-dev libssl-dev libxext-dev libxft-dev autoconf automake g++ libcjson-dev expat libedit2 postgresql python3 postgresql-contrib sendmail-bin tcl tk libical3 postgresql-server-dev-all libpmix-dev libpmix-bin libpmix22.</description>
+    </item>
+    
+    <item>
+      <title>Centos7安装pbs</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/centos7%E5%AE%89%E8%A3%85pbs/</link>
+      <pubDate>Sat, 16 Dec 2023 15:27:41 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/pbs/centos7%E5%AE%89%E8%A3%85pbs/</guid>
+      <description>机器配置
+主机名 ip master 192.</description>
+    </item>
+    
+  </channel>
+</rss>

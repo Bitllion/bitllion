@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GPU on 一言</title>
+    <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/</link>
+    <description>Recent content in GPU on 一言</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 22 May 2024 15:44:48 +0800</lastBuildDate><atom:link href="/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>多机nccl Tests测试</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Tue, 02 Jul 2024 16:04:28 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/%E5%A4%9A%E6%9C%BAnccl-tests%E6%B5%8B%E8%AF%95/</guid>
+      <description>系统已经预先安装了nvidia driver 550.</description>
+    </item>
+    
+    <item>
+      <title>Gpu资源测试通用报告</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/</link>
+      <pubDate>Tue, 09 Jan 2024 15:41:53 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/gpu%E8%B5%84%E6%BA%90%E6%B5%8B%E8%AF%95%E9%80%9A%E7%94%A8%E6%8A%A5%E5%91%8A/</guid>
+      <description>一、通用计算性能测试 1.测试目的 验证 CUDA ⼯具包是否可以正确安装和配置</description>
+    </item>
+    
+    <item>
+      <title>Nvidia显卡驱动安装</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 25 May 2023 10:55:58 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</guid>
+      <description>nvidia driver 安装 进入nvidia驱动下载页面，下载合适的驱动Official Advanced Driver Search | NVIDIA</description>
+    </item>
+    
+    <item>
+      <title>Nvidia常见问题及解决办法</title>
+      <link>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <pubDate>Tue, 26 Nov 2024 15:16:29 +0800</pubDate>
+      
+      <guid>/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/gpu/nvidia%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <description>GPU ECC 问题处理 1.</description>
+    </item>
+    
+  </channel>
+</rss>
