@@ -75,7 +75,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_huffaf4145a3e4a325d53a2947ed7b6f87_11450_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="Eureka is a elegant and powerful theme for Hugo.">
+  content="什么是GPU GPU（图形处理器）‌ 是专门设计用于加速图形渲染和高性能并行计算的处理器。它与CPU（中央处理器）在设计目标和应用场景上有显著区别">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +102,8 @@
         "@type": "WebPage",
         "@id": "/docs/%E6%99%BA%E7%AE%97%E8%BF%90%E7%BB%B4/"
     },
-    "headline": "智算运维 | 一言","publisher": {
+    "headline": "智算运维 | 一言","wordCount":  545 ,
+    "publisher": {
         "@type": "Person",
         "name": "WANG Chucheng",
         "logo": {
@@ -110,7 +111,7 @@
             "url": "/images/icon.png"
         }
         },
-    "description": "Eureka is a elegant and powerful theme for Hugo."
+    "description": "什么是GPU GPU（图形处理器）‌ 是专门设计用于加速图形渲染和高性能并行计算的处理器。它与CPU（中央处理器）在设计目标和应用场景上有显著区别"
 }
 </script><meta property="og:title" content="智算运维 | 一言" />
 <meta property="og:type" content="website" />
@@ -878,7 +879,7 @@
   </div>
   <div class="me-6 my-2">
     <i class="fas fa-clock me-1"></i>
-    <span>0分钟阅读时长</span>
+    <span>3分钟阅读时长</span>
   </div>
 
   
@@ -890,7 +891,411 @@
   
   
 
-  
+  <h2 id="什么是gpu">什么是GPU</h2>
+<p>GPU（图形处理器）‌ 是专门设计用于加速图形渲染和高性能并行计算的处理器。它与CPU（中央处理器）在设计目标和应用场景上有显著区别</p>
+<h3 id="cpu-vs-gpu">CPU vs GPU</h3>
+<h3 id="区别">区别</h3>
+<table>
+<thead>
+<tr>
+<th>‌特性‌</th>
+<th>‌CPU‌</th>
+<th>‌GPU‌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‌核心数量‌</td>
+<td>少</td>
+<td>多</td>
+</tr>
+<tr>
+<td>‌核心复杂度‌</td>
+<td>复杂（单核性能强）</td>
+<td>简单（单核功能精简）</td>
+</tr>
+<tr>
+<td>‌并行能力‌</td>
+<td>弱（适合顺序处理）</td>
+<td>极强（适合大规模并行）</td>
+</tr>
+<tr>
+<td>‌延迟敏感度‌</td>
+<td>低延迟优先</td>
+<td>高吞吐优先</td>
+</tr>
+<tr>
+<td>‌典型用途‌</td>
+<td>操作系统、日常应用</td>
+<td>游戏、AI训练、3D渲染</td>
+</tr>
+</tbody>
+</table>
+<h3 id="架构图">架构图</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250317173003185.png" alt="image-20250317173003185"></p>
+<h2 id="什么是smcuda-coretensor-core">什么是SM、CUDA Core、Tensor Core?</h2>
+<p>以GH100为例</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318185433466.png" alt="image-20250318185433466"></p>
+<h3 id="gh100-架构图">GH100 架构图</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318185508358.png" alt="image-20250318185508358"></p>
+<h3 id="sm架构图">SM架构图</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318185540976.png" alt="image-20250318185540976"></p>
+<h3 id="定义">定义</h3>
+<ol>
+<li>
+<p>GPC（Graphics Processing Cluster）</p>
+<ul>
+<li>定义：GPC是NVIDIA GPU架构中的一个较大的计算单元。一个GPU通常由多个GPC组成。GPC是图形处理核心的集合，负责图形渲染的多种任务。</li>
+<li>作用：GPC负责大范围的图形渲染任务，支持多个流处理单元的并行计算。它包含了许多资源来处理并行工作负载，提供了强大的图形处理能力。</li>
+</ul>
+</li>
+<li>
+<p>TPC（Texture Processing Cluster）</p>
+<ul>
+<li>
+<p>定义：TPC是GPU中的一个子模块，它负责纹理处理和其他相关计算工作。每个GPC包含多个TPC。</p>
+</li>
+<li>
+<p>作用：TPC用于管理着色器和纹理相关的计算操作，尤其在处理复杂的图像渲染时起着关键作用。它负责通过纹理单元对数据进行操作。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>SM（Streaming Multiprocessor）</p>
+<ul>
+<li>定义：SM是NVIDIA GPU架构中的核心计算单元，负责处理CUDA线程。一个GPC包含多个SM。作用：每个SM拥有一组CUDA核心，能够处理并行计算任务。SM是GPU执行并行计算的基本单位，控制着程序的执行，管理线程调度和内存访问。</li>
+</ul>
+</li>
+<li>
+<p>Tensor Core</p>
+<ul>
+<li>定义：Tensor Core是NVIDIA GPU中用于加速矩阵运算（特别是在深度学习和AI计算中）的硬件单元。</li>
+<li>作用：Tensor Core专门用于加速深度学习中的矩阵乘法、卷积操作等，特别适用于训练和推理中的高效计算，支持混合精度计算（如FP16和INT8）。它大幅度提高了神经网络等算法的计算效率。</li>
+</ul>
+</li>
+<li>
+<p>CUDA Core</p>
+<ul>
+<li>定义：CUDA Core是GPU中的基本计算单元。每个CUDA Core执行一个线程，可以进行简单的计算任务（例如加法、乘法等）。</li>
+<li>作用：CUDA Core主要用于处理并行计算任务，它们是GPU的核心计算单元，能够执行图形渲染和通用计算（GPGPU）。每个SM内部都有多个CUDA Core，SM的数量直接影响GPU的并行计算能力。</li>
+</ul>
+</li>
+</ol>
+<h3 id="层级关系">层级关系</h3>
+<ul>
+<li>GPU：最顶层，是整个图形处理单元，负责图形渲染和计算任务。</li>
+<li>GPC：GPU由多个GPC组成，每个GPC处理图形渲染的大部分任务。</li>
+<li>TPC：每个GPC包含多个TPC，负责纹理处理等更细化的任务。</li>
+<li>SM：每个TPC包含多个SM，SM是实际执行计算的单元。</li>
+<li>CUDA Core：每个SM包含多个CUDA Core，CUDA Core是最基础的计算单元。</li>
+<li>Tensor Core：Tensor Core不是每个CUDA Core的一部分，而是存在于SM内部，专门用于加速深度学习任务。</li>
+</ul>
+<h2 id="为什么ai训练会选择gpu">为什么AI训练会选择GPU？</h2>
+<h3 id="1-并行计算架构simd-vs-多线程">1. 并行计算架构：SIMD vs. 多线程</h3>
+<ul>
+<li>‌CPU架构（多线程 + 复杂控制逻辑）
+<ul>
+<li>‌核心设计：CPU核心数量少（通常4-16核），但每个核心高度复杂，支持分支预测、乱序执行等逻辑，适合处理串行任务和复杂控制流。</li>
+<li>‌延迟优化：通过多级缓存（L1/L2/L3）降低单线程延迟，但对大规模并行任务效率低。</li>
+</ul>
+</li>
+<li>‌GPU架构（SIMD + 高吞吐）
+<ul>
+<li>‌核心设计：GPU包含数千个精简核心（如NVIDIA A100有6912 CUDA核心），采用‌单指令多数据（SIMD）模式，所有核心同步执行相同指令，但处理不同数据。</li>
+<li>‌吞吐优化：通过牺牲单线程性能换取高吞吐量，适合处理‌海量同质化任务（如矩阵乘法）。</li>
+</ul>
+</li>
+</ul>
+<p>‌AI训练需求：神经网络训练的核心是‌大规模矩阵运算（如卷积、矩阵乘法），这些运算可分解为大量独立的并行子任务，GPU的SIMD架构能同时处理数万个并行操作，效率远超CPU。</p>
+<h3 id="2-内存带宽与数据吞吐">2. 内存带宽与数据吞吐</h3>
+<ul>
+<li>‌CPU内存瓶颈
+<ul>
+<li>CPU依赖DDR内存（带宽约50-100 GB/s），且需要频繁通过总线与外部设备（如显卡）交换数据，延迟高。</li>
+<li>复杂的缓存机制在数据密集型任务中易导致缓存未命中（Cache Miss）。</li>
+</ul>
+</li>
+<li>‌GPU显存优势
+<ul>
+<li>GPU配备高带宽显存（如HBM2e，带宽达1.5-3 TB/s），是CPU的30倍以上，能快速读写神经网络参数和输入数据。</li>
+<li>‌数据本地性：显存直接与计算核心相连，减少数据传输延迟。</li>
+</ul>
+</li>
+</ul>
+<p>‌AI训练需求：训练深度网络需要加载数GB的数据集，并在每次迭代中更新数百万至数十亿参数，GPU的高带宽显存显著减少了数据搬运时间。</p>
+<h3 id="3-专用计算单元tensor-core与混合精度">3. 专用计算单元：Tensor Core与混合精度</h3>
+<ul>
+<li>‌CPU通用性限制
+CPU的浮点运算单元（FPU）虽然精度高，但缺乏针对AI计算的优化，难以高效执行低精度（FP16/INT8）运算。</li>
+<li>‌GPU专用加速器
+<ul>
+<li>‌Tensor Core（NVIDIA）或‌Matrix Core（AMD）：专为矩阵乘法设计的硬件单元，支持混合精度（FP16/FP32）和稀疏计算，加速速度可达传统CUDA核心的10倍。</li>
+<li>‌低精度计算：AI训练可通过降低数值精度（如FP16）减少计算量，同时GPU能保持高吞吐。</li>
+</ul>
+</li>
+</ul>
+<p>‌AI训练需求：混合精度训练（如FP16+FP32）已成为主流，Tensor Core可大幅提升训练速度（如ResNet-50训练时间从几天缩短到几小时）。</p>
+<h3 id="4-大规模并行与批处理batch-processing">4. 大规模并行与批处理（Batch Processing）</h3>
+<ul>
+<li>‌CPU的串行瓶颈
+即使使用多线程，CPU也难以同时处理超过物理核心数量（如16核）的任务，而AI训练需要同时处理数百至数千个样本（Batch）。</li>
+<li>‌GPU的批处理优化
+<ul>
+<li>GPU可通过‌数据并行（Data Parallelism）同时处理大批量样本（如Batch Size=1024），每个核心处理不同样本的子任务。</li>
+<li>结合‌模型并行（Model Parallelism），可将大型网络拆分到多个GPU上运行。</li>
+</ul>
+</li>
+</ul>
+<p>‌AI训练需求：批量梯度下降（Batch Gradient Descent）要求同时计算大批量数据的梯度，GPU的并行架构天然适配此需求。</p>
+<h3 id="5-软件生态支持">5. 软件生态支持</h3>
+<ul>
+<li>‌CUDA与计算库
+NVIDIA的CUDA平台和cuDNN、cuBLAS等加速库，为AI框架（如PyTorch、TensorFlow）提供了底层优化，直接调用GPU硬件资源。</li>
+<li>‌自动并行化
+现代AI框架能自动将计算图分解为并行任务，无需开发者手动管理线程。</li>
+</ul>
+<h3 id="矩阵乘法代码对比示例">矩阵乘法代码对比示例</h3>
+<pre><code class="language-python">import time
+import numpy as np
+import torch
+
+# 设置矩阵大小 (增大矩阵尺寸以突出GPU优势)
+size = 10000  # 10,000 x 10,000 矩阵
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# 使用NumPy生成CPU数据 (CPU版本)
+def cpu_calculation():
+    a = np.random.rand(size, size)
+    b = np.random.rand(size, size)
+    start = time.time()
+    np.dot(a, b)
+    cpu_time = time.time() - start
+    return cpu_time
+
+# 使用PyTorch生成GPU数据 (GPU版本)
+def gpu_calculation():
+    a = torch.rand(size, size, device=device)
+    b = torch.rand(size, size, device=device)
+
+    # 同步确保准确计时
+    if device == 'cuda':
+        torch.cuda.synchronize()
+
+    start = time.time()
+    torch.matmul(a, b)
+
+    if device == 'cuda':
+        torch.cuda.synchronize()
+
+    gpu_time = time.time() - start
+    return gpu_time
+
+# 运行测试
+cpu_time = cpu_calculation()
+print(f'CPU 计算时间: {cpu_time:.4f} 秒')
+
+gpu_time = gpu_calculation()
+print(f'GPU 计算时间: {gpu_time:.4f} 秒')
+
+# 性能对比
+speedup = cpu_time / gpu_time
+print(f'GPU 比 CPU 快 {speedup:.1f} 倍')
+</code></pre>
+<p>在Google的colab 免费T4实例下运行：</p>
+<pre><code>CPU 计算时间: 39.8329 秒
+GPU 计算时间: 0.6391 秒
+GPU 比 CPU 快 62.3 倍
+</code></pre>
+<h2 id="为什么大模型预训练更青睐h100集群">为什么大模型预训练更青睐H100集群？</h2>
+<h3 id="4090-vs-h100">4090 VS H100</h3>
+<p>明显4090性价比更高嘛</p>
+<table>
+<thead>
+<tr>
+<th>‌参数项‌</th>
+<th>‌RTX 4090‌</th>
+<th>‌H100‌</th>
+<th>关键差异说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‌架构‌</td>
+<td>Ada Lovelace</td>
+<td>Hopper</td>
+<td>H100采用新一代计算优化架构‌</td>
+</tr>
+<tr>
+<td>‌制程工艺‌</td>
+<td>TSMC 4N</td>
+<td>TSMC 4N</td>
+<td>相同制程节点‌</td>
+</tr>
+<tr>
+<td>‌CUDA Core数量‌</td>
+<td>16,384</td>
+<td>14,592</td>
+<td>4090物理核心更多‌</td>
+</tr>
+<tr>
+<td>‌Tensor Core数量‌</td>
+<td>512（第四代）</td>
+<td>456（第四代）</td>
+<td>支持稀疏计算加速‌</td>
+</tr>
+<tr>
+<td>‌SM数量‌</td>
+<td>128</td>
+<td>114</td>
+<td>直接影响并行计算单元密度‌</td>
+</tr>
+<tr>
+<td>‌GPC数量‌</td>
+<td>11</td>
+<td>8</td>
+<td>架构分组策略不同‌</td>
+</tr>
+<tr>
+<td>‌FP32峰值算力‌</td>
+<td>82.6 TFLOPs</td>
+<td>67.9 TFLOPs</td>
+<td>4090基础浮点性能更高‌</td>
+</tr>
+<tr>
+<td>‌FP16 Tensor算力‌</td>
+<td>1,321 TFLOPs</td>
+<td>1,979 TFLOPS</td>
+<td>H100专用AI计算优势显著‌</td>
+</tr>
+<tr>
+<td>‌TF32 Tensor算力‌</td>
+<td>660 TFLOPs</td>
+<td>989 TFLOPs</td>
+<td>H100稀疏计算优化‌</td>
+</tr>
+<tr>
+<td>‌显存容量‌</td>
+<td>24GB GDDR6X</td>
+<td>80GB HBM3</td>
+<td>H100显存容量翻3倍以上‌</td>
+</tr>
+<tr>
+<td>‌显存带宽‌</td>
+<td>1,008 GB/s</td>
+<td>3,350 GB/s</td>
+<td>H100带宽超3倍‌</td>
+</tr>
+<tr>
+<td>‌互联带宽‌</td>
+<td>PCIe 4.0 x16 / 可选NVLink双卡</td>
+<td>NVLink 4.0（900 GB/s）</td>
+<td>H100多卡扩展性更强‌</td>
+</tr>
+</tbody>
+</table>
+<h3 id="解释">解释</h3>
+<ol>
+<li>专为AI和深度学习优化</li>
+</ol>
+<ul>
+<li>H100 采用 Hopper 架构，专为 高效的AI训练和推理 设计，集成了 Tensor Core 和 Transformer Engine，这些专用硬件单元极大地加速了大规模深度学习模型的训练，特别是在矩阵运算和高效处理大规模神经网络时，表现远超过</li>
+<li>RTX 4090。Tensor Core 和 Transformer Engine 在H100中进行了深度优化，能高效地执行 混合精度运算（如FP16和TF32）和 大规模矩阵乘法，这些是大模型训练中至关重要的操作。
+2.更大的显存与带宽</li>
+<li>H100 配备了 80GB HBM3显存，并拥有极高的内存带宽（2,000 GB/s）。对于大模型训练，尤其是 NLP模型 和 计算密集型任务，GPU的显存容量和带宽是非常关键的。大规模训练任务需要处理 巨量数据，这些数据必须能在GPU内存中高效存取和处理。</li>
+<li>RTX 4090 配备了 24GB GDDR6X显存，显存虽然大，但与H100相比仍然存在差距，尤其在需要大批量数据的深度学习训练中，显存和带宽的限制会影响整体性能。</li>
+</ul>
+<ol start="3">
+<li>高并发与数据中心优化</li>
+</ol>
+<ul>
+<li>H100 支持 高并发任务处理，并且非常适合与多个 H100集群 搭配使用，以进行 分布式训练。大规模的AI训练往往需要多个GPU协同工作，H100在多个GPU之间的调度和协同工作方面进行了优化，适合企业级的数据中心。</li>
+<li>RTX 4090 更适合个人使用或者中小规模的计算任务，它虽然有强大的图形和AI加速能力，但在 大规模集群 上的扩展性和协调性不如H100。</li>
+</ul>
+<ol start="4">
+<li>计算密集型工作负载的优化</li>
+</ol>
+<ul>
+<li>H100 采用了最新的 HBM3显存技术 和 支持高效AI推理，使其在训练 超大规模深度学习模型（如 GPT、BERT 等模型）时表现出色。其高带宽内存、大量的 Tensor Cores、以及 改进的矩阵乘法加速，都能显著提升模型训练效率。</li>
+<li>RTX 4090 虽然在某些单机负载下表现非常强劲，但相比H100，其 AI训练能力 仍然受限于显存大小、内存带宽和优化算法等方面。</li>
+</ul>
+<ol start="5">
+<li>功耗与散热</li>
+</ol>
+<ul>
+<li>H100 的功耗（约700W）虽然较高，但它是为大规模AI训练任务设计的，能够通过多GPU集群扩展处理能力，适合数据中心和高性能计算需求。</li>
+<li>RTX 4090 虽然功耗相对较低（450W），但它更多是为 游戏 和 创作者 等使用场景优化，不能在大规模并行计算和集群计算中发挥最佳效能。</li>
+</ul>
+<ol start="6">
+<li>数据中心和分布式训练</li>
+</ol>
+<ul>
+<li>H100 支持 NVIDIA NVLink 和 PCIe 5.0，适合在数据中心的 集群环境中使用，并且能够支持更复杂的分布式训练架构。</li>
+<li>大模型的训练往往需要 多卡并行训练，并且需要 高带宽、低延迟的通信 来确保数据在多个GPU之间的快速交换，而 H100 的设计更加适合这种场景。</li>
+</ul>
+<h2 id="gpu通信技术">GPU通信技术</h2>
+<p>标准冯诺依曼架构，需要经过PCIE SWITCH、 CPU 、内存</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/1.gif" alt="1"></p>
+<h3 id="p2p技术">P2P技术</h3>
+<h4 id="定义-1">定义</h4>
+<p>P2P（Peer-to-Peer）技术是指一种网络架构，其中每个设备（或节点）都可以直接与其他设备进行通信，而无需经过中心化的服务器或中介。这种技术的核心特点是去中心化，所有参与者在网络中都具有对等的地位，可以互相交换资源或信息</p>
+<h4 id="应用">应用</h4>
+<p>文件共享：BitTorrent：是最著名的P2P文件共享协议之一。用户可以通过P2P技术直接从其他用户的设备上下载文件，而不是从一个中心化的服务器下载。这使得大文件的分发更加高效。</p>
+<p>加密货币（如比特币）：比特币和其他加密货币使用P2P技术来验证交易和管理账本。用户之间可以直接进行交易，而不需要依赖中央银行或金融机构。</p>
+<p>视频通话和语音通信：Skype、Zoom等视频通话应用在早期使用了P2P技术来建立直接的通信链路，减少延迟并提高通话质量。虽然现在许多平台已经转向更复杂的服务器架构，但P2P依然在一些应用中使用。</p>
+<p>去中心化存储：一些基于P2P的存储平台，如IPFS（InterPlanetary File System），通过将文件分散存储在多个节点上，而不是集中在一个数据中心，提供更加去中心化、安全的存储方式。</p>
+<p>共享经济：共享单车、共享住宿等共享经济平台，在某种程度上也使用P2P技术，使得物品或服务直接在用户之间交换，减少了中介的费用和复杂性。</p>
+<p>流媒体和在线游戏：一些在线游戏和流媒体平台，特别是那些需要高效资源分配的应用，利用P2P技术来分担服务器的负担，实现更平稳的用户体验。例如，某些在线多人游戏会采用P2P方式来减少延迟和提高数据传输速度。</p>
+<h3 id="pcie设备拓扑图">PCIe设备拓扑图</h3>
+<p>lstopo命令（hwloc包）</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318190727189.png" alt="image-20250318190727189"></p>
+<h3 id="gpu-的p2p应用">GPU 的p2p应用</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/2.gif" alt="2"></p>
+<p>GPUDirect Peer-to-Peer(P2P) 技术主要用于单机GPU间的高速通信，它使得GPU可以通过PCI Express直接访问目标GPU的显存，避免了通过拷贝到CPU host memory作为中转，大大降低了数据交换的延迟。</p>
+<h3 id="gpu-p2p测试">gpu p2p测试</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318190837173.png" alt="image-20250318190837173"></p>
+<h2 id="什么是nvlink">什么是NvLink?</h2>
+<p>通过GPUDirect P2P技术可以大大提升GPU服务器单机的GPU通信性能，但是受限于PCI Expresss总线协议以及拓扑结构的一些限制，无法做到更高的带宽，为了解决这个问题，NVIDIA提出了NVLink<strong>总线协议</strong></p>
+<h3 id="发展">发展</h3>
+<p>NVLink控制器由3层组成，即物理层（PHY）、数据链路层（DL）以及交易层（TL）。下图展示了P100（16年发布） NVLink 1.0的各层和链路：</p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191138664.png" alt="image-20250318191138664" style="zoom:50%;" />
+<p>下图是HGX-1/DGX-1使用的8个V100（17年发布）的混合立方网格拓扑结构，我们看到虽然V100有6个NVlink通道，但是实际上因为无法做到全连接，2个GPU间最多只能有2个NVLink通道100G/s的双向带宽，而GPU与CPU间通信仍然使用PCIe总线，CPU间通信使用QPI总线。仍存在一定局限性。</p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191151154.png" alt="image-20250318191151154" style="zoom:50%;" />
+<h2 id="什么是nvswitch">什么是NVSwitch?</h2>
+<p>为了解决混合立方网格拓扑结构的问题，NVIDIA在今GTC 2018上发布了NVSwitch。类似于PCIe使用PCIe Switch用于拓扑的扩展，NVIDIA使用NVSwitch实现了NVLink的全连接。NVSwitch作为首款节点交换架构，可支持单个服务器节点中 16 个全互联的 GPU，并可使全部 8 个 GPU 对分别以 300 GB/s 的惊人速度进行同时通信。这 16 个全互联的 GPU （32G显存V100）还可作为单个大型加速器，拥有 0.5 TB 统一显存空间和 2 PetaFLOPS 计算性能。</p>
+<h3 id="pcie版">PCIE版</h3>
+<p>两块GPU相连的黑色方块板子,初级的NVlink桥接器</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250317174451469.png" alt="image-20250317174451469"></p>
+<h3 id="sxm接口版">SXM接口版</h3>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250317175721373.png" alt="image-20250317175721373"></p>
+<p>最下方六个绿色基板的就是nvswtich芯片</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250317175649517.png" alt=" 	"></p>
+<h3 id="发展-1">发展</h3>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191307028.png" alt="image-20250318191307028" style="zoom: 67%;" />
+<h3 id="h100-全互联">H100 全互联</h3>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191335542.png" alt="image-20250318191335542" style="zoom:50%;" />
+<h2 id="gpudirect-rdma">GPUDirect RDMA</h2>
+<h3 id="历史背景">历史背景</h3>
+<p>GPUDirect P2P和NVLink技术可以大大提升GPU服务器单机的GPU通信性能，当前深度学习模型越来越复杂，计算数据量暴增，对于大规模深度学习训练任务，单机已经无法满足计算要求，多机多卡的分布式训练成为了必要的需求，这个时候多机间的通信成为了分布式训练性能的重要指标。</p>
+<h3 id="什么是dma">什么是DMA</h3>
+<p>DMA（Direct Memory Access，直接内存访问） 是直接内存访问(DMA)方式，是一种完全由硬件执行I/O交换的工作方式。在这种方式中， DMA控制器从CPU完全接管对总线的控制，数据交换不经过CPU，而直接在内存和IO设备之间进行。DMA工作时，由DMA 控制器向内存发出地址和控制信号，进行地址修改，对传送字的个数计数，并且以中断方式向CPU 报告传送操作的结束。使用DMA方式的目的是减少大批量数据传输时CPU 的开销。采用专用DMA控制器(DMAC) 生成访存地址并控制访存过程。优点有操作均由硬件电路实现，传输速度快；CPU 基本不干预，仅在初始化和结束时参与，CPU与外设并行工作，效率高</p>
+<h4 id="日常应用">日常应用</h4>
+<p>硬盘和SSD：硬盘和固态硬盘通常使用DMA来高效地读写数据，避免CPU参与每次读写操作，从而提高磁盘的访问速度。</p>
+<p>网络卡和网卡驱动：在网络数据传输时，网络适配器通过DMA技术将网络数据直接传输到内存，减少了CPU的处理负担，提升了网络吞吐量。</p>
+<p>音频和视频设备：音频和视频处理器使用DMA将音频和视频数据直接传输到内存，或从内存中传输到输出设备，保证实时性和流畅性。</p>
+<p>FPGA游戏外挂</p>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191622332.png" alt="image-20250318191622332"></p>
+<h3 id="rdma">RDMA</h3>
+<p>RDMA则是在计算机之间网络数据传输时Offload CPU负载的高吞吐、低延时通信技术。</p>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191648417.png" alt="image-20250318191648417" style="zoom: 67%;" />
+<p>RDMA可以简单理解为利用相关的硬件和网络技术，服务器1的网卡可以直接读写服务器2的内存，最终达到高带宽、低延迟和低资源利用率的效果</p>
+<h4 id="常见模块">常见模块</h4>
+<p><img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191721699.png" alt="image-20250318191721699"></p>
+<h3 id="rdma实现">RDMA实现</h3>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191756102.png" alt="image-20250318191756102" style="zoom:67%;" />
+<p>目前RDMA的实现方式主要分为InfiniBand和Ethernet两种传输网络。而在以太网上，又可以根据与以太网融合的协议栈的差异分为iWARP和RoCE（包括RoCEv1和RoCEv2）</p>
+<h4 id="rdma在gpu多机互联的应用">RDMA在GPU多机互联的应用</h4>
+<img src="https://pan.bitllion.top:88/d/publicImg/image-20250318191840960.png" alt="image-20250318191840960" style="zoom:50%;" />
+
 </article>
 
                     
@@ -922,6 +1327,111 @@
     }
 </script>
 
+                </div>
+                
+                <div class="hidden lg:block lg:w-1/4">
+                    
+                    <div
+  class="
+    bg-secondary-bg
+   prose sticky top-16 z-10 hidden px-6 py-4 lg:block"
+>
+  <h3>本页内容</h3>
+</div>
+<div
+  class="sticky-toc 
+    border-s
+   hidden px-6 pb-6 lg:block"
+>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是gpu">什么是GPU</a>
+      <ul>
+        <li><a href="#cpu-vs-gpu">CPU vs GPU</a></li>
+        <li><a href="#区别">区别</a></li>
+        <li><a href="#架构图">架构图</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么是smcuda-coretensor-core">什么是SM、CUDA Core、Tensor Core?</a>
+      <ul>
+        <li><a href="#gh100-架构图">GH100 架构图</a></li>
+        <li><a href="#sm架构图">SM架构图</a></li>
+        <li><a href="#定义">定义</a></li>
+        <li><a href="#层级关系">层级关系</a></li>
+      </ul>
+    </li>
+    <li><a href="#为什么ai训练会选择gpu">为什么AI训练会选择GPU？</a>
+      <ul>
+        <li><a href="#1-并行计算架构simd-vs-多线程">1. 并行计算架构：SIMD vs. 多线程</a></li>
+        <li><a href="#2-内存带宽与数据吞吐">2. 内存带宽与数据吞吐</a></li>
+        <li><a href="#3-专用计算单元tensor-core与混合精度">3. 专用计算单元：Tensor Core与混合精度</a></li>
+        <li><a href="#4-大规模并行与批处理batch-processing">4. 大规模并行与批处理（Batch Processing）</a></li>
+        <li><a href="#5-软件生态支持">5. 软件生态支持</a></li>
+        <li><a href="#矩阵乘法代码对比示例">矩阵乘法代码对比示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#为什么大模型预训练更青睐h100集群">为什么大模型预训练更青睐H100集群？</a>
+      <ul>
+        <li><a href="#4090-vs-h100">4090 VS H100</a></li>
+        <li><a href="#解释">解释</a></li>
+      </ul>
+    </li>
+    <li><a href="#gpu通信技术">GPU通信技术</a>
+      <ul>
+        <li><a href="#p2p技术">P2P技术</a>
+          <ul>
+            <li><a href="#定义-1">定义</a></li>
+            <li><a href="#应用">应用</a></li>
+          </ul>
+        </li>
+        <li><a href="#pcie设备拓扑图">PCIe设备拓扑图</a></li>
+        <li><a href="#gpu-的p2p应用">GPU 的p2p应用</a></li>
+        <li><a href="#gpu-p2p测试">gpu p2p测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么是nvlink">什么是NvLink?</a>
+      <ul>
+        <li><a href="#发展">发展</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么是nvswitch">什么是NVSwitch?</a>
+      <ul>
+        <li><a href="#pcie版">PCIE版</a></li>
+        <li><a href="#sxm接口版">SXM接口版</a></li>
+        <li><a href="#发展-1">发展</a></li>
+        <li><a href="#h100-全互联">H100 全互联</a></li>
+      </ul>
+    </li>
+    <li><a href="#gpudirect-rdma">GPUDirect RDMA</a>
+      <ul>
+        <li><a href="#历史背景">历史背景</a></li>
+        <li><a href="#什么是dma">什么是DMA</a>
+          <ul>
+            <li><a href="#日常应用">日常应用</a></li>
+          </ul>
+        </li>
+        <li><a href="#rdma">RDMA</a>
+          <ul>
+            <li><a href="#常见模块">常见模块</a></li>
+          </ul>
+        </li>
+        <li><a href="#rdma实现">RDMA实现</a>
+          <ul>
+            <li><a href="#rdma在gpu多机互联的应用">RDMA在GPU多机互联的应用</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    enableStickyToc();
+  });
+</script>
+
+                    
                 </div>
                 
             </div>
